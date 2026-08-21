@@ -4,17 +4,17 @@
 
 <br/><br/>
 
-# Guia Completo de Programacao Orientada a Objetos
+# Guia Completo de Programação Orientada a Objetos
 ## Java JDK 25 LTS
 
-**Prof. Adriano Franca**
+**Prof. Adriano França**
 Instituto Federal de Pernambuco — IFPE
-Cursos Tecnico e Tecnologo em Informatica para Internet / Sistemas para Internet
+Cursos Técnico e Tecnólogo em Informática para Internet / Sistemas para Internet
 
 ---
 
-*Este guia cobre do basico ao intermediario de POO com Java 25 LTS,
-com teoria, diagramas, exemplos comentados, erros comuns e exercicios praticos.*
+*Este guia cobre do básico ao intermediário de POO com Java 25 LTS,
+com teoria, diagramas, exemplos comentados, erros comuns e exercícios práticos.*
 
 *IDE utilizada: Visual Studio Code com Extension Pack for Java*
 
@@ -22,37 +22,37 @@ com teoria, diagramas, exemplos comentados, erros comuns e exercicios praticos.*
 
 ---
 
-## Sumario
+## Sumário
 
-1. [Introducao ao Java e ao JDK 25](#1-introducao-ao-java-e-ao-jdk-25)
+1. [Introdução ao Java e ao JDK 25](#1-introdução-ao-java-e-ao-jdk-25)
 2. [Conceitos Fundamentais de POO](#2-conceitos-fundamentais-de-poo)
 3. [Classes e Objetos](#3-classes-e-objetos)
-4. [Atributos e Metodos](#4-atributos-e-metodos)
+4. [Atributos e Métodos](#4-atributos-e-métodos)
 5. [Construtores](#5-construtores)
 6. [Encapsulamento](#6-encapsulamento)
-7. [Heranca](#7-heranca)
+7. [Herança](#7-herança)
 8. [Polimorfismo](#8-polimorfismo)
 9. [Classes Abstratas e Interfaces](#9-classes-abstratas-e-interfaces)
-10. [Colecoes e Estruturas de Dados](#10-colecoes-e-estruturas-de-dados)
-11. [Tratamento de Excecoes](#11-tratamento-de-excecoes)
-12. [Projeto Final — Aplicacao Completa](#12-projeto-final--aplicacao-completa)
-13. [Boas Praticas e Convencoes](#13-boas-praticas-e-convencoes)
+10. [Coleções e Estruturas de Dados](#10-coleções-e-estruturas-de-dados)
+11. [Tratamento de Exceções](#11-tratamento-de-exceções)
+12. [Projeto Final — Aplicação Completa](#12-projeto-final--aplicação-completa)
+13. [Boas Práticas e Convenções](#13-boas-práticas-e-convenções)
 14. [Erros Comuns e Como Resolver](#14-erros-comuns-e-como-resolver)
-15. [Glossario](#15-glossario)
+15. [Glossário](#15-glossário)
 
 ---
 
-## 1. Introducao ao Java e ao JDK 25
+## 1. Introdução ao Java e ao JDK 25
 
-> **O que voce vai aprender neste capitulo:**
-> Entender o que e Java, como ele funciona por baixo dos panos, o que mudou no JDK 25 e como configurar seu ambiente de desenvolvimento no VS Code. Ao final, voce ja vai rodar seu primeiro programa.
+> **O que você vai aprender neste capítulo:**
+> Entender o que é Java, como ele funciona por baixo dos panos, o que mudou no JDK 25 e como configurar seu ambiente de desenvolvimento no VS Code. Ao final, você já vai rodar seu primeiro programa.
 
-Antes de escrever qualquer linha de codigo orientado a objetos, e preciso conhecer a ferramenta que vamos usar. Java e uma das linguagens mais usadas no mundo ha mais de 30 anos — nao por acaso, mas porque ela resolve problemas reais de forma organizada, segura e portatil. Neste capitulo voce vai entender por que Java ainda domina o mercado corporativo, como o codigo que voce escreve vira um programa que roda em qualquer computador, e como configurar seu ambiente para comecar a programar hoje mesmo.
+Antes de escrever qualquer linha de código orientado a objetos, é preciso conhecer a ferramenta que vamos usar. Java é uma das linguagens mais usadas no mundo há mais de 30 anos — não por acaso, mas porque ela resolve problemas reais de forma organizada, segura e portátil. Neste capítulo você vai entender por que Java ainda domina o mercado corporativo, como o código que você escreve vira um programa que roda em qualquer computador, é como configurar seu ambiente para começar a programar hoje mesmo.
 
 
-### 1.1 O que e Java?
+### 1.1 O que é Java?
 
-Java e uma linguagem de programacao **orientada a objetos**, **multiplataforma** e **fortemente tipada**, criada pela Sun Microsystems em 1995. Seu slogan historico e *"Write Once, Run Anywhere"* — escreva uma vez, execute em qualquer lugar.
+Java é uma linguagem de programação **orientada a objetos**, **multiplataforma** e **fortemente tipada**, criada pela Sun Microsystems em 1995. Seu slogan histórico e *"Write Once, Run Anywhere"* — escreva uma vez, execute em qualquer lugar.
 
 ### 1.2 Como o Java funciona?
 
@@ -71,7 +71,7 @@ flowchart LR
     B -->|JVM macOS| C
 ```
 
-A **JVM** e instalada no sistema operacional e e ela quem executa o bytecode. Por isso o mesmo `.class` roda no Windows, Linux ou macOS sem modificacao.
+A **JVM** é instalada no sistema operacional e é ela quem executa o bytecode. Por isso o mesmo `.class` roda no Windows, Linux ou macOS sem modificacao.
 
 ### 1.3 Novidades do JDK 25 LTS
 
@@ -80,13 +80,13 @@ A **JVM** e instalada no sistema operacional e e ela quem executa o bytecode. Po
 | **Unnamed Classes** | Dispensa `public class` em arquivos simples | `void main() { }` |
 | **`java.lang.IO`** | Substituto mais curto de `System.out` | `IO.println("Ola")` |
 | **`var`** | Java infere o tipo automaticamente | `var nome = "Maria"` |
-| **Records** | Classes de dados com menos codigo | `record Aluno(String nome, int idade) {}` |
+| **Records** | Classes de dados com menos código | `record Aluno(String nome, int idade) {}` |
 | **Sealed Classes** | Controla quem pode herdar | `sealed class Forma permits Circulo` |
 | **Pattern Matching** | `instanceof` com captura direta | `if (obj instanceof String s)` |
 
 ### 1.4 Entendendo o `void main()`
 
-No Java classico (antes do JDK 21), para rodar qualquer programa era necessario escrever:
+No Java clássico (antes do JDK 21), para rodar qualquer programa era necessário escrever:
 
 ```java
 public class OlaMundo {
@@ -96,7 +96,7 @@ public class OlaMundo {
 }
 ```
 
-A partir do JDK 25, voce pode simplificar para:
+A partir do JDK 25, você pode simplificar para:
 
 ```java
 void main() {
@@ -106,16 +106,16 @@ void main() {
 
 #### O que cada palavra significa?
 
-| Palavra | Significado | Necessaria no JDK 25? |
+| Palavra | Significado | Necessária no JDK 25? |
 |---|---|---|
 | `public` | Qualquer um pode acessar | Opcional |
 | `class NomeArquivo` | Define o molde do programa | Opcional em arquivos simples |
-| `static` | Pertence a classe, nao ao objeto | Opcional |
-| `void` | O metodo nao retorna nenhum valor | **Sim — sempre necessaria** |
-| `main` | Nome do ponto de entrada do programa | **Sim — sempre necessario** |
+| `static` | Pertence a classe, não ao objeto | Opcional |
+| `void` | O método não retorna nenhum valor | **Sim — sempre necessária** |
+| `main` | Nome do ponto de entrada do programa | **Sim — sempre necessário** |
 | `String[] args` | Argumentos da linha de comando | Opcional |
 
-> **Importante:** `void` nao e novidade — sempre existiu. O que o JDK 25 eliminou foi a cerimonia ao redor.
+> **Importante:** `void` não é novidade — sempre existiu. O que o JDK 25 eliminou foi a cerimônia ao redor.
 
 #### Quando usar cada forma?
 
@@ -136,7 +136,7 @@ public class OlaMundo {
 }
 ```
 
-> **Regra pratica:** o `void main()` simplificado funciona apenas em arquivos simples com uma unica classe. A partir do Tema 6 (Encapsulamento), os exemplos ja usam a forma completa.
+> **Regra prática:** o `void main()` simplificado funciona apenas em arquivos simples com uma única classe. A partir do Tema 6 (Encapsulamento), os exemplos já usam a forma completa.
 
 ### 1.5 Configurando o ambiente (VS Code)
 
@@ -152,7 +152,7 @@ java --version
 **Passo 2 — Instalar o VS Code:**
 
 - Baixar em: https://code.visualstudio.com/
-- Instalar a extensao **Extension Pack for Java** (Ctrl+Shift+X, pesquisar "Java")
+- Instalar a extensão **Extension Pack for Java** (Ctrl+Shift+X, pesquisar "Java")
 
 **Passo 3 — Configurar encoding (UTF-8):**
 
@@ -168,7 +168,7 @@ Abrir `settings.json` (Ctrl+Shift+P -> "Open User Settings JSON"):
 }
 ```
 
-> **Nota sobre acentuacao:** o terminal do Windows pode apresentar problemas com caracteres acentuados mesmo apos a configuracao acima. Por isso, nos exemplos de codigo deste guia, evitamos acentos nas strings para garantir compatibilidade em todos os ambientes.
+> **Nota sobre acentuação:** o terminal do Windows pode apresentar problemas com caracteres acentuados mesmo apóspós a configuração acima. Por isso, nos exemplos de código deste guia, evitamos acentos nas strings para garantir compatibilidade em todos os ambientes.
 
 **Passo 4 — Rodar o primeiro programa:**
 
@@ -211,28 +211,28 @@ Nome: Adriano | Idade: 35
 
 ### 1.7 Tipos de dados em Java
 
-Antes de criar classes e objetos, e fundamental entender como o Java lida com os diferentes tipos de informacao. Diferente de linguagens como Python, o Java e **fortemente tipado**: toda variavel precisa ter um tipo definido, e esse tipo nao muda durante a execucao.
+Antes de criar classes e objetos, é fundamental entender como o Java lida com os diferentes tipos de informação. Diferente de linguagens como Python, o Java é **fortemente tipado**: toda variável precisa ter um tipo definido, é esse tipo não muda durante a execução.
 
 #### Tipos primitivos — armazenam valores simples
 
-Sao os blocos basicos de dados. Existem 8 tipos primitivos em Java, mas voce vai usar principalmente estes:
+São os blocos básicos de dados. Existem 8 tipos primitivos em Java, mas você vai usar principalmente estes:
 
 | Tipo | Tamanho | Faixa de valores | Exemplo |
 |---|---|---|---|
 | `byte` | 8 bits | -128 a 127 | `byte b = 100;` |
 | `short` | 16 bits | -32.768 a 32.767 | `short s = 1000;` |
 | `int` | 32 bits | -2 bilhoes a 2 bilhoes | `int idade = 22;` |
-| `long` | 64 bits | numeros muito grandes | `long populacao = 215000000L;` |
+| `long` | 64 bits | números muito grandes | `long populacao = 215000000L;` |
 | `float` | 32 bits | decimais (menos preciso) | `float pi = 3.14f;` |
 | `double` | 64 bits | decimais (mais preciso) | `double altura = 1.75;` |
 | `boolean` | 1 bit | `true` ou `false` | `boolean ativo = true;` |
-| `char` | 16 bits | um unico caractere | `char letra = 'A';` |
+| `char` | 16 bits | um único caractere | `char letra = 'A';` |
 
-> **Regra pratica:** use `int` para inteiros, `double` para decimais, `boolean` para verdadeiro/falso e `char` para um unico caractere. Os outros tipos aparecem em situacoes especificas.
+> **Regra prática:** use `int` para inteiros, `double` para decimais, `boolean` para verdadeiro/falso e `char` para um único caractere. Os outros tipos aparecem em situacoes específicas.
 
 #### String — tipo especial para texto
 
-`String` nao e um tipo primitivo — e uma **classe**. Mas e tao usada que parece fazer parte da linguagem. Representa uma sequencia de caracteres e sempre fica entre aspas duplas.
+`String` não é um tipo primitivo — é uma **classe**. Mas é tão usada que parece fazer parte da linguagem. Representa uma sequência de caracteres é sempre fica entre aspas duplas.
 
 ```java
 // Arquivo: TiposDados.java
@@ -326,7 +326,7 @@ Idade como numero: 23
 Numero como texto: 100
 ```
 
-#### Operadores aritmeticos e de comparacao
+#### Operadores aritmeticos e de comparação
 
 ```java
 // Arquivo: Operadores.java
@@ -366,7 +366,7 @@ void main() {
 
 #### Trabalhando com String
 
-`String` e uma classe e tem varios metodos uteis:
+`String` é uma classe e tem varios métodos úteis:
 
 ```java
 // Arquivo: Strings.java
@@ -401,35 +401,35 @@ void main() {
 }
 ```
 
-> **Regra de ouro:** nunca compare Strings com `==`. Sempre use `.equals()`. Esse e um dos erros mais comuns de iniciantes em Java.
+> **Regra de ouro:** nunca compare Strings com `==`. Sempre use `.equals()`. Esse é um dos erros mais comuns de iniciantes em Java.
 
-### Exercicios — Tema 1
+### Exercícios — Tema 1
 
-> **Exercicio 1.1** — Crie `Apresentacao.java` que exiba seu nome, cidade e curso usando `IO.println()`.
+> **Exercício 1.1** — Crie `Apresentacao.java` que exiba seu nome, cidade e curso usando `IO.println()`.
 >
-> **Exercicio 1.2** — Declare variaveis dos 6 tipos principais (`int`, `long`, `double`, `boolean`, `char`, `String`) com valores que representem dados de um aluno. Exiba todas em uma unica mensagem formatada.
+> **Exercício 1.2** — Declare variáveis dos 6 tipos principais (`int`, `long`, `double`, `boolean`, `char`, `String`) com valores que representem dados de um aluno. Exiba todas em uma única mensagem formatada.
 >
-> **Exercicio 1.3** — Crie `Casting.java` e reproduza o exemplo de casting do guia. Depois experimente: o que acontece ao converter `3.9` para `int`? E `'A'` para `int`? Anote os resultados nos comentarios.
+> **Exercício 1.3** — Crie `Casting.java` e reproduza o exemplo de casting do guia. Depois experimente: o que acontece ao converter `3.9` para `int`? E `'A'` para `int`? Anote os resultados nos comentarios.
 >
-> **Exercicio 1.4** — Crie `Strings.java` e use pelo menos 5 metodos de String diferentes com o seu proprio nome completo. Exiba o resultado de cada operacao.
+> **Exercício 1.4** — Crie `Strings.java` e use pelo menos 5 métodos de String diferentes com o seu próprio nome completo. Exiba o resultado de cada operação.
 >
-> **Exercicio 1.5** — Pesquise e comente no codigo: qual a diferenca entre JDK, JRE e JVM? Qual voce instalou e por que?
+> **Exercício 1.5** — Pesquise e comente no código: qual a diferenca entre JDK, JRE e JVM? Qual você instalou e por que?
 
 ---
 
 ## 2. Conceitos Fundamentais de POO
 
-> **O que voce vai aprender neste capitulo:**
-> Entender o que e Programacao Orientada a Objetos, por que ela existe, quais sao os 4 pilares e como pensar em termos de objetos antes mesmo de escrever codigo.
+> **O que você vai aprender neste capítulo:**
+> Entender o que é Programação Orientada a Objetos, por que ela existe, quais são os 4 pilares é como pensar em termos de objetos antes mesmo de escrever código.
 
-Imagine que voce precisa construir um sistema para uma escola. Na abordagem procedural, voce escreveria funcoes como `calcularMedia(notas)`, `salvarAluno(dados)`, `imprimirBoletim(aluno)` — funcoes soltas, sem conexao clara entre si. Na Programacao Orientada a Objetos, voce cria um `Aluno` que ja sabe calcular sua propria media, guardar seus proprios dados e imprimir seu proprio boletim. O codigo fica mais organizado, mais facil de entender e mais facil de manter.
+Imagine que você precisa construir um sistema para uma escola. Na abordagem procedural, você escreveria funções como `calcularMedia(notas)`, `salvarAluno(dados)`, `imprimirBoletim(aluno)` — funções soltas, sem conexão clara entre si. Na Programação Orientada a Objetos, você cria um `Aluno` que já sabe calcular sua própria media, guardar seus próprios dados e imprimir seu próprio boletim. O código fica mais organizado, mais fácil de entender é mais fácil de manter.
 
-POO nao e so uma tecnica de programacao — e uma forma de pensar o mundo. Cada entidade do problema vira um objeto com caracteristicas proprias e comportamentos proprios. Antes de ver qualquer linha de codigo Java, entender esses conceitos vai fazer toda a diferenca no seu aprendizado.
+POO não é só uma técnica de programação — e uma forma de pensar o mundo. Cada entidade do problema vira um objeto com características próprias e comportamentos próprios. Antes de ver qualquer linha de código Java, entender esses conceitos vai fazer toda a diferenca no seu aprendizado.
 
 
-### 2.1 O que e Programacao Orientada a Objetos?
+### 2.1 O que é Programação Orientada a Objetos?
 
-Imagine que voce precisa organizar o cadastro de uma escola. Na programacao procedural, voce teria funcoes soltas espalhadas pelo codigo. Na POO, voce cria um objeto `Aluno` que carrega seus proprios dados e sabe o que fazer com eles.
+Imagine que você precisa organizar o cadastro de uma escola. Na programação procedural, você teria funções soltas espalhadas pelo código. Na POO, você cria um objeto `Aluno` que carrega seus próprios dados e sabe o que fazer com eles.
 
 ```
 Procedural                    Orientado a Objetos
@@ -463,9 +463,9 @@ mindmap
 
 | Pilar | Analogia | Quando veremos |
 |---|---|---|
-| **Abstracao** | Ficha de cadastro — guarda so o essencial | Temas 3-4 |
-| **Encapsulamento** | Painel do carro — voce acelera pelo pedal, sem mexer no motor | Tema 6 |
-| **Heranca** | Biologia — filho herda caracteristicas do pai | Tema 7 |
+| **Abstração** | Ficha de cadastro — guarda só o essencial | Temas 3-4 |
+| **Encapsulamento** | Painel do carro — você acelera pelo pedal, sem mexer no motor | Tema 6 |
+| **Herança** | Biologia — filho herda características do pai | Tema 7 |
 | **Polimorfismo** | O verbo "falar" — cada animal fala diferente | Tema 8 |
 
 ### 2.3 Classe vs Objeto — A analogia da forma de bolo
@@ -473,10 +473,10 @@ mindmap
 ```
 CLASSE (forma de bolo)            OBJETO (o bolo pronto)
 ----------------------            ----------------------
-Define como sera o bolo           E o bolo em si
+Define como sera o bolo           É o bolo em si
 Existe uma so vez                 Podem existir varios
 Nao ocupa espaco no forno         Ocupa espaco no prato
-E o molde                         E a instancia
+É o molde                         E a instancia
 
 class Aluno { }                   new Aluno()
 class Aluno { }                   new Aluno()  <- outro, independente
@@ -487,19 +487,19 @@ class Aluno { }                   new Aluno()  <- outro, independente
 
 ## 3. Classes e Objetos
 
-> **O que voce vai aprender neste capitulo:**
-> Criar suas primeiras classes em Java, entender a diferenca entre classe e objeto, instanciar objetos com `new` e trabalhar com multiplos objetos independentes.
+> **O que você vai aprender neste capítulo:**
+> Criar suas primeiras classes em Java, entender a diferenca entre classe e objeto, instanciar objetos com `new` e trabalhar com múltiplos objetos independentes.
 
-Chegamos ao coracao da POO. Classe e objeto sao os conceitos mais fundamentais de toda a programacao orientada a objetos — tudo o mais que veremos neste guia (heranca, polimorfismo, interfaces) e construido sobre essa base.
+Chegamos ao coracao da POO. Classe e objeto são os conceitos mais fundamentais de toda a programação orientada a objetos — tudo o mais que veremos neste guia (herança, polimorfismo, interfaces) e construido sobre essa base.
 
-Pense assim: uma classe e como uma planta arquitetonica — ela descreve como um predio vai ser, mas nao e o predio em si. O objeto e o predio construido a partir daquela planta. Voce pode construir varios predios identicos a partir da mesma planta, e cada um vai ter sua propria existencia, seus proprios moradores, seu proprio endereco.
+Pense assim: uma classe é como uma planta arquitetonica — ela descreve como um predio vai ser, mas não é o predio em si. O objeto e o predio construido a partir daquela planta. Você pode construir varios predios identicos a partir da mesma planta, e cada um vai ter sua própria existencia, seus próprios moradores, seu próprio endereco.
 
-Em Java, voce define a planta uma vez (a classe) e pode criar quantos objetos quiser a partir dela. Cada objeto existe de forma independente na memoria do computador, com seus proprios dados.
+Em Java, você define a planta uma vez (a classe) e pode criar quantos objetos quiser a partir dela. Cada objeto existe de forma independente na memória do computador, com seus próprios dados.
 
 
 ### 3.1 Visualizando uma Classe — Diagrama UML
 
-Antes de escrever codigo, veja como uma classe e representada visualmente:
+Antes de escrever código, veja como uma classe e representada visualmente:
 
 ```
 +---------------------------+
@@ -514,7 +514,7 @@ Antes de escrever codigo, veja como uma classe e representada visualmente:
 +---------------------------+
 ```
 
-> **Convencao UML:**
+> **Convenção UML:**
 > - `-` = privado (private)
 > - `+` = publico (public)
 > - `#` = protegido (protected)
@@ -596,9 +596,9 @@ Curso: Informatica para Internet
 Situacao: Maior de idade
 ```
 
-> **Ponto chave:** cada objeto e **independente**. Mudar `a1.nome` nao afeta `a2.nome`. Eles compartilham o molde (classe), mas cada um tem sua **propria copia** dos atributos na memoria.
+> **Ponto chave:** cada objeto e **independente**. Mudar `a1.nome` não afeta `a2.nome`. Eles compartilham o molde (classe), mas cada um tem sua **própria copia** dos atributos na memória.
 
-### 3.4 Multiplos objetos — exemplo pratico
+### 3.4 Múltiplos objetos — exemplo prático
 
 ```java
 // Arquivo: Loja.java
@@ -656,26 +656,26 @@ if (s1 == s2)              // ERRADO: compara referencias de memoria
 if (s1.equals(s2))         // CORRETO: compara o conteudo
 ```
 
-### Exercicios — Tema 3
+### Exercícios — Tema 3
 
-> **Exercicio 3.1** — Crie a classe `Livro` com: `titulo`, `autor`, `anoPublicacao`, `preco`. Metodo `exibirInfo()`. Instancie 3 livros.
+> **Exercício 3.1** — Crie a classe `Livro` com: `titulo`, `autor`, `anoPublicacao`, `preco`. Método `exibirInfo()`. Instancie 3 livros.
 >
-> **Exercicio 3.2** — Crie `Carro` com: `marca`, `modelo`, `ano`, `velocidadeAtual`. Metodos `acelerar(int km)` e `frear(int km)`. Mostre a velocidade apos cada acao (nao permita negativo).
+> **Exercício 3.2** — Crie `Carro` com: `marca`, `modelo`, `ano`, `velocidadeAtual`. Métodos `acelerar(int km)` e `frear(int km)`. Mostre a velocidade após cada ação (não permita negativo).
 >
-> **Exercicio 3.3 (Projeto progressivo)** — Crie `Artesao` com: `nome`, `cidade`, `tecnica`, `precoPecaMedia`. Instancie 4 artesaos nordestinos. **Guarde este exercicio — voce vai evoluir este sistema nos proximos temas.**
+> **Exercício 3.3 (Projeto progressivo)** — Crie `Artesao` com: `nome`, `cidade`, `tecnica`, `precoPecaMedia`. Instancie 4 artesaos nordestinos. **Guarde este exercício — você vai evoluir este sistema nos próximos temas.**
 
 ---
 
-## 4. Atributos e Metodos
+## 4. Atributos e Métodos
 
-> **O que voce vai aprender neste capitulo:**
-> Entender os diferentes tipos de atributos (de instancia, estaticos e constantes), criar metodos com e sem retorno, usar sobrecarga de metodos e entender o papel do `this`.
+> **O que você vai aprender neste capítulo:**
+> Entender os diferentes tipos de atributos (de instância, estaticos e constantes), criar métodos com e sem retorno, usar sobrecarga de métodos e entender o papel do `this`.
 
-Se a classe e o molde e o objeto e o produto final, entao os **atributos** sao o que o objeto guarda e os **metodos** sao o que o objeto sabe fazer. Juntos, eles definem completamente o comportamento de um objeto.
+Se a classe é o molde e o objeto e o produto final, então os **atributos** são o que o objeto guarda e os **métodos** são o que o objeto sabe fazer. Juntos, eles definem completamente o comportamento de um objeto.
 
-Um `Aluno` guarda `nome`, `idade` e `notas` — esses sao seus atributos. Ele sabe `apresentar()` seus dados, `calcularMedia()` e dizer sua `getSituacao()` — esses sao seus metodos. Atributos e metodos trabalham juntos: os metodos usam os atributos para produzir resultados.
+Um `Aluno` guarda `nome`, `idade` e `notas` — esses são seus atributos. Ele sabe `apresentar()` seus dados, `calcularMedia()` e dizer sua `getSituacao()` — esses são seus métodos. Atributos e métodos trabalham juntos: os métodos usam os atributos para produzir resultados.
 
-Neste capitulo voce vai descobrir que existem diferentes tipos de atributos (cada objeto com o seu, ou compartilhado por todos) e diferentes tipos de metodos (que fazem algo ou que devolvem um valor). Voce tambem vai aprender um recurso poderoso do Java: ter varios metodos com o mesmo nome, cada um resolvendo um problema diferente.
+Neste capítulo você vai descobrir que existem diferentes tipos de atributos (cada objeto com o seu, ou compartilhado por todos) e diferentes tipos de métodos (que fazem algo ou que devolvem um valor). Você também vai aprender um recurso poderoso do Java: ter varios métodos com o mesmo nome, cada um resolvendo um problema diferente.
 
 
 ### 4.1 Tipos de atributos — diagrama
@@ -729,7 +729,7 @@ void main() {
 }
 ```
 
-### 4.2 Tipos de metodos
+### 4.2 Tipos de métodos
 
 ```java
 // Arquivo: TiposMetodos.java
@@ -782,9 +782,9 @@ void main() {
 }
 ```
 
-### 4.3 Sobrecarga de metodos (Overloading)
+### 4.3 Sobrecarga de métodos (Overloading)
 
-> **Sobrecarga:** mesmo nome, parametros diferentes. O Java escolhe automaticamente qual versao chamar pelo tipo e quantidade de argumentos.
+> **Sobrecarga:** mesmo nome, parâmetros diferentes. O Java escolhe automaticamente qual versão chamar pelo tipo e quantidade de argumentos.
 
 ```java
 // Arquivo: Sobrecarga.java
@@ -842,26 +842,26 @@ double resultado = a / b;     // resultado = 2.0 (nao 2.5!)
 double resultado = (double) a / b; // CORRETO: resultado = 2.5
 ```
 
-### Exercicios — Tema 4
+### Exercícios — Tema 4
 
-> **Exercicio 4.1** — Crie `ContaBancaria` com: `titular`, `saldo`. Metodos: `depositar(double)`, `sacar(double)` (sem saldo negativo), `exibirSaldo()`.
+> **Exercício 4.1** — Crie `ContaBancaria` com: `titular`, `saldo`. Métodos: `depositar(double)`, `sacar(double)` (sem saldo negativo), `exibirSaldo()`.
 >
-> **Exercicio 4.2** — Adicione atributo estatico `totalContas` a `ContaBancaria`. Incremente a cada conta criada.
+> **Exercício 4.2** — Adicione atributo estatico `totalContas` a `ContaBancaria`. Incremente a cada conta criada.
 >
-> **Exercicio 4.3 (Projeto progressivo)** — Adicione metodos a `Artesao`: `calcularFaturamento(int pecasVendidas)` e `exibirPerfil()`. Crie uma versao sobrecarregada de `exibirPerfil(boolean detalhado)`.
+> **Exercício 4.3 (Projeto progressivo)** — Adicione métodos a `Artesao`: `calcularFaturamento(int pecasVendidas)` e `exibirPerfil()`. Crie uma versão sobrecarregada de `exibirPerfil(boolean detalhado)`.
 
 ---
 
 ## 5. Construtores
 
-> **O que voce vai aprender neste capitulo:**
-> Entender o que e um construtor, por que ele existe, como criar construtores com diferentes parametros, usar `this()` e `super()`, e conhecer os Records do JDK 25.
+> **O que você vai aprender neste capítulo:**
+> Entender o que é um construtor, por que ele existe, como criar construtores com diferentes parâmetros, usar `this()` e `super()`, e conhecer os Records do JDK 25.
 
-Imagine que voce contrata um funcionario e ele chega no primeiro dia sem saber seu nome, sem ter acesso ao sistema, sem conhecer o cargo. Alguem precisaria preencher tudo isso manualmente depois. Seria caotitico.
+Imagine que você contrata um funcionario e ele chega no primeiro dia sem saber seu nome, sem ter acesso ao sistema, sem conhecer o cargo. Alguem precisaria preencher tudo isso manualmente depois. Seria caotitico.
 
-Com objetos e a mesma coisa. Sem um construtor, o objeto nasce "vazio" — `nome = null`, `saldo = 0`, `ativo = false` por padrao. Voce precisaria lembrar de configurar cada atributo manualmente toda vez. E facil esquecer algum campo e criar bugs dificeis de rastrear.
+Com objetos é a mesma coisa. Sem um construtor, o objeto nasce "vazio" — `nome = null`, `saldo = 0`, `ativo = false` por padrao. Você precisaria lembrar de configurar cada atributo manualmente toda vez. É fácil esquecer algum campo e criar bugs difíceis de rastrear.
 
-O **construtor** resolve isso. Ele e executado automaticamente quando o objeto e criado com `new`, garantindo que o objeto nasca ja em um estado valido e coerente. E como uma lista de verificacao de admissao: antes do funcionario comecar a trabalhar, todos os dados ja estao preenchidos e conferidos.
+O **construtor** resolve isso. Ele é executado automaticamente quando o objeto e criado com `new`, garantindo que o objeto nasca já em um estado válido e coerente. É como uma lista de verificação de admissao: antes do funcionario começar a trabalhar, todos os dados já estão preenchidos e conferidos.
 
 
 ### 5.1 O problema sem construtor
@@ -1010,26 +1010,26 @@ Aluno(String nome, int idade, String curso) {
 }
 ```
 
-### Exercicios — Tema 5
+### Exercícios — Tema 5
 
-> **Exercicio 5.1** — Adicione dois construtores a `ContaBancaria`: um so com titular (saldo = 0) e outro com titular e saldo inicial.
+> **Exercício 5.1** — Adicione dois construtores a `ContaBancaria`: um só com titular (saldo = 0) e outro com titular e saldo inicial.
 >
-> **Exercicio 5.2** — Crie o record `Municipio(String nome, String estado, long populacao, double area)`. Instancie 5 municipios nordestinos, calcule a densidade demografica de cada um e exiba do mais denso ao menos denso.
+> **Exercício 5.2** — Crie o record `Municipio(String nome, String estado, long populacao, double area)`. Instancie 5 municipios nordestinos, calcule a densidade demografica de cada um e exiba do mais denso ao menos denso.
 >
-> **Exercicio 5.3 (Projeto progressivo)** — Adicione um construtor completo a `Artesao`. Prove que dois objetos criados com os mesmos dados sao objetos diferentes na memoria (use `==` e `.equals()`).
+> **Exercício 5.3 (Projeto progressivo)** — Adicione um construtor completo a `Artesao`. Prove que dois objetos criados com os mesmos dados são objetos diferentes na memória (use `==` e `.equals()`).
 
 ---
 
 ## 6. Encapsulamento
 
-> **O que voce vai aprender neste capitulo:**
-> Entender por que expor atributos diretamente e perigoso, usar `private` para proteger os dados, criar getters e setters com validacao, e aplicar os modificadores de acesso corretamente.
+> **O que você vai aprender neste capítulo:**
+> Entender por que expor atributos diretamente e perigoso, usar `private` para proteger os dados, criar getters e setters com validação, e aplicar os modificadores de acesso corretamente.
 
-Pense no painel de controle de um aviao. O piloto acessa os sistemas por botoes e alavancas especificas — ele nao mexe diretamente nos motores, nos cabos hidraulicos ou nos circuitos. Essa separacao existe por seguranca: garante que so acoes validas e controladas possam afetar o sistema.
+Pense no painel de controle de um aviao. O piloto acessa os sistemas por botoes e alavancas específicas — ele não mexe diretamente nos motores, nos cabos hidraulicos ou nos circuitos. Essa separacao existe por seguranca: garante que só ações validas e controladas possam afetar o sistema.
 
-Encapsulamento e exatamente esse principio aplicado ao codigo. Quando um atributo e publico, qualquer parte do programa pode alterar seu valor diretamente — inclusive para valores absurdos como saldo negativo, nota acima de 10 ou idade negativa. Nao ha nenhuma barreira de protecao.
+Encapsulamento é exatamente esse princípio aplicado ao código. Quando um atributo e publico, qualquer parte do programa pode alterar seu valor diretamente — inclusive para valores absurdos como saldo negativo, nota acima de 10 ou idade negativa. Não há nenhuma barreira de proteção.
 
-Ao tornar os atributos privados e fornecer metodos controlados de acesso, voce garante que o objeto sempre esteja em um estado valido. E um dos pilares mais importantes da POO na pratica, e o que separa um codigo amador de um codigo profissional.
+Ao tornar os atributos privados e fornecer métodos controlados de acesso, você garante que o objeto sempre esteja em um estado válido. E um dos pilares mais importantes da POO na prática, é o que separa um código amador de um código profissional.
 
 
 ### 6.1 O problema sem encapsulamento
@@ -1145,9 +1145,9 @@ void main() {
 
 | Modificador | Mesma Classe | Mesmo Pacote | Subclasse | Qualquer Lugar |
 |---|:---:|:---:|:---:|:---:|
-| `private`   | Sim | Nao | Nao | Nao |
-| *(padrao)*  | Sim | Sim | Nao | Nao |
-| `protected` | Sim | Sim | Sim | Nao |
+| `private`   | Sim | Não | Não | Não |
+| *(padrao)*  | Sim | Sim | Não | Não |
+| `protected` | Sim | Sim | Sim | Não |
 | `public`    | Sim | Sim | Sim | Sim |
 
 ### Erros comuns — Tema 6
@@ -1181,29 +1181,29 @@ public int[] getNotas() { return notas; }  // PERIGOSO: quem recebe pode alterar
 public int[] getNotas() { return notas.clone(); } // CORRETO: retorna copia
 ```
 
-### Exercicios — Tema 6
+### Exercícios — Tema 6
 
-> **Exercicio 6.1** — Refatore `Artesao` para encapsulamento completo. Setter de `precoPecaMedia` rejeita valores negativos ou zero.
+> **Exercício 6.1** — Refatore `Artesao` para encapsulamento completo. Setter de `precoPecaMedia` rejeita valores negativos ou zero.
 >
-> **Exercicio 6.2** — Crie `Estoque` com `quantidade` privada. Metodos `adicionar(int)` e `retirar(int)` com validacoes.
+> **Exercício 6.2** — Crie `Estoque` com `quantidade` privada. Métodos `adicionar(int)` e `retirar(int)` com validacoes.
 >
-> **Exercicio 6.3 (Projeto progressivo)** — Encapsule todos os atributos de `Artesao`. Adicione um historico privado de vendas (`int[]`) com metodo para registrar nova venda e calcular o total vendido.
+> **Exercício 6.3 (Projeto progressivo)** — Encapsule todos os atributos de `Artesao`. Adicione um histórico privado de vendas (`int[]`) com método para registrar nova venda e calcular o total vendido.
 
 ---
 
-## 7. Heranca
+## 7. Herança
 
-> **O que voce vai aprender neste capitulo:**
-> Criar hierarquias de classes com `extends`, reutilizar codigo da superclasse, usar `super()` e `super.metodo()`, sobrescrever metodos com `@Override` e entender a relacao "E UM".
+> **O que você vai aprender neste capítulo:**
+> Criar hierarquias de classes com `extends`, reutilizar código da superclasse, usar `super()` e `super.metodo()`, sobrescrever métodos com `@Override` e entender a relação "E UM".
 
-Na natureza, um Labrador e um cachorro. Um cachorro e um mamifero. Um mamifero e um animal. Cada nivel herda as caracteristicas do nivel acima e adiciona as suas proprias. O Labrador nao precisa "reinventar" a respiracao — ele herda isso de Animal.
+Na natureza, um Labrador e um cachorro. Um cachorro e um mamifero. Um mamifero e um animal. Cada nível herda as características do nível acima e adiciona as suas próprias. O Labrador não precisa "reinventar" a respiracao — ele herda isso de Animal.
 
-Na programacao, heranca funciona da mesma forma. Se voce ja tem uma classe `Pessoa` com nome, idade e CPF, nao faz sentido reescrever esses atributos em `Aluno` e em `Professor`. Com heranca, tanto `Aluno` quanto `Professor` herdam tudo de `Pessoa` e acrescentam apenas o que e especifico de cada um.
+Na programação, herança funciona da mesma forma. Se você já tem uma classe `Pessoa` com nome, idade e CPF, não faz sentido reescrever esses atributos em `Aluno` e em `Professor`. Com herança, tanto `Aluno` quanto `Professor` herdam tudo de `Pessoa` e acrescentam apenas o que é específico de cada um.
 
-Heranca e o mecanismo que permite **reaproveitamento de codigo** de forma organizada e hierarquica. Ela tambem e a base para o polimorfismo, que veremos no proximo capitulo. Entender heranca bem e fundamental para construir sistemas POO robustos e sem repeticao de codigo.
+Herança e o mecanismo que permite **reaproveitamento de código** de forma organizada e hierarquica. Ela também é a base para o polimorfismo, que veremos no próximo capítulo. Entender herança bem é fundamental para construir sistemas POO robustos e sem repeticao de código.
 
 
-### 7.1 Visualizando a heranca
+### 7.1 Visualizando a herança
 
 ```
               +----------+
@@ -1344,7 +1344,7 @@ void main() {
 }
 ```
 
-### 7.2 Hierarquia de multiplos niveis
+### 7.2 Hierarquia de múltiplos níveis
 
 ```mermaid
 classDiagram
@@ -1450,26 +1450,26 @@ class Cachorro extends Animal {
 }
 ```
 
-### Exercicios — Tema 7
+### Exercícios — Tema 7
 
-> **Exercicio 7.1** — Hierarquia: `Veiculo` -> `VeiculoTerrestre` e `VeiculoAquatico` -> `Carro`, `Moto`, `Barco`.
+> **Exercício 7.1** — Hierarquia: `Veiculo` -> `VeiculoTerrestre` e `VeiculoAquatico` -> `Carro`, `Moto`, `Barco`.
 >
-> **Exercicio 7.2** — Hierarquia IFPE: `Servidor` -> `Professor` (disciplina, titulacao) e `TecnicoAdministrativo` (setor, cargo).
+> **Exercício 7.2** — Hierarquia IFPE: `Servidor` -> `Professor` (disciplina, titulacao) e `TecnicoAdministrativo` (setor, cargo).
 >
-> **Exercicio 7.3 (Projeto progressivo)** — Crie uma superclasse `PessoaNordeste` com `nome`, `municipio`, `estado`. Faca `Artesao` herdar dela. Adicione outros tipos: `Comerciante`, `Agricultor`. Exiba todos num array do tipo `PessoaNordeste`.
+> **Exercício 7.3 (Projeto progressivo)** — Crie uma superclasse `PessoaNordeste` com `nome`, `municipio`, `estado`. Faca `Artesao` herdar dela. Adicione outros tipos: `Comerciante`, `Agricultor`. Exiba todos num array do tipo `PessoaNordeste`.
 
 ---
 
 ## 8. Polimorfismo
 
-> **O que voce vai aprender neste capitulo:**
-> Entender o que e polimorfismo, sobrescrever metodos com `@Override`, usar referencias da superclasse para objetos de subclasses, e aplicar Pattern Matching com `instanceof` do JDK 25.
+> **O que você vai aprender neste capítulo:**
+> Entender o que é polimorfismo, sobrescrever métodos com `@Override`, usar referências da superclasse para objetos de subclasses, e aplicar Pattern Matching com `instanceof` do JDK 25.
 
-Polimorfismo e talvez o conceito mais elegante da POO. A palavra vem do grego e significa "muitas formas". Na pratica, significa que o mesmo comando pode produzir resultados completamente diferentes dependendo de quem o recebe.
+Polimorfismo é talvez o conceito mais elegante da POO. A palavra vem do grego e significa "muitas formas". Na prática, significa que o mesmo comando pode produzir resultados completamente diferentes dependendo de quem o recebe.
 
-Pense no verbo "comunicar". Um ser humano se comunica falando. Um cachorro se comunica latindo. Um golfinho se comunica com sons ultrassonicos. O verbo e o mesmo — a acao e completamente diferente. Se voce der a ordem "comunique-se!" para cada um, cada um vai responder a sua maneira.
+Pense no verbo "comunicar". Um ser humano se comunica falando. Um cachorro se comunica latindo. Um golfinho se comunica com sons ultrassonicos. O verbo é o mesmo — a ação e completamente diferente. Se você der a ordem "comunique-se!" para cada um, cada um vai responder a sua maneira.
 
-Em Java, polimorfismo permite que voce trate objetos de tipos diferentes de forma uniforme, sem precisar saber exatamente qual e o tipo de cada um. Isso simplifica enormemente o codigo: em vez de um `if` para cada tipo possivel, um unico comando funciona para todos. E o resultado de combinar heranca com sobrescrita de metodos de forma inteligente.
+Em Java, polimorfismo permite que você trate objetos de tipos diferentes de forma uniforme, sem precisar saber exatamente qual e o tipo de cada um. Isso simplifica enormemente o código: em vez de um `if` para cada tipo possível, um único comando funciona para todos. E o resultado de combinar herança com sobrescrita de métodos de forma inteligente.
 
 
 ### 8.1 Visualizando o polimorfismo
@@ -1632,28 +1632,28 @@ class Cachorro extends Animal {
 }
 ```
 
-### Exercicios — Tema 8
+### Exercícios — Tema 8
 
-> **Exercicio 8.1** — `Funcionario` -> `Gerente` (fixo + bonus), `Vendedor` (comissao), `Tecnico` (fixo + hora extra). Calcule a folha com polimorfismo.
+> **Exercício 8.1** — `Funcionario` -> `Gerente` (fixo + bonus), `Vendedor` (comissao), `Tecnico` (fixo + hora extra). Calcule a folha com polimorfismo.
 >
-> **Exercicio 8.2** — `Pagamento` -> `CartaoCredito`, `Boleto`, `Pix`. Metodo `processar(double valor)` diferente para cada tipo.
+> **Exercício 8.2** — `Pagamento` -> `CartaoCredito`, `Boleto`, `Pix`. Método `processar(double valor)` diferente para cada tipo.
 >
-> **Exercicio 8.3 (Projeto progressivo)** — Faca `PessoaNordeste` ter um metodo abstrato `descricaoProfissional()`. Implemente em `Artesao`, `Comerciante` e `Agricultor` com polimorfismo. Use um array do tipo `PessoaNordeste` para exibir todos.
+> **Exercício 8.3 (Projeto progressivo)** — Faca `PessoaNordeste` ter um método abstrato `descricaoProfissional()`. Implemente em `Artesao`, `Comerciante` e `Agricultor` com polimorfismo. Use um array do tipo `PessoaNordeste` para exibir todos.
 
 ---
 
 ## 9. Classes Abstratas e Interfaces
 
-> **O que voce vai aprender neste capitulo:**
-> Criar classes que servem so de modelo (abstratas), definir contratos que as classes devem cumprir (interfaces), entender a diferenca entre os dois e saber quando usar cada um.
+> **O que você vai aprender neste capítulo:**
+> Criar classes que servem só de modelo (abstratas), definir contratos que as classes devem cumprir (interfaces), entender a diferenca entre os dois e saber quando usar cada um.
 
-Ate agora todas as classes que criamos podiam ser instanciadas diretamente com `new`. Mas ha situacoes em que uma classe existe apenas para ser herdada — ela define uma estrutura comum, mas nao faz sentido criar objetos dela diretamente.
+Até agora todas as classes que criamos podiam ser instanciadas diretamente com `new`. Mas há situacoes em que uma classe existe apenas para ser herdada — ela define uma estrutura comum, mas não faz sentido criar objetos dela diretamente.
 
-Um `Animal` generico, por exemplo. O que significa criar `new Animal()`? Que animal seria esse? Um animal generico nao existe na natureza — existem cachorros, gatos, vacas. O `Animal` e so um conceito, um modelo. Isso e uma **classe abstrata**: ela define o que todo animal deve ter e fazer, mas nao pode ser usada diretamente.
+Um `Animal` genérico, por exemplo. O que significa criar `new Animal()`? Que animal seria esse? Um animal genérico não existe na natureza — existem cachorros, gatos, vacas. O `Animal` é só um conceito, um modelo. Isso é uma **classe abstrata**: ela define o que todo animal deve ter e fazer, mas não pode ser usada diretamente.
 
-Ja as **interfaces** vao alem: elas definem um contrato de comportamento que pode ser assinado por qualquer classe, independente da sua hierarquia. Um `Relatorio` pode ser imprimivel e enviavel. Um `Produto` pode ser exportavel e pesquisavel. Interfaces permitem que classes completamente diferentes compartilhem comportamentos comuns sem precisar de uma hierarquia de heranca.
+Já as **interfaces** vão além: elas definem um contrato de comportamento que pode ser assinado por qualquer classe, independente da sua hierarquia. Um `Relatorio` pode ser imprimivel e enviavel. Um `Produto` pode ser exportavel e pesquisavel. Interfaces permitem que classes completamente diferentes compartilhem comportamentos comuns sem precisar de uma hierarquia de herança.
 
-Juntas, classes abstratas e interfaces dao ao seu codigo uma estrutura profissional, extensivel e facil de manter.
+Juntas, classes abstratas e interfaces dão ao seu código uma estrutura profissional, extensivel é fácil de manter.
 
 
 ### 9.1 Classes Abstratas — quando usar
@@ -1860,13 +1860,13 @@ void main() {
 
 | | Classe Abstrata | Interface |
 |---|---|---|
-| Instanciar | Nao | Nao |
-| Heranca | `extends` (uma so) | `implements` (varias) |
-| Atributos | Pode ter | So constantes |
-| Construtor | Tem | Nao tem |
-| Metodos concretos | Pode ter | So `default` |
-| **Relacao** | "E UM" | "PODE FAZER" |
-| **Quando usar** | Compartilhar estrutura e codigo | Definir contrato/comportamento |
+| Instanciar | Não | Não |
+| Herança | `extends` (uma só) | `implements` (varias) |
+| Atributos | Pode ter | Só constantes |
+| Construtor | Tem | Não tem |
+| Métodos concretos | Pode ter | Só `default` |
+| **Relação** | "E UM" | "PODE FAZER" |
+| **Quando usar** | Compartilhar estrutura e código | Definir contrato/comportamento |
 
 ### Erros comuns — Tema 9
 
@@ -1896,28 +1896,28 @@ class Aluno implements Pessoa { }   // ERRADO: Pessoa e classe, use extends
 class Aluno extends Imprimivel { }  // ERRADO: Imprimivel e interface, use implements
 ```
 
-### Exercicios — Tema 9
+### Exercícios — Tema 9
 
-> **Exercicio 9.1** — Abstrata `Veiculo` com metodo abstrato `calcularConsumo(double km)`. Subclasses: `Carro` (10km/L), `Moto` (20km/L), `Caminhao` (4km/L).
+> **Exercício 9.1** — Abstrata `Veiculo` com método abstrato `calcularConsumo(double km)`. Subclasses: `Carro` (10km/L), `Moto` (20km/L), `Caminhao` (4km/L).
 >
-> **Exercicio 9.2** — Interface `Exportavel` com `exportarCSV()`, `exportarJSON()`. Implemente em `RelatorioAlunos` e `RelatorioVendas`.
+> **Exercício 9.2** — Interface `Exportavel` com `exportarCSV()`, `exportarJSON()`. Implemente em `RelatorioAlunos` e `RelatorioVendas`.
 >
-> **Exercicio 9.3 (Projeto progressivo)** — Crie interfaces `Vendavel` e `Exportavel`. Faca `Artesao` implementar ambas. `Vendavel` exige `vender(int quantidade)` e `calcularReceita()`. `Exportavel` exige `exportarDados()`.
+> **Exercício 9.3 (Projeto progressivo)** — Crie interfaces `Vendavel` e `Exportavel`. Faca `Artesao` implementar ambas. `Vendavel` exige `vender(int quantidade)` e `calcularReceita()`. `Exportavel` exige `exportarDados()`.
 
 ---
 
-## 10. Colecoes e Estruturas de Dados
+## 10. Coleções e Estruturas de Dados
 
-> **O que voce vai aprender neste capitulo:**
-> Usar `ArrayList` para listas dinamicas de objetos, usar `HashMap` para associar chaves a valores, percorrer colecoes com for-each e aplicar metodos uteis como `sort()`, `contains()` e `remove()`.
+> **O que você vai aprender neste capítulo:**
+> Usar `ArrayList` para listas dinamicas de objetos, usar `HashMap` para associar chaves a valores, percorrer coleções com for-each e aplicar métodos úteis como `sort()`, `contains()` e `remove()`.
 
-Ate agora trabalhamos com um ou poucos objetos por vez. Mas sistemas reais lidam com centenas ou milhares de objetos: uma escola tem centenas de alunos, uma loja tem milhares de produtos, um banco tem milhoes de contas.
+Até agora trabalhamos com um ou poucos objetos por vez. Mas sistemas reais lidam com centenas ou milhares de objetos: uma escola tem centenas de alunos, uma loja tem milhares de produtos, um banco tem milhoes de contas.
 
-Arrays resolvem parte do problema, mas tem uma limitacao critica: o tamanho e fixo. Se voce criar um array de 100 alunos e precisar do 101, o array nao cresce.
+Arrays resolvem parte do problema, mas tem uma limitacao critica: o tamanho e fixo. Se você criar um array de 100 alunos e precisar do 101, o array não cresce.
 
-As **colecoes** do Java resolvem isso. O `ArrayList` e uma lista que cresce conforme necessario, com metodos prontos para adicionar, remover, buscar e ordenar. O `HashMap` associa uma chave a um valor — como um dicionario — permitindo buscas instantaneas por nome, CPF, codigo ou qualquer outro identificador.
+As **coleções** do Java resolvem isso. O `ArrayList` e uma lista que cresce conforme necessário, com métodos prontos para adicionar, remover, buscar e ordenar. O `HashMap` associa uma chave a um valor — como um dicionario — permitindo buscas instantaneas por nome, CPF, código ou qualquer outro identificador.
 
-Dominar colecoes e essencial para qualquer projeto Java real. O projeto final deste guia usa `ArrayList` para armazenar alunos e notas, exatamente como um sistema academico real faria.
+Dominar coleções e essencial para qualquer projeto Java real. O projeto final deste guia usa `ArrayList` para armazenar alunos e notas, exatamente como um sistema acadêmico real faria.
 
 
 ### 10.1 Array vs ArrayList
@@ -2046,29 +2046,29 @@ notas.get("Maria") == 8.5;   // ERRADO para Double: use .equals()
 notas.get("Maria").equals(8.5); // CORRETO
 ```
 
-### Exercicios — Tema 10
+### Exercícios — Tema 10
 
-> **Exercicio 10.1** — Sistema de lista de presenca com `ArrayList<Aluno>`: adicionar, remover, listar, buscar por curso.
+> **Exercício 10.1** — Sistema de lista de presenca com `ArrayList<Aluno>`: adicionar, remover, listar, buscar por curso.
 >
-> **Exercicio 10.2** — `HashMap<String, ArrayList<String>>` com catalogo de artesaos nordestinos por estado.
+> **Exercício 10.2** — `HashMap<String, ArrayList<String>>` com catalogo de artesaos nordestinos por estado.
 >
-> **Exercicio 10.3 (Projeto progressivo)** — Substitua os arrays de `Artesao` por `ArrayList`. Adicione metodos para listar artesaos por tecnica e calcular o faturamento total de todos os artesaos.
+> **Exercício 10.3 (Projeto progressivo)** — Substitua os arrays de `Artesao` por `ArrayList`. Adicione métodos para listar artesaos por técnica e calcular o faturamento total de todos os artesaos.
 
 ---
 
-## 11. Tratamento de Excecoes
+## 11. Tratamento de Exceções
 
-> **O que voce vai aprender neste capitulo:**
-> Entender o que sao excecoes e por que elas existem, usar `try-catch-finally` para tratar erros, criar excecoes personalizadas e construir programas que nao travam diante de entradas inesperadas.
+> **O que você vai aprender neste capítulo:**
+> Entender o que são exceções e por que elas existem, usar `try-catch-finally` para tratar erros, criar exceções personalizadas e construir programas que não travam diante de entradas inesperadas.
 
-Todo programa, por mais bem escrito que seja, pode encontrar situacoes inesperadas: o usuario digita uma letra onde se esperava um numero, o arquivo nao existe, o saldo e insuficiente, a conexao cai. Como o programa deve se comportar nesses casos?
+Todo programa, por mais bem escrito que seja, pode encontrar situacoes inesperadas: o usuario digita uma letra onde se esperava um número, o arquivo não existe, o saldo e insuficiente, a conexão cai. Como o programa deve se comportar nesses casos?
 
-Sem tratamento de excecoes, a resposta e simples e ruim: o programa trava, exibe uma mensagem de erro tecnica incompreensivel e encerra. Com tratamento de excecoes, o programa pode capturar o problema, reagir de forma inteligente, informar o usuario de forma clara e continuar funcionando.
+Sem tratamento de exceções, a resposta é simples e ruim: o programa trava, exibe uma mensagem de erro técnica incompreensivel e encerra. Com tratamento de exceções, o programa pode capturar o problema, reagir de forma inteligente, informar o usuario de forma clara e continuar funcionando.
 
-Excecoes sao eventos anormais que interrompem o fluxo normal do programa. O Java tem um sistema elegante para lidar com elas: voce tenta executar um bloco de codigo (`try`), captura possiveis erros (`catch`) e garante que recursos sejam liberados independente do resultado (`finally`). Voce tambem pode criar suas proprias excecoes para representar erros especificos do seu dominio, como `SaldoInsuficienteException` ou `NotaInvalidaException`.
+Exceções são eventos anormais que interrompem o fluxo normal do programa. O Java tem um sistema elegante para lidar com elas: você tenta executar um bloco de código (`try`), captura possíveis erros (`catch`) e garante que recursos sejam liberados independente do resultado (`finally`). Você também pode criar suas próprias exceções para representar erros específicos do seu dominio, como `SaldoInsuficienteException` ou `NotaInvalidaException`.
 
 
-### 11.1 Hierarquia de excecoes
+### 11.1 Hierarquia de exceções
 
 ```
 Throwable
@@ -2121,7 +2121,7 @@ void main() {
 }
 ```
 
-### 11.2 Excecoes personalizadas
+### 11.2 Exceções personalizadas
 
 ```java
 // Arquivo: ExcecoesPersonalizadas.java
@@ -2215,28 +2215,28 @@ try {
 try { } catch (Exception e) { } finally { sc.close(); }
 ```
 
-### Exercicios — Tema 11
+### Exercícios — Tema 11
 
-> **Exercicio 11.1** — `NotaInvalidaException` quando nota < 0 ou > 10. Lance no metodo `adicionarNota()` e trate no `main`.
+> **Exercício 11.1** — `NotaInvalidaException` quando nota < 0 ou > 10. Lance no método `adicionarNota()` e trate no `main`.
 >
-> **Exercicio 11.2** — `EstoqueInsuficienteException` com mensagem detalhada (estoque atual vs quantidade pedida).
+> **Exercício 11.2** — `EstoqueInsuficienteException` com mensagem detalhada (estoque atual vs quantidade pedida).
 >
-> **Exercicio 11.3 (Projeto progressivo)** — Adicione tratamento de excecoes ao sistema de `Artesao`. Crie `VendaInvalidaException` para quantidade negativa e `EstoqueInsuficienteException` para estoque zerado. Implemente um menu interativo que nao trava com erros.
+> **Exercício 11.3 (Projeto progressivo)** — Adicione tratamento de exceções ao sistema de `Artesao`. Crie `VendaInvalidaException` para quantidade negativa e `EstoqueInsuficienteException` para estoque zerado. Implemente um menu interativo que não trava com erros.
 
 ---
 
-## 12. Projeto Final — Aplicacao Completa
+## 12. Projeto Final — Aplicação Completa
 
-> **O que voce vai aprender neste capitulo:**
-> Integrar todos os conceitos vistos no guia em um unico sistema funcional: heranca, encapsulamento, polimorfismo, interfaces, excecoes personalizadas, colecoes e controle de fluxo com menu interativo.
+> **O que você vai aprender neste capítulo:**
+> Integrar todos os conceitos vistos no guia em um único sistema funcional: herança, encapsulamento, polimorfismo, interfaces, exceções personalizadas, coleções e controle de fluxo com menu interativo.
 
-Chegamos ao ponto de chegada do guia. Tudo o que voce aprendeu nos capitulos anteriores — classes, objetos, encapsulamento, heranca, polimorfismo, interfaces, colecoes e excecoes — agora se junta em um sistema real e funcional.
+Chegamos ao ponto de chegada do guia. Tudo o que você aprendeu nos capítulos anteriores — classes, objetos, encapsulamento, herança, polimorfismo, interfaces, coleções e exceções — agora se junta em um sistema real e funcional.
 
-O projeto e um **Sistema Academico** simplificado, inspirado em sistemas que instituicoes como o IFPE usam no dia a dia. Ele permite matricular alunos, lancar notas, calcular medias, determinar situacoes e gerar relatorios — tudo via menu interativo no terminal.
+O projeto e um **Sistema Acadêmico** simplificado, inspirado em sistemas que instituicoes como o IFPE usam no dia a dia. Ele permite matricular alunos, lançar notas, calcular medias, determinar situacoes e gerar relatorios — tudo via menu interativo no terminal.
 
-O objetivo nao e so que o sistema funcione, mas que ele demonstre cada conceito de POO de forma clara e intencional. Ao ler o codigo, deve ser possivel identificar onde esta o encapsulamento, onde esta o polimorfismo, onde estao as interfaces. Esse e o sinal de um codigo orientado a objetos bem escrito.
+O objetivo não é só que o sistema funcione, mas que ele demonstre cada conceito de POO de forma clara e intencional. Ao ler o código, deve ser possível identificar onde está o encapsulamento, onde está o polimorfismo, onde estão as interfaces. Esse e o sinal de um código orientado a objetos bem escrito.
 
-Implemente em partes, testando cada etapa antes de avacar. Comece pelas excecoes, depois as interfaces, depois as classes, e por fim o programa principal.
+Implemente em partes, testando cada etapa antes de avacar. Comece pelas exceções, depois as interfaces, depois as classes, e por fim o programa principal.
 
 
 > Integra **todos os conceitos** vistos no guia. Implemente em partes, nesta ordem.
@@ -2427,31 +2427,31 @@ void main() {
 
 ---
 
-## 13. Boas Praticas e Convencoes
+## 13. Boas Práticas e Convenções
 
-> **O que voce vai aprender neste capitulo:**
-> As convencoes de nomenclatura do Java, boas praticas de escrita de codigo limpo e a estrutura de um projeto Java profissional.
+> **O que você vai aprender neste capítulo:**
+> As convenções de nomenclatura do Java, boas práticas de escrita de código limpo e a estrutura de um projeto Java profissional.
 
-Saber fazer o codigo funcionar e o primeiro passo. Saber fazer o codigo ser **lido** e o segundo — e igualmente importante. Um codigo que funciona mas e impossivel de entender e um codigo que vai gerar problemas no futuro: dificuldade de manutenção, bugs dificeis de encontrar e resistencia da equipe para trabalhar com ele.
+Saber fazer o código funcionar e o primeiro passo. Saber fazer o código ser **lido** e o segundo — e igualmente importante. Um código que funciona mas e impossivel de entender e um código que vai gerar problemas no futuro: dificuldade de manutenção, bugs difíceis de encontrar e resistencia da equipe para trabalhar com ele.
 
-A comunidade Java construiu ao longo de decadas um conjunto de convencoes que todos os desenvolvedores seguem. Quando voce abre um projeto Java e ve `ContaBancaria`, sabe que e uma classe. Quando ve `calcularSaldo()`, sabe que e um metodo. Quando ve `TAXA_IMPOSTO`, sabe que e uma constante. Esse reconhecimento imediato e possivel porque todos seguem as mesmas convencoes.
+A comunidade Java construiu ao longo de decadas um conjunto de convenções que todos os desenvolvedores seguem. Quando você abre um projeto Java é ve `ContaBancaria`, sabe que é uma classe. Quando ve `calcularSaldo()`, sabe que é um método. Quando ve `TAXA_IMPOSTO`, sabe que é uma constante. Esse reconhecimento imediato é possível porque todos seguem as mesmas convenções.
 
-Este capitulo nao tem exercicios de codigo — e um capitulo para ler, refletir e aplicar nos exercicios e no projeto. Voce vai perceber que as boas praticas nao sao regras arbitrarias: cada uma existe para resolver um problema real que aparece quando o codigo cresce.
+Este capítulo não tem exercícios de código — e um capítulo para ler, refletir e aplicar nos exercícios e no projeto. Você vai perceber que as boas práticas não são regras arbitrarias: cada uma existe para resolver um problema real que aparece quando o código cresce.
 
 
 ### 13.1 Nomenclatura Java
 
-| Elemento | Convencao | Exemplo |
+| Elemento | Convenção | Exemplo |
 |---|---|---|
 | **Classe** | PrimeiraLetraMaiuscula (PascalCase) | `ContaBancaria`, `Aluno` |
 | **Interface** | PascalCase, geralmente adjetivo | `Imprimivel`, `Exportavel` |
-| **Metodo** | primeiraLetraMinuscula (camelCase) | `calcularSaldo()`, `getNome()` |
-| **Variavel** | camelCase | `saldoAtual`, `nomeCompleto` |
+| **Método** | primeiraLetraMinuscula (camelCase) | `calcularSaldo()`, `getNome()` |
+| **Variável** | camelCase | `saldoAtual`, `nomeCompleto` |
 | **Constante** | TUDO_MAIUSCULO com _ | `TAXA_IMPOSTO`, `MAX_TENTATIVAS` |
 | **Pacote** | tudo.minusculo.separado.por.ponto | `br.edu.ifpe.poo` |
 | **Arquivo** | Identico ao nome da classe publica | `ContaBancaria.java` |
 
-### 13.2 Boas praticas gerais
+### 13.2 Boas práticas gerais
 
 ```java
 // 1. NOMES SIGNIFICATIVOS — o codigo deve se autoexplicar
@@ -2526,32 +2526,32 @@ meu-projeto/
 
 ## 14. Erros Comuns e Como Resolver
 
-> **O que voce vai aprender neste capitulo:**
+> **O que você vai aprender neste capítulo:**
 > Reconhecer os erros mais frequentes em Java, entender sua causa raiz e saber como corrigi-los rapidamente.
 
-Errar faz parte de aprender a programar. Todo desenvolvedor experiente ja enfrentou cada um dos erros listados aqui — muitos deles dezenas de vezes. A diferenca entre um iniciante e um desenvolvedor experiente nao e nao cometer erros, e reconhecer e corrigir erros com rapidez.
+Errar faz parte de aprender a programar. Todo desenvolvedor experiente já enfrentou cada um dos erros listados aqui — muitos deles dezenas de vezes. A diferenca entre um iniciante e um desenvolvedor experiente não é não cometer erros, e reconhecer e corrigir erros com rapidez.
 
-Este capitulo funciona como um guia de referencia rapida. Quando seu programa travar com uma mensagem de erro que voce nao reconhece, venha aqui primeiro. Cada erro tem uma causa mais comum e uma solucao clara.
+Este capítulo funciona como um guia de referência rápida. Quando seu programa travar com uma mensagem de erro que você não reconhece, venha aqui primeiro. Cada erro tem uma causa mais comum e uma solucao clara.
 
-Mantenha este capitulo marcado. Voce vai consultá-lo com frequencia nas proximas semanas — e isso e perfeitamente normal. Com o tempo, voce vai internalizar esses padroes e comecar a evitar os erros antes mesmo de comete-los.
+Mantenha este capítulo marcado. Você vai consultá-lo com frequencia nas proximas semanas — e isso é perfeitamente normal. Com o tempo, você vai internalizar esses padroes e começar a evitar os erros antes mesmo de comete-los.
 
 
-### Guia rapido de erros frequentes
+### Guia rápido de erros frequentes
 
 | Erro | Causa mais comum | Como resolver |
 |---|---|---|
 | `NullPointerException` | Usar objeto sem inicializar | Verifique se fez `new` antes de usar |
-| `ArrayIndexOutOfBoundsException` | Indice fora do tamanho | Verifique o tamanho com `.length` |
+| `ArrayIndexOutOfBoundsException` | Índice fora do tamanho | Verifique o tamanho com `.length` |
 | `ClassCastException` | Cast para tipo errado | Use `instanceof` antes do cast |
 | `StackOverflowError` | Recursao infinita | Verifique a condicao de parada |
 | `ConcurrentModificationException` | Modificar lista enquanto percorre | Use `removeIf()` ou iterator |
-| `NumberFormatException` | Converter texto nao numerico | Use try-catch ao converter |
+| `NumberFormatException` | Converter texto não numerico | Use try-catch ao converter |
 | `Cannot instantiate abstract class` | `new` em classe abstrata | Use uma subclasse concreta |
-| `does not override abstract method` | Faltou implementar metodo | Implemente todos os metodos abstratos |
-| `method not found` | Erro de digitacao ou tipo errado | Verifique o nome e os parametros |
+| `does not override abstract method` | Faltou implementar método | Implemente todos os métodos abstratos |
+| `method not found` | Erro de digitacao ou tipo errado | Verifique o nome e os parâmetros |
 | `incompatible types` | Atribuir tipo errado | Verifique os tipos ou faca cast |
 
-### Erros de logica mais comuns
+### Erros de lógica mais comuns
 
 ```java
 // 1. = em vez de == na comparacao
@@ -2584,75 +2584,75 @@ double media = (double) total / quantidade; // resultado: 3.33
 
 ---
 
-## 15. Glossario
+## 15. Glossário
 
-> **Referencia rapida de termos** — use durante as aulas, exercicios e provas.
+> **Referência rápida de termos** — use durante as aulas, exercícios e provas.
 
-Programacao Orientada a Objetos tem uma terminologia propria que pode parecer intimidadora no inicio. Termos como "instancia", "polimorfismo", "encapsulamento" e "sobrescrita" aparecem o tempo todo — e entende-los com precisao faz diferenca tanto nas provas quanto na comunicacao com outros desenvolvedores.
+Programação Orientada a Objetos tem uma terminologia própria que pode parecer intimidadora no inicio. Termos como "instância", "polimorfismo", "encapsulamento" e "sobrescrita" aparecem o tempo todo — e entende-los com precisao faz diferenca tanto nas provas quanto na comunicação com outros desenvolvedores.
 
-Este glossario reune todos os termos tecnicos usados no guia com definicoes claras e diretas. Nao tente memorizar tudo de uma vez. Use como referencia: sempre que encontrar um termo desconhecido nas aulas ou nos exercicios, consulte aqui antes de buscar na internet.
+Este glossário reune todos os termos técnicos usados no guia com definições claras e diretas. Não tente memorizar tudo de uma vez. Use como referência: sempre que encontrar um termo desconhecido nas aulas ou nos exercícios, consulte aqui antes de buscar na internet.
 
-Os termos estao em ordem alfabetica para facilitar a consulta rapida.
+Os termos estão em ordem alfabetica para facilitar a consulta rápida.
 
 
-| Termo | Definicao |
+| Termo | Definição |
 |---|---|
-| **Abstrato** | Classe ou metodo que nao tem implementacao completa. Obriga subclasses a completar. |
-| **Atributo** | Variavel declarada dentro de uma classe. Representa uma caracteristica do objeto. |
-| **Bytecode** | Codigo intermediario gerado pelo compilador Java. Executado pela JVM. |
+| **Abstrato** | Classe ou método que não tem implementação completa. Obriga subclasses a completar. |
+| **Atributo** | Variável declarada dentro de uma classe. Representa uma característica do objeto. |
+| **Bytecode** | Código intermediário gerado pelo compilador Java. Executado pela JVM. |
 | **Cast** | Conversao forcada de um tipo para outro. Ex: `(double) inteiro` |
-| **Classe** | Molde ou template que define atributos e metodos de um objeto. |
-| **Construtor** | Metodo especial com o mesmo nome da classe, executado automaticamente com `new`. |
-| **Encapsulamento** | Pilar de POO que protege os dados internos do objeto, expondo apenas o necessario. |
-| **Extends** | Palavra-chave usada para heranca de classe. `class Aluno extends Pessoa` |
-| **Final** | Modificador que impede alteracao. `final` em variavel = constante, em classe = nao pode ser herdada. |
-| **Getter** | Metodo de leitura de atributo privado. Convencao: `getNome()`, `isAtivo()`. |
-| **Heranca** | Pilar de POO onde uma classe filha herda atributos e metodos da classe pai. |
+| **Classe** | Molde ou template que define atributos e métodos de um objeto. |
+| **Construtor** | Método especial com o mesmo nome da classe, executado automaticamente com `new`. |
+| **Encapsulamento** | Pilar de POO que protege os dados internos do objeto, expondo apenas o necessário. |
+| **Extends** | Palavra-chave usada para herança de classe. `class Aluno extends Pessoa` |
+| **Final** | Modificador que impede alteracao. `final` em variável = constante, em classe = não pode ser herdada. |
+| **Getter** | Método de leitura de atributo privado. Convenção: `getNome()`, `isAtivo()`. |
+| **Herança** | Pilar de POO onde uma classe filha herda atributos e métodos da classe pai. |
 | **Implements** | Palavra-chave usada para implementar interface. `class Doc implements Imprimivel` |
-| **Instancia** | Um objeto criado a partir de uma classe. `new Aluno()` cria uma instancia de Aluno. |
-| **Interface** | Contrato que define quais metodos uma classe deve implementar. Sem atributos de instancia. |
+| **Instância** | Um objeto criado a partir de uma classe. `new Aluno()` cria uma instância de Aluno. |
+| **Interface** | Contrato que define quais métodos uma classe deve implementar. Sem atributos de instância. |
 | **JDK** | Java Development Kit. Pacote completo para desenvolver em Java (inclui compilador e JVM). |
-| **JRE** | Java Runtime Environment. So executa programas Java (sem compilador). |
+| **JRE** | Java Runtime Environment. Só executa programas Java (sem compilador). |
 | **JVM** | Java Virtual Machine. Executa o bytecode em qualquer sistema operacional. |
-| **Metodo** | Funcao declarada dentro de uma classe. Define o comportamento do objeto. |
+| **Método** | Função declarada dentro de uma classe. Define o comportamento do objeto. |
 | **Modificador de acesso** | Palavra que controla visibilidade: `private`, `protected`, `public` ou padrao. |
-| **new** | Operador que cria um objeto na memoria e chama o construtor. |
-| **Objeto** | Instancia concreta de uma classe. Ocupa espaco na memoria e tem estado proprio. |
-| **Override** | Sobrescrita de metodo herdado. Anotacao `@Override` garante que a sobrescrita e valida. |
-| **Overloading** | Sobrecarga: mesmo nome de metodo com parametros diferentes na mesma classe. |
-| **Pacote (package)** | Agrupamento logico de classes relacionadas. Equivale a uma pasta. |
-| **Parametro** | Variavel recebida por um metodo. Diferente de argumento (valor passado na chamada). |
-| **Pilar** | Principio fundamental da POO: Abstracao, Encapsulamento, Heranca, Polimorfismo. |
-| **Polimorfismo** | Pilar de POO onde o mesmo metodo se comporta diferente dependendo do objeto. |
+| **new** | Operador que cria um objeto na memória e chama o construtor. |
+| **Objeto** | Instância concreta de uma classe. Ocupa espaco na memória e tem estado próprio. |
+| **Override** | Sobrescrita de método herdado. Anotacao `@Override` garante que a sobrescrita e válida. |
+| **Overloading** | Sobrecarga: mesmo nome de método com parâmetros diferentes na mesma classe. |
+| **Pacote (package)** | Agrupamento lógico de classes relacionadas. Equivale a uma pasta. |
+| **Parâmetro** | Variável recebida por um método. Diferente de argumento (valor passado na chamada). |
+| **Pilar** | Princípio fundamental da POO: Abstração, Encapsulamento, Herança, Polimorfismo. |
+| **Polimorfismo** | Pilar de POO onde o mesmo método se comporta diferente dependendo do objeto. |
 | **Protected** | Modificador que permite acesso na mesma classe, mesmo pacote e subclasses. |
-| **Private** | Modificador que permite acesso somente dentro da propria classe. |
+| **Private** | Modificador que permite acesso somente dentro da própria classe. |
 | **Public** | Modificador que permite acesso em qualquer lugar. |
-| **Record** | Tipo especial de classe (JDK 25) para dados imutaveis, com codigo gerado automaticamente. |
-| **Referencia** | Variavel que aponta para um objeto na memoria. Nao e o objeto em si. |
-| **Return** | Palavra-chave que devolve um valor de um metodo para quem o chamou. |
-| **Setter** | Metodo de escrita de atributo privado com validacao. Convencao: `setNome(String nome)`. |
-| **Static** | Pertence a classe, nao ao objeto. Compartilhado por todas as instancias. |
+| **Record** | Tipo especial de classe (JDK 25) para dados imutaveis, com código gerado automaticamente. |
+| **Referência** | Variável que aponta para um objeto na memória. Não é o objeto em si. |
+| **Return** | Palavra-chave que devolve um valor de um método para quem o chamou. |
+| **Setter** | Método de escrita de atributo privado com validação. Convenção: `setNome(String nome)`. |
+| **Static** | Pertence a classe, não ao objeto. Compartilhado por todas as instâncias. |
 | **Subclasse** | Classe filha que herda de outra classe (superclasse). |
-| **Super** | Referencia a superclasse. `super()` chama o construtor do pai. `super.metodo()` chama metodo do pai. |
-| **Superclasse** | Classe pai de uma hierarquia de heranca. |
-| **This** | Referencia ao proprio objeto dentro de um metodo ou construtor. |
-| **Throws** | Declara que um metodo pode lancar uma excecao. `void sacar() throws SaldoInsuficienteException` |
+| **Super** | Referência a superclasse. `super()` chama o construtor do pai. `super.metodo()` chama método do pai. |
+| **Superclasse** | Classe pai de uma hierarquia de herança. |
+| **This** | Referência ao próprio objeto dentro de um método ou construtor. |
+| **Throws** | Declara que um método pode lançar uma exceção. `void sacar() throws SaldoInsuficienteException` |
 | **UML** | Unified Modeling Language. Linguagem visual para modelar sistemas orientados a objetos. |
-| **Var** | Palavra-chave (JDK 10+) que permite ao Java inferir o tipo da variavel automaticamente. |
-| **Void** | Indica que um metodo nao retorna nenhum valor. |
+| **Var** | Palavra-chave (JDK 10+) que permite ao Java inferir o tipo da variável automaticamente. |
+| **Void** | Indica que um método não retorna nenhum valor. |
 
 ---
 
-## Referencias e Recursos
+## Referências e Recursos
 
 | Recurso | Descricao | Link |
 |---|---|---|
-| **Oracle Java Docs** | Documentacao oficial JDK 25 | https://docs.oracle.com/en/java/javase/25/ |
+| **Oracle Java Docs** | Documentação oficial JDK 25 | https://docs.oracle.com/en/java/javase/25/ |
 | **Learn Java 25** | Curso gratuito focado no JDK 25 | https://learn-java-25.pages.dev |
 | **Java MOOC Helsinki** | Melhor MOOC gratuito de Java | https://java-programming.mooc.fi |
-| **Baeldung** | Artigos tecnicos e exemplos | https://www.baeldung.com |
+| **Baeldung** | Artigos técnicos e exemplos | https://www.baeldung.com |
 | **Dev.java** | Portal oficial Oracle | https://dev.java |
-| **VS Code Java** | Extensao oficial para Java | https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack |
+| **VS Code Java** | Extensão oficial para Java | https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack |
 | **PlantUML** | Ferramenta para diagramas UML em texto | https://plantuml.com |
 | **draw.io** | Ferramenta gratuita para diagramas UML | https://app.diagrams.net |
 
@@ -2660,9 +2660,9 @@ Os termos estao em ordem alfabetica para facilitar a consulta rapida.
 
 <div align="center">
 
-**Prof. Adriano Franca**
+**Prof. Adriano França**
 Instituto Federal de Pernambuco — IFPE
-*Programacao Orientada a Objetos — Java JDK 25 LTS*
+*Programação Orientada a Objetos — Java JDK 25 LTS*
 
 *IDE: Visual Studio Code + Extension Pack for Java*
 
