@@ -929,7 +929,7 @@ void main() {
 
 Imagine que você precisa construir um sistema para uma escola. Na abordagem procedural, você escreveria funções como `calcularMedia(notas)`, `salvarAluno(dados)`, `imprimirBoletim(aluno)` — funções soltas, sem conexão clara entre si. Na Programação Orientada a Objetos, você cria um `Aluno` que já sabe calcular sua própria media, guardar seus próprios dados e imprimir seu próprio boletim. O código fica mais organizado, mais fácil de entender é mais fácil de manter.
 
-POO não é só uma técnica de programação — e uma forma de pensar o mundo. Cada entidade do problema vira um objeto com características próprias e comportamentos próprios. Antes de ver qualquer linha de código Java, entender esses conceitos vai fazer toda a diferenca no seu aprendizado.
+POO não é só uma técnica de programação — e uma forma de pensar o mundo. Cada entidade do problema vira um objeto com características próprias e comportamentos próprios. Antes de ver qualquer linha de código Java, entender esses conceitos vai fazer toda a diferença no seu aprendizado.
 
 
 ### 2.1 O que é Programação Orientada a Objetos?
@@ -993,7 +993,7 @@ class Aluno { }                   new Aluno()  <- outro, independente
 ## 3. Classes e Objetos
 
 > **O que você vai aprender neste capítulo:**
-> Criar suas primeiras classes em Java, entender a diferenca entre classe e objeto, instanciar objetos com `new` e trabalhar com múltiplos objetos independentes.
+> Criar suas primeiras classes em Java, entender a diferença entre classe e objeto, instanciar objetos com `new` e trabalhar com múltiplos objetos independentes.
 
 Chegamos ao coracao da POO. Classe e objeto são os conceitos mais fundamentais de toda a programação orientada a objetos — tudo o mais que veremos neste guia (herança, polimorfismo, interfaces) e construido sobre essa base.
 
@@ -1366,7 +1366,7 @@ Imagine que você contrata um funcionario e ele chega no primeiro dia sem saber 
 
 Com objetos é a mesma coisa. Sem um construtor, o objeto nasce "vazio" — `nome = null`, `saldo = 0`, `ativo = false` por padrao. Você precisaria lembrar de configurar cada atributo manualmente toda vez. É fácil esquecer algum campo e criar bugs difíceis de rastrear.
 
-O **construtor** resolve isso. Ele é executado automaticamente quando o objeto e criado com `new`, garantindo que o objeto nasca já em um estado válido e coerente. É como uma lista de verificação de admissao: antes do funcionario começar a trabalhar, todos os dados já estão preenchidos e conferidos.
+O **construtor** resolve isso. Ele é executado automaticamente quando o objeto é criado com `new`, garantindo que o objeto nasça já em um estado válido e coerente. É como uma lista de verificação de admissão: antes do funcionário começar a trabalhar, todos os dados já estão preenchidos e conferidos.
 
 
 ### 5.1 O problema sem construtor
@@ -2174,7 +2174,7 @@ class Cachorro extends Animal {
 
 ### Exercícios — Tema 8
 
-> **Exercício 8.1** — `Funcionario` -> `Gerente` (fixo + bonus), `Vendedor` (comissao), `Tecnico` (fixo + hora extra). Calcule a folha com polimorfismo.
+> **Exercício 8.1** — `Funcionario` -> `Gerente` (fixo + bonus), `Vendedor` (comissão), `Tecnico` (fixo + hora extra). Calcule a folha com polimorfismo.
 >
 > **Exercício 8.2** — `Pagamento` -> `CartaoCredito`, `Boleto`, `Pix`. Método `processar(double valor)` diferente para cada tipo.
 >
@@ -2185,7 +2185,7 @@ class Cachorro extends Animal {
 ## 9. Classes Abstratas e Interfaces
 
 > **O que você vai aprender neste capítulo:**
-> Criar classes que servem só de modelo (abstratas), definir contratos que as classes devem cumprir (interfaces), entender a diferenca entre os dois e saber quando usar cada um.
+> Criar classes que servem só de modelo (abstratas), definir contratos que as classes devem cumprir (interfaces), entender a diferença entre os dois e saber quando usar cada um.
 
 Até agora todas as classes que criamos podiam ser instanciadas diretamente com `new`. Mas há situacoes em que uma classe existe apenas para ser herdada — ela define uma estrutura comum, mas não faz sentido criar objetos dela diretamente.
 
@@ -2588,7 +2588,7 @@ notas.get("Maria").equals(8.5); // CORRETO
 
 ### Exercícios — Tema 10
 
-> **Exercício 10.1** — Sistema de lista de presenca com `ArrayList<Aluno>`: adicionar, remover, listar, buscar por curso.
+> **Exercício 10.1** — Sistema de lista de presença com `ArrayList<Aluno>`: adicionar, remover, listar, buscar por curso.
 >
 > **Exercício 10.2** — `HashMap<String, ArrayList<String>>` com catalogo de artesaos nordestinos por estado.
 >
@@ -3069,9 +3069,9 @@ meu-projeto/
 > **O que você vai aprender neste capítulo:**
 > Reconhecer os erros mais frequentes em Java, entender sua causa raiz e saber como corrigi-los rapidamente.
 
-Errar faz parte de aprender a programar. Todo desenvolvedor experiente já enfrentou cada um dos erros listados aqui — muitos deles dezenas de vezes. A diferenca entre um iniciante e um desenvolvedor experiente não é não cometer erros, e reconhecer e corrigir erros com rapidez.
+Errar faz parte de aprender a programar. Todo desenvolvedor experiente já enfrentou cada um dos erros listados aqui — muitos deles dezenas de vezes. A diferença entre um iniciante e um desenvolvedor experiente não é não cometer erros, e reconhecer e corrigir erros com rapidez.
 
-Este capítulo funciona como um guia de referência rápida. Quando seu programa travar com uma mensagem de erro que você não reconhece, venha aqui primeiro. Cada erro tem uma causa mais comum e uma solucao clara.
+Este capítulo funciona como um guia de referência rápida. Quando seu programa travar com uma mensagem de erro que você não reconhece, venha aqui primeiro. Cada erro tem uma causa mais comum e uma solução clara.
 
 Mantenha este capítulo marcado. Você vai consultá-lo com frequencia nas proximas semanas — e isso é perfeitamente normal. Com o tempo, você vai internalizar esses padroes e começar a evitar os erros antes mesmo de comete-los.
 
@@ -3128,7 +3128,7 @@ double media = (double) total / quantidade; // resultado: 3.33
 
 > **Referência rápida de termos** — use durante as aulas, exercícios e provas.
 
-Programação Orientada a Objetos tem uma terminologia própria que pode parecer intimidadora no inicio. Termos como "instância", "polimorfismo", "encapsulamento" e "sobrescrita" aparecem o tempo todo — e entende-los com precisao faz diferenca tanto nas provas quanto na comunicação com outros desenvolvedores.
+Programação Orientada a Objetos tem uma terminologia própria que pode parecer intimidadora no inicio. Termos como "instância", "polimorfismo", "encapsulamento" e "sobrescrita" aparecem o tempo todo — e entende-los com precisão faz diferença tanto nas provas quanto na comunicação com outros desenvolvedores.
 
 Este glossário reune todos os termos técnicos usados no guia com definições claras e diretas. Não tente memorizar tudo de uma vez. Use como referência: sempre que encontrar um termo desconhecido nas aulas ou nos exercícios, consulte aqui antes de buscar na internet.
 
