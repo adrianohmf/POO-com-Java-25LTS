@@ -337,6 +337,105 @@ Idade como numero: 23
 Numero como texto: 100
 ```
 
+#### Classes wrapper e métodos de conversão
+
+Todo tipo primitivo do Java tem uma **classe correspondente** chamada de *wrapper* (embrulho). Elas servem para duas coisas principais:
+
+- **Fornecer métodos utilitários** — como converter String em número (`parseInt`, `parseDouble`) e obter valores máximos e mínimos do tipo
+- **Permitir uso em coleções** — `ArrayList` e `HashMap` não aceitam tipos primitivos, só objetos. Por isso você escreve `ArrayList<Integer>` (wrapper) e não `ArrayList<int>` (primitivo)
+
+O Java faz a conversão entre primitivo e wrapper automaticamente — isso se chama **autoboxing** (primitivo → wrapper) e **unboxing** (wrapper → primitivo).
+
+##### Tabela completa — primitivo, wrapper e parsing
+
+| Primitivo | Wrapper | String → tipo | tipo → String |
+|---|---|---|---|
+| `int` | `Integer` | `Integer.parseInt("10")` | `Integer.toString(10)` |
+| `double` | `Double` | `Double.parseDouble("3.14")` | `Double.toString(3.14)` |
+| `float` | `Float` | `Float.parseFloat("3.14")` | `Float.toString(3.14f)` |
+| `long` | `Long` | `Long.parseLong("1000000")` | `Long.toString(1000000L)` |
+| `boolean` | `Boolean` | `Boolean.parseBoolean("true")` | `Boolean.toString(true)` |
+| `byte` | `Byte` | `Byte.parseByte("127")` | `Byte.toString((byte)127)` |
+| `short` | `Short` | `Short.parseShort("32000")` | `Short.toString((short)32000)` |
+| `char` | `Character` | `texto.charAt(0)` | `Character.toString('A')` |
+
+> **Atalho universal:** `String.valueOf(x)` converte **qualquer tipo** em String — primitivo ou objeto. É a forma mais usada na prática.
+
+##### Exemplos práticos
+
+```java
+// Arquivo: ClassesWrapper.java
+
+void main() {
+
+    // PARSING: String -> tipo numerico
+    int     idade     = Integer.parseInt("22");
+    double  nota      = Double.parseDouble("8.75");
+    float   taxa      = Float.parseFloat("0.12");
+    long    populacao = Long.parseLong("215000000");
+    boolean ativo     = Boolean.parseBoolean("true");
+
+    IO.println("Idade: "     + idade);
+    IO.println("Nota: "      + nota);
+    IO.println("Taxa: "      + taxa);
+    IO.println("Populacao: " + populacao);
+    IO.println("Ativo: "     + ativo);
+
+    // WRAPPER: tipo -> String
+    String sIdade = Integer.toString(idade);
+    String sNota  = Double.toString(nota);
+    String sAtivo = Boolean.toString(ativo);
+
+    // Alternativa universal: String.valueOf() aceita qualquer tipo
+    String s1 = String.valueOf(idade);     // "22"
+    String s2 = String.valueOf(nota);      // "8.75"
+    String s3 = String.valueOf(ativo);     // "true"
+
+    IO.println("Como texto: " + s1 + " | " + s2 + " | " + s3);
+
+    // CONSTANTES UTEIS das classes wrapper
+    IO.println("Maior int:    " + Integer.MAX_VALUE);   // 2147483647
+    IO.println("Menor int:    " + Integer.MIN_VALUE);   // -2147483648
+    IO.println("Maior double: " + Double.MAX_VALUE);    // 1.7976931348623157E308
+    IO.println("Menor double: " + Double.MIN_VALUE);    // 4.9E-324
+
+    // AUTOBOXING: Java converte automaticamente int <-> Integer
+    Integer wrapperIdade = idade;          // int -> Integer (autoboxing)
+    int     primitivo    = wrapperIdade;   // Integer -> int (unboxing)
+    IO.println("Wrapper: " + wrapperIdade);
+    IO.println("Primitivo: " + primitivo);
+
+    // CUIDADO: parseBoolean aceita qualquer String
+    // so "true" (case insensitive) vira true, qualquer outra coisa vira false
+    IO.println(Boolean.parseBoolean("true"));   // true
+    IO.println(Boolean.parseBoolean("TRUE"));   // true
+    IO.println(Boolean.parseBoolean("sim"));    // false (nao e "true")
+    IO.println(Boolean.parseBoolean("1"));      // false (nao e "true")
+}
+```
+
+```
+# Saida esperada:
+Idade: 22
+Nota: 8.75
+Taxa: 0.12
+Populacao: 215000000
+Ativo: true
+Como texto: 22 | 8.75 | true
+Maior int:    2147483647
+Menor int:    -2147483648
+Maior double: 1.7976931348623157E308
+Menor double: 4.9E-324
+Wrapper: 22
+Primitivo: 22
+true
+true
+false
+false
+```
+
+> **Atenção com `Boolean.parseBoolean()`:** apenas a string `"true"` (independente de maiúsculas ou minúsculas) retorna `true`. Qualquer outro valor — `"sim"`, `"1"`, `"verdadeiro"` — retorna `false` sem lançar exceção.
+
 #### Operadores aritmeticos e de comparação
 
 ```java
@@ -589,31 +688,91 @@ Usando printf: Maria tem 8.8
 > | `System.out.printf(...)` | Idêntico ao `format`. |
 > | `String.format(...)` | Retorna String formatada sem imprimir. |
 
-#### Lendo dados do usuário — Scanner
+#### Lendo dados do usuário — Scanner e IO.readln()
 
-Até agora só exibimos informações na tela. Mas um programa real precisa também **receber** dados do usuário — nome, idade, nota, escolha de menu. Para isso o Java usa a classe `Scanner`.
+Até agora só exibimos informações na tela. Mas um programa real precisa também **receber** dados do usuário — nome, idade, nota, escolha de menu. O JDK 25 oferece duas formas de fazer isso.
 
-##### Por que precisamos de `import`?
+##### Forma 1 — IO.readln() (novidade do JDK 25)
 
-O Java é organizado em **pacotes** — grupos de classes relacionadas. A classe `Scanner` não faz parte do núcleo básico da linguagem: ela fica no pacote `java.util`. Para usá-la, precisamos avisar ao compilador com a instrução `import` no início do arquivo.
+A forma mais simples. A classe `IO` do JDK 25 tem o método `readln()` que lê uma linha do teclado sem precisar criar nenhum objeto e sem `import`.
+
+```java
+// Arquivo: LeitorSimples.java
+// JDK 25 compact source file — sem import nenhum!
+
+void main() {
+    IO.println("Qual o seu nome?");
+    var nome = IO.readln();        // le uma linha do teclado
+
+    IO.println("Qual a sua cidade?");
+    var cidade = IO.readln();
+
+    IO.println("Ola, " + nome + " de " + cidade + "!");
+}
+```
+
+> **Limitação do `IO.readln()`:** só lê texto. Para ler números, você ainda precisa converter com `Integer.parseInt()` ou `Double.parseDouble()`.
+
+```java
+// Lendo numero com IO.readln() + conversao
+void main() {
+    IO.println("Qual a sua idade?");
+    var idade = Integer.parseInt(IO.readln());  // le texto e converte
+
+    IO.println("Qual a sua nota?");
+    var nota = Double.parseDouble(IO.readln()); // le texto e converte
+
+    IO.println("Idade: " + idade + " | Nota: " + nota);
+}
+```
+
+##### Forma 2 — Scanner (forma completa e mais poderosa)
+
+O `Scanner` é a classe tradicional do Java para leitura de dados. É mais completa que `IO.readln()` — lê inteiros, decimais e textos diretamente, sem precisar converter.
+
+###### Por que precisamos de `import` para o Scanner?
+
+O Java é organizado em **pacotes** — grupos de classes relacionadas. A classe `Scanner` fica no pacote `java.util`, que faz parte do módulo `java.base`.
 
 ```
 java.util.Scanner         <- pacote.Scanner
    |        |
    |        +-- classe que vamos usar
-   +---------- pacote onde ela mora
+   +---------- pacote onde ela mora (modulo java.base)
 ```
 
-Sem o `import`, o compilador não sabe o que é `Scanner` e exibe um erro. Com o `import`, ele localiza a classe e a disponibiliza para uso no arquivo.
+A boa notícia: no JDK 25, em **compact source files** (arquivos sem `public class`), todo o módulo `java.base` é importado automaticamente — incluindo `Scanner`. Então o `import` se torna opcional nesses arquivos.
 
 ```java
-// SEM import -> ERRO: cannot find symbol
-var sc = new Scanner(System.in); // Java nao sabe o que e Scanner!
-
-// COM import -> OK
-import java.util.Scanner;
-var sc = new Scanner(System.in); // Java encontra a classe
+// JDK 25 compact source file — import e OPCIONAL
+// Scanner disponivel automaticamente via modulo java.base
+void main() {
+    var sc = new Scanner(System.in);  // funciona sem import!
+    IO.println("Nome:");
+    var nome = sc.nextLine();
+    IO.println("Ola, " + nome);
+    sc.close();
+}
 ```
+
+```java
+// Quando voce criar uma public class, o import volta a ser obrigatorio
+import java.util.Scanner;  // OBRIGATORIO em arquivos com class explicita
+
+public class MeuPrograma {
+    public static void main(String[] args) {
+        var sc = new Scanner(System.in);
+        // ...
+    }
+}
+```
+
+| Situação | `import` necessário? |
+|---|---|
+| Arquivo com `void main()` sem `class` (compact source file) | **Não** — Scanner automático no JDK 25 |
+| Arquivo com `public class MinhaClasse { }` | **Sim** — precisa do `import` |
+
+> **Resumo prático:** enquanto você estiver nos exemplos das primeiras aulas (sem `public class`), não precisa do `import`. Assim que criar uma classe explícita, adicione `import java.util.Scanner;` no topo do arquivo.
 
 ##### O que é o Scanner?
 
@@ -643,12 +802,12 @@ Usuário digita no teclado
 | `nextBoolean()` | `true` ou `false` | `true` |
 | `nextLong()` | Um inteiro grande | `215000000` |
 
-##### Exemplo completo
+##### Exemplo completo com Scanner
 
 ```java
 // Arquivo: LeitorDados.java
-
-import java.util.Scanner;   // OBRIGATORIO: importa a classe Scanner
+// JDK 25 compact source file: import nao necessario aqui
+// Em arquivos com public class, adicione: import java.util.Scanner;
 
 void main() {
 
@@ -657,15 +816,15 @@ void main() {
 
     // Lendo texto
     IO.println("Qual o seu nome?");
-    var nome = sc.nextLine();    // lê a linha inteira
+    var nome = sc.nextLine();    // le a linha inteira
 
     // Lendo inteiro
     IO.println("Qual a sua idade?");
-    var idade = sc.nextInt();    // lê apenas o numero
+    var idade = sc.nextInt();    // le apenas o numero
 
     // Lendo decimal
     IO.println("Qual a sua nota final?");
-    var nota = sc.nextDouble();  // lê numero com casas decimais
+    var nota = sc.nextDouble();  // le numero com casas decimais
 
     // sc.nextLine() apos nextInt/nextDouble: limpa o buffer
     // (explicado abaixo)
@@ -707,8 +866,7 @@ Este é o erro mais comum com Scanner. Após `nextInt()` ou `nextDouble()`, o En
 
 ```java
 // Arquivo: ProblemaBuffer.java
-
-import java.util.Scanner;
+// JDK 25 compact source file: sem import necessario
 
 void main() {
     var sc = new Scanner(System.in);
@@ -735,6 +893,17 @@ void main() {
 
 > **Regra prática:** sempre que usar `nextInt()` ou `nextDouble()` e depois precisar de `nextLine()`, adicione um `sc.nextLine()` entre eles para limpar o buffer.
 
+##### Quando usar IO.readln() e quando usar Scanner?
+
+| | `IO.readln()` | `Scanner` |
+|---|---|---|
+| **Import necessário** | Nunca | Só em arquivos com `public class` |
+| **Lê texto** | Sim | Sim — `nextLine()` |
+| **Lê inteiro direto** | Não — precisa converter | Sim — `nextInt()` |
+| **Lê decimal direto** | Não — precisa converter | Sim — `nextDouble()` |
+| **Problema do buffer** | Não existe | Existe (nextInt + nextLine) |
+| **Quando usar** | Programas simples, primeiras aulas | Quando precisar de mais controle |
+
 ### Exercícios — Tema 1
 
 > **Exercício 1.1** — Crie `Apresentacao.java` que exiba seu nome, cidade e curso usando `IO.println()`.
@@ -747,7 +916,7 @@ void main() {
 >
 > **Exercício 1.5** — Crie `Relatorio.java` que usa `System.out.format()` para exibir uma tabela com pelo menos 4 alunos fictícios, com colunas alinhadas: Nome (15 chars, esquerda), Matrícula (formato `2025-0000`) e Nota (2 casas decimais). Exiba também a média da turma ao final.
 >
-> **Exercício 1.6** — Crie `CadastroAluno.java` que lê do teclado: nome, idade, curso e nota final. Exiba os dados usando `System.out.format()` com formatação adequada. Inclua a situação (Aprovado/Reprovado) baseada na nota.
+> **Exercício 1.6** — Crie duas versões de `CadastroAluno.java`: uma usando `IO.readln()` com conversão manual e outra usando `Scanner`. Compare as duas abordagens. Em ambas, exiba os dados com `System.out.format()` e inclua a situação (Aprovado/Reprovado).
 >
 > **Exercício 1.7** — Pesquise e comente no código: qual a diferença entre JDK, JRE e JVM? Qual você instalou e por que?
 
@@ -852,7 +1021,7 @@ Antes de escrever código, veja como uma classe e representada visualmente:
 
 > **Convenção UML:**
 > - `-` = privado (private)
-> - `+` = publico (public)
+> - `+` = público (public)
 > - `#` = protegido (protected)
 
 ```mermaid
@@ -1361,11 +1530,11 @@ Aluno(String nome, int idade, String curso) {
 > **O que você vai aprender neste capítulo:**
 > Entender por que expor atributos diretamente e perigoso, usar `private` para proteger os dados, criar getters e setters com validação, e aplicar os modificadores de acesso corretamente.
 
-Pense no painel de controle de um aviao. O piloto acessa os sistemas por botoes e alavancas específicas — ele não mexe diretamente nos motores, nos cabos hidraulicos ou nos circuitos. Essa separacao existe por seguranca: garante que só ações validas e controladas possam afetar o sistema.
+Pense no painel de controle de um avião. O piloto acessa os sistemas por botões e alavancas específicas — ele não mexe diretamente nos motores, nos cabos hidráulicos ou nos circuitos. Essa separação existe por segurança: garante que só ações válidas e controladas possam afetar o sistema.
 
-Encapsulamento é exatamente esse princípio aplicado ao código. Quando um atributo e publico, qualquer parte do programa pode alterar seu valor diretamente — inclusive para valores absurdos como saldo negativo, nota acima de 10 ou idade negativa. Não há nenhuma barreira de proteção.
+Encapsulamento é exatamente esse princípio aplicado ao código. Quando um atributo é público, qualquer parte do programa pode alterar seu valor diretamente — inclusive para valores absurdos como saldo negativo, nota acima de 10 ou idade negativa. Não há nenhuma barreira de proteção.
 
-Ao tornar os atributos privados e fornecer métodos controlados de acesso, você garante que o objeto sempre esteja em um estado válido. E um dos pilares mais importantes da POO na prática, é o que separa um código amador de um código profissional.
+Ao tornar os atributos privados e fornecer métodos controlados de acesso, você garante que o objeto sempre esteja em um estado válido. É um dos pilares mais importantes da POO na prática, é o que separa um código amador de um código profissional.
 
 
 ### 6.1 O problema sem encapsulamento
@@ -1477,7 +1646,42 @@ void main() {
 }
 ```
 
-### 6.2 Tabela de visibilidade
+### 6.2 Diferença entre private e protected
+
+Esses dois modificadores aparecem o tempo todo em POO e geram confusão no início, porque parecem semelhantes — ambos restringem o acesso. A diferença está em **quem mais pode enxergar o atributo ou método**.
+
+**`private`** — o mais restritivo. Apenas a **própria classe** onde o membro foi declarado pode acessá-lo. Nem uma subclasse (via herança) consegue enxergar um atributo `private` do pai.
+
+**`protected`** — um meio-termo. Além da própria classe, **as subclasses também podem acessar**, mesmo estando em arquivos ou pacotes diferentes. É o modificador natural para atributos que uma classe pai quer compartilhar com quem herda dela, mas ainda proteger do resto do programa.
+
+```java
+// Arquivo: PrivateVsProtected.java
+
+class Pessoa {
+    private String cpf;      // SO Pessoa acessa
+    protected String nome;   // Pessoa E suas subclasses acessam
+
+    Pessoa(String nome, String cpf) {
+        this.nome = nome;
+        this.cpf  = cpf;
+    }
+}
+
+class Aluno extends Pessoa {
+    Aluno(String nome, String cpf) {
+        super(nome, cpf);
+    }
+
+    void exibir() {
+        IO.println(nome);   // OK: protected e visivel na subclasse
+        // IO.println(cpf); // ERRO: cpf e private em Pessoa, Aluno nao acessa
+    }
+}
+```
+
+> **Regra prática:** comece sempre com `private`. Só troque para `protected` quando tiver certeza de que as subclasses vão precisar acessar aquele atributo ou método diretamente. Trocar de `private` para `protected` depois é fácil; o contrário pode quebrar código que já dependia do acesso.
+
+### 6.3 Tabela de visibilidade
 
 | Modificador | Mesma Classe | Mesmo Pacote | Subclasse | Qualquer Lugar |
 |---|:---:|:---:|:---:|:---:|
@@ -2785,7 +2989,7 @@ Este capítulo não tem exercícios de código — e um capítulo para ler, refl
 | **Variável** | camelCase | `saldoAtual`, `nomeCompleto` |
 | **Constante** | TUDO_MAIUSCULO com _ | `TAXA_IMPOSTO`, `MAX_TENTATIVAS` |
 | **Pacote** | tudo.minusculo.separado.por.ponto | `br.edu.ifpe.poo` |
-| **Arquivo** | Identico ao nome da classe publica | `ContaBancaria.java` |
+| **Arquivo** | Idêntico ao nome da classe pública | `ContaBancaria.java` |
 
 ### 13.2 Boas práticas gerais
 
