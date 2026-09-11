@@ -124,8 +124,8 @@ void main() {
 ```
 
 ```java
-// Forma classica — funciona em qualquer versao Java
-// Sera necessaria assim que o projeto tiver multiplas classes
+// Forma clássica — funciona em qualquer versão Java
+// Será necessária assim que o projeto tiver múltiplas classes
 public class OlaMundo {
     public static void main(String[] args) {
         System.out.println("Ola, mundo!");
@@ -187,7 +187,7 @@ void main() {
     // IO.println: forma moderna (JDK 25)
     IO.println("Ola, mundo!");
 
-    // System.out.println: forma classica
+    // System.out.println: forma clássica
     System.out.println("Ola pelo modo classico!");
 
     // var: Java infere o tipo automaticamente
@@ -248,7 +248,7 @@ void main() {
     String nome       = "Maria Silva";
     char   inicial    = 'M';         // char usa aspas simples
 
-    // LOGICO
+    // LÓGICO
     boolean aprovado  = true;
     boolean matriculado = false;
 
@@ -296,33 +296,33 @@ byte → short → int → long → float → double
 
 void main() {
 
-    // CONVERSAO IMPLICITA: de menor para maior (Java faz automaticamente)
+    // CONVERSÃO IMPLÍCITA: de menor para maior (Java faz automaticamente)
     int    inteiro = 10;
     double decimal = inteiro;   // int -> double, sem perda de dado
     IO.println("Double: " + decimal);  // 10.0
 
-    // CONVERSAO EXPLICITA (cast): de maior para menor (voce decide)
+    // CONVERSÃO EXPLÍCITA (cast): de maior para menor (você decide)
     double altura  = 1.758;
-    int    arredondado = (int) altura;  // corta os decimais, nao arredonda!
-    IO.println("Int: " + arredondado); // 1 (nao 2!)
+    int    arredondado = (int) altura;  // corta os decimais, não arredonda!
+    IO.println("Int: " + arredondado); // 1 (não 2!)
 
-    // PROBLEMA CLASSICO: divisao de inteiros
+    // PROBLEMA CLÁSSICO: divisão de inteiros
     int a = 7, b = 2;
-    double errado  = a / b;           // resultado: 3.0 (divisao inteira!)
+    double errado  = a / b;           // resultado: 3.0 (divisão inteira!)
     double correto = (double) a / b;  // resultado: 3.5
     IO.println("Errado:  " + errado);
     IO.println("Correto: " + correto);
 
-    // CONVERTER String para numero
+    // CONVERTER String para número
     String textoIdade = "22";
     int    idadeNum   = Integer.parseInt(textoIdade);
     double notaNum    = Double.parseDouble("8.5");
     IO.println("Idade como numero: " + (idadeNum + 1)); // 23
 
-    // CONVERTER numero para String
+    // CONVERTER número para String
     int    numero = 100;
     String texto  = String.valueOf(numero);  // "100"
-    String texto2 = "" + numero;             // forma rapida: "100"
+    String texto2 = "" + numero;             // forma rápida: "100"
     IO.println("Numero como texto: " + texto);
 }
 ```
@@ -393,7 +393,7 @@ void main() {
 
     IO.println("Como texto: " + s1 + " | " + s2 + " | " + s3);
 
-    // CONSTANTES UTEIS das classes wrapper
+    // CONSTANTES ÚTEIS das classes wrapper
     IO.println("Maior int:    " + Integer.MAX_VALUE);   // 2147483647
     IO.println("Menor int:    " + Integer.MIN_VALUE);   // -2147483648
     IO.println("Maior double: " + Double.MAX_VALUE);    // 1.7976931348623157E308
@@ -406,11 +406,11 @@ void main() {
     IO.println("Primitivo: " + primitivo);
 
     // CUIDADO: parseBoolean aceita qualquer String
-    // so "true" (case insensitive) vira true, qualquer outra coisa vira false
+    // só "true" (case insensitive) vira true, qualquer outra coisa vira false
     IO.println(Boolean.parseBoolean("true"));   // true
     IO.println(Boolean.parseBoolean("TRUE"));   // true
-    IO.println(Boolean.parseBoolean("sim"));    // false (nao e "true")
-    IO.println(Boolean.parseBoolean("1"));      // false (nao e "true")
+    IO.println(Boolean.parseBoolean("sim"));    // false (não e "true")
+    IO.println(Boolean.parseBoolean("1"));      // false (não e "true")
 }
 ```
 
@@ -448,12 +448,12 @@ void main() {
     IO.println(a + b);   // 13  — soma
     IO.println(a - b);   // 7   — subtracao
     IO.println(a * b);   // 30  — multiplicacao
-    IO.println(a / b);   // 3   — divisao inteira (cuidado!)
-    IO.println(a % b);   // 1   — resto da divisao
+    IO.println(a / b);   // 3   — divisão inteira (cuidado!)
+    IO.println(a % b);   // 1   — resto da divisão
     IO.println(a++);     // 10  — usa o valor, depois incrementa
     IO.println(++a);     // 12  — incrementa, depois usa o valor
 
-    // COMPARACAO (resultado sempre boolean)
+    // COMPARAÇÃO (resultado sempre boolean)
     IO.println(10 == 10);  // true  — igual
     IO.println(10 != 5);   // true  — diferente
     IO.println(10 >  5);   // true  — maior que
@@ -461,13 +461,13 @@ void main() {
     IO.println(10 >= 10);  // true  — maior ou igual
     IO.println(10 <= 9);   // false — menor ou igual
 
-    // LOGICOS
+    // LÓGICOS
     boolean x = true, y = false;
     IO.println(x && y);   // false — E (ambos verdadeiros)
     IO.println(x || y);   // true  — OU (pelo menos um verdadeiro)
-    IO.println(!x);       // false — NAO (inverte)
+    IO.println(!x);       // false — NÃO (inverte)
 
-    // OPERADOR TERNARIO: condicao ? se_verdadeiro : se_falso
+    // OPERADOR TERNARIO: condição ? se_verdadeiro : se_falso
     double nota = 7.5;
     String situacao = (nota >= 7.0) ? "Aprovado" : "Reprovado";
     IO.println(situacao);  // Aprovado
@@ -499,54 +499,54 @@ void main() {
     String nome = "Maria Silva";
 
     // INFORMACOES sobre a String
-    IO.println(nome.length());           // 11  — numero de caracteres
-    IO.println(nome.charAt(0));          // M   — caractere na posicao 0
-    IO.println(nome.indexOf("Silva"));   // 6   — posicao onde "Silva" começa
+    IO.println(nome.length());           // 11  — número de caracteres
+    IO.println(nome.charAt(0));          // M   — caractere na posição 0
+    IO.println(nome.indexOf("Silva"));   // 6   — posição onde "Silva" começa
     IO.println(nome.isEmpty());          // false — vazia?
-    IO.println(nome.isBlank());          // false — vazia ou so espacos?
+    IO.println(nome.isBlank());          // false — vazia ou só espacos?
 
-    // TRANSFORMACOES (retornam nova String, nao mudam a original)
+    // TRANSFORMACOES (retornam nova String, não mudam a original)
     IO.println(nome.toUpperCase());      // MARIA SILVA
     IO.println(nome.toLowerCase());      // maria silva
     IO.println(nome.trim());             // remove espacos das bordas
     IO.println(nome.strip());            // igual ao trim, mais moderno
 
     // PARTES da String
-    IO.println(nome.substring(0, 5));    // Maria   — do indice 0 ate 4
-    IO.println(nome.substring(6));       // Silva   — do indice 6 ate o fim
+    IO.println(nome.substring(0, 5));    // Maria   — do índice 0 até 4
+    IO.println(nome.substring(6));       // Silva   — do índice 6 até o fim
     IO.println(nome.replace("Silva", "Santos")); // Maria Santos
 
     // VERIFICACOES
-    IO.println(nome.contains("Silva"));  // true  — contem o texto?
+    IO.println(nome.contains("Silva"));  // true  — contém o texto?
     IO.println(nome.startsWith("Mar"));  // true  — começa com?
     IO.println(nome.endsWith("lva"));    // true  — termina com?
 
-    // DIVISAO
+    // DIVISÃO
     String frase = "Java,Python,C++";
     String[] partes = frase.split(",");  // divide pela virgula
     IO.println(partes[0]);               // Java
     IO.println(partes[1]);               // Python
     IO.println(partes[2]);               // C++
 
-    // COMPARACAO: SEMPRE use .equals(), nunca ==
+    // COMPARAÇÃO: SEMPRE use .equals(), nunca ==
     String s1 = "Java";
     String s2 = "Java";
-    IO.println(s1 == s2);               // pode dar true ou false — NAO confie!
+    IO.println(s1 == s2);               // pode dar true ou false — NÃO confie!
     IO.println(s1.equals(s2));          // true — sempre confiavel
-    IO.println(s1.equalsIgnoreCase("java")); // true — ignora maiusculas
+    IO.println(s1.equalsIgnoreCase("java")); // true — ignora maiúsculas
 
-    // CONCATENACAO
+    // CONCATENAÇÃO
     String primeiro = "Joao";
     String ultimo   = "Silva";
     String completo = primeiro + " " + ultimo;         // "Joao Silva"
     String completo2 = primeiro.concat(" ").concat(ultimo); // mesmo resultado
 
-    // CONVERSAO de numero para String
+    // CONVERSÃO de número para String
     int    numero = 42;
     String texto  = String.valueOf(numero);   // "42"
     String texto2 = Integer.toString(numero); // "42" — alternativa
 
-    // VERIFICAR se String representa um numero antes de converter
+    // VERIFICAR se String representa um número antes de converter
     String entrada = "123";
     try {
         int valor = Integer.parseInt(entrada);
@@ -626,7 +626,7 @@ A sintaxe usa **especificadores de formato** iniciados com `%`:
 
 void main() {
 
-    // BASICO: substituir valores em uma string formatada
+    // BÁSICO: substituir valores em uma string formatada
     String nome  = "Maria";
     int    idade = 20;
     double nota  = 8.756;
@@ -636,28 +636,28 @@ void main() {
     System.out.format("Idade: %d anos%n", idade);
     System.out.format("Nota:  %.2f%n", nota);     // 8.76 (arredonda!)
 
-    // Multiplos valores na mesma linha
+    // Múltiplos valores na mesma linha
     System.out.format("Aluno: %s | Idade: %d | Nota: %.1f%n", nome, idade, nota);
 
-    // TABELA ALINHADA — util para relatorios no terminal
+    // TABELA ALINHADA — útil para relatórios no terminal
     System.out.format("%-15s %5s %8s%n", "Nome", "Idade", "Nota");
     System.out.format("%-15s %5d %8.2f%n", "Maria Silva",  20, 8.75);
     System.out.format("%-15s %5d %8.2f%n", "Joao Santos",  22, 7.30);
     System.out.format("%-15s %5d %8.2f%n", "Ana Lima",     19, 9.50);
 
-    // NUMERO COM ZEROS A ESQUERDA — codigo de matricula
+    // NÚMERO COM ZEROS A ESQUERDA — código de matrícula
     int numero = 42;
     System.out.format("Matricula: 2025-%04d%n", numero); // 2025-0042
 
-    // VALOR MONETARIO
+    // VALOR MONETÁRIO
     double preco = 1234.5;
     System.out.format("Preco: R$ %,.2f%n", preco); // R$ 1.234,50 (locale BR)
 
     // String.format — cria string formatada sem imprimir
     String linha = String.format("%-15s | %5.1f", nome, nota);
-    IO.println(linha);  // pode usar com IO.println tambem
+    IO.println(linha);  // pode usar com IO.println também
 
-    // System.out.printf — identico ao format
+    // System.out.printf — idêntico ao format
     System.out.printf("Usando printf: %s tem %.1f%n", nome, nota);
 }
 ```
@@ -714,7 +714,7 @@ void main() {
 > **Limitação do `IO.readln()`:** só lê texto. Para ler números, você ainda precisa converter com `Integer.parseInt()` ou `Double.parseDouble()`.
 
 ```java
-// Lendo numero com IO.readln() + conversao
+// Lendo número com IO.readln() + conversão
 void main() {
     IO.println("Qual a sua idade?");
     var idade = Integer.parseInt(IO.readln());  // le texto e converte
@@ -745,7 +745,7 @@ A boa notícia: no JDK 25, em **compact source files** (arquivos sem `public cla
 
 ```java
 // JDK 25 compact source file — import e OPCIONAL
-// Scanner disponivel automaticamente via modulo java.base
+// Scanner disponível automaticamente via módulo java.base
 void main() {
     var sc = new Scanner(System.in);  // funciona sem import!
     IO.println("Nome:");
@@ -756,8 +756,8 @@ void main() {
 ```
 
 ```java
-// Quando voce criar uma public class, o import volta a ser obrigatorio
-import java.util.Scanner;  // OBRIGATORIO em arquivos com class explicita
+// Quando você criar uma public class, o import volta a ser obrigatório
+import java.util.Scanner;  // OBRIGATÓRIO em arquivos com class explícita
 
 public class MeuPrograma {
     public static void main(String[] args) {
@@ -806,8 +806,8 @@ Usuário digita no teclado
 
 ```java
 // Arquivo: LeitorDados.java
-// JDK 25 compact source file: import nao necessario aqui
-// Em arquivos com public class, adicione: import java.util.Scanner;
+// JDK 25 compact source file: import não necessário aqui
+// Em arquivos com public class, adicione: import java.útil.Scanner;
 
 void main() {
 
@@ -820,13 +820,13 @@ void main() {
 
     // Lendo inteiro
     IO.println("Qual a sua idade?");
-    var idade = sc.nextInt();    // le apenas o numero
+    var idade = sc.nextInt();    // le apenas o número
 
     // Lendo decimal
     IO.println("Qual a sua nota final?");
-    var nota = sc.nextDouble();  // le numero com casas decimais
+    var nota = sc.nextDouble();  // le número com casas decimais
 
-    // sc.nextLine() apos nextInt/nextDouble: limpa o buffer
+    // sc.nextLine() após nextInt/nextDouble: limpa o buffer
     // (explicado abaixo)
     sc.nextLine();
 
@@ -839,7 +839,7 @@ void main() {
     var situacao = nota >= 7.0 ? "Aprovado" : "Reprovado";
     System.out.format("Situacao: %s%n", situacao);
 
-    // Boa pratica: fechar o Scanner ao terminar
+    // Boa prática: fechar o Scanner ao terminar
     sc.close();
 }
 ```
@@ -866,7 +866,7 @@ Este é o erro mais comum com Scanner. Após `nextInt()` ou `nextDouble()`, o En
 
 ```java
 // Arquivo: ProblemaBuffer.java
-// JDK 25 compact source file: sem import necessario
+// JDK 25 compact source file: sem import necessário
 
 void main() {
     var sc = new Scanner(System.in);
@@ -879,7 +879,7 @@ void main() {
     var nome = sc.nextLine(); // lê o Enter que ficou do nextInt!
     // nome fica vazio ""
 
-    // SOLUCAO: chamar sc.nextLine() logo apos nextInt/nextDouble
+    // SOLUCAO: chamar sc.nextLine() logo após nextInt/nextDouble
     // para descartar o Enter que ficou no buffer
     IO.println("Digite sua cidade:");
     sc.nextLine();            // descarta o Enter residual
@@ -1042,19 +1042,19 @@ classDiagram
 
 class Aluno {
 
-    // ATRIBUTOS: caracteristicas do objeto
+    // ATRIBUTOS: características do objeto
     String nome;
     int    idade;
     String curso;
 
-    // METODO void: executa uma acao, nao retorna nada
+    // MÉTODO void: executa uma ação, não retorna nada
     void apresentar() {
         IO.println("Nome:  " + nome);
         IO.println("Idade: " + idade);
         IO.println("Curso: " + curso);
     }
 
-    // METODO com retorno: devolve um valor a quem chamou
+    // MÉTODO com retorno: devolve um valor a quem chamou
     String getSituacao() {
         return idade >= 18 ? "Maior de idade" : "Menor de idade";
     }
@@ -1068,8 +1068,8 @@ class Aluno {
 
 void main() {
 
-    // "new" cria o objeto na memoria
-    // Tipo variavel = new Tipo();
+    // "new" cria o objeto na memória
+    // Tipo variável = new Tipo();
     Aluno a1 = new Aluno();
     Aluno a2 = new Aluno();   // objeto independente do a1
 
@@ -1082,7 +1082,7 @@ void main() {
     a2.idade = 22;
     a2.curso = "Sistemas para Internet";
 
-    // Chamando metodos: objeto.metodo();
+    // Chamando métodos: objeto.método();
     IO.println("=== Aluno 1 ===");
     a1.apresentar();
     IO.println("Situacao: " + a1.getSituacao());
@@ -1130,11 +1130,30 @@ void main() {
     Produto[] catalogo = { p1, p2, p3 };
 
     IO.println("=== CATALOGO DA LOJA ===");
-    for (Produto p : catalogo) {
-        p.exibir();
+    for (int i = 0; i < catalogo.length; i++) {
+        catalogo[i].exibir();
     }
 }
 ```
+
+**Entendendo o trecho final:**
+
+- `Produto[] catalogo = { p1, p2, p3 };` cria um **array** (vetor) do tipo `Produto` com 3 posições, já preenchido com os três objetos criados antes. Fica assim na memória: `catalogo[0] = p1`, `catalogo[1] = p2`, `catalogo[2] = p3`. É uma forma de agrupar vários objetos relacionados numa única estrutura, em vez de manipular `p1`, `p2` e `p3` separadamente.
+
+- O laço `for (int i = 0; i < catalogo.length; i++)` percorre o array pelo índice: `i` começa em `0`, e o laço repete enquanto `i` for menor que `catalogo.length` (o tamanho do array — nesse caso, 3). A cada volta, `i` é incrementado em 1.
+
+- Dentro do laço, `catalogo[i]` acessa o objeto que está naquela posição do array, e `.exibir()` chama o método daquele objeto especificamente.
+
+Na prática, o laço executa assim:
+
+```
+i = 0  →  catalogo[0].exibir()  →  exibe p1 (Mel de Abelha)
+i = 1  →  catalogo[1].exibir()  →  exibe p2 (Castanha de Caju)
+i = 2  →  catalogo[2].exibir()  →  exibe p3 (Rapadura)
+i = 3  →  3 < 3 é falso → o laço para
+```
+
+> **Alternativa mais enxuta:** o Java também permite escrever esse mesmo laço com a forma **for-each**: `for (Produto p : catalogo) { p.exibir(); }`. Ela é mais curta porque dispensa o índice `i` e o `.length` — o Java cuida disso por trás dos panos. Use o `for` com índice quando precisar saber a posição do item (por exemplo, para numerar a lista); use o for-each quando só precisar acessar cada item, sem se importar com a posição.
 
 ### Erros comuns — Tema 3
 
@@ -1144,9 +1163,9 @@ Aluno a = Aluno();         // ERRADO
 Aluno a = new Aluno();     // CORRETO
 
 // ERRO 2: nome da classe diferente do arquivo
-// Arquivo se chama "aluno.java" (minusculo)
-// Classe se chama "Aluno" (maiusculo)
-// -> ERRO: o nome do arquivo deve ser identico ao da classe publica
+// Arquivo se chama "aluno.java" (minúsculo)
+// Classe se chama "Aluno" (maiúsculo)
+// -> ERRO: o nome do arquivo deve ser idêntico ao da classe pública
 
 // ERRO 3: acessar atributo sem criar o objeto
 Aluno a;
@@ -1157,8 +1176,8 @@ a.nome = "Maria";          // CORRETO
 // ERRO 4: comparar Strings com ==
 String s1 = "Maria";
 String s2 = "Maria";
-if (s1 == s2)              // ERRADO: compara referencias de memoria
-if (s1.equals(s2))         // CORRETO: compara o conteudo
+if (s1 == s2)              // ERRADO: compara referências de memória
+if (s1.equals(s2))         // CORRETO: compara o conteúdo
 ```
 
 ### Exercícios — Tema 3
@@ -1204,17 +1223,17 @@ Cada objeto tem o seu           Todos os objetos compartilham
 
 class Produto {
 
-    // ATRIBUTOS DE INSTANCIA: cada objeto tem sua propria copia
+    // ATRIBUTOS DE INSTÂNCIA: cada objeto tem sua própria cópia
     String nome;
     double preco;
 
-    // ATRIBUTO ESTATICO: compartilhado por TODOS os objetos
+    // ATRIBUTO ESTÁTICO: compartilhado por TODOS os objetos
     static int totalProdutos = 0;
 
-    // CONSTANTE: static final (por convencao: MAIUSCULAS)
+    // CONSTANTE: static final (por convenção: MAIÚSCULAS)
     static final double TAXA_IMPOSTO = 0.12;
 
-    // ATRIBUTO COM VALOR PADRAO
+    // ATRIBUTO COM VALOR PADRÃO
     boolean ativo  = true;
     String  origem = "Nordeste";
 }
@@ -1226,7 +1245,7 @@ void main() {
 
     IO.println(p1.nome + " — ativo: " + p1.ativo + " — origem: " + p1.origem);
 
-    // Atributo estatico: acessado PELA CLASSE, nao pelo objeto
+    // Atributo estático: acessado PELA CLASSE, não pelo objeto
     IO.println("Taxa de imposto: " + Produto.TAXA_IMPOSTO);
 
     double precoFinal = p1.preco * (1 + Produto.TAXA_IMPOSTO);
@@ -1234,19 +1253,100 @@ void main() {
 }
 ```
 
+#### Atributo estático (`static`) — pertence à classe
+
+Um atributo estático não pertence a nenhum objeto individual — ele pertence à **classe**. Isso significa que existe **uma única cópia** dele na memória, compartilhada por todos os objetos daquela classe. Se um objeto mudar o valor, todos os outros "enxergam" a mudança, porque não existe cópia separada para cada um.
+
+```java
+// Arquivo: AtributoEstatico.java
+
+class Produto {
+    String nome;
+
+    // static: uma unica copia, compartilhada por TODOS os objetos
+    static int totalProdutos = 0;
+
+    Produto(String nome) {
+        this.nome = nome;
+        totalProdutos++;   // incrementa a copia UNICA a cada objeto criado
+    }
+}
+
+void main() {
+    IO.println("Total antes: " + Produto.totalProdutos); // 0
+
+    var p1 = new Produto("Mel de Abelha");
+    var p2 = new Produto("Castanha de Caju");
+    var p3 = new Produto("Rapadura");
+
+    // Acessado PELA CLASSE, nao por p1, p2 ou p3
+    IO.println("Total depois: " + Produto.totalProdutos); // 3
+
+    // Mesmo acessando por um objeto, o valor e o MESMO para todos
+    IO.println("Via p1: " + p1.totalProdutos); // 3
+    IO.println("Via p2: " + p2.totalProdutos); // 3
+}
+```
+
+```
+# Saída esperada:
+Total antes: 0
+Total depois: 3
+Via p1: 3
+Via p2: 3
+```
+
+Repare que `totalProdutos` não foi zerado nem duplicado para cada `Produto` criado — os três objetos **compartilham a mesma variável**. Compare com um atributo de instância como `nome`: cada objeto tem o seu próprio, independente dos demais.
+
+> **Convenção:** mesmo sendo possível acessar um atributo estático através de um objeto (`p1.totalProdutos`), o correto é sempre acessar pela classe (`Produto.totalProdutos`) — deixa claro para quem lê o código que aquele valor é compartilhado, e não específico de um objeto.
+
 ### 4.2 Tipos de métodos
+
+Assim como os atributos guardam os dados do objeto, os métodos definem o que ele **sabe fazer**. Em Java, existem três tipos principais de método, e a diferença entre eles está em duas perguntas: *ele devolve algum valor?* e *ele pertence ao objeto ou à classe?*
+
+**Método `void`** — executa uma ação, mas não devolve nada para quem chamou. Serve para efeitos como imprimir na tela, alterar um atributo, ou disparar alguma operação.
+
+**Método com retorno** — processa algo e devolve um valor, que pode ser guardado numa variável ou usado diretamente. O tipo do retorno (`int`, `double`, `String`, etc.) é declarado antes do nome do método, e o corpo precisa terminar com `return valorAlgumaCoisa;`.
+
+**Método estático** — não pertence a nenhum objeto específico, e sim à classe como um todo. Por isso pode ser chamado sem usar `new` — direto pelo nome da classe, como `Calculadora.calcularImposto(...)`. É útil para operações que não dependem do estado de um objeto particular (cálculos genéricos, conversões, utilitários).
+
+Veja cada um isoladamente antes do exemplo completo:
+
+**Método `void`** — executa uma ação, mas não devolve nada.
+
+```java
+void exibirSoma(int a, int b) {
+    IO.println("Soma: " + (a + b));
+}
+```
+
+**Método com retorno** — processa e devolve um valor, guardado com `return`.
+
+```java
+int somar(int a, int b) {
+    return a + b;
+}
+```
+
+```
+Tipo de método       Devolve valor?      Como chamar
+---------------      --------------      -----------------------------
+void                 Não                 objeto.metodo()
+com retorno          Sim                 var x = objeto.metodo()
+estático             Sim ou não          Classe.metodo()  (sem "new")
+```
 
 ```java
 // Arquivo: TiposMetodos.java
 
 class Calculadora {
 
-    // METODO VOID: executa acao, nao retorna valor
+    // MÉTODO VOID: executa ação, não retorna valor
     void exibirSoma(int a, int b) {
         IO.println("Soma: " + (a + b));
     }
 
-    // METODO COM RETORNO: declara o tipo antes do nome
+    // MÉTODO COM RETORNO: declara o tipo antes do nome
     int somar(int a, int b) {
         return a + b;
     }
@@ -1263,7 +1363,7 @@ class Calculadora {
         else                   return "Reprovado";
     }
 
-    // METODO ESTATICO: chamado pela classe, sem criar objeto
+    // MÉTODO ESTÁTICO: chamado pela classe, sem criar objeto
     static double calcularImposto(double valor, double taxa) {
         return valor * taxa;
     }
@@ -1282,10 +1382,14 @@ void main() {
     IO.println("Media:    " + media);
     IO.println("Situacao: " + calc.classificar(media));
 
-    // Metodo estatico: sem criar objeto
+    // Método estático: sem criar objeto
     IO.println("Imposto: R$ " + Calculadora.calcularImposto(100.0, 0.12));
 }
 ```
+
+**Percorrendo o exemplo:** `exibirSoma()` é `void` — só imprime, não retorna nada, por isso é chamado sozinho na linha `calc.exibirSoma(10, 5);`. Já `somar()` retorna um `int`, então seu resultado é guardado em `resultado`. O mesmo vale para `calcularMedia()` e `classificar()` — cada um devolve um valor que é usado logo em seguida. Por fim, `calcularImposto()` é `static`: repare que ele é chamado como `Calculadora.calcularImposto(...)`, direto pela classe, sem precisar do objeto `calc`.
+
+> **Por que `calcularImposto` é estático?** Porque calcular imposto sobre um valor não depende de nenhum dado específico de um objeto `Calculadora` — é uma operação genérica que só usa os parâmetros recebidos. Quando um método não acessa nenhum atributo de instância, ele é candidato natural a ser `static`.
 
 ### 4.3 Sobrecarga de métodos (Overloading)
 
@@ -1296,17 +1400,17 @@ void main() {
 
 class Impressora {
 
-    // Versao 1: recebe texto
+    // Versão 1: recebe texto
     void imprimir(String texto) {
         IO.println("[TEXTO] " + texto);
     }
 
-    // Versao 2: recebe numero
+    // Versão 2: recebe número
     void imprimir(int numero) {
         IO.println("[NUMERO] " + numero);
     }
 
-    // Versao 3: recebe texto e quantidade de vezes
+    // Versão 3: recebe texto e quantidade de vezes
     void imprimir(String texto, int vezes) {
         for (int i = 0; i < vezes; i++) {
             IO.println("[" + (i+1) + "] " + texto);
@@ -1317,33 +1421,33 @@ class Impressora {
 void main() {
     var imp = new Impressora();
 
-    imp.imprimir("Ola!");         // chama versao 1
-    imp.imprimir(42);             // chama versao 2
-    imp.imprimir("Java 25!", 3);  // chama versao 3
+    imp.imprimir("Ola!");         // chama versão 1
+    imp.imprimir(42);             // chama versão 2
+    imp.imprimir("Java 25!", 3);  // chama versão 3
 }
 ```
 
 ### Erros comuns — Tema 4
 
 ```java
-// ERRO 1: esquecer o "return" em metodo com retorno
+// ERRO 1: esquecer o "return" em método com retorno
 int somar(int a, int b) {
     int resultado = a + b;
-    // esqueceu o return! -> ERRO de compilacao
+    // esqueceu o return! -> ERRO de compilação
 }
 
-// ERRO 2: usar o retorno de um metodo void
+// ERRO 2: usar o retorno de um método void
 void exibir() { IO.println("Ola"); }
-String texto = exibir(); // ERRADO: void nao retorna nada
+String texto = exibir(); // ERRADO: void não retorna nada
 
-// ERRO 3: acessar atributo estatico pelo objeto
+// ERRO 3: acessar atributo estático pelo objeto
 var p = new Produto();
-p.TAXA_IMPOSTO;          // funciona mas e ma pratica
+p.TAXA_IMPOSTO;          // funciona mas e ma prática
 Produto.TAXA_IMPOSTO;    // CORRETO
 
 // ERRO 4: dividir inteiros e esperar decimal
 int a = 5, b = 2;
-double resultado = a / b;     // resultado = 2.0 (nao 2.5!)
+double resultado = a / b;     // resultado = 2.0 (não 2.5!)
 double resultado = (double) a / b; // CORRETO: resultado = 2.5
 ```
 
@@ -1375,16 +1479,16 @@ O **construtor** resolve isso. Ele é executado automaticamente quando o objeto 
 // Sem construtor, o objeto nasce "vazio"
 var a = new Aluno();
 // a.nome = null, a.idade = 0, a.curso = null
-// Voce precisa lembrar de preencher tudo manualmente
-// E facil esquecer algum campo!
+// Você precisa lembrar de preencher tudo manualmente
+// E fácil esquecer algum campo!
 ```
 
 ### 5.2 Construtor resolve o problema
 
 ```java
-// Com construtor, o objeto nasce ja preenchido
+// Com construtor, o objeto nasce já preenchido
 var a = new Aluno("Maria", 20, "Informatica");
-// Impossivel criar um Aluno sem nome e curso!
+// Impossível criar um Aluno sem nome e curso!
 ```
 
 ```mermaid
@@ -1410,15 +1514,15 @@ class Aluno {
     private String curso;
     private String matricula;
 
-    // CONSTRUTOR PADRAO: executado quando new Aluno()
+    // CONSTRUTOR PADRÃO: executado quando new Aluno()
     Aluno() {
         this.curso     = "Nao informado";
         this.matricula = "0000";
     }
 
-    // CONSTRUTOR COM PARAMETROS
+    // CONSTRUTOR COM PARÂMETROS
     Aluno(String nome, int idade, String curso) {
-        // "this" diferencia o atributo do parametro de mesmo nome
+        // "this" diferencia o atributo do parâmetro de mesmo nome
         this.nome      = nome;
         this.idade     = idade;
         this.curso     = curso;
@@ -1463,7 +1567,7 @@ void main() {
 record Produto(String nome, double preco, int estoque) {}
 
 record Municipio(String nome, String estado, long populacao, double area) {
-    // Metodo personalizado dentro do record
+    // Método personalizado dentro do record
     double densidadeDemografica() {
         return populacao / area;
     }
@@ -1486,18 +1590,18 @@ void main() {
 
 ```java
 // ERRO 1: construtor com tipo de retorno
-void Aluno(String nome) { ... }  // ERRADO: "void" nao pode!
+void Aluno(String nome) { ... }  // ERRADO: "void" não pode!
 Aluno(String nome) { ... }       // CORRETO
 
 // ERRO 2: nome do construtor diferente da classe
 class Aluno {
-    aluno(String nome) { ... }   // ERRADO: deve ser "Aluno" com A maiusculo
+    aluno(String nome) { ... }   // ERRADO: deve ser "Aluno" com A maiúsculo
 }
 
 // ERRO 3: esquecer o super() em subclasse
 class Aluno extends Pessoa {
     Aluno(String nome) {
-        // super() nao chamado -> ERRO se Pessoa nao tem construtor padrao
+        // super() não chamado -> ERRO se Pessoa não tem construtor padrão
         this.nome = nome;
     }
 }
@@ -1510,7 +1614,7 @@ class Aluno extends Pessoa {
 
 // ERRO 4: chamar this() depois de outras instrucoes
 Aluno(String nome, int idade, String curso) {
-    IO.println("Criando aluno..."); // ERRADO: this() deve ser a 1a instrucao
+    IO.println("Criando aluno..."); // ERRADO: this() deve ser a 1a instrução
     this(nome, idade);
 }
 ```
@@ -1575,7 +1679,7 @@ classDiagram
 
 class ContaBancaria {
 
-    // ATRIBUTOS PRIVADOS: acessiveis SOMENTE dentro desta classe
+    // ATRIBUTOS PRIVADOS: acessíveis SOMENTE dentro desta classe
     private String  titular;
     private double  saldo;
     private String  numeroConta;
@@ -1588,13 +1692,13 @@ class ContaBancaria {
         this.ativa       = true;
     }
 
-    // GETTERS: metodos de leitura
+    // GETTERS: métodos de leitura
     public String  getTitular()     { return titular; }
     public double  getSaldo()       { return saldo; }
     public String  getNumeroConta() { return numeroConta; }
     public boolean isAtiva()        { return ativa; }
 
-    // SETTER com validacao
+    // SETTER com validação
     public void setTitular(String titular) {
         if (titular != null && !titular.isBlank()) {
             this.titular = titular;
@@ -1603,7 +1707,7 @@ class ContaBancaria {
         }
     }
 
-    // METODOS DE NEGOCIO: a unica forma de alterar o saldo
+    // MÉTODOS DE NEGOCIO: a única forma de alterar o saldo
     public void depositar(double valor) {
         if (valor > 0) {
             saldo += valor;
@@ -1639,7 +1743,7 @@ void main() {
     c1.sacar(100.00);
     c1.sacar(1000.00);  // bloqueado!
 
-    // c1.saldo = -999; // ERRO de compilacao: saldo e private
+    // c1.saldo = -999; // ERRO de compilação: saldo e private
 
     IO.println("Saldo atual: R$ " + c1.getSaldo());
     c1.exibirExtrato();
@@ -1658,7 +1762,7 @@ Esses dois modificadores aparecem o tempo todo em POO e geram confusão no iníc
 // Arquivo: PrivateVsProtected.java
 
 class Pessoa {
-    private String cpf;      // SO Pessoa acessa
+    private String cpf;      // SÓ Pessoa acessa
     protected String nome;   // Pessoa E suas subclasses acessam
 
     Pessoa(String nome, String cpf) {
@@ -1673,8 +1777,8 @@ class Aluno extends Pessoa {
     }
 
     void exibir() {
-        IO.println(nome);   // OK: protected e visivel na subclasse
-        // IO.println(cpf); // ERRO: cpf e private em Pessoa, Aluno nao acessa
+        IO.println(nome);   // OK: protected e visível na subclasse
+        // IO.println(cpf); // ERRO: cpf e private em Pessoa, Aluno não acessa
     }
 }
 ```
@@ -1700,25 +1804,25 @@ private int    idade;
 public String getNome() { return idade; }  // ERRADO: retorna idade!
 public String getNome() { return nome; }   // CORRETO
 
-// ERRO 2: setter sem validacao (perde o sentido do encapsulamento)
+// ERRO 2: setter sem validação (perde o sentido do encapsulamento)
 public void setSaldo(double saldo) {
     this.saldo = saldo; // permite qualquer valor negativo!
 }
-// Nao faca setter de saldo — use depositar() e sacar()
+// Não faca setter de saldo — use depositar() e sacar()
 
-// ERRO 3: "this" desnecessario quando nao ha ambiguidade
+// ERRO 3: "this" desnecessário quando não há ambiguidade
 class Aluno {
     private String nome;
     public String obterNome() {
-        return this.nome; // funciona, mas "this" e desnecessario aqui
-        return nome;      // mais limpo quando nao ha parametro de mesmo nome
+        return this.nome; // funciona, mas "this" e desnecessário aqui
+        return nome;      // mais limpo quando não há parâmetro de mesmo nome
     }
 }
 
-// ERRO 4: retornar referencia de objeto mutavel (expoe o interno)
+// ERRO 4: retornar referência de objeto mutável (expõe o interno)
 private int[] notas = {8, 7, 9};
 public int[] getNotas() { return notas; }  // PERIGOSO: quem recebe pode alterar!
-public int[] getNotas() { return notas.clone(); } // CORRETO: retorna copia
+public int[] getNotas() { return notas.clone(); } // CORRETO: retorna cópia
 ```
 
 ### Exercícios — Tema 6
@@ -1795,11 +1899,11 @@ classDiagram
 ```
 
 ```java
-// Arquivo: Heranca.java
+// Arquivo: Herança.java
 
 // SUPERCLASSE
 class Pessoa {
-    protected String nome;   // protected: acessivel nas subclasses
+    protected String nome;   // protected: acessível nas subclasses
     protected int    idade;
     protected String cpf;
 
@@ -1947,12 +2051,12 @@ void main() {
     var mimi = new Gato("Mimi", "branca");
 
     rex.respirar();   // herdado de Animal
-    rex.latir();      // proprio de Cachorro
+    rex.latir();      // próprio de Cachorro
     rex.buscarObjeto();
 
     mimi.respirar();  // herdado de Animal
     mimi.dormir();    // herdado de Animal
-    mimi.miar();      // proprio de Gato
+    mimi.miar();      // próprio de Gato
 }
 ```
 
@@ -1962,18 +2066,18 @@ void main() {
 // ERRO 1: esquecer o super() no construtor da subclasse
 class Aluno extends Pessoa {
     Aluno(String nome, int idade) {
-        // super() nao chamado -> ERRO se Pessoa nao tem construtor padrao!
+        // super() não chamado -> ERRO se Pessoa não tem construtor padrão!
         this.matricula = "0000";
     }
 }
 
 // ERRO 2: tentar herdar de duas classes ao mesmo tempo
-class Aluno extends Pessoa, Funcionario { } // ERRADO: Java nao tem heranca multipla
+class Aluno extends Pessoa, Funcionario { } // ERRADO: Java não tem herança múltipla
 // Use interfaces para isso (veja Tema 9)
 
 // ERRO 3: usar private em vez de protected para atributos da superclasse
 class Pessoa {
-    private String nome; // subclasses NAO conseguem acessar!
+    private String nome; // subclasses NÃO conseguem acessar!
 }
 class Aluno extends Pessoa {
     void exibir() {
@@ -1985,8 +2089,8 @@ class Aluno extends Pessoa {
 // ERRO 4: @Override errado
 class Cachorro extends Animal {
     @Override
-    void Latir() { } // ERRO: "Latir" com maiusculo nao existe em Animal
-    // Java vai acusar erro: metodo nao encontrado na superclasse
+    void Latir() { } // ERRO: "Latir" com maiúsculo não existe em Animal
+    // Java vai acusar erro: método não encontrado na superclasse
 }
 ```
 
@@ -2021,7 +2125,7 @@ Antes do polimorfismo: voce precisaria de um IF para cada tipo
     if (animal instanceof Vaca)     vaca.mugir();
 
 Com polimorfismo: um unico comando, Java decide qual usar
-    animal.fazerSom(); // automatico!
+    animal.fazerSom(); // automático!
 ```
 
 ```mermaid
@@ -2086,12 +2190,12 @@ void main() {
 
     IO.println("=== Todos os animais fazendo som ===");
     for (Animal a : animais) {
-        a.fazerSom(); // Java decide qual versao chamar em tempo de execucao
+        a.fazerSom(); // Java decide qual versão chamar em tempo de execução
     }
 
     IO.println("=== Hora de dormir ===");
     for (Animal a : animais) {
-        a.dormir(); // nao sobrescrito: mesmo comportamento para todos
+        a.dormir(); // não sobrescrito: mesmo comportamento para todos
     }
 }
 ```
@@ -2146,18 +2250,18 @@ void main() {
 ### Erros comuns — Tema 8
 
 ```java
-// ERRO 1: esquecer o @Override (nao e erro, mas e ma pratica)
+// ERRO 1: esquecer o @Override (não e erro, mas e ma prática)
 class Cachorro extends Animal {
-    void fazersom() { } // erro de digitacao: "fazersom" != "fazerSom"
-    // sem @Override, Java nao avisa que voce nao esta sobrescrevendo!
+    void fazersom() { } // erro de digitação: "fazersom" != "fazerSom"
+    // sem @Override, Java não avisa que você não está sobrescrevendo!
 
     @Override
     void fazersom() { } // AGORA o compilador avisa do erro
 }
 
-// ERRO 2: chamar metodo especifico da subclasse por referencia da superclasse
+// ERRO 2: chamar método específico da subclasse por referência da superclasse
 Animal a = new Cachorro("Rex");
-a.latir(); // ERRO: Animal nao tem latir()!
+a.latir(); // ERRO: Animal não tem latir()!
 // Use cast:
 ((Cachorro) a).latir(); // CORRETO, mas verifique o tipo antes:
 if (a instanceof Cachorro c) c.latir(); // MELHOR
@@ -2167,8 +2271,8 @@ class Animal {
     void fazerSom() { }
 }
 class Cachorro extends Animal {
-    void fazerSom(int vezes) { } // SOBRECARGA, nao sobrescrita!
-    // O fazerSom() original ainda existe e nao foi substituido
+    void fazerSom(int vezes) { } // SOBRECARGA, não sobrescrita!
+    // O fazerSom() original ainda existe e não foi substituído
 }
 ```
 
@@ -2246,11 +2350,11 @@ abstract class Funcionario {
         this.salarioBase = salarioBase;
     }
 
-    // Metodo abstrato: obriga subclasses a implementar
+    // Método abstrato: obriga subclasses a implementar
     abstract double calcularSalario();
     abstract String getCargo();
 
-    // Metodo concreto: compartilhado por todos
+    // Método concreto: compartilhado por todos
     void exibirContracheque() {
         IO.println("---");
         IO.println("FUNCIONARIO: " + nome);
@@ -2294,7 +2398,7 @@ class Diretor extends Funcionario {
 }
 
 void main() {
-    // Funcionario f = new Funcionario(...); // ERRO: nao pode instanciar!
+    // Funcionario f = new Funcionario(...); // ERRO: não pode instanciar!
 
     Funcionario[] equipe = {
         new Professor("Adriano Franca", 4000.00, 20),
@@ -2347,14 +2451,14 @@ interface Notificavel {
     void enviarEmail(String dest);
     void enviarSMS(String telefone);
 
-    // Metodo default: tem implementacao padrao (pode ser sobrescrito)
+    // Método default: tem implementação padrão (pode ser sobrescrito)
     default void notificarTodos(String dest, String tel) {
         enviarEmail(dest);
         enviarSMS(tel);
     }
 }
 
-// Implementando MULTIPLAS interfaces
+// Implementando MÚLTIPLAS interfaces
 class Relatorio implements Imprimivel, Notificavel {
     private String titulo;
     private String conteudo;
@@ -2415,20 +2519,20 @@ void main() {
 abstract class Forma { }
 Forma f = new Forma(); // ERRO: Cannot instantiate abstract class
 
-// ERRO 2: nao implementar todos os metodos da interface
+// ERRO 2: não implementar todos os métodos da interface
 interface Imprimivel {
     void imprimir();
     void salvarEmArquivo();
 }
 class Doc implements Imprimivel {
-    public void imprimir() { } // implementou so um!
-    // ERRO: Doc nao implementa salvarEmArquivo()
+    public void imprimir() { } // implementou só um!
+    // ERRO: Doc não implementa salvarEmArquivo()
 }
 
-// ERRO 3: colocar atributo de instancia em interface
+// ERRO 3: colocar atributo de instância em interface
 interface Imprimivel {
     String titulo = "Sem titulo"; // ERRADO: implicitamente static final
-    // Nao existe atributo de instancia em interface!
+    // Não existe atributo de instância em interface!
 }
 
 // ERRO 4: confundir "extends" e "implements"
@@ -2495,7 +2599,7 @@ void main() {
 
     // Removendo
     nomes.remove("Joao");   // por valor
-    nomes.remove(0);        // por indice (remove Maria)
+    nomes.remove(0);        // por índice (remove Maria)
 
     // Percorrendo
     for (String nome : nomes) {
@@ -2570,15 +2674,15 @@ ArrayList<Integer> lista = new ArrayList<>(); // CORRETO
 
 // ERRO 2: ConcurrentModificationException — modificar lista enquanto percorre
 for (String nome : lista) {
-    lista.remove(nome); // ERRO em tempo de execucao!
+    lista.remove(nome); // ERRO em tempo de execução!
 }
 // Use iterator ou colete para remover depois:
 lista.removeIf(nome -> nome.startsWith("J")); // CORRETO
 
-// ERRO 3: get() fora do indice
+// ERRO 3: get() fora do índice
 var lista = new ArrayList<String>();
 lista.add("Maria");
-lista.get(1); // ERRO: IndexOutOfBoundsException! So existe indice 0
+lista.get(1); // ERRO: IndexOutOfBoundsException! Só existe índice 0
 
 // ERRO 4: usar == para comparar String em HashMap
 notas.containsKey("Maria");  // CORRETO: usa equals internamente
@@ -2645,7 +2749,7 @@ void main() {
         IO.println("100 / " + num + " = " + resultado);
 
     } catch (ArithmeticException e) {
-        // Captura divisao por zero
+        // Captura divisão por zero
         IO.println("Erro: divisao por zero!");
         IO.println("Detalhe: " + e.getMessage());
 
@@ -2724,7 +2828,7 @@ void main() {
 ### Erros comuns — Tema 11
 
 ```java
-// ERRO 1: capturar Exception antes das especificas
+// ERRO 1: capturar Exception antes das específicas
 try {
     // ...
 } catch (Exception e) {          // captura tudo — as de baixo nunca executam!
@@ -2732,24 +2836,24 @@ try {
 } catch (ArithmeticException e) { // NUNCA CHEGA AQUI
     IO.println("Divisao por zero");
 }
-// Coloque sempre as mais especificas PRIMEIRO
+// Coloque sempre as mais específicas PRIMEIRO
 
-// ERRO 2: silenciar excecoes (pior pratica possivel)
+// ERRO 2: silenciar exceções (pior prática possível)
 try {
     // ...
 } catch (Exception e) {
-    // nao faz nada — o erro some sem trace!
+    // não faz nada — o erro some sem trace!
 }
 
-// ERRO 3: lancar excecao sem mensagem util
+// ERRO 3: lançar exceção sem mensagem útil
 throw new Exception("erro"); // que erro? onde? por que?
 throw new SaldoInsuficienteException(saldo, solicitado); // CORRETO: informativo
 
-// ERRO 4: fechar recurso so no try (vaza se der excecao)
+// ERRO 4: fechar recurso só no try (vaza se der exceção)
 Scanner sc = new Scanner(System.in);
 try {
     // ... usa o sc
-    sc.close(); // se der excecao antes, sc nunca fecha!
+    sc.close(); // se der exceção antes, sc nunca fecha!
 } catch (Exception e) { }
 // Use finally:
 try { } catch (Exception e) { } finally { sc.close(); }
@@ -2787,7 +2891,7 @@ Implemente em partes, testando cada etapa antes de avacar. Comece pelas exceçõ
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// EXCECOES
+// EXCEÇÕES
 class AlunoNaoEncontradoException extends Exception {
     AlunoNaoEncontradoException(String mat) {
         super("Aluno nao encontrado: matricula " + mat);
@@ -2994,7 +3098,7 @@ Este capítulo não tem exercícios de código — e um capítulo para ler, refl
 ### 13.2 Boas práticas gerais
 
 ```java
-// 1. NOMES SIGNIFICATIVOS — o codigo deve se autoexplicar
+// 1. NOMES SIGNIFICATIVOS — o código deve se autoexplicar
 // RUIM:
 int x = 5;
 double calc(double v, double t) { return v * t; }
@@ -3003,18 +3107,18 @@ double calc(double v, double t) { return v * t; }
 int totalAlunosAprovados = 5;
 double calcularImposto(double valor, double taxa) { return valor * taxa; }
 
-// 2. METODOS CURTOS — uma funcao, uma responsabilidade
-// RUIM: metodo que faz tudo
+// 2. MÉTODOS CURTOS — uma função, uma responsabilidade
+// RUIM: método que faz tudo
 void processarAluno(Aluno a) {
-    // valida, salva, envia email, imprime relatorio...
+    // válida, salva, envia email, imprime relatório...
 }
 
-// BOM: cada metodo faz uma coisa
+// BOM: cada método faz uma coisa
 void validarAluno(Aluno a) { }
 void salvarAluno(Aluno a) { }
 void notificarAluno(Aluno a) { }
 
-// 3. EVITE NUMEROS MAGICOS — use constantes
+// 3. EVITE NÚMEROS MÁGICOS — use constantes
 // RUIM:
 if (nota >= 7.0) return "Aprovado"; // de onde vem 7.0?
 
@@ -3024,16 +3128,16 @@ if (nota >= NOTA_APROVACAO) return "Aprovado";
 
 // 4. FAIL FAST — valide cedo, falhe cedo
 void sacar(double valor) {
-    // Valide no inicio, antes de qualquer logica
+    // Valide no início, antes de qualquer lógica
     if (valor <= 0) throw new IllegalArgumentException("Valor invalido");
     if (valor > saldo) throw new SaldoInsuficienteException(saldo, valor);
-    // So agora executa a logica principal
+    // Só agora executa a lógica principal
     saldo -= valor;
 }
 
-// 5. COMENTARIOS EXPLICAM O "POR QUE", NAO O "O QUE"
+// 5. COMENTÁRIOS EXPLICAM O "POR QUE", NÃO O "O QUE"
 // RUIM:
-saldo += valor; // adiciona valor ao saldo (o codigo ja diz isso!)
+saldo += valor; // adiciona valor ao saldo (o código já diz isso!)
 
 // BOM:
 // Juros compostos: reinveste o rendimento mensalmente
@@ -3094,31 +3198,31 @@ Mantenha este capítulo marcado. Você vai consultá-lo com frequencia nas proxi
 ### Erros de lógica mais comuns
 
 ```java
-// 1. = em vez de == na comparacao
-if (nota = 7.0) { }    // ERRADO: atribuicao, nao comparacao
+// 1. = em vez de == na comparação
+if (nota = 7.0) { }    // ERRADO: atribuição, não comparação
 if (nota == 7.0) { }   // CORRETO
 
 // 2. == em vez de .equals() para String
 String s = "Maria";
-if (s == "Maria") { }      // ERRADO: compara referencia
-if (s.equals("Maria")) { } // CORRETO: compara conteudo
+if (s == "Maria") { }      // ERRADO: compara referência
+if (s.equals("Maria")) { } // CORRETO: compara conteúdo
 
-// 3. Logica invertida no if/else
+// 3. Lógica invertida no if/else
 if (nota < 7.0) {
-    return "Aprovado";  // ERRADO: abaixo de 7 nao e aprovado!
+    return "Aprovado";  // ERRADO: abaixo de 7 não e aprovado!
 }
 
 // 4. Off-by-one (erro de um a mais ou a menos)
-for (int i = 0; i <= lista.size(); i++) { // ERRADO: i vai ate size(), fora do indice!
+for (int i = 0; i <= lista.size(); i++) { // ERRADO: i vai até size(), fora do índice!
     lista.get(i);
 }
 for (int i = 0; i < lista.size(); i++) {  // CORRETO
     lista.get(i);
 }
 
-// 5. Divisao inteira inesperada
+// 5. Divisão inteira inesperada
 int total = 10, quantidade = 3;
-double media = total / quantidade;     // resultado: 3.0 (nao 3.33!)
+double media = total / quantidade;     // resultado: 3.0 (não 3.33!)
 double media = (double) total / quantidade; // resultado: 3.33
 ```
 
