@@ -1227,10 +1227,13 @@ class Produto {
     String nome;
     double preco;
 
-    // ATRIBUTO ESTÁTICO: compartilhado por TODOS os objetos
+    // ATRIBUTO ESTÁTICO: compartilhado por TODOS os objetos. Pertence à
+    // classe, compartilhado por todos os objetos, mas o valor pode ser
+    // modificado ao longo do tempo.
     static int totalProdutos = 0;
 
-    // CONSTANTE: static final (por convenção: MAIÚSCULAS)
+    // CONSTANTE: pertence à classe (não muda por objeto) e o valor não
+    // pode ser alterado (é uma constante real). (por convenção: MAIÚSCULAS)
     static final double TAXA_IMPOSTO = 0.12;
 
     // ATRIBUTO COM VALOR PADRÃO
@@ -1249,9 +1252,11 @@ void main() {
     IO.println("Taxa de imposto: " + Produto.TAXA_IMPOSTO);
 
     double precoFinal = p1.preco * (1 + Produto.TAXA_IMPOSTO);
-    IO.println("Preco com imposto: R$ " + precoFinal);
+    System.out.format("Preco com imposto: R$ %.2f%n", precoFinal);
 }
 ```
+
+> **Por que `%.2f` em vez de concatenar direto?** Operações com `double` podem gerar resultados como `28.000000000000004` em vez de `28.0`, por causa de como números decimais são representados internamente na memória. Usar `%.2f` no `System.out.format()` arredonda a exibição para 2 casas decimais, sem esse ruído. Veja a seção [Saída formatada — System.out.format e printf](#saída-formatada--systemoutformat-e-printf) para mais detalhes.
 
 #### Atributo estático (`static`) — pertence à classe
 
@@ -1390,6 +1395,77 @@ void main() {
 **Percorrendo o exemplo:** `exibirSoma()` é `void` — só imprime, não retorna nada, por isso é chamado sozinho na linha `calc.exibirSoma(10, 5);`. Já `somar()` retorna um `int`, então seu resultado é guardado em `resultado`. O mesmo vale para `calcularMedia()` e `classificar()` — cada um devolve um valor que é usado logo em seguida. Por fim, `calcularImposto()` é `static`: repare que ele é chamado como `Calculadora.calcularImposto(...)`, direto pela classe, sem precisar do objeto `calc`.
 
 > **Por que `calcularImposto` é estático?** Porque calcular imposto sobre um valor não depende de nenhum dado específico de um objeto `Calculadora` — é uma operação genérica que só usa os parâmetros recebidos. Quando um método não acessa nenhum atributo de instância, ele é candidato natural a ser `static`.
+
+#### Entrada de valores no método — parâmetros
+
+Um método pode **receber valores** de quem o chama através de **parâmetros** — variáveis declaradas entre parênteses na assinatura do método. Esses valores entram no método, são usados dentro dele, e o método pode devolver um resultado (saída) ou apenas executar uma ação (sem devolver nada).
+
+```java
+// Arquivo: CursoJava.java
+
+public class CursoJava {
+
+    public static void main(String[] args) {
+        int r;
+
+        msg("IFPE", 1);
+        r = soma(10, 5);
+        System.out.println(r);
+    }
+
+    public static int soma(int n1, int n2) {
+        int res = n1 + n2;
+        return res;
+    }
+
+    public static void msg(String m, int l) {
+        for (int i = 0; i < l; i++) {
+            System.out.println(m);
+        }
+    }
+}
+```
+
+```
+# Saída esperada:
+IFPE
+15
+```
+
+**Como os valores entram e saem de cada método:**
+
+```
+main()                                soma(int n1, int n2)
+  |                                          |
+  r = soma(10, 5)  ------------------->  n1 = 10, n2 = 5
+                                               |
+                                         res = n1 + n2  (15)
+                                               |
+  r <------------------------------------  return res
+  |
+  System.out.println(r)  ->  imprime: 15
+
+
+main()                                msg(String m, int l)
+  |                                          |
+  msg("IFPE", 1)  -------------------->  m = "IFPE", l = 1
+                                               |
+                                    for (i = 0; i < l; i++)
+                                               |
+                                    System.out.println(m)
+                                               |
+                                         imprime: IFPE
+```
+
+Repare que `soma()` e `msg()` ilustram os dois lados de um método: **entrada** (o que ele recebe) e **saída** (o que ele devolve).
+
+`soma(int n1, int n2)` recebe **dois parâmetros** — `n1` e `n2` — e tem `int` antes do nome, o que indica que ele **retorna** um valor inteiro. Dentro do método, `res = n1 + n2` calcula a soma, e `return res` devolve esse resultado para quem chamou. É por isso que `r = soma(10, 5)` funciona: o valor devolvido (`15`) é guardado na variável `r`.
+
+Já `msg(String m, int l)` recebe dois parâmetros de tipos diferentes — uma `String m` (a mensagem) e um `int l` (quantas vezes repetir) — mas é `void`: ele executa uma ação (o `for` que imprime `m` repetidamente) e não devolve nenhum valor. Por isso a chamada `msg("IFPE", 1)` não é guardada em variável nenhuma.
+
+> **Parâmetro vs argumento:** `n1`, `n2`, `m` e `l` (nas declarações dos métodos) são os **parâmetros** — os nomes que as variáveis recebem *dentro* do método. `10`, `5`, `"IFPE"` e `1` (nas chamadas `soma(10, 5)` e `msg("IFPE", 1)`) são os **argumentos** — os valores reais enviados. É comum usar os dois termos como sinônimos no dia a dia, mas essa é a distinção técnica.
+
+> **Por que `soma()` e `msg()` são `static` aqui?** Porque toda a classe `CursoJava` está sendo usada apenas com métodos estáticos, sem nunca criar um objeto com `new`. Isso é comum em programas simples de linha de comando: quando não há necessidade de vários objetos independentes, tudo pode rodar direto pela classe. Nos exemplos de POO mais à frente neste guia (a partir do encapsulamento), voltaremos a criar objetos com atributos próprios.
 
 ### 4.3 Sobrecarga de métodos (Overloading)
 
