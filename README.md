@@ -1564,6 +1564,21 @@ void main() {
 
 ### 5.3 Records (JDK 25)
 
+Um `record` é um tipo especial de classe do Java, criado para reduzir a repetição de código quando o objetivo é apenas **guardar dados**. É ideal para classes que representam algo simples e fixo — um produto, um endereço, um município — sem lógica complexa por trás.
+
+```java
+record Produto(String nome, double preco, int estoque) {}
+```
+
+Essa única linha substitui o que, numa classe tradicional, exigiria dezenas de linhas: atributos privados, um construtor, getters para cada atributo, além de `toString()`, `equals()` e `hashCode()`. O Java gera tudo isso **automaticamente** por trás dos panos:
+
+- **Construtor** — já pronto, recebendo os atributos na ordem declarada
+- **Getters** — um método para cada atributo, mas sem o prefixo `get`. Em vez de `getNome()`, é só `nome()`
+- **`toString()`** — formatado automaticamente como `Produto[nome=..., preco=..., estoque=...]`, útil para depuração
+- **`equals()` e `hashCode()`** — comparam dois records pelo conteúdo dos atributos, não pela referência de memória
+
+> **Imutabilidade:** uma vez criado um `Produto`, não é possível alterar `nome`, `preco` ou `estoque` depois — não existem setters. Isso é intencional: records representam dados que, uma vez definidos, não deveriam mudar (diferente de uma `ContaBancaria`, por exemplo, onde o saldo muda o tempo todo).
+
 ```java
 // Arquivo: UsandoRecords.java
 // Record: gera automaticamente construtor, getters,
@@ -1590,6 +1605,12 @@ void main() {
     IO.println(m1.nome() + ": " + String.format("%.1f", m1.densidadeDemografica()) + " hab/km2");
 }
 ```
+
+Repare que `p1.nome()` é chamado como método (com parênteses), não como atributo direto (`p1.nome`) — essa é a diferença visual mais marcante entre um record e uma classe comum com atributos públicos.
+
+O segundo exemplo, `Municipio`, mostra que um record não precisa se limitar aos dados declarados — ele pode ter métodos adicionais, como qualquer classe. `densidadeDemografica()` é calculado a partir dos próprios atributos do record (`populacao` e `area`), sem precisar de parâmetros, porque acessa diretamente os campos que o record já guarda.
+
+> **Quando usar record em vez de classe comum:** sempre que a classe for essencialmente um "pacote de dados" — sem regras de negócio complexas e sem necessidade de encapsulamento com validação nos setters (porque não há setters). Quando você precisa de comportamento mais elaborado, herança, ou atributos que mudam ao longo da vida do objeto, uma classe tradicional continua sendo a escolha certa.
 
 ### Erros comuns — Tema 5
 
