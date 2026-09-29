@@ -1579,6 +1579,80 @@ Essa única linha substitui o que, numa classe tradicional, exigiria dezenas de 
 
 > **Imutabilidade:** uma vez criado um `Produto`, não é possível alterar `nome`, `preco` ou `estoque` depois — não existem setters. Isso é intencional: records representam dados que, uma vez definidos, não deveriam mudar (diferente de uma `ContaBancaria`, por exemplo, onde o saldo muda o tempo todo).
 
+#### Sem record vs com record
+
+Para ver com clareza o que o Java está economizando, compare a mesma classe `Produto` escrita das duas formas:
+
+```java
+// Arquivo: SemRecord.java
+// Classe tradicional: TUDO escrito manualmente
+
+class Produto {
+    private final String nome;
+    private final double preco;
+    private final int estoque;
+
+    Produto(String nome, double preco, int estoque) {
+        this.nome    = nome;
+        this.preco   = preco;
+        this.estoque = estoque;
+    }
+
+    String getNome()   { return nome; }
+    double getPreco()  { return preco; }
+    int    getEstoque(){ return estoque; }
+
+    @Override
+    public String toString() {
+        return "Produto[nome=" + nome + ", preco=" + preco + ", estoque=" + estoque + "]";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Produto)) return false;
+        Produto p = (Produto) obj;
+        return nome.equals(p.nome) && preco == p.preco && estoque == p.estoque;
+    }
+
+    @Override
+    public int hashCode() {
+        return java.util.Objects.hash(nome, preco, estoque);
+    }
+}
+
+void main() {
+    var p1 = new Produto("Mel de Abelha", 25.00, 100);
+    IO.println(p1.getNome());
+    IO.println(p1);
+}
+```
+
+```java
+// Arquivo: ComRecord.java
+// Record: MESMO resultado, uma linha
+
+record Produto(String nome, double preco, int estoque) {}
+
+void main() {
+    var p1 = new Produto("Mel de Abelha", 25.00, 100);
+    IO.println(p1.nome());
+    IO.println(p1);
+}
+```
+
+| | Sem record | Com record |
+|---|---|---|
+| Linhas de código | ~30 | 1 |
+| Construtor | Escrito à mão | Gerado automaticamente |
+| Getters | Um método por atributo, escrito à mão | Gerados automaticamente (`nome()`, `preco()`...) |
+| `toString()` | Escrito à mão | Gerado automaticamente |
+| `equals()` e `hashCode()` | Escritos à mão, fáceis de errar | Gerados automaticamente e corretos |
+| Setters | Podem ser adicionados se necessário | Não existem — o record é imutável por padrão |
+| Resultado ao rodar | Idêntico ao do record | Idêntico ao da classe tradicional |
+
+O comportamento final é **exatamente o mesmo** — a diferença é que na classe tradicional você escreve e mantém manualmente cada método repetitivo, enquanto o record deixa o Java gerar tudo isso por você. É por isso que records são recomendados sempre que a classe for apenas um "pacote de dados", sem regras de negócio complexas.
+
 ```java
 // Arquivo: UsandoRecords.java
 // Record: gera automaticamente construtor, getters,
@@ -1699,6 +1773,26 @@ classDiagram
         +exibirExtrato() void
     }
 ```
+
+#### O que são getters e setters
+
+Depois de tornar um atributo `private`, o resto do programa perde o acesso direto a ele — e é exatamente esse o objetivo. Mas o objeto ainda precisa de alguma forma controlada de **ler** e **alterar** esse valor. É para isso que existem os **getters** e **setters**: métodos públicos que fazem a ponte entre o mundo externo e o atributo privado.
+
+**Getter** — método de **leitura**. Devolve o valor de um atributo privado, sem permitir alterá-lo. Por convenção, o nome começa com `get` seguido do nome do atributo com a primeira letra maiúscula: o atributo `titular` tem o getter `getTitular()`. Para atributos `boolean`, a convenção troca `get` por `is`: o atributo `ativa` tem o getter `isAtiva()`, não `getAtiva()`.
+
+**Setter** — método de **escrita**. Recebe um novo valor e o atribui ao atributo privado, mas passando por uma validação antes. Por convenção, o nome começa com `set`: o atributo `titular` tem o setter `setTitular(String titular)`.
+
+```
+Sem getter/setter                    Com getter/setter
+------------------                   ------------------
+obj.saldo             (bloqueado,     obj.getSaldo()      leitura controlada
+                       saldo e private)
+obj.saldo = valor     (bloqueado)     obj.setSaldo(valor) escrita com validação
+```
+
+> **Por que não simplesmente tornar o atributo `public` de novo?** Porque o getter e o setter são um ponto único de controle. Um getter pode formatar o valor antes de devolvê-lo; um setter pode rejeitar valores inválidos (como um saldo negativo). Se o atributo fosse público, qualquer parte do código poderia alterá-lo livremente, sem passar por nenhuma dessas regras — voltando ao problema que o encapsulamento resolve.
+
+Nem todo atributo precisa dos dois. No exemplo abaixo, `saldo` tem getter (`getSaldo()`) mas não tem setter direto — porque a única forma correta de alterá-lo é através dos métodos `depositar()` e `sacar()`, que aplicam as validações de negócio.
 
 ```java
 // Arquivo: ContaEncapsulada.java
