@@ -79,7 +79,6 @@ A **JVM** é instalada no sistema operacional e é ela quem executa o bytecode. 
 | **`var`** | Java infere o tipo automaticamente | `var nome = "Maria"` |
 | **Records** | Classes de dados com menos código | `record Aluno(String nome, int idade) {}` |
 | **Sealed Classes** | Controla quem pode herdar | `sealed class Forma permits Circulo` |
-| **Pattern Matching** | `instanceof` com captura direta | `if (obj instanceof String s)` |
 
 ### 1.4 Entendendo o `void main()`
 
@@ -2018,6 +2017,35 @@ classDiagram
     }
 ```
 
+#### O que é `@Override`
+
+Repare, no diagrama acima, que tanto `Pessoa` quanto `Aluno` e `Professor` têm um método `apresentar()`. Quando uma subclasse declara de novo um método que já existe na superclasse, isso se chama **sobrescrita** (em inglês, *override*) — a versão da subclasse passa a valer no lugar da versão herdada.
+
+`@Override` é uma **anotação** — um marcador colocado logo acima do método — que avisa ao compilador: *"este método está sobrescrevendo um método que já existe na superclasse"*. Ela não é obrigatória para o código funcionar, mas existe para o **compilador te proteger de erros de digitação**.
+
+```java
+class Animal {
+    void fazerSom() { IO.println("..."); }
+}
+
+class Cachorro extends Animal {
+    @Override
+    void fazerSom() { IO.println("Au au!"); }   // OK: existe fazerSom() em Animal
+}
+```
+
+Sem a anotação, um erro de digitação no nome do método passaria despercebido: o Java entenderia como um **método novo**, não como uma sobrescrita, e o programa continuaria compilando normalmente — só que a versão da superclasse continuaria sendo usada, sem nenhum aviso.
+
+```java
+class Cachorro extends Animal {
+    @Override
+    void fazersom() { }   // ERRO de compilação: nao existe fazersom() em Animal
+    // O compilador acusa na hora, porque o nome nao bate com nenhum metodo herdado
+}
+```
+
+> **Regra prática:** sempre que for sobrescrever um método de uma superclasse (ou implementar um método de uma interface, como veremos no Capítulo 9), coloque `@Override` antes. É uma rede de segurança gratuita — se o nome estiver errado, o erro aparece na hora de compilar, em vez de te deixar depurar um bug silencioso depois.
+
 ```java
 // Arquivo: Herança.java
 
@@ -2227,7 +2255,7 @@ class Cachorro extends Animal {
 ## 8. Polimorfismo
 
 > **O que você vai aprender neste capítulo:**
-> Entender o que é polimorfismo, sobrescrever métodos com `@Override`, usar referências da superclasse para objetos de subclasses, e aplicar Pattern Matching com `instanceof` do JDK 25.
+> Entender o que é polimorfismo, sobrescrever métodos com `@Override`, e usar referências da superclasse para objetos de subclasses.
 
 Polimorfismo é talvez o conceito mais elegante da POO. A palavra vem do grego e significa "muitas formas". Na prática, significa que o mesmo comando pode produzir resultados completamente diferentes dependendo de quem o recebe.
 
@@ -2320,53 +2348,6 @@ void main() {
 }
 ```
 
-### 8.2 Pattern Matching com instanceof (JDK 25)
-
-```java
-// Arquivo: PatternMatching.java
-
-abstract class Forma {
-    String cor;
-    Forma(String cor) { this.cor = cor; }
-    abstract double calcularArea();
-}
-
-class Circulo extends Forma {
-    double raio;
-    Circulo(String cor, double raio) { super(cor); this.raio = raio; }
-    @Override
-    double calcularArea() { return Math.PI * raio * raio; }
-}
-
-class Retangulo extends Forma {
-    double largura, altura;
-    Retangulo(String cor, double l, double a) {
-        super(cor); this.largura = l; this.altura = a;
-    }
-    @Override
-    double calcularArea() { return largura * altura; }
-}
-
-void main() {
-    Forma[] formas = {
-        new Circulo("vermelho", 5.0),
-        new Retangulo("azul", 4.0, 6.0),
-        new Circulo("verde", 3.0)
-    };
-
-    for (Forma f : formas) {
-        IO.println("Area: " + String.format("%.2f", f.calcularArea()));
-
-        // Pattern Matching: verifica tipo E captura em uma linha
-        if (f instanceof Circulo c) {
-            IO.println("  -> Circulo com raio " + c.raio);
-        } else if (f instanceof Retangulo r) {
-            IO.println("  -> Retangulo " + r.largura + "x" + r.altura);
-        }
-    }
-}
-```
-
 ### Erros comuns — Tema 8
 
 ```java
@@ -2384,7 +2365,7 @@ Animal a = new Cachorro("Rex");
 a.latir(); // ERRO: Animal não tem latir()!
 // Use cast:
 ((Cachorro) a).latir(); // CORRETO, mas verifique o tipo antes:
-if (a instanceof Cachorro c) c.latir(); // MELHOR
+if (a instanceof Cachorro) ((Cachorro) a).latir(); // MAIS SEGURO
 
 // ERRO 3: confundir sobrescrita com sobrecarga
 class Animal {
