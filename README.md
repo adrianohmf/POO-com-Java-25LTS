@@ -58,9 +58,10 @@ com teoria, diagramas, exemplos comentados, erros comuns e exercícios práticos
 
 ### [6. Encapsulamento](06-encapsulamento/README.md)
 
-- [6.1 O problema sem encapsulamento](06-encapsulamento/README.md#61-o-problema-sem-encapsulamento)
-- [6.2 Diferença entre private e protected](06-encapsulamento/README.md#62-diferença-entre-private-e-protected)
-- [6.3 Tabela de visibilidade](06-encapsulamento/README.md#63-tabela-de-visibilidade)
+- [6.1 Começando pelo mais simples: nome e idade](06-encapsulamento/README.md#61-começando-pelo-mais-simples-nome-e-idade)
+- [6.2 O problema sem encapsulamento](06-encapsulamento/README.md#62-o-problema-sem-encapsulamento)
+- [6.3 Diferença entre private e protected](06-encapsulamento/README.md#63-diferença-entre-private-e-protected)
+- [6.4 Tabela de visibilidade](06-encapsulamento/README.md#64-tabela-de-visibilidade)
 
 ### [7. Herança](07-heranca/README.md)
 

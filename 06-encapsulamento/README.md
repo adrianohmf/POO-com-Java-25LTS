@@ -12,7 +12,110 @@ Encapsulamento é exatamente esse princípio aplicado ao código. Quando um atri
 Ao tornar os atributos privados e fornecer métodos controlados de acesso, você garante que o objeto sempre esteja em um estado válido. É um dos pilares mais importantes da POO na prática, é o que separa um código amador de um código profissional.
 
 
-## 6.1 O problema sem encapsulamento
+## 6.1 Começando pelo mais simples: nome e idade
+
+Antes de falar de contas bancárias, vamos ver o problema do encapsulamento no menor exemplo possível: um programa que pede o **nome** e a **idade** de uma pessoa e mostra os dois na tela. Primeiro sem encapsulamento, depois com ele.
+
+### Sem encapsulamento
+
+Aqui os atributos da classe não têm `private`. Isso significa que qualquer código fora da classe pode ler e alterar os valores **diretamente**, com `p.idade = ...`.
+
+```java
+// Arquivo: SemEncapsulamento.java
+
+class PessoaSemEncapsulamento {
+    String nome;   // sem private: qualquer código acessa direto
+    int idade;     // sem private: qualquer valor é aceito
+}
+
+void main() {
+    var p = new PessoaSemEncapsulamento();
+
+    // A idade é atribuída direto no atributo, sem nenhuma verificação
+    p.nome  = IO.readln("Digite o nome: ");
+    p.idade = Integer.parseInt(IO.readln("Digite a idade: "));
+
+    IO.println("Nome: " + p.nome);
+    IO.println("Idade: " + p.idade);
+}
+```
+
+Saída ao digitar uma idade negativa:
+
+```
+Digite o nome: Ana
+Digite a idade: -5
+Nome: Ana
+Idade: -5
+```
+
+O programa aceitou `-5` como idade, e isso não faz sentido: ninguém tem idade negativa. Nada na classe impede esse valor, porque o atributo está exposto e quem usa a classe pode colocar qualquer número nele.
+
+### Com encapsulamento (get e set)
+
+Agora os atributos são `private`, ou seja, só a própria classe mexe neles. Quem está de fora usa **getters** (para ler) e **setters** (para escrever). O `setIdade` é o ponto único de controle: só aceita a idade quando ela for maior ou igual a zero.
+
+```java
+// Arquivo: ComEncapsulamento.java
+
+class PessoaComEncapsulamento {
+    private String nome;   // private: só esta classe acessa
+    private int idade;
+
+    // GETTERS: leitura
+    public String getNome() { return nome; }
+    public int getIdade()   { return idade; }
+
+    // SETTERS: escrita
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setIdade(int idade) {
+        if (idade >= 0) {
+            this.idade = idade;               // idade válida: guarda
+        } else {
+            IO.println("Idade invalida.");    // idade negativa: recusa
+        }
+    }
+}
+
+void main() {
+    var p = new PessoaComEncapsulamento();
+
+    // Agora a idade passa pelo setter, que faz a validação
+    p.setNome(IO.readln("Digite o nome: "));
+    p.setIdade(Integer.parseInt(IO.readln("Digite a idade: ")));
+
+    IO.println("Nome: " + p.getNome());
+    IO.println("Idade: " + p.getIdade());
+
+    // p.idade = -5;  // ERRO de compilação: idade é private
+}
+```
+
+Saída ao digitar uma idade negativa:
+
+```
+Digite o nome: Ana
+Digite a idade: -5
+Idade invalida.
+Nome: Ana
+Idade: 0
+```
+
+Desta vez o `-5` foi recusado e o programa avisou que a idade é inválida. Como o valor foi rejeitado, o atributo `idade` ficou com o valor inicial, `0`. Com uma idade válida, como `20`, o setter guarda o valor normalmente.
+
+O que mudou entre as duas versões:
+
+- Os atributos passaram de abertos para `private`.
+- A leitura passou a ser feita por `getNome()` e `getIdade()`.
+- A escrita passou a ser feita por `setNome()` e `setIdade()`, e o `setIdade` usa um `if` para validar.
+- Tentar `p.idade = -5` direto agora nem compila.
+
+As próximas seções explicam o que são getters e setters com mais detalhe e mostram um exemplo maior, com uma conta bancária.
+
+## 6.2 O problema sem encapsulamento
 
 ```
 SEM encapsulamento:
@@ -141,7 +244,7 @@ void main() {
 }
 ```
 
-## 6.2 Diferença entre private e protected
+## 6.3 Diferença entre private e protected
 
 Esses dois modificadores aparecem o tempo todo em POO e geram confusão no início, porque parecem semelhantes — ambos restringem o acesso. A diferença está em **quem mais pode enxergar o atributo ou método**.
 
@@ -176,7 +279,7 @@ class Aluno extends Pessoa {
 
 > **Regra prática:** comece sempre com `private`. Só troque para `protected` quando tiver certeza de que as subclasses vão precisar acessar aquele atributo ou método diretamente. Trocar de `private` para `protected` depois é fácil; o contrário pode quebrar código que já dependia do acesso.
 
-## 6.3 Tabela de visibilidade
+## 6.4 Tabela de visibilidade
 
 | Modificador | Mesma Classe | Mesmo Pacote | Subclasse | Qualquer Lugar |
 |---|:---:|:---:|:---:|:---:|
