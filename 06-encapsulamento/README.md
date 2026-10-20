@@ -137,14 +137,10 @@ classDiagram
     class ContaBancaria {
         -String titular
         -double saldo
-        -String numeroConta
-        -boolean ativa
         +getTitular() String
         +getSaldo() double
-        +isAtiva() boolean
         +depositar(double valor) void
         +sacar(double valor) void
-        +exibirExtrato() void
     }
 ```
 
@@ -152,9 +148,9 @@ classDiagram
 
 Depois de tornar um atributo `private`, o resto do programa perde o acesso direto a ele — e é exatamente esse o objetivo. Mas o objeto ainda precisa de alguma forma controlada de **ler** e **alterar** esse valor. É para isso que existem os **getters** e **setters**: métodos públicos que fazem a ponte entre o mundo externo e o atributo privado.
 
-**Getter** — método de **leitura**. Devolve o valor de um atributo privado, sem permitir alterá-lo. Por convenção, o nome começa com `get` seguido do nome do atributo com a primeira letra maiúscula: o atributo `titular` tem o getter `getTitular()`. Para atributos `boolean`, a convenção troca `get` por `is`: o atributo `ativa` tem o getter `isAtiva()`, não `getAtiva()`.
+**Getter** — método de **leitura**. Devolve o valor de um atributo privado, sem permitir alterá-lo. Por convenção, o nome começa com `get` seguido do nome do atributo com a primeira letra maiúscula: o atributo `titular` tem o getter `getTitular()`. Para atributos `boolean`, a convenção troca `get` por `is`: um atributo `boolean` chamado `ativa` teria o getter `isAtiva()`, não `getAtiva()`.
 
-**Setter** — método de **escrita**. Recebe um novo valor e o atribui ao atributo privado, mas passando por uma validação antes. Por convenção, o nome começa com `set`: o atributo `titular` tem o setter `setTitular(String titular)`.
+**Setter** — método de **escrita**. Recebe um novo valor e o atribui ao atributo privado, mas passando por uma validação antes. Por convenção, o nome começa com `set`: o atributo `idade` tem o setter `setIdade(int idade)`.
 
 ```
 Sem getter/setter                    Com getter/setter
@@ -174,74 +170,58 @@ Nem todo atributo precisa dos dois. No exemplo abaixo, `saldo` tem getter (`getS
 class ContaBancaria {
 
     // ATRIBUTOS PRIVADOS: acessíveis SOMENTE dentro desta classe
-    private String  titular;
-    private double  saldo;
-    private String  numeroConta;
-    private boolean ativa;
+    private String titular;
+    private double saldo;
 
     ContaBancaria(String titular, double saldoInicial) {
-        this.titular     = titular;
-        this.saldo       = Math.max(saldoInicial, 0);
-        this.numeroConta = "AG001-" + (1000 + (int)(Math.random() * 8999));
-        this.ativa       = true;
+        this.titular = titular;
+        this.saldo   = saldoInicial;
     }
 
     // GETTERS: métodos de leitura
-    public String  getTitular()     { return titular; }
-    public double  getSaldo()       { return saldo; }
-    public String  getNumeroConta() { return numeroConta; }
-    public boolean isAtiva()        { return ativa; }
+    public String getTitular() { return titular; }
+    public double getSaldo()   { return saldo; }
 
-    // SETTER com validação
-    public void setTitular(String titular) {
-        if (titular != null && !titular.isBlank()) {
-            this.titular = titular;
-        } else {
-            IO.println("Nome invalido.");
-        }
-    }
-
-    // MÉTODOS DE NEGOCIO: a única forma de alterar o saldo
+    // MÉTODOS DE NEGÓCIO: a única forma de alterar o saldo
     public void depositar(double valor) {
         if (valor > 0) {
             saldo += valor;
-            IO.println("Deposito de R$ " + valor + " realizado.");
         } else {
-            IO.println("Valor de deposito invalido.");
+            IO.println("Valor invalido.");
         }
     }
 
     public void sacar(double valor) {
-        if (!ativa)        { IO.println("Conta inativa."); return; }
-        if (valor <= 0)    { IO.println("Valor invalido."); return; }
-        if (valor > saldo) { IO.println("Saldo insuficiente."); return; }
-        saldo -= valor;
-        IO.println("Saque de R$ " + valor + " realizado.");
-    }
-
-    public void exibirExtrato() {
-        IO.println("========================================");
-        IO.println("  CONTA:   " + numeroConta);
-        IO.println("  TITULAR: " + titular);
-        IO.println("  SALDO:   R$ " + String.format("%.2f", saldo));
-        IO.println("  STATUS:  " + (ativa ? "Ativa" : "Inativa"));
-        IO.println("========================================");
+        if (valor <= 0) {
+            IO.println("Valor invalido.");
+        } else if (valor > saldo) {
+            IO.println("Saldo insuficiente.");
+        } else {
+            saldo -= valor;
+        }
     }
 }
 
 void main() {
     var c1 = new ContaBancaria("Maria Silva", 500.00);
+    IO.println("Saldo inicial: R$ " + c1.getSaldo());
 
-    c1.exibirExtrato();
     c1.depositar(300.00);
     c1.sacar(100.00);
     c1.sacar(1000.00);  // bloqueado!
 
-    // c1.saldo = -999; // ERRO de compilação: saldo e private
+    // c1.saldo = -999; // ERRO de compilação: saldo é private
 
     IO.println("Saldo atual: R$ " + c1.getSaldo());
-    c1.exibirExtrato();
 }
+```
+
+Saída:
+
+```
+Saldo inicial: R$ 500.0
+Saldo insuficiente.
+Saldo atual: R$ 700.0
 ```
 
 ## 6.3 Diferença entre private e protected
