@@ -1,0 +1,27 @@
+// ATENCAO: estes trechos são apenas ilustrativos e podem conter erros de propósito.
+// Eles não são um programa completo e não devem ser compilados como estão.
+
+// ERRO 1: esquecer o @Override (não e erro, mas e ma prática)
+class Cachorro extends Animal {
+    void fazersom() { } // erro de digitação: "fazersom" != "fazerSom"
+    // sem @Override, Java não avisa que você não está sobrescrevendo!
+
+    @Override
+    void fazersom() { } // AGORA o compilador avisa do erro
+}
+
+// ERRO 2: chamar método específico da subclasse por referência da superclasse
+Animal a = new Cachorro("Rex");
+a.latir(); // ERRO: Animal não tem latir()!
+// Use cast:
+((Cachorro) a).latir(); // CORRETO, mas verifique o tipo antes:
+if (a instanceof Cachorro) ((Cachorro) a).latir(); // MAIS SEGURO
+
+// ERRO 3: confundir sobrescrita com sobrecarga
+class Animal {
+    void fazerSom() { }
+}
+class Cachorro extends Animal {
+    void fazerSom(int vezes) { } // SOBRECARGA, não sobrescrita!
+    // O fazerSom() original ainda existe e não foi substituído
+}

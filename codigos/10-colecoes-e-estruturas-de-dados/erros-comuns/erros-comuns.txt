@@ -1,0 +1,23 @@
+// ATENCAO: estes trechos são apenas ilustrativos e podem conter erros de propósito.
+// Eles não são um programa completo e não devem ser compilados como estão.
+
+// ERRO 1: usar tipo primitivo no ArrayList (use o wrapper)
+ArrayList<int> lista = new ArrayList<>();     // ERRADO
+ArrayList<Integer> lista = new ArrayList<>(); // CORRETO
+
+// ERRO 2: ConcurrentModificationException — modificar lista enquanto percorre
+for (String nome : lista) {
+    lista.remove(nome); // ERRO em tempo de execução!
+}
+// Use iterator ou colete para remover depois:
+lista.removeIf(nome -> nome.startsWith("J")); // CORRETO
+
+// ERRO 3: get() fora do índice
+var lista = new ArrayList<String>();
+lista.add("Maria");
+lista.get(1); // ERRO: IndexOutOfBoundsException! Só existe índice 0
+
+// ERRO 4: usar == para comparar String em HashMap
+notas.containsKey("Maria");  // CORRETO: usa equals internamente
+notas.get("Maria") == 8.5;   // ERRADO para Double: use .equals()
+notas.get("Maria").equals(8.5); // CORRETO

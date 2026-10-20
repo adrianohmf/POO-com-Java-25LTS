@@ -1,0 +1,29 @@
+// ATENCAO: estes trechos são apenas ilustrativos e podem conter erros de propósito.
+// Eles não são um programa completo e não devem ser compilados como estão.
+
+// ERRO 1: getter retornando o atributo errado
+private String nome;
+private int    idade;
+
+public String getNome() { return idade; }  // ERRADO: retorna idade!
+public String getNome() { return nome; }   // CORRETO
+
+// ERRO 2: setter sem validação (perde o sentido do encapsulamento)
+public void setSaldo(double saldo) {
+    this.saldo = saldo; // permite qualquer valor negativo!
+}
+// Não faca setter de saldo — use depositar() e sacar()
+
+// ERRO 3: "this" desnecessário quando não há ambiguidade
+class Aluno {
+    private String nome;
+    public String obterNome() {
+        return this.nome; // funciona, mas "this" e desnecessário aqui
+        return nome;      // mais limpo quando não há parâmetro de mesmo nome
+    }
+}
+
+// ERRO 4: retornar referência de objeto mutável (expõe o interno)
+private int[] notas = {8, 7, 9};
+public int[] getNotas() { return notas; }  // PERIGOSO: quem recebe pode alterar!
+public int[] getNotas() { return notas.clone(); } // CORRETO: retorna cópia

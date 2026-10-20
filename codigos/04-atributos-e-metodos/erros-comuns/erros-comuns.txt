@@ -1,0 +1,22 @@
+// ATENCAO: estes trechos são apenas ilustrativos e podem conter erros de propósito.
+// Eles não são um programa completo e não devem ser compilados como estão.
+
+// ERRO 1: esquecer o "return" em método com retorno
+int somar(int a, int b) {
+    int resultado = a + b;
+    // esqueceu o return! -> ERRO de compilação
+}
+
+// ERRO 2: usar o retorno de um método void
+void exibir() { IO.println("Ola"); }
+String texto = exibir(); // ERRADO: void não retorna nada
+
+// ERRO 3: acessar atributo estático pelo objeto
+var p = new Produto();
+p.TAXA_IMPOSTO;          // funciona mas e ma prática
+Produto.TAXA_IMPOSTO;    // CORRETO
+
+// ERRO 4: dividir inteiros e esperar decimal
+int a = 5, b = 2;
+double resultado = a / b;     // resultado = 2.0 (não 2.5!)
+double resultado = (double) a / b; // CORRETO: resultado = 2.5

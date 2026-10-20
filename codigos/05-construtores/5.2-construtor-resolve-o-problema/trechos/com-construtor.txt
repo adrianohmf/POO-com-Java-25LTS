@@ -1,0 +1,6 @@
+// ATENCAO: estes trechos são apenas ilustrativos e podem conter erros de propósito.
+// Eles não são um programa completo e não devem ser compilados como estão.
+
+// Com construtor, o objeto nasce já preenchido
+var a = new Aluno("Maria", 20, "Informatica");
+// Impossível criar um Aluno sem nome e curso!

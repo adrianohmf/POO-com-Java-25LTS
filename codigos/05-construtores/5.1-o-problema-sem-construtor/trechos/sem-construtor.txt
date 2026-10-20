@@ -1,0 +1,8 @@
+// ATENCAO: estes trechos são apenas ilustrativos e podem conter erros de propósito.
+// Eles não são um programa completo e não devem ser compilados como estão.
+
+// Sem construtor, o objeto nasce "vazio"
+var a = new Aluno();
+// a.nome = null, a.idade = 0, a.curso = null
+// Você precisa lembrar de preencher tudo manualmente
+// E fácil esquecer algum campo!

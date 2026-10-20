@@ -1,0 +1,32 @@
+// ATENCAO: estes trechos são apenas ilustrativos e podem conter erros de propósito.
+// Eles não são um programa completo e não devem ser compilados como estão.
+
+// ERRO 1: capturar Exception antes das específicas
+try {
+    // ...
+} catch (Exception e) {          // captura tudo — as de baixo nunca executam!
+    IO.println("Erro generico");
+} catch (ArithmeticException e) { // NUNCA CHEGA AQUI
+    IO.println("Divisao por zero");
+}
+// Coloque sempre as mais específicas PRIMEIRO
+
+// ERRO 2: silenciar exceções (pior prática possível)
+try {
+    // ...
+} catch (Exception e) {
+    // não faz nada — o erro some sem trace!
+}
+
+// ERRO 3: lançar exceção sem mensagem útil
+throw new Exception("erro"); // que erro? onde? por que?
+throw new SaldoInsuficienteException(saldo, solicitado); // CORRETO: informativo
+
+// ERRO 4: fechar recurso só no try (vaza se der exceção)
+Scanner sc = new Scanner(System.in);
+try {
+    // ... usa o sc
+    sc.close(); // se der exceção antes, sc nunca fecha!
+} catch (Exception e) { }
+// Use finally:
+try { } catch (Exception e) { } finally { sc.close(); }

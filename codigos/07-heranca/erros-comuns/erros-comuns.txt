@@ -1,0 +1,32 @@
+// ATENCAO: estes trechos são apenas ilustrativos e podem conter erros de propósito.
+// Eles não são um programa completo e não devem ser compilados como estão.
+
+// ERRO 1: esquecer o super() no construtor da subclasse
+class Aluno extends Pessoa {
+    Aluno(String nome, int idade) {
+        // super() não chamado -> ERRO se Pessoa não tem construtor padrão!
+        this.matricula = "0000";
+    }
+}
+
+// ERRO 2: tentar herdar de duas classes ao mesmo tempo
+class Aluno extends Pessoa, Funcionario { } // ERRADO: Java não tem herança múltipla
+// Use interfaces para isso (veja Tema 9)
+
+// ERRO 3: usar private em vez de protected para atributos da superclasse
+class Pessoa {
+    private String nome; // subclasses NÃO conseguem acessar!
+}
+class Aluno extends Pessoa {
+    void exibir() {
+        IO.println(nome); // ERRO: nome e private em Pessoa
+    }
+}
+// Use protected para atributos que subclasses precisam acessar
+
+// ERRO 4: @Override errado
+class Cachorro extends Animal {
+    @Override
+    void Latir() { } // ERRO: "Latir" com maiúsculo não existe em Animal
+    // Java vai acusar erro: método não encontrado na superclasse
+}

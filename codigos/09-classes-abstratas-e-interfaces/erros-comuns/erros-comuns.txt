@@ -1,0 +1,26 @@
+// ATENCAO: estes trechos são apenas ilustrativos e podem conter erros de propósito.
+// Eles não são um programa completo e não devem ser compilados como estão.
+
+// ERRO 1: tentar instanciar classe abstrata
+abstract class Forma { }
+Forma f = new Forma(); // ERRO: Cannot instantiate abstract class
+
+// ERRO 2: não implementar todos os métodos da interface
+interface Imprimivel {
+    void imprimir();
+    void salvarEmArquivo();
+}
+class Doc implements Imprimivel {
+    public void imprimir() { } // implementou só um!
+    // ERRO: Doc não implementa salvarEmArquivo()
+}
+
+// ERRO 3: colocar atributo de instância em interface
+interface Imprimivel {
+    String titulo = "Sem titulo"; // ERRADO: implicitamente static final
+    // Não existe atributo de instância em interface!
+}
+
+// ERRO 4: confundir "extends" e "implements"
+class Aluno implements Pessoa { }   // ERRADO: Pessoa e classe, use extends
+class Aluno extends Imprimivel { }  // ERRADO: Imprimivel e interface, use implements

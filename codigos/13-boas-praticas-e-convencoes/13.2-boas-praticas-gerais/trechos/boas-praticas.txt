@@ -1,0 +1,47 @@
+// ATENCAO: estes trechos são apenas ilustrativos e podem conter erros de propósito.
+// Eles não são um programa completo e não devem ser compilados como estão.
+
+// 1. NOMES SIGNIFICATIVOS — o código deve se autoexplicar
+// RUIM:
+int x = 5;
+double calc(double v, double t) { return v * t; }
+
+// BOM:
+int totalAlunosAprovados = 5;
+double calcularImposto(double valor, double taxa) { return valor * taxa; }
+
+// 2. MÉTODOS CURTOS — uma função, uma responsabilidade
+// RUIM: método que faz tudo
+void processarAluno(Aluno a) {
+    // válida, salva, envia email, imprime relatório...
+}
+
+// BOM: cada método faz uma coisa
+void validarAluno(Aluno a) { }
+void salvarAluno(Aluno a) { }
+void notificarAluno(Aluno a) { }
+
+// 3. EVITE NÚMEROS MÁGICOS — use constantes
+// RUIM:
+if (nota >= 7.0) return "Aprovado"; // de onde vem 7.0?
+
+// BOM:
+static final double NOTA_APROVACAO = 7.0;
+if (nota >= NOTA_APROVACAO) return "Aprovado";
+
+// 4. FAIL FAST — valide cedo, falhe cedo
+void sacar(double valor) {
+    // Valide no início, antes de qualquer lógica
+    if (valor <= 0) throw new IllegalArgumentException("Valor invalido");
+    if (valor > saldo) throw new SaldoInsuficienteException(saldo, valor);
+    // Só agora executa a lógica principal
+    saldo -= valor;
+}
+
+// 5. COMENTÁRIOS EXPLICAM O "POR QUE", NÃO O "O QUE"
+// RUIM:
+saldo += valor; // adiciona valor ao saldo (o código já diz isso!)
+
+// BOM:
+// Juros compostos: reinveste o rendimento mensalmente
+saldo += saldo * taxaJurosMensal;

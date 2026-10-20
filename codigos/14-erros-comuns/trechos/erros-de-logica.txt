@@ -1,0 +1,29 @@
+// ATENCAO: estes trechos são apenas ilustrativos e podem conter erros de propósito.
+// Eles não são um programa completo e não devem ser compilados como estão.
+
+// 1. = em vez de == na comparação
+if (nota = 7.0) { }    // ERRADO: atribuição, não comparação
+if (nota == 7.0) { }   // CORRETO
+
+// 2. == em vez de .equals() para String
+String s = "Maria";
+if (s == "Maria") { }      // ERRADO: compara referência
+if (s.equals("Maria")) { } // CORRETO: compara conteúdo
+
+// 3. Lógica invertida no if/else
+if (nota < 7.0) {
+    return "Aprovado";  // ERRADO: abaixo de 7 não e aprovado!
+}
+
+// 4. Off-by-one (erro de um a mais ou a menos)
+for (int i = 0; i <= lista.size(); i++) { // ERRADO: i vai até size(), fora do índice!
+    lista.get(i);
+}
+for (int i = 0; i < lista.size(); i++) {  // CORRETO
+    lista.get(i);
+}
+
+// 5. Divisão inteira inesperada
+int total = 10, quantidade = 3;
+double media = total / quantidade;     // resultado: 3.0 (não 3.33!)
+double media = (double) total / quantidade; // resultado: 3.33

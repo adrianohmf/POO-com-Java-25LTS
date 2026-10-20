@@ -1,0 +1,8 @@
+// ATENCAO: estes trechos são apenas ilustrativos e podem conter erros de propósito.
+// Eles não são um programa completo e não devem ser compilados como estão.
+
+class Cachorro extends Animal {
+    @Override
+    void fazersom() { }   // ERRO de compilação: nao existe fazersom() em Animal
+    // O compilador acusa na hora, porque o nome nao bate com nenhum metodo herdado
+}

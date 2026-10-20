@@ -1,0 +1,31 @@
+// ATENCAO: estes trechos são apenas ilustrativos e podem conter erros de propósito.
+// Eles não são um programa completo e não devem ser compilados como estão.
+
+// ERRO 1: construtor com tipo de retorno
+void Aluno(String nome) { ... }  // ERRADO: "void" não pode!
+Aluno(String nome) { ... }       // CORRETO
+
+// ERRO 2: nome do construtor diferente da classe
+class Aluno {
+    aluno(String nome) { ... }   // ERRADO: deve ser "Aluno" com A maiúsculo
+}
+
+// ERRO 3: esquecer o super() em subclasse
+class Aluno extends Pessoa {
+    Aluno(String nome) {
+        // super() não chamado -> ERRO se Pessoa não tem construtor padrão
+        this.nome = nome;
+    }
+}
+// CORRETO:
+class Aluno extends Pessoa {
+    Aluno(String nome, int idade) {
+        super(nome, idade); // PRIMEIRO, sempre
+    }
+}
+
+// ERRO 4: chamar this() depois de outras instrucoes
+Aluno(String nome, int idade, String curso) {
+    IO.println("Criando aluno..."); // ERRADO: this() deve ser a 1a instrução
+    this(nome, idade);
+}

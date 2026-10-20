@@ -1,0 +1,23 @@
+// ATENCAO: estes trechos são apenas ilustrativos e podem conter erros de propósito.
+// Eles não são um programa completo e não devem ser compilados como estão.
+
+// ERRO 1: esquecer o "new"
+Aluno a = Aluno();         // ERRADO
+Aluno a = new Aluno();     // CORRETO
+
+// ERRO 2: nome da classe diferente do arquivo
+// Arquivo se chama "aluno.java" (minúsculo)
+// Classe se chama "Aluno" (maiúsculo)
+// -> ERRO: o nome do arquivo deve ser idêntico ao da classe pública
+
+// ERRO 3: acessar atributo sem criar o objeto
+Aluno a;
+a.nome = "Maria";          // ERRADO: NullPointerException!
+Aluno a = new Aluno();
+a.nome = "Maria";          // CORRETO
+
+// ERRO 4: comparar Strings com ==
+String s1 = "Maria";
+String s2 = "Maria";
+if (s1 == s2)              // ERRADO: compara referências de memória
+if (s1.equals(s2))         // CORRETO: compara o conteúdo
