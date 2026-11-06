@@ -5,28 +5,54 @@
 > **Códigos deste capítulo:** [codigos/10-colecoes-e-estruturas-de-dados](../../codigos/10-colecoes-e-estruturas-de-dados/)
 
 > **O que você vai aprender neste capítulo:**
-> Usar `ArrayList` para listas dinamicas de objetos, usar `HashMap` para associar chaves a valores, percorrer coleções com for-each e aplicar métodos úteis como `sort()`, `contains()` e `remove()`.
+> Usar `ArrayList` para listas dinâmicas de objetos, usar `HashMap` para associar chaves a valores, usar `HashSet` para conjuntos sem repetição, percorrer coleções com o laço for each, remover elementos com segurança e aplicar métodos úteis como `sort()`, `contains()`, `remove()` e `getOrDefault()`.
 
-Até agora trabalhamos com um ou poucos objetos por vez. Mas sistemas reais lidam com centenas ou milhares de objetos: uma escola tem centenas de alunos, uma loja tem milhares de produtos, um banco tem milhoes de contas.
+Até agora trabalhamos com um ou poucos objetos por vez. Mas sistemas reais lidam com centenas ou milhares de objetos: uma escola tem centenas de alunos, uma loja tem milhares de produtos, um banco tem milhões de contas.
 
-Arrays resolvem parte do problema, mas tem uma limitacao critica: o tamanho e fixo. Se você criar um array de 100 alunos e precisar do 101, o array não cresce.
+Arrays resolvem parte do problema, mas têm uma limitação crítica: o tamanho é fixo. Se você criar um array de 100 alunos e precisar do 101º, o array não cresce. Para "crescer", seria preciso criar um array maior e copiar tudo manualmente, o que dá trabalho e abre espaço para erros.
 
-As **coleções** do Java resolvem isso. O `ArrayList` e uma lista que cresce conforme necessário, com métodos prontos para adicionar, remover, buscar e ordenar. O `HashMap` associa uma chave a um valor — como um dicionario — permitindo buscas instantaneas por nome, CPF, código ou qualquer outro identificador.
+As **coleções** do Java resolvem isso. O `ArrayList` é uma lista que cresce conforme necessário, com métodos prontos para adicionar, remover, buscar e ordenar. O `HashMap` associa uma chave a um valor, como um dicionário, permitindo buscas rápidas por nome, CPF, código ou qualquer outro identificador.
 
-Dominar coleções e essencial para qualquer projeto Java real. O projeto final deste guia usa `ArrayList` para armazenar alunos e notas, exatamente como um sistema acadêmico real faria.
+Dominar coleções é essencial para qualquer projeto Java real. O projeto final deste guia usa `ArrayList` para armazenar alunos e notas, exatamente como um sistema acadêmico real faria.
 
+## Visão geral: o framework de coleções
+
+Todas as coleções do Java ficam no pacote `java.util` e fazem parte do chamado **Java Collections Framework**. Ele é organizado em torno de três ideias principais, cada uma representada por uma interface:
+
+* **`List`**: sequência ordenada de elementos, com posições (índices) e que aceita repetidos. Implementação mais usada: `ArrayList`.
+* **`Set`**: conjunto de elementos sem repetição. Implementação mais usada: `HashSet`.
+* **`Map`**: pares de chave e valor, com chaves únicas. Implementação mais usada: `HashMap`.
+
+Neste capítulo você vai conhecer uma implementação de cada uma. Como vimos no capítulo 9, programar pensando na interface traz flexibilidade, e por isso é comum declarar `List<String> nomes = new ArrayList<>();`. Nos exemplos abaixo usamos `var` para manter o código curto, mas lembre que o tipo real da variável continua sendo `ArrayList`.
 
 ## 10.1 Array vs ArrayList
 
+Compare os dois lado a lado:
+
 ```
 Array                           ArrayList
------                           ---------
-Tamanho fixo                    Tamanho dinamico
+                                
+Tamanho fixo                    Tamanho dinâmico
 int[] nums = new int[5];        var lista = new ArrayList<Integer>();
 nums[0] = 10;                   lista.add(10);
 Acesso: nums[0]                 Acesso: lista.get(0)
-Sem metodos uteis               sort(), contains(), remove()...
+Tamanho: nums.length            Tamanho: lista.size()
+Aceita primitivos (int)         Só aceita objetos (Integer)
+Sem métodos úteis               sort(), contains(), remove()...
 ```
+
+Repare em dois detalhes que costumam confundir iniciantes:
+
+1. **Tamanho:** no array é o atributo `length` (sem parênteses). No `ArrayList` é o método `size()` (com parênteses).
+2. **Tipos:** o `ArrayList` só trabalha com objetos. Por isso, para guardar números inteiros usamos `Integer`, para decimais `Double`, para booleanos `Boolean`, e assim por diante. Essas classes são chamadas de **wrappers** (empacotadores) dos tipos primitivos. O Java converte automaticamente entre `int` e `Integer`, um recurso chamado **autoboxing**.
+
+### Lendo a sintaxe `ArrayList<String>`
+
+Os sinais `<` e `>` indicam o **tipo genérico** da lista, ou seja, o tipo dos elementos que ela guarda. `ArrayList<String>` é uma lista de textos, `ArrayList<Aluno>` é uma lista de objetos `Aluno`. Isso garante segurança: o compilador recusa, por exemplo, adicionar um número numa lista de `String`.
+
+Na expressão `var nomes = new ArrayList<String>();`, a palavra `var` pede ao compilador que descubra o tipo da variável pelo lado direito. É o mesmo que escrever `ArrayList<String> nomes = new ArrayList<String>();`, só que mais curto.
+
+### Exemplo completo, passo a passo
 
 ```java
 // Arquivo: UsandoArrayList.java
@@ -55,7 +81,7 @@ void main() {
 
     // Percorrendo
     for (String nome : nomes) {
-        IO.println("  - " + nome);
+        IO.println("  * " + nome);
     }
 
     // Ordenando
@@ -84,7 +110,158 @@ class Aluno {
 }
 ```
 
+**Explicação do código:**
+
+* `import java.util.ArrayList;` e `import java.util.Collections;` trazem as classes que vamos usar. Sem o `import`, o compilador não reconhece o nome `ArrayList`.
+* `nomes.add("Maria");` coloca o elemento no **final** da lista. A lista começa vazia e cresce a cada `add`. Após as quatro chamadas, ela contém `[Maria, Joao, Ana, Pedro]`, nessa ordem.
+* `IO.println("Lista: " + nomes);` funciona porque o `ArrayList` sabe se transformar em texto. A saída é `Lista: [Maria, Joao, Ana, Pedro]`.
+* `nomes.size()` devolve a quantidade de elementos (4). `nomes.get(0)` devolve o elemento da posição 0, ou seja, `Maria`. **Os índices começam em 0**, como nos arrays.
+* `nomes.contains("Ana")` percorre a lista e devolve `true` se encontrar o elemento. Para comparar, ele usa o método `equals()`.
+* `nomes.remove("Joao")` remove o **primeiro elemento igual** ao valor informado. A lista passa a ser `[Maria, Ana, Pedro]`.
+* `nomes.remove(0)` remove o elemento da **posição** 0 (Maria). A lista passa a ser `[Ana, Pedro]`. Veja que o mesmo método `remove` tem dois comportamentos, dependendo de receber um `String` ou um `int`. Esse detalhe gera uma pegadinha logo adiante.
+* No laço `for (String nome : nomes)` lemos: "para cada `nome` em `nomes`". A cada volta, a variável `nome` recebe o próximo elemento. Não precisamos controlar índice nem se preocupar com o tamanho da lista.
+* `Collections.sort(nomes)` ordena a lista alterando-a diretamente. Para `String`, a ordem é alfabética. Resultado: `Ordenados: [Ana, Pedro]`.
+* Na parte final, criamos uma lista de objetos `Aluno`. O princípio é o mesmo, só muda o tipo entre `<>`. No for each, `Aluno a` representa cada aluno e chamamos `a.apresentar()` nele.
+
+**Saída esperada do programa:**
+
+```
+Lista: [Maria, Joao, Ana, Pedro]
+Tamanho: 4
+Primeiro: Maria
+Tem Ana? true
+  * Ana
+  * Pedro
+Ordenados: [Ana, Pedro]
+Total: 2
+  Maria (20a) — Informatica
+  Joao (22a) — Sistemas
+```
+
+### Outros métodos úteis do ArrayList
+
+```java
+void main() {
+    var frutas = new ArrayList<String>();
+
+    frutas.add("Manga");
+    frutas.add("Caju");
+    frutas.add(1, "Acerola");        // insere na posição 1: [Manga, Acerola, Caju]
+    frutas.set(0, "Goiaba");         // substitui a posição 0: [Goiaba, Acerola, Caju]
+
+    IO.println(frutas.indexOf("Caju"));   // 2 (posição); devolve -1 se não achar
+    IO.println(frutas.isEmpty());         // false
+    IO.println(frutas.size());            // 3
+
+    var extras = new ArrayList<String>();
+    extras.add("Umbu");
+    extras.add("Cajá");
+    frutas.addAll(extras);                // junta as duas listas
+
+    IO.println(frutas);                   // [Goiaba, Acerola, Caju, Umbu, Cajá]
+
+    frutas.clear();                       // esvazia a lista
+    IO.println(frutas.isEmpty());         // true
+}
+```
+
+Resumo dos métodos mais usados:
+
+* `add(e)`: adiciona no final.
+* `add(i, e)`: insere na posição `i`, empurrando os demais para frente.
+* `get(i)`: lê o elemento da posição `i`.
+* `set(i, e)`: troca o elemento da posição `i` por `e`.
+* `remove(i)` ou `remove(obj)`: remove por posição ou por valor.
+* `indexOf(obj)`: posição da primeira ocorrência, ou -1 se não existir.
+* `contains(obj)`: informa se o elemento existe na lista.
+* `size()`, `isEmpty()`, `clear()`: tamanho, teste de lista vazia e limpeza.
+* `addAll(outra)`: adiciona todos os elementos de outra coleção.
+
+### A pegadinha do `remove` com `ArrayList<Integer>`
+
+```java
+void main() {
+    var numeros = new ArrayList<Integer>();
+    numeros.add(10);
+    numeros.add(20);
+    numeros.add(30);
+
+    numeros.remove(1);                    // remove a POSIÇÃO 1 (o valor 20)
+    IO.println(numeros);                  // [10, 30]
+
+    numeros.remove(Integer.valueOf(30));  // remove o VALOR 30
+    IO.println(numeros);                  // [10]
+}
+```
+
+Quando a lista é de `Integer`, `remove(1)` é interpretado como "remover a posição 1", e não "remover o valor 1". Para remover por valor, é preciso informar um objeto, como em `Integer.valueOf(30)`.
+
+### Ordenando com critérios próprios
+
+`Collections.sort(lista)` só funciona sozinho para tipos que o Java já sabe comparar (`String`, `Integer`, `Double`...). Para ordenar objetos `Aluno`, precisamos dizer **por qual critério**. Isso é feito com um `Comparator`:
+
+```java
+import java.util.ArrayList;
+import java.util.Comparator;
+
+void main() {
+    var alunos = new ArrayList<Aluno>();
+    alunos.add(new Aluno("Maria", 20, "Informatica"));
+    alunos.add(new Aluno("Joao", 22, "Sistemas"));
+    alunos.add(new Aluno("Ana", 19, "Redes"));
+
+    // Ordenar pelo nome (ordem alfabética)
+    alunos.sort(Comparator.comparing(a -> a.nome));
+    for (Aluno a : alunos) a.apresentar();
+
+    // Ordenar pela idade (do mais novo ao mais velho)
+    alunos.sort(Comparator.comparingInt(a -> a.idade));
+    for (Aluno a : alunos) a.apresentar();
+}
+```
+
+O trecho `a -> a.nome` é uma **expressão lambda**. Ela significa: "dado um aluno `a`, use `a.nome` como critério de comparação". Não é preciso dominar lambdas agora; basta copiar o padrão `Comparator.comparing(a -> a.atributo)` e trocar o atributo desejado. Use `comparingInt` quando o atributo for `int`.
+
+### Buscar objetos com `contains` e `equals`
+
+Com `String`, `contains` funciona direto porque a classe `String` já sabe comparar conteúdos. Com objetos criados por você, o Java compara **referências** (se são o mesmo objeto na memória), a menos que a classe sobrescreva `equals()`:
+
+```java
+var a1 = new Aluno("Maria", 20, "Informatica");
+var a2 = new Aluno("Maria", 20, "Informatica");
+
+var lista = new ArrayList<Aluno>();
+lista.add(a1);
+
+IO.println(lista.contains(a1));  // true: é o mesmo objeto
+IO.println(lista.contains(a2));  // false: objeto diferente, mesmo com dados iguais
+```
+
+Para a busca por nome ou por outro atributo, o caminho mais simples neste estágio do curso é percorrer a lista com for each e comparar o atributo desejado:
+
+```java
+Aluno buscarPorNome(ArrayList<Aluno> alunos, String nome) {
+    for (Aluno a : alunos) {
+        if (a.nome.equals(nome)) {
+            return a;
+        }
+    }
+    return null; // não encontrou
+}
+```
+
 ## 10.2 HashMap
+
+Uma lista localiza elementos pela **posição**. Mas, muitas vezes, queremos localizar pelo **significado**: "qual a nota da Maria?", "qual o produto de código 4021?". Para isso existe o `HashMap`, que guarda **pares de chave e valor**.
+
+Pense numa agenda de contatos: o nome é a chave, o telefone é o valor. Você não procura "o contato da posição 37", e sim "o contato Ana".
+
+Regras importantes:
+
+* Cada **chave é única**. Se você inserir uma chave que já existe, o valor antigo é substituído.
+* Os **valores podem se repetir**. Duas pessoas podem ter a mesma nota.
+* A busca por chave é muito rápida, mesmo com milhões de elementos, porque o `HashMap` usa um cálculo chamado *hash* para saber onde procurar, em vez de percorrer tudo.
+* A **ordem de percorrimento não é garantida**. Não conte com os elementos aparecendo na ordem em que foram inseridos.
 
 ```java
 // Arquivo: UsandoHashMap.java
@@ -117,39 +294,198 @@ void main() {
 }
 ```
 
-## Erros comuns — Tema 10
+**Explicação do código:**
+
+* `new HashMap<String, Double>()` declara um mapa em que a **chave é `String`** (nome do aluno) e o **valor é `Double`** (nota). Há dois tipos entre `<>`, na ordem chave e valor. Lembre que, como nas listas, não se usa `double` primitivo, e sim o wrapper `Double`.
+* `notas.put("Maria", 8.5)` insere o par. Se a chave `Maria` já existisse, o valor seria trocado.
+* `notas.get("Maria")` devolve o valor associado, no caso `8.5`. Se a chave não existir, devolve `null`.
+* `notas.containsKey("Carlos")` testa se a chave existe. Como Carlos não foi inserido, o resultado é `false`.
+* `notas.put("Joao", 7.5)` mostra que `put` com chave existente **atualiza** o valor. Joao passa de 7.0 para 7.5 e continua havendo um único Joao no mapa.
+* `notas.entrySet()` devolve o conjunto de **entradas** (cada par chave e valor). No for each, a variável `entry` representa um par, e usamos `entry.getKey()` para a chave e `entry.getValue()` para o valor.
+* A expressão `entry.getValue() >= 7.0 ? "Aprovado" : "Reprovado"` é o operador ternário: se a condição for verdadeira, resulta no primeiro texto, senão no segundo.
+* `notas.remove("Pedro")` remove o par inteiro cuja chave é `Pedro`. Depois disso, `size()` devolve 3.
+
+**Saída esperada** (a ordem das linhas do boletim pode variar de uma execução para outra, é normal no `HashMap`):
+
+```
+Nota da Maria: 8.5
+Tem Carlos? false
+Boletim:
+  Maria: 8.5 — Aprovado
+  Joao: 7.5 — Aprovado
+  Ana: 9.5 — Aprovado
+  Pedro: 6.0 — Reprovado
+Total: 3
+```
+
+### Outros métodos úteis do HashMap
+
+```java
+void main() {
+    var estoque = new HashMap<String, Integer>();
+    estoque.put("Rapadura", 30);
+    estoque.put("Cuscuz", 12);
+
+    // getOrDefault: evita null quando a chave não existe
+    int qtd = estoque.getOrDefault("Tapioca", 0);
+    IO.println(qtd);                          // 0
+
+    // putIfAbsent: só insere se a chave ainda não existir
+    estoque.putIfAbsent("Rapadura", 99);      // ignorado, já existe (continua 30)
+    estoque.putIfAbsent("Beiju", 8);          // inserido
+
+    // Percorrer só as chaves ou só os valores
+    for (String produto : estoque.keySet()) {
+        IO.println("Produto: " + produto);
+    }
+    for (int quantidade : estoque.values()) {
+        IO.println("Quantidade: " + quantidade);
+    }
+
+    // containsValue: procura entre os valores
+    IO.println(estoque.containsValue(12));    // true
+}
+```
+
+* `getOrDefault(chave, padrao)`: devolve o valor da chave ou o padrão informado se ela não existir. Evita o `null`.
+* `putIfAbsent(chave, valor)`: insere apenas se a chave ainda não existir.
+* `keySet()`: todas as chaves. `values()`: todos os valores. `entrySet()`: todos os pares.
+* `containsKey(chave)` e `containsValue(valor)`: testam a existência de uma chave ou de um valor. A busca por chave é rápida; a busca por valor percorre o mapa inteiro.
+
+### Padrão clássico: contar ocorrências
+
+Um uso muito comum do `HashMap` é contar quantas vezes algo aparece:
+
+```java
+void main() {
+    var tecnicas = new ArrayList<String>();
+    tecnicas.add("Renda");
+    tecnicas.add("Cerâmica");
+    tecnicas.add("Renda");
+    tecnicas.add("Xilogravura");
+    tecnicas.add("Renda");
+
+    var contagem = new HashMap<String, Integer>();
+
+    for (String t : tecnicas) {
+        contagem.put(t, contagem.getOrDefault(t, 0) + 1);
+    }
+
+    IO.println(contagem);  // {Renda=3, Cerâmica=1, Xilogravura=1}
+}
+```
+
+Para cada técnica, lemos a contagem atual (ou 0, se ainda não existir), somamos 1 e gravamos de volta. É um padrão que aparece em análise de textos, estatísticas e relatórios.
+
+### Mapa com lista como valor
+
+O valor de um mapa pode ser qualquer tipo, inclusive outra coleção. Isso permite agrupar elementos sob uma mesma chave, como alunos por curso ou artesãos por estado (é o que pede o Exercício 10.2):
+
+```java
+void main() {
+    var porEstado = new HashMap<String, ArrayList<String>>();
+
+    porEstado.put("Pernambuco", new ArrayList<String>());
+    porEstado.get("Pernambuco").add("Maria");
+    porEstado.get("Pernambuco").add("Joao");
+
+    porEstado.put("Ceara", new ArrayList<String>());
+    porEstado.get("Ceara").add("Ana");
+
+    IO.println(porEstado.get("Pernambuco"));  // [Maria, Joao]
+}
+```
+
+Atenção: antes de usar `porEstado.get("Pernambuco").add(...)`, a lista daquele estado precisa existir. Caso contrário, `get` devolve `null` e o programa lança `NullPointerException`.
+
+### Variações do HashMap
+
+* **`HashMap`**: não garante ordem. É o mais rápido e o mais usado.
+* **`LinkedHashMap`**: mantém a **ordem de inserção**. Útil quando a ordem de exibição importa.
+* **`TreeMap`**: mantém as chaves **ordenadas** (alfabética ou numericamente).
+
+Para trocar, basta mudar a classe no `new`, mantendo os mesmos métodos: `var notas = new TreeMap<String, Double>();`.
+
+## 10.3 HashSet: conjuntos sem repetição
+
+Quando você precisa guardar elementos **sem permitir duplicatas**, use um `HashSet`. Ele funciona como um conjunto matemático:
+
+```java
+import java.util.HashSet;
+
+void main() {
+    var cidades = new HashSet<String>();
+
+    IO.println(cidades.add("Recife"));    // true: foi inserido
+    IO.println(cidades.add("Olinda"));    // true
+    IO.println(cidades.add("Recife"));    // false: já existia, ignorado
+
+    IO.println("Total: " + cidades.size());          // 2
+    IO.println("Tem Olinda? " + cidades.contains("Olinda"));  // true
+}
+```
+
+O método `add` devolve `true` se o elemento foi inserido e `false` se ele já existia. Assim como no `HashMap`, a ordem dos elementos não é garantida. Um uso prático é **remover duplicados** de uma lista: `var unicos = new HashSet<String>(listaComRepetidos);`.
+
+## 10.4 Qual coleção escolher?
+
+* Preciso de uma sequência com ordem e posição, aceitando repetidos: `ArrayList`.
+* Preciso buscar rapidamente um valor a partir de um identificador (nome, CPF, código): `HashMap`.
+* Preciso garantir que não haja repetidos: `HashSet`.
+* Tenho um tamanho fixo e conhecido, e quero desempenho máximo ou uso tipos primitivos: array.
+
+## Erros comuns do Tema 10
 
 ```java
 // ERRO 1: usar tipo primitivo no ArrayList (use o wrapper)
 ArrayList<int> lista = new ArrayList<>();     // ERRADO
 ArrayList<Integer> lista = new ArrayList<>(); // CORRETO
 
-// ERRO 2: ConcurrentModificationException — modificar lista enquanto percorre
+// ERRO 2: ConcurrentModificationException, modificar a lista enquanto percorre
 for (String nome : lista) {
     lista.remove(nome); // ERRO em tempo de execução!
 }
-// Use iterator ou colete para remover depois:
+// Use removeIf, que faz a remoção com segurança:
 lista.removeIf(nome -> nome.startsWith("J")); // CORRETO
 
 // ERRO 3: get() fora do índice
 var lista = new ArrayList<String>();
 lista.add("Maria");
-lista.get(1); // ERRO: IndexOutOfBoundsException! Só existe índice 0
+lista.get(1); // ERRO: IndexOutOfBoundsException! Só existe o índice 0
 
-// ERRO 4: usar == para comparar String em HashMap
-notas.containsKey("Maria");  // CORRETO: usa equals internamente
-notas.get("Maria") == 8.5;   // ERRADO para Double: use .equals()
-notas.get("Maria").equals(8.5); // CORRETO
+// ERRO 4: comparar objetos Double com == em vez de equals
+Double a = notas.get("Maria");
+Double b = notas.get("Ana");
+a == b;        // ERRADO: compara referências, não valores
+a.equals(b);   // CORRETO: compara os valores
+
+// ERRO 5: usar o retorno de get() sem verificar se a chave existe
+double nota = notas.get("Carlos"); // ERRO: NullPointerException (get devolveu null)
+double nota = notas.getOrDefault("Carlos", 0.0); // CORRETO
 ```
 
-## Exercícios — Tema 10
+**Entendendo cada erro:**
 
-> **Exercício 10.1** — Sistema de lista de presença com `ArrayList<Aluno>`: adicionar, remover, listar, buscar por curso.
->
-> **Exercício 10.2** — `HashMap<String, ArrayList<String>>` com catalogo de artesaos nordestinos por estado.
->
-> **Exercício 10.3 (Projeto progressivo)** — Substitua os arrays de `Artesao` por `ArrayList`. Adicione métodos para listar artesaos por técnica e calcular o faturamento total de todos os artesaos.
+1. **Primitivo na lista:** os tipos genéricos exigem classes. Troque `int` por `Integer`, `double` por `Double`, `boolean` por `Boolean`, `char` por `Character`.
+2. **Modificar durante o percorrimento:** o Java detecta que a lista mudou no meio do for each e interrompe o programa com `ConcurrentModificationException`. A solução mais simples é `removeIf`, que recebe uma condição (lambda) e remove todos os elementos que a satisfazem. Outra alternativa é usar um `Iterator` e chamar `iterator.remove()`.
+3. **Índice inválido:** numa lista de tamanho `n`, os índices válidos vão de 0 até `n` menos 1. Chamar `get` com valor fora desse intervalo lança `IndexOutOfBoundsException`. Antes de acessar, confira com `size()`.
+4. **`==` entre objetos:** com objetos, `==` testa se são **o mesmo objeto na memória**, e não se têm o mesmo conteúdo. Para `Double`, `Integer` e `String`, compare sempre com `equals()`. Observação: comparar um objeto `Double` com um literal primitivo, como `notas.get("Maria") == 8.5`, funciona, porque o Java converte o objeto automaticamente para `double` antes de comparar. O problema aparece quando os **dois lados** são objetos.
+5. **Chave inexistente:** `get` devolve `null` quando a chave não existe, e converter `null` para `double` causa `NullPointerException`. Use `containsKey` antes ou, melhor, `getOrDefault`.
 
----
+## Exercícios do Tema 10
+
+> **Exercício 10.1** Sistema de lista de presença com `ArrayList<Aluno>`: adicionar, remover, listar, buscar por curso.
+>
+> *Dicas:* crie um menu com `switch` (capítulo anterior) com as opções adicionar, remover, listar e buscar. Para remover, peça o nome e percorra a lista procurando o aluno; use `removeIf(a -> a.nome.equals(nome))` para remover com segurança. Para buscar por curso, percorra a lista e imprima apenas os alunos cujo `curso` seja igual ao informado.
+>
+> **Exercício 10.2** `HashMap<String, ArrayList<String>>` com catálogo de artesãos nordestinos por estado.
+>
+> *Dicas:* a chave é o estado e o valor é a lista de nomes de artesãos daquele estado. Ao cadastrar um artesão, verifique com `containsKey` se o estado já existe; se não existir, crie a lista antes (`put(estado, new ArrayList<String>())`) e depois adicione o nome. Para exibir, percorra o mapa com `entrySet()` e imprima o estado seguido da lista de artesãos.
+>
+> **Exercício 10.3 (Projeto progressivo)** Substitua os arrays de `Artesao` por `ArrayList`. Adicione métodos para listar artesãos por técnica e calcular o faturamento total de todos os artesãos.
+>
+> *Dicas:* troque o array `Artesao[]` por `ArrayList<Artesao>` e os acessos `arr[i]` por `lista.get(i)`, ou melhor, use for each. Para listar por técnica, percorra a lista comparando `a.tecnica.equals(tecnica)`. Para o faturamento total, declare uma variável acumuladora `double total = 0;` antes do laço e some o faturamento de cada artesão a cada volta.
+>
+> **Exercício extra (desafio)** Usando o padrão de contagem com `HashMap<String, Integer>`, conte quantos artesãos existem por técnica e imprima o resultado. Depois, descubra qual técnica tem mais artesãos.
 
 [Índice](../../README.md) | [← Anterior: 9. Classes Abstratas e Interfaces](../09-classes-abstratas-e-interfaces/README.md) | [Próximo: 11. Tratamento de Exceções →](../11-tratamento-de-excecoes/README.md)
