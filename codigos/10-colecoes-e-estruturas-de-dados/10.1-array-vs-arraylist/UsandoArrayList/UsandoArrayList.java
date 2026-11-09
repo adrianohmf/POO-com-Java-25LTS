@@ -24,7 +24,7 @@ void main() {
 
     // Percorrendo
     for (String nome : nomes) {
-        IO.println("  - " + nome);
+        IO.println("  * " + nome);
     }
 
     // Ordenando

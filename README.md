@@ -84,6 +84,8 @@ com teoria, diagramas, exemplos comentados, erros comuns e exercícios práticos
 
 - [10.1 Array vs ArrayList](capitulos/10-colecoes-e-estruturas-de-dados/README.md#101-array-vs-arraylist)
 - [10.2 HashMap](capitulos/10-colecoes-e-estruturas-de-dados/README.md#102-hashmap)
+- [10.3 HashSet: conjuntos sem repetição](capitulos/10-colecoes-e-estruturas-de-dados/README.md#103-hashset-conjuntos-sem-repetição)
+- [10.4 Qual coleção escolher?](capitulos/10-colecoes-e-estruturas-de-dados/README.md#104-qual-coleção-escolher)
 
 ### [11. Tratamento de Exceções](capitulos/11-tratamento-de-excecoes/README.md)
 
