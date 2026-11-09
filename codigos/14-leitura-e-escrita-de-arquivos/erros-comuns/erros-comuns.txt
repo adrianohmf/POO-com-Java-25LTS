@@ -1,0 +1,44 @@
+// Trechos de erros comuns do capítulo 14 (não são programas completos)
+
+// ERRO 1: ler um arquivo que não existe
+Files.readAllLines(Path.of("saida", "nao-existe.txt"));
+// Mensagem: java.nio.file.NoSuchFileException: saida/nao-existe.txt
+// CORRETO: verifique com Files.exists(caminho) ou trate a exceção com try-catch
+
+// ERRO 2: esquecer de tratar a IOException
+void main() {
+    String texto = Files.readString(Path.of("a.txt"));
+}
+// Mensagem: unreported exception IOException; must be caught or declared to be thrown
+// CORRETO: void main() throws IOException   ou   envolver em try-catch
+
+// ERRO 3: gravar em uma pasta que não existe
+Files.writeString(Path.of("saida", "notas.txt"), "Maria;8.5");
+// Mensagem: java.nio.file.NoSuchFileException: saida/notas.txt
+// CORRETO: Files.createDirectories(Path.of("saida")); antes de gravar
+
+// ERRO 4: apagar o conteúdo ao querer acrescentar
+Files.writeString(arquivo, "novo texto");                                    // substitui tudo
+Files.writeString(arquivo, "novo texto", StandardOpenOption.APPEND);         // acrescenta
+
+// ERRO 5: esquecer o \n (ou newLine) e juntar tudo em uma linha só
+Files.writeString(arquivo, "Maria;8.5");
+Files.writeString(arquivo, "Joao;7.0", StandardOpenOption.APPEND);
+// O arquivo fica com: Maria;8.5Joao;7.0
+// CORRETO: "Maria;8.5\n"  ou  usar Files.write(arquivo, List.of(...))
+
+// ERRO 6: não fechar o arquivo
+BufferedWriter w = Files.newBufferedWriter(Path.of("log.txt"));
+w.write("texto");
+// Sem close(), parte do texto pode nem chegar ao arquivo
+// CORRETO: try (BufferedWriter w = Files.newBufferedWriter(...)) { ... }
+
+// ERRO 7: linha mal formatada ao ler CSV
+String[] partes = "Maria".split(";");
+Integer.parseInt(partes[1]);
+// Mensagem: ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+// CORRETO: confira partes.length antes de usar os índices
+
+// ERRO 8: caminho relativo apontando para o lugar errado
+// Path.of("dados/livros.csv") é relativo à pasta onde o programa foi EXECUTADO,
+// não à pasta do arquivo .java. Use Path.of("x").toAbsolutePath() para conferir.

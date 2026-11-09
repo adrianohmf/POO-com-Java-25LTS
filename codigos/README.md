@@ -55,6 +55,14 @@ Pastas especiais:
 | 1.7 Tipos de dados em Java | [`ScannerSemImport`](01-introducao-java-jdk25/1.7-tipos-de-dados-em-java/ScannerSemImport/) | [`ScannerSemImport.java`](01-introducao-java-jdk25/1.7-tipos-de-dados-em-java/ScannerSemImport/ScannerSemImport.java) | (nenhuma) |
 | 1.7 Tipos de dados em Java | [`Strings`](01-introducao-java-jdk25/1.7-tipos-de-dados-em-java/Strings/) | [`Strings.java`](01-introducao-java-jdk25/1.7-tipos-de-dados-em-java/Strings/Strings.java) | (nenhuma) |
 | 1.7 Tipos de dados em Java | [`TiposDados`](01-introducao-java-jdk25/1.7-tipos-de-dados-em-java/TiposDados/) | [`TiposDados.java`](01-introducao-java-jdk25/1.7-tipos-de-dados-em-java/TiposDados/TiposDados.java) | (nenhuma) |
+| 1.8 Estruturas de controle | [`Condicionais`](01-introducao-java-jdk25/1.8-estruturas-de-controle/Condicionais/) | [`Condicionais.java`](01-introducao-java-jdk25/1.8-estruturas-de-controle/Condicionais/Condicionais.java) | (nenhuma) |
+| 1.8 Estruturas de controle | [`EscolhaSwitch`](01-introducao-java-jdk25/1.8-estruturas-de-controle/EscolhaSwitch/) | [`EscolhaSwitch.java`](01-introducao-java-jdk25/1.8-estruturas-de-controle/EscolhaSwitch/EscolhaSwitch.java) | (nenhuma) |
+| 1.8 Estruturas de controle | [`Lacos`](01-introducao-java-jdk25/1.8-estruturas-de-controle/Lacos/) | [`Lacos.java`](01-introducao-java-jdk25/1.8-estruturas-de-controle/Lacos/Lacos.java) | (nenhuma) |
+| 1.9 Arrays | [`ArrayDeObjetos`](01-introducao-java-jdk25/1.9-arrays/ArrayDeObjetos/) | [`ArrayDeObjetos.java`](01-introducao-java-jdk25/1.9-arrays/ArrayDeObjetos/ArrayDeObjetos.java) | [`AlunoNota.java`](01-introducao-java-jdk25/1.9-arrays/ArrayDeObjetos/AlunoNota.java) |
+| 1.9 Arrays | [`ArraysBasico`](01-introducao-java-jdk25/1.9-arrays/ArraysBasico/) | [`ArraysBasico.java`](01-introducao-java-jdk25/1.9-arrays/ArraysBasico/ArraysBasico.java) | (nenhuma) |
+| 1.9 Arrays | [`Matrizes`](01-introducao-java-jdk25/1.9-arrays/Matrizes/) | [`Matrizes.java`](01-introducao-java-jdk25/1.9-arrays/Matrizes/Matrizes.java) | (nenhuma) |
+
+Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](01-introducao-java-jdk25/erros-comuns/erros-comuns.txt)
 
 ### [3. Classes e Objetos](03-classes-e-objetos/)
 
@@ -145,16 +153,52 @@ Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](10-colecoes-e-estruturas-de-
 
 Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](11-tratamento-de-excecoes/erros-comuns/erros-comuns.txt)
 
-### [12. Projeto Final — Aplicação Completa](12-projeto-final/)
+### [12. Pacotes e Imports](12-pacotes-e-imports/)
 
 | Seção | Exemplo | Programa principal | Classes |
 |---|---|---|---|
-| (sem seção numerada) | [`SistemaAcademico`](12-projeto-final/SistemaAcademico/) | [`SistemaAcademico.java`](12-projeto-final/SistemaAcademico/SistemaAcademico.java) | [`Aluno.java`](12-projeto-final/SistemaAcademico/Aluno.java), [`AlunoNaoEncontradoException.java`](12-projeto-final/SistemaAcademico/AlunoNaoEncontradoException.java), [`NotaInvalidaException.java`](12-projeto-final/SistemaAcademico/NotaInvalidaException.java), [`Pessoa.java`](12-projeto-final/SistemaAcademico/Pessoa.java), [`Relatorio.java`](12-projeto-final/SistemaAcademico/Relatorio.java), [`Turma.java`](12-projeto-final/SistemaAcademico/Turma.java) |
+| 12.2 Declarando e organizando pacotes | [`Biblioteca`](12-pacotes-e-imports/12.2-declarando-pacotes/Biblioteca/) (projeto com 3 pacotes) | [`App.java`](12-pacotes-e-imports/12.2-declarando-pacotes/Biblioteca/src/br/edu/ifpe/biblioteca/app/App.java) | [`Livro.java`](12-pacotes-e-imports/12.2-declarando-pacotes/Biblioteca/src/br/edu/ifpe/biblioteca/modelo/Livro.java), [`Catalogo.java`](12-pacotes-e-imports/12.2-declarando-pacotes/Biblioteca/src/br/edu/ifpe/biblioteca/servico/Catalogo.java) |
+| 12.3 Importando classes | [`UsandoImports`](12-pacotes-e-imports/12.3-importando-classes/UsandoImports/) | [`UsandoImports.java`](12-pacotes-e-imports/12.3-importando-classes/UsandoImports/UsandoImports.java) | (nenhuma) |
 
-### [13. Boas Práticas e Convenções](13-boas-praticas-e-convencoes/)
+O projeto `Biblioteca` é compilado pelo terminal (veja o [`README.md`](12-pacotes-e-imports/12.2-declarando-pacotes/Biblioteca/README.md) dele).
 
-Trechos ilustrativos (`.txt`): [`boas-praticas.txt`](13-boas-praticas-e-convencoes/13.2-boas-praticas-gerais/trechos/boas-praticas.txt)
+Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](12-pacotes-e-imports/erros-comuns/erros-comuns.txt)
 
-### [14. Erros Comuns e Como Resolver](14-erros-comuns/)
+### [13. Datas com java.time](13-datas-com-java-time/)
 
-Trechos ilustrativos (`.txt`): [`erros-de-logica.txt`](14-erros-comuns/trechos/erros-de-logica.txt)
+| Seção | Exemplo | Programa principal | Classes |
+|---|---|---|---|
+| 13.2 LocalDate | [`ConhecendoLocalDate`](13-datas-com-java-time/13.2-localdate/ConhecendoLocalDate/) | [`ConhecendoLocalDate.java`](13-datas-com-java-time/13.2-localdate/ConhecendoLocalDate/ConhecendoLocalDate.java) | (nenhuma) |
+| 13.3 LocalTime e LocalDateTime | [`HorasEDatas`](13-datas-com-java-time/13.3-localtime-e-localdatetime/HorasEDatas/) | [`HorasEDatas.java`](13-datas-com-java-time/13.3-localtime-e-localdatetime/HorasEDatas/HorasEDatas.java) | (nenhuma) |
+| 13.4 Períodos e durações | [`CalculosComDatas`](13-datas-com-java-time/13.4-periodos-e-duracoes/CalculosComDatas/) | [`CalculosComDatas.java`](13-datas-com-java-time/13.4-periodos-e-duracoes/CalculosComDatas/CalculosComDatas.java) | (nenhuma) |
+| 13.5 Formatando e lendo datas | [`FormatandoDatas`](13-datas-com-java-time/13.5-formatando-e-lendo-datas/FormatandoDatas/) | [`FormatandoDatas.java`](13-datas-com-java-time/13.5-formatando-e-lendo-datas/FormatandoDatas/FormatandoDatas.java) | (nenhuma) |
+| 13.6 Datas dentro de objetos | [`ControleEmprestimos`](13-datas-com-java-time/13.6-datas-em-objetos/ControleEmprestimos/) | [`ControleEmprestimos.java`](13-datas-com-java-time/13.6-datas-em-objetos/ControleEmprestimos/ControleEmprestimos.java) | [`Emprestimo.java`](13-datas-com-java-time/13.6-datas-em-objetos/ControleEmprestimos/Emprestimo.java) |
+
+Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](13-datas-com-java-time/erros-comuns/erros-comuns.txt)
+
+### [14. Leitura e Escrita de Arquivos](14-leitura-e-escrita-de-arquivos/)
+
+| Seção | Exemplo | Programa principal | Classes |
+|---|---|---|---|
+| 14.2 Escrevendo arquivos | [`EscreverArquivo`](14-leitura-e-escrita-de-arquivos/14.2-escrevendo-arquivos/EscreverArquivo/) | [`EscreverArquivo.java`](14-leitura-e-escrita-de-arquivos/14.2-escrevendo-arquivos/EscreverArquivo/EscreverArquivo.java) | (nenhuma) |
+| 14.3 Lendo arquivos | [`LerArquivo`](14-leitura-e-escrita-de-arquivos/14.3-lendo-arquivos/LerArquivo/) | [`LerArquivo.java`](14-leitura-e-escrita-de-arquivos/14.3-lendo-arquivos/LerArquivo/LerArquivo.java) | (nenhuma) |
+| 14.4 Leitura segura com try-with-resources | [`LeituraSegura`](14-leitura-e-escrita-de-arquivos/14.4-leitura-segura-com-try-with-resources/LeituraSegura/) | [`LeituraSegura.java`](14-leitura-e-escrita-de-arquivos/14.4-leitura-segura-com-try-with-resources/LeituraSegura/LeituraSegura.java) | (nenhuma) |
+| 14.5 Persistindo objetos em CSV | [`AgendaDeLivros`](14-leitura-e-escrita-de-arquivos/14.5-persistindo-objetos/AgendaDeLivros/) | [`AgendaDeLivros.java`](14-leitura-e-escrita-de-arquivos/14.5-persistindo-objetos/AgendaDeLivros/AgendaDeLivros.java) | [`Livro.java`](14-leitura-e-escrita-de-arquivos/14.5-persistindo-objetos/AgendaDeLivros/Livro.java), [`RepositorioLivros.java`](14-leitura-e-escrita-de-arquivos/14.5-persistindo-objetos/AgendaDeLivros/RepositorioLivros.java) |
+
+Os exemplos de arquivos criam as pastas `saida` e `dados` (e o `log.txt`) na pasta onde são executados. Esses arquivos gerados ficam no `.gitignore`.
+
+Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](14-leitura-e-escrita-de-arquivos/erros-comuns/erros-comuns.txt)
+
+### [15. Projeto Final — Aplicação Completa](15-projeto-final/)
+
+| Seção | Exemplo | Programa principal | Classes |
+|---|---|---|---|
+| (sem seção numerada) | [`SistemaAcademico`](15-projeto-final/SistemaAcademico/) | [`SistemaAcademico.java`](15-projeto-final/SistemaAcademico/SistemaAcademico.java) | [`Aluno.java`](15-projeto-final/SistemaAcademico/Aluno.java), [`AlunoNaoEncontradoException.java`](15-projeto-final/SistemaAcademico/AlunoNaoEncontradoException.java), [`NotaInvalidaException.java`](15-projeto-final/SistemaAcademico/NotaInvalidaException.java), [`Pessoa.java`](15-projeto-final/SistemaAcademico/Pessoa.java), [`Relatorio.java`](15-projeto-final/SistemaAcademico/Relatorio.java), [`Turma.java`](15-projeto-final/SistemaAcademico/Turma.java) |
+
+### [16. Boas Práticas e Convenções](16-boas-praticas-e-convencoes/)
+
+Trechos ilustrativos (`.txt`): [`boas-praticas.txt`](16-boas-praticas-e-convencoes/16.2-boas-praticas-gerais/trechos/boas-praticas.txt)
+
+### [17. Erros Comuns e Como Resolver](17-erros-comuns/)
+
+Trechos ilustrativos (`.txt`): [`erros-de-logica.txt`](17-erros-comuns/trechos/erros-de-logica.txt)

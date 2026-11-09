@@ -30,6 +30,8 @@ com teoria, diagramas, exemplos comentados, erros comuns e exercícios práticos
 - [1.5 Configurando o ambiente (VS Code)](capitulos/01-introducao-java-jdk25/README.md#15-configurando-o-ambiente-vs-code)
 - [1.6 Primeiro programa](capitulos/01-introducao-java-jdk25/README.md#16-primeiro-programa)
 - [1.7 Tipos de dados em Java](capitulos/01-introducao-java-jdk25/README.md#17-tipos-de-dados-em-java)
+- [1.8 Estruturas de controle](capitulos/01-introducao-java-jdk25/README.md#18-estruturas-de-controle)
+- [1.9 Arrays](capitulos/01-introducao-java-jdk25/README.md#19-arrays)
 
 ### [2. Conceitos Fundamentais de POO](capitulos/02-conceitos-fundamentais-poo/README.md)
 
@@ -88,19 +90,45 @@ com teoria, diagramas, exemplos comentados, erros comuns e exercícios práticos
 - [11.1 Hierarquia de exceções](capitulos/11-tratamento-de-excecoes/README.md#111-hierarquia-de-exceções)
 - [11.2 Exceções personalizadas](capitulos/11-tratamento-de-excecoes/README.md#112-exceções-personalizadas)
 
-### [12. Projeto Final — Aplicação Completa](capitulos/12-projeto-final/README.md)
+### [12. Pacotes e Imports](capitulos/12-pacotes-e-imports/README.md)
+
+- [12.1 O que é um pacote](capitulos/12-pacotes-e-imports/README.md#121-o-que-é-um-pacote)
+- [12.2 Declarando e organizando pacotes](capitulos/12-pacotes-e-imports/README.md#122-declarando-e-organizando-pacotes)
+- [12.3 Importando classes](capitulos/12-pacotes-e-imports/README.md#123-importando-classes)
+- [12.4 Modificadores de acesso e pacotes](capitulos/12-pacotes-e-imports/README.md#124-modificadores-de-acesso-e-pacotes)
+- [12.5 Compilando e executando um projeto com pacotes](capitulos/12-pacotes-e-imports/README.md#125-compilando-e-executando-um-projeto-com-pacotes)
+
+### [13. Datas com java.time](capitulos/13-datas-com-java-time/README.md)
+
+- [13.1 As principais classes](capitulos/13-datas-com-java-time/README.md#131-as-principais-classes)
+- [13.2 LocalDate: trabalhando com datas](capitulos/13-datas-com-java-time/README.md#132-localdate-trabalhando-com-datas)
+- [13.3 LocalTime e LocalDateTime](capitulos/13-datas-com-java-time/README.md#133-localtime-e-localdatetime)
+- [13.4 Períodos e durações](capitulos/13-datas-com-java-time/README.md#134-períodos-e-durações)
+- [13.5 Formatando e lendo datas](capitulos/13-datas-com-java-time/README.md#135-formatando-e-lendo-datas)
+- [13.6 Datas dentro de objetos](capitulos/13-datas-com-java-time/README.md#136-datas-dentro-de-objetos)
+
+### [14. Leitura e Escrita de Arquivos](capitulos/14-leitura-e-escrita-de-arquivos/README.md)
+
+- [14.1 Path e Files](capitulos/14-leitura-e-escrita-de-arquivos/README.md#141-path-e-files)
+- [14.2 Escrevendo arquivos](capitulos/14-leitura-e-escrita-de-arquivos/README.md#142-escrevendo-arquivos)
+- [14.3 Lendo arquivos](capitulos/14-leitura-e-escrita-de-arquivos/README.md#143-lendo-arquivos)
+- [14.4 Leitura segura com try-with-resources](capitulos/14-leitura-e-escrita-de-arquivos/README.md#144-leitura-segura-com-try-with-resources)
+- [14.5 Persistindo objetos em CSV](capitulos/14-leitura-e-escrita-de-arquivos/README.md#145-persistindo-objetos-em-csv)
+- [14.6 Codificação de caracteres (UTF-8)](capitulos/14-leitura-e-escrita-de-arquivos/README.md#146-codificação-de-caracteres-utf-8)
+
+### [15. Projeto Final — Aplicação Completa](capitulos/15-projeto-final/README.md)
 
 
-### [13. Boas Práticas e Convenções](capitulos/13-boas-praticas-e-convencoes/README.md)
+### [16. Boas Práticas e Convenções](capitulos/16-boas-praticas-e-convencoes/README.md)
 
-- [13.1 Nomenclatura Java](capitulos/13-boas-praticas-e-convencoes/README.md#131-nomenclatura-java)
-- [13.2 Boas práticas gerais](capitulos/13-boas-praticas-e-convencoes/README.md#132-boas-práticas-gerais)
-- [13.3 Estrutura de um projeto Java profissional](capitulos/13-boas-praticas-e-convencoes/README.md#133-estrutura-de-um-projeto-java-profissional)
+- [16.1 Nomenclatura Java](capitulos/16-boas-praticas-e-convencoes/README.md#161-nomenclatura-java)
+- [16.2 Boas práticas gerais](capitulos/16-boas-praticas-e-convencoes/README.md#162-boas-práticas-gerais)
+- [16.3 Estrutura de um projeto Java profissional](capitulos/16-boas-praticas-e-convencoes/README.md#163-estrutura-de-um-projeto-java-profissional)
 
-### [14. Erros Comuns e Como Resolver](capitulos/14-erros-comuns/README.md)
+### [17. Erros Comuns e Como Resolver](capitulos/17-erros-comuns/README.md)
 
 
-### [15. Glossário](capitulos/15-glossario/README.md)
+### [18. Glossário](capitulos/18-glossario/README.md)
 
 
 ### [Referências e Recursos](capitulos/referencias/README.md)

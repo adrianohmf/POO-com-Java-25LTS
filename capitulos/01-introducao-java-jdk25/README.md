@@ -5,7 +5,7 @@
 > **Códigos deste capítulo:** [codigos/01-introducao-java-jdk25](../../codigos/01-introducao-java-jdk25/)
 
 > **O que você vai aprender neste capítulo:**
-> Entender o que é Java, como ele funciona por baixo dos panos, o que mudou no JDK 25 e como configurar seu ambiente de desenvolvimento no VS Code. Ao final, você já vai rodar seu primeiro programa.
+> Entender o que é Java, como ele funciona por baixo dos panos, o que mudou no JDK 25 e como configurar seu ambiente de desenvolvimento no VS Code. Você também vai aprender a tomar decisões e repetir tarefas com `if`, `switch` e laços, e a guardar vários valores em arrays. Ao final, você já vai rodar seus primeiros programas.
 
 Antes de escrever qualquer linha de código orientado a objetos, é preciso conhecer a ferramenta que vamos usar. Java é uma das linguagens mais usadas no mundo há mais de 30 anos — não por acaso, mas porque ela resolve problemas reais de forma organizada, segura e portátil. Neste capítulo você vai entender por que Java ainda domina o mercado corporativo, como o código que você escreve vira um programa que roda em qualquer computador, é como configurar seu ambiente para começar a programar hoje mesmo.
 
@@ -866,6 +866,478 @@ void main() {
 | **Problema do buffer** | Não existe | Existe (nextInt + nextLine) |
 | **Quando usar** | Programas simples, primeiras aulas | Quando precisar de mais controle |
 
+## 1.8 Estruturas de controle
+
+Até aqui, os programas executavam as linhas de cima para baixo, uma única vez. Programas reais precisam **tomar decisões** (o aluno foi aprovado ou não?) e **repetir tarefas** (calcular a média de cada aluno da turma). Para isso o Java oferece as **estruturas de controle**: as condicionais (`if`, `switch`) e os laços (`for`, `while`, `do-while`).
+
+### Decisões com `if`, `else if` e `else`
+
+O `if` executa um bloco somente se a condição for verdadeira. Com `else if` e `else`, você encadeia alternativas: apenas o **primeiro** bloco cuja condição for verdadeira é executado.
+
+```mermaid
+flowchart TD
+    A[Início] --> B{"media >= 7.0?"}
+    B -->|sim| C[Aprovado por nota]
+    B -->|não| D{"media >= 5.0?"}
+    D -->|sim| E[Em recuperação]
+    D -->|não| F[Reprovado por nota]
+```
+
+As condições usam os operadores de comparação (`==`, `!=`, `>`, `<`, `>=`, `<=`) e os operadores lógicos (`&&`, `||`, `!`) vistos na seção 1.7.
+
+```java
+// Arquivo: Condicionais.java
+
+void main() {
+    double media = 6.2;
+    int faltas = 4;
+    int totalAulas = 40;
+
+    // if / else if / else: executa apenas o primeiro bloco cuja condição for verdadeira
+    if (media >= 7.0) {
+        IO.println("Aprovado por nota");
+    } else if (media >= 5.0) {
+        IO.println("Em recuperacao");
+    } else {
+        IO.println("Reprovado por nota");
+    }
+
+    // Operadores lógicos combinam condições: && (E), || (OU), ! (NÃO)
+    double frequencia = 100.0 * (totalAulas - faltas) / totalAulas;
+    System.out.format("Frequencia: %.1f%%%n", frequencia);
+
+    if (media >= 7.0 && frequencia >= 75.0) {
+        IO.println("Situacao final: Aprovado");
+    } else if (frequencia < 75.0) {
+        IO.println("Situacao final: Reprovado por falta");
+    } else {
+        IO.println("Situacao final: Precisa de recuperacao");
+    }
+
+    // if sem chaves só vale para UMA instrução (evite: gera erros)
+    if (media > 9.0) IO.println("Excelente!");
+
+    // Operador ternário: forma curta de um if/else que devolve um valor
+    String resultado = (media >= 5.0) ? "Segue na disciplina" : "Refaz a disciplina";
+    IO.println(resultado);
+}
+```
+
+```
+# Saida esperada:
+Em recuperacao
+Frequencia: 90.0%
+Situacao final: Precisa de recuperacao
+Segue na disciplina
+```
+
+> **Atenção:** em computadores configurados em português, `%.1f` imprime vírgula (`90,0`). Aceite as duas formas ao comparar a saída.
+
+### Escolhendo com `switch`
+
+Quando uma variável pode assumir vários valores fixos e cada um leva a uma ação diferente, o `switch` fica mais claro do que uma sequência de `if`/`else if`. A forma moderna, com seta (`->`), funciona como uma **expressão**: devolve um valor e não precisa de `break`.
+
+```java
+// Arquivo: EscolhaSwitch.java
+
+void main() {
+    int dia = 3;
+
+    // switch como expressão (forma moderna, com seta ->): devolve um valor
+    String nome = switch (dia) {
+        case 1 -> "Domingo";
+        case 2 -> "Segunda";
+        case 3 -> "Terca";
+        case 4 -> "Quarta";
+        case 5 -> "Quinta";
+        case 6 -> "Sexta";
+        case 7 -> "Sabado";
+        default -> "Dia invalido";
+    };
+    IO.println("Dia " + dia + ": " + nome);
+
+    // Vários valores no mesmo case, separados por vírgula
+    String tipo = switch (dia) {
+        case 1, 7 -> "Fim de semana";
+        case 2, 3, 4, 5, 6 -> "Dia util";
+        default -> "Dia invalido";
+    };
+    IO.println("Tipo: " + tipo);
+
+    // switch com String; bloco com várias linhas usa yield para devolver o valor
+    String comando = "sair";
+    int codigo = switch (comando) {
+        case "novo" -> 1;
+        case "listar" -> 2;
+        case "sair" -> {
+            IO.println("Encerrando...");
+            yield 0;
+        }
+        default -> -1;
+    };
+    IO.println("Codigo: " + codigo);
+}
+```
+
+```
+# Saida esperada:
+Dia 3: Terca
+Tipo: Dia util
+Encerrando...
+Codigo: 0
+```
+
+| Elemento | Para que serve |
+|---|---|
+| `case 1 -> ...` | Executa só aquele caso, sem "cair" no próximo |
+| `case 1, 7 -> ...` | Vários valores no mesmo caso |
+| `default -> ...` | Caminho para qualquer outro valor (obrigatório quando o `switch` devolve valor) |
+| `yield valor;` | Devolve o valor quando o caso usa um bloco com várias linhas |
+
+### Repetições com `for`, `while` e `do-while`
+
+Os laços repetem um bloco de código. A escolha depende do que você sabe antes de começar.
+
+| Laço | Use quando | Testa a condição |
+|---|---|---|
+| `for` | Você sabe quantas repetições serão feitas | Antes de cada volta |
+| `while` | Repete até algo acontecer, sem saber quantas vezes | Antes de cada volta |
+| `do-while` | O bloco precisa executar **pelo menos uma vez** (um menu, por exemplo) | Depois de cada volta |
+
+Dentro de qualquer laço, `break` encerra a repetição e `continue` pula para a próxima volta.
+
+```java
+// Arquivo: Lacos.java
+
+void main() {
+    // for: quando você sabe quantas repetições serão feitas
+    IO.println("Tabuada do 7:");
+    for (int i = 1; i <= 5; i++) {
+        IO.println("7 x " + i + " = " + (7 * i));
+    }
+
+    // while: repete ENQUANTO a condição for verdadeira (pode nem executar)
+    int contagem = 3;
+    while (contagem > 0) {
+        IO.println("Faltam " + contagem);
+        contagem--;
+    }
+    IO.println("Fogo!");
+
+    // do-while: executa pelo menos UMA vez e testa a condição no final
+    int tentativa = 0;
+    do {
+        tentativa++;
+        IO.println("Tentativa " + tentativa);
+    } while (tentativa < 2);
+
+    // continue pula para a próxima volta; break encerra o laço
+    for (int n = 1; n <= 10; n++) {
+        if (n % 2 == 0) {
+            continue;       // ignora os pares
+        }
+        if (n > 7) {
+            break;          // para o laço
+        }
+        IO.println("Impar: " + n);
+    }
+
+    // Acumulador: padrão muito comum para somar valores
+    int soma = 0;
+    for (int n = 1; n <= 100; n++) {
+        soma += n;
+    }
+    IO.println("Soma de 1 a 100: " + soma);
+}
+```
+
+```
+# Saida esperada:
+Tabuada do 7:
+7 x 1 = 7
+7 x 2 = 14
+7 x 3 = 21
+7 x 4 = 28
+7 x 5 = 35
+Faltam 3
+Faltam 2
+Faltam 1
+Fogo!
+Tentativa 1
+Tentativa 2
+Impar: 1
+Impar: 3
+Impar: 5
+Impar: 7
+Soma de 1 a 100: 5050
+```
+
+### Erros comuns nas estruturas de controle
+
+```java
+// ERRO 1: usar = no lugar de == em uma condição (não compila para int)
+int x = 5;
+if (x = 5) {              // ERRO: atribuição, não comparação
+    IO.println("cinco");
+}
+// CORRETO: if (x == 5)
+
+// ERRO 2: esquecer o break no switch antigo (cai no case seguinte)
+switch (dia) {
+    case 1:
+        IO.println("Domingo");     // sem break, continua e imprime "Segunda" também
+    case 2:
+        IO.println("Segunda");
+        break;
+}
+// Na forma moderna (case 1 -> ...) isso não acontece.
+
+// ERRO 3: ponto e vírgula logo depois do if ou do for
+for (int i = 0; i < 3; i++); {     // o ; encerra o for: o bloco roda só uma vez
+    IO.println(i);
+}
+
+// ERRO 4: laço infinito (a condição nunca muda)
+int n = 0;
+while (n < 3) {
+    IO.println(n);
+    // faltou n++
+}
+```
+
+## 1.9 Arrays
+
+Imagine guardar as notas de uma turma de 40 alunos: criar 40 variáveis (`nota1`, `nota2`...) seria inviável. Um **array** resolve o problema: é uma variável que guarda **vários valores do mesmo tipo**, em posições numeradas a partir do **zero**. O tamanho é definido na criação e **não muda depois**.
+
+```
+notas    [ 7.5 | 8.0 | 7.0 | 9.0 ]
+indice      0     1     2     3        notas.length vale 4
+```
+
+### Criando, acessando e percorrendo
+
+Para ler ou alterar uma posição, use o índice entre colchetes: `notas[0]`. O total de posições está em `notas.length` (é um atributo, **sem parênteses**). O último índice válido é sempre `length - 1`.
+
+```java
+// Arquivo: ArraysBasico.java
+
+import java.util.Arrays;
+
+void main() {
+    // Criando com tamanho fixo: cada posição recebe o valor padrão (0 para int)
+    int[] vagas = new int[3];
+    IO.println(Arrays.toString(vagas));            // [0, 0, 0]
+
+    // Criando já com os valores
+    double[] notas = {7.5, 8.0, 6.5, 9.0};
+    IO.println("Quantidade de notas: " + notas.length);   // length é atributo: sem parênteses
+    IO.println("Primeira nota: " + notas[0]);
+    IO.println("Ultima nota: " + notas[notas.length - 1]);
+
+    // Alterando uma posição
+    notas[2] = 7.0;
+
+    // for com índice: use quando precisar da posição
+    double soma = 0;
+    for (int i = 0; i < notas.length; i++) {
+        System.out.format("Nota %d: %.1f%n", i + 1, notas[i]);
+        soma += notas[i];
+    }
+    IO.println("Media: " + soma / notas.length);
+
+    // for-each: use quando só precisar dos valores
+    double maior = notas[0];
+    for (double nota : notas) {
+        if (nota > maior) {
+            maior = nota;
+        }
+    }
+    IO.println("Maior nota: " + maior);
+
+    // Utilitários da classe Arrays
+    String[] nomes = {"Maria", "Joao", "Ana", "Pedro"};
+    Arrays.sort(nomes);
+    IO.println(Arrays.toString(nomes));            // [Ana, Joao, Maria, Pedro]
+}
+```
+
+```
+# Saida esperada:
+[0, 0, 0]
+Quantidade de notas: 4
+Primeira nota: 7.5
+Ultima nota: 9.0
+Nota 1: 7.5
+Nota 2: 8.0
+Nota 3: 7.0
+Nota 4: 9.0
+Media: 7.875
+Maior nota: 9.0
+[Ana, Joao, Maria, Pedro]
+```
+
+Existem dois jeitos de percorrer um array:
+
+| Forma | Exemplo | Quando usar |
+|---|---|---|
+| `for` com índice | `for (int i = 0; i < notas.length; i++)` | Quando precisa da posição (numerar, comparar vizinhos, alterar valores) |
+| `for-each` | `for (double nota : notas)` | Quando só precisa ler cada valor |
+
+### Métodos úteis da classe `Arrays`
+
+A classe `java.util.Arrays` traz operações prontas. Ela precisa de `import java.util.Arrays;` em arquivos com `class` explícita; os exemplos deste guia colocam o `import` para funcionar em qualquer situação.
+
+| Método | O que faz |
+|---|---|
+| `Arrays.toString(v)` | Texto com o conteúdo do array (`[1, 2, 3]`). Imprimir o array direto mostra só o endereço |
+| `Arrays.sort(v)` | Ordena o array (números do menor ao maior, textos em ordem alfabética) |
+| `Arrays.fill(v, valor)` | Preenche todas as posições com o mesmo valor |
+| `Arrays.copyOf(v, tamanho)` | Cria uma cópia com outro tamanho |
+| `Arrays.equals(a, b)` | Compara o **conteúdo** de dois arrays |
+
+### Arrays de objetos
+
+Arrays também guardam objetos. Cada posição guarda uma **referência**; enquanto você não fizer `new`, a posição vale `null`. O exemplo usa um `record` (seção 5.3) em arquivo separado, e o `main` percorre o array para somar, contar e achar o maior valor, um padrão que se repete em muitos problemas.
+
+```java
+// Arquivo: AlunoNota.java
+
+record AlunoNota(String nome, double media) {
+
+    boolean aprovado() {
+        return media >= 7.0;
+    }
+}
+```
+
+```java
+// Arquivo: ArrayDeObjetos.java
+
+void main() {
+    // Um array pode guardar objetos (aqui, records)
+    AlunoNota[] turma = {
+        new AlunoNota("Ana", 8.5),
+        new AlunoNota("Bruno", 5.5),
+        new AlunoNota("Carla", 9.2),
+        new AlunoNota("Diego", 6.8)
+    };
+
+    AlunoNota melhor = turma[0];
+    int aprovados = 0;
+    double soma = 0;
+
+    for (int i = 0; i < turma.length; i++) {
+        AlunoNota aluno = turma[i];
+        System.out.format("%-6s %.1f %s%n", aluno.nome(), aluno.media(),
+                aluno.aprovado() ? "Aprovado" : "Reprovado");
+
+        soma += aluno.media();
+        if (aluno.aprovado()) {
+            aprovados++;
+        }
+        if (aluno.media() > melhor.media()) {
+            melhor = aluno;
+        }
+    }
+
+    System.out.format("Media da turma: %.2f%n", soma / turma.length);
+    IO.println("Aprovados: " + aprovados + " de " + turma.length);
+    IO.println("Melhor media: " + melhor.nome());
+
+    // Posições ainda não preenchidas de um array de objetos valem null
+    AlunoNota[] vagas = new AlunoNota[2];
+    IO.println(vagas[0]);   // null
+}
+```
+
+```
+# Saida esperada:
+Ana    8.5 Aprovado
+Bruno  5.5 Reprovado
+Carla  9.2 Aprovado
+Diego  6.8 Reprovado
+Media da turma: 7.50
+Aprovados: 2 de 4
+Melhor media: Carla
+null
+```
+
+### Matrizes (arrays de duas dimensões)
+
+Uma matriz é um array de arrays: `double[][]`. O primeiro índice escolhe a linha e o segundo, a coluna. Para percorrer, use dois laços, um dentro do outro.
+
+```java
+// Arquivo: Matrizes.java
+
+void main() {
+    // Matriz: array de arrays. Cada linha é um aluno; cada coluna, uma prova.
+    double[][] notas = {
+        {7.0, 8.0},
+        {5.0, 6.5},
+        {9.0, 10.0}
+    };
+
+    for (int linha = 0; linha < notas.length; linha++) {
+        double soma = 0;
+        for (int coluna = 0; coluna < notas[linha].length; coluna++) {
+            soma += notas[linha][coluna];
+        }
+        System.out.format("Aluno %d: media %.2f%n", linha + 1, soma / notas[linha].length);
+    }
+
+    IO.println("Linhas: " + notas.length);
+    IO.println("Colunas: " + notas[0].length);
+}
+```
+
+```
+# Saida esperada:
+Aluno 1: media 7.50
+Aluno 2: media 5.75
+Aluno 3: media 9.50
+Linhas: 3
+Colunas: 2
+```
+
+### Array ou `ArrayList`?
+
+| | Array | `ArrayList` (capítulo 10) |
+|---|---|---|
+| Tamanho | Fixo, definido na criação | Cresce e diminui conforme necessário |
+| Tipos | Primitivos e objetos | Somente objetos (`Integer`, `String`, `Aluno`...) |
+| Tamanho em | `v.length` | `lista.size()` |
+| Acesso | `v[0]` | `lista.get(0)` |
+| Use quando | A quantidade é conhecida e não muda | A quantidade varia (cadastros, listas de itens) |
+
+### Erros comuns com arrays
+
+```java
+// ERRO 5: usar <= com length (off-by-one): passa da última posição
+int[] nums = {10, 20, 30};
+for (int i = 0; i <= nums.length; i++) {   // quando i = 3 dá erro
+    IO.println(nums[i]);
+}
+// CORRETO: i < nums.length
+// Mensagem: ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 3
+
+// ERRO 6: length é atributo no array e método na String
+int[] nums2 = {1, 2};
+String texto = "Java";
+IO.println(nums2.length);     // array: sem parênteses
+IO.println(texto.length());   // String: com parênteses
+
+// ERRO 7: comparar arrays com == ou .equals() em vez de Arrays.equals()
+int[] a = {1, 2, 3};
+int[] b = {1, 2, 3};
+IO.println(a == b);                    // false: referências diferentes
+IO.println(a.equals(b));               // false também
+IO.println(java.util.Arrays.equals(a, b));   // true: compara o conteúdo
+
+// ERRO 8: tentar aumentar o tamanho de um array já criado
+int[] pequeno = new int[2];
+// pequeno.length = 5;    // não compila: o tamanho é fixo (use ArrayList)
+```
+
 ## Exercícios — Tema 1
 
 > **Exercício 1.1** — Crie `Apresentacao.java` que exiba seu nome, cidade e curso usando `IO.println()`.
@@ -881,6 +1353,18 @@ void main() {
 > **Exercício 1.6** — Crie duas versões de `CadastroAluno.java`: uma usando `IO.readln()` com conversão manual e outra usando `Scanner`. Compare as duas abordagens. Em ambas, exiba os dados com `System.out.format()` e inclua a situação (Aprovado/Reprovado).
 >
 > **Exercício 1.7** — Pesquise e comente no código: qual a diferença entre JDK, JRE e JVM? Qual você instalou e por que?
+>
+> **Exercício 1.8:** Crie `Situacao.java` que, dadas as variáveis `media` e `faltas` (em 40 aulas), mostre se o aluno está Aprovado, em Recuperação ou Reprovado. Considere a frequência mínima de 75%: abaixo disso, a situação é Reprovado por falta, qualquer que seja a média.
+>
+> **Exercício 1.9:** Crie `DiaDaSemana.java` que leia um número de 1 a 7 com `IO.readln()` (converta com `Integer.parseInt()`) e use um `switch` com seta para mostrar o nome do dia e se é fim de semana ou dia útil. Para qualquer outro número, mostre "Dia inválido".
+>
+> **Exercício 1.10:** Crie `Padroes.java` com três laços: a tabuada de um número (`for`), a soma dos números pares de 1 a 50 (`for` com `continue`) e uma contagem regressiva de 10 a 1 (`while`).
+>
+> **Exercício 1.11:** Crie `Notas.java` com um array de 6 notas. Mostre a média, a maior nota, a menor nota e quantas notas estão acima da média. Depois ordene o array com `Arrays.sort()` e exiba o resultado com `Arrays.toString()`.
+>
+> **Exercício 1.12:** Crie um `record Produto(String nome, double preco, int quantidade)` e um array com 4 produtos. Use um `for` para exibir cada produto com `System.out.format()`, calcular o valor total em estoque (`preco * quantidade`) e mostrar o produto mais caro.
+>
+> **Exercício 1.13:** Crie `Matriz.java` com um `int[3][3]`. Exiba a matriz em formato de tabela usando laços aninhados e calcule a soma da diagonal principal (posições `[0][0]`, `[1][1]` e `[2][2]`).
 
 ---
 

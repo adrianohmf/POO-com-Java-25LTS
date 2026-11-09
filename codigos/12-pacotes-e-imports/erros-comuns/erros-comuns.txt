@@ -1,0 +1,42 @@
+// Trechos de erros comuns do capítulo 12 (não são programas completos)
+
+// ERRO 1: pacote declarado não bate com a pasta onde o arquivo está
+// Arquivo: src/br/edu/ifpe/biblioteca/modelo/Livro.java
+package br.edu.ifpe.biblioteca.servico;      // ERRADO: a pasta é "modelo"
+// A classe passa a pertencer ao pacote "servico". Quem faz import de "modelo" recebe:
+// package br.edu.ifpe.biblioteca.modelo does not exist
+// CORRETO: o package deve repetir exatamente o caminho das pastas dentro de src
+
+// ERRO 2: esquecer o import de uma classe de outro pacote
+public class App {
+    public static void main(String[] args) {
+        Livro livro = new Livro("Vidas Secas", "Graciliano Ramos", 1938);   // cannot find symbol
+    }
+}
+// CORRETO: import br.edu.ifpe.biblioteca.modelo.Livro;
+
+// ERRO 3: usar uma classe sem public em outro pacote
+package br.edu.ifpe.biblioteca.modelo;
+class Livro { }                                  // sem public: só o pacote "modelo" enxerga
+// Mensagem: Livro is not public in br.edu.ifpe.biblioteca.modelo; cannot be accessed from outside package
+
+// ERRO 4: chamar um método sem modificador de outro pacote
+catalogo.limpar();                               // limpar() é visível só no pacote "servico"
+// Mensagem: limpar() is not public in Catalogo; cannot be accessed from outside package
+
+// ERRO 5: rodar a classe pelo nome simples, sem o pacote
+// java -cp out App
+// Mensagem: Error: Could not find or load main class App
+// CORRETO: java -cp out br.edu.ifpe.biblioteca.app.App
+
+// ERRO 6: o mesmo nome de classe vindo de dois pacotes
+import java.util.Date;
+import java.sql.Date;                            // ERRO: o nome Date já foi importado
+// Mensagem: a type with the same simple name is already defined by the single-type-import of Date
+// CORRETO: importar um e usar o outro com o nome completo
+// import java.util.Date;
+// java.sql.Date dataSql = new java.sql.Date(0L);
+
+// ERRO 7: apagar a pasta "out" e esquecer de compilar de novo
+// java -cp out br.edu.ifpe.biblioteca.app.App
+// Mensagem: Error: Could not find or load main class ... (os .class não existem mais)

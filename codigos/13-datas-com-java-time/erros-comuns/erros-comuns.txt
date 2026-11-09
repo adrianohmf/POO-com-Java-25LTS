@@ -1,0 +1,35 @@
+// Trechos de erros comuns do capítulo 13 (não são programas completos)
+
+// ERRO 1: esperar que plusDays altere a data (as datas são imutáveis)
+LocalDate data = LocalDate.of(2026, 10, 13);
+data.plusDays(7);                  // o resultado foi descartado
+IO.println(data);                  // 2026-10-13 (continua igual)
+// CORRETO: data = data.plusDays(7);   ou   LocalDate nova = data.plusDays(7);
+
+// ERRO 2: comparar datas com == (compara referências, não o conteúdo)
+LocalDate a = LocalDate.of(2026, 10, 13);
+LocalDate b = LocalDate.of(2026, 10, 13);
+IO.println(a == b);                // pode dar false
+IO.println(a.equals(b));           // true
+// Para ordem use isBefore(), isAfter() ou compareTo()
+
+// ERRO 3: mm (minutos) no lugar de MM (mês) no padrão
+DateTimeFormatter errado = DateTimeFormatter.ofPattern("dd/mm/yyyy");   // mm = minuto!
+// Ao formatar uma LocalDate dá erro (a data não tem minutos): UnsupportedTemporalTypeException
+// CORRETO: "dd/MM/yyyy"
+
+// ERRO 4: ler texto que não segue o padrão do formatador
+LocalDate.parse("13/10/2026");     // sem formatador, espera aaaa-mm-dd
+// Mensagem: DateTimeParseException: Text '13/10/2026' could not be parsed at index 0
+// CORRETO: LocalDate.parse("13/10/2026", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+// ERRO 5: data que não existe
+LocalDate.of(2026, 2, 30);
+// Mensagem: DateTimeException: Invalid date 'FEBRUARY 30'
+
+// ERRO 6: pedir horas de uma LocalDate (ela não tem hora)
+LocalDate.of(2026, 10, 13).getHour();      // não compila: LocalDate não tem getHour()
+// Use LocalDateTime se precisar de data e hora
+
+// ERRO 7: usar a classe antiga java.util.Date em código novo
+// Prefira sempre java.time: é imutável, clara e sem os problemas de Date e Calendar

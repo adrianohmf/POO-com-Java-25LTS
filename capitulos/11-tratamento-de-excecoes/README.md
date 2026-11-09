@@ -1,4 +1,4 @@
-[Índice](../../README.md) | [← Anterior: 10. Coleções e Estruturas de Dados](../10-colecoes-e-estruturas-de-dados/README.md) | [Próximo: 12. Projeto Final — Aplicação Completa →](../12-projeto-final/README.md)
+[Índice](../../README.md) | [← Anterior: 10. Coleções e Estruturas de Dados](../10-colecoes-e-estruturas-de-dados/README.md) | [Próximo: 12. Pacotes e Imports →](../12-pacotes-e-imports/README.md)
 
 # 11. Tratamento de Exceções
 
@@ -171,4 +171,4 @@ try { } catch (Exception e) { } finally { sc.close(); }
 
 ---
 
-[Índice](../../README.md) | [← Anterior: 10. Coleções e Estruturas de Dados](../10-colecoes-e-estruturas-de-dados/README.md) | [Próximo: 12. Projeto Final — Aplicação Completa →](../12-projeto-final/README.md)
+[Índice](../../README.md) | [← Anterior: 10. Coleções e Estruturas de Dados](../10-colecoes-e-estruturas-de-dados/README.md) | [Próximo: 12. Pacotes e Imports →](../12-pacotes-e-imports/README.md)

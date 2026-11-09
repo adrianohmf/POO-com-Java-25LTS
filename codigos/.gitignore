@@ -1,0 +1,6 @@
+# Arquivos gerados ao compilar e executar os exemplos
+*.class
+out/
+saida/
+dados/
+log.txt

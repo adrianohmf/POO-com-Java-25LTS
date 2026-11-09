@@ -1,0 +1,55 @@
+// Trechos de erros comuns do capítulo 1 (não são programas completos)
+
+// ERRO 1: usar = no lugar de == em uma condição (não compila para int)
+int x = 5;
+if (x = 5) {              // ERRO: atribuição, não comparação
+    IO.println("cinco");
+}
+// CORRETO: if (x == 5)
+
+// ERRO 2: esquecer o break no switch antigo (cai no case seguinte)
+switch (dia) {
+    case 1:
+        IO.println("Domingo");     // sem break, continua e imprime "Segunda" também
+    case 2:
+        IO.println("Segunda");
+        break;
+}
+// Na forma moderna (case 1 -> ...) isso não acontece.
+
+// ERRO 3: ponto e vírgula logo depois do if ou do for
+for (int i = 0; i < 3; i++); {     // o ; encerra o for: o bloco roda só uma vez
+    IO.println(i);
+}
+
+// ERRO 4: laço infinito (a condição nunca muda)
+int n = 0;
+while (n < 3) {
+    IO.println(n);
+    // faltou n++
+}
+
+// ERRO 5: usar <= com length (off-by-one): passa da última posição
+int[] nums = {10, 20, 30};
+for (int i = 0; i <= nums.length; i++) {   // quando i = 3 dá erro
+    IO.println(nums[i]);
+}
+// CORRETO: i < nums.length
+// Mensagem: ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 3
+
+// ERRO 6: length é atributo no array e método na String
+int[] nums2 = {1, 2};
+String texto = "Java";
+IO.println(nums2.length);     // array: sem parênteses
+IO.println(texto.length());   // String: com parênteses
+
+// ERRO 7: comparar arrays com == ou .equals() em vez de Arrays.equals()
+int[] a = {1, 2, 3};
+int[] b = {1, 2, 3};
+IO.println(a == b);                    // false: referências diferentes
+IO.println(a.equals(b));               // false também
+IO.println(java.util.Arrays.equals(a, b));   // true: compara o conteúdo
+
+// ERRO 8: tentar aumentar o tamanho de um array já criado
+int[] pequeno = new int[2];
+// pequeno.length = 5;    // não compila: o tamanho é fixo (use ArrayList)
