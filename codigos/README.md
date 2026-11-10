@@ -197,16 +197,28 @@ Os exemplos de arquivos criam as pastas `saida` e `dados` (e o `log.txt`) na pas
 
 Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](15-leitura-e-escrita-de-arquivos/erros-comuns/erros-comuns.txt)
 
-### [16. Projeto Final — Aplicação Completa](16-projeto-final/)
+### [16. Java como API REST](16-java-como-api-rest/)
 
 | Seção | Exemplo | Programa principal | Classes |
 |---|---|---|---|
-| (sem seção numerada) | [`SistemaAcademico`](16-projeto-final/SistemaAcademico/) | [`SistemaAcademico.java`](16-projeto-final/SistemaAcademico/SistemaAcademico.java) | [`Aluno.java`](16-projeto-final/SistemaAcademico/Aluno.java), [`AlunoNaoEncontradoException.java`](16-projeto-final/SistemaAcademico/AlunoNaoEncontradoException.java), [`NotaInvalidaException.java`](16-projeto-final/SistemaAcademico/NotaInvalidaException.java), [`Pessoa.java`](16-projeto-final/SistemaAcademico/Pessoa.java), [`Relatorio.java`](16-projeto-final/SistemaAcademico/Relatorio.java), [`Turma.java`](16-projeto-final/SistemaAcademico/Turma.java) |
+| 16.2 Seu primeiro servidor | [`PrimeiroServidor`](16-java-como-api-rest/16.2-primeiro-servidor/PrimeiroServidor/) | [`PrimeiroServidor.java`](16-java-como-api-rest/16.2-primeiro-servidor/PrimeiroServidor/PrimeiroServidor.java) | (nenhuma) |
+| 16.3 Devolvendo JSON | [`ServidorJson`](16-java-como-api-rest/16.3-devolvendo-json/ServidorJson/) | [`ServidorJson.java`](16-java-como-api-rest/16.3-devolvendo-json/ServidorJson/ServidorJson.java) | [`Livro.java`](16-java-como-api-rest/16.3-devolvendo-json/ServidorJson/Livro.java), [`Json.java`](16-java-como-api-rest/16.3-devolvendo-json/ServidorJson/Json.java) |
+| 16.4 A API completa e 16.5 O frontend | [`BibliotecaApi`](16-java-como-api-rest/16.4-api-completa-com-frontend/BibliotecaApi/) | [`BibliotecaApi.java`](16-java-como-api-rest/16.4-api-completa-com-frontend/BibliotecaApi/BibliotecaApi.java) | [`LivroHandler.java`](16-java-como-api-rest/16.4-api-completa-com-frontend/BibliotecaApi/LivroHandler.java), [`Livro.java`](16-java-como-api-rest/16.4-api-completa-com-frontend/BibliotecaApi/Livro.java), [`Json.java`](16-java-como-api-rest/16.4-api-completa-com-frontend/BibliotecaApi/Json.java), [`RepositorioLivros.java`](16-java-como-api-rest/16.4-api-completa-com-frontend/BibliotecaApi/RepositorioLivros.java), [`web/index.html`](16-java-como-api-rest/16.4-api-completa-com-frontend/BibliotecaApi/web/index.html) |
 
-### [17. Boas Práticas e Convenções](17-boas-praticas-e-convencoes/)
+Cada servidor ocupa a porta 8080 e roda até ser parado, então execute um por vez. Execute `BibliotecaApi` de dentro da pasta dele, pois os caminhos `dados` e `web` são relativos. Os dados ficam em `dados/livros.csv` (no `.gitignore`).
 
-Trechos ilustrativos (`.txt`): [`boas-praticas.txt`](17-boas-praticas-e-convencoes/17.2-boas-praticas-gerais/trechos/boas-praticas.txt)
+Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](16-java-como-api-rest/erros-comuns/erros-comuns.txt)
 
-### [18. Erros Comuns e Como Resolver](18-erros-comuns/)
+### [17. Projeto Final — Aplicação Completa](17-projeto-final/)
 
-Trechos ilustrativos (`.txt`): [`erros-de-logica.txt`](18-erros-comuns/trechos/erros-de-logica.txt)
+| Seção | Exemplo | Programa principal | Classes |
+|---|---|---|---|
+| (sem seção numerada) | [`SistemaAcademico`](17-projeto-final/SistemaAcademico/) | [`SistemaAcademico.java`](17-projeto-final/SistemaAcademico/SistemaAcademico.java) | [`Aluno.java`](17-projeto-final/SistemaAcademico/Aluno.java), [`AlunoNaoEncontradoException.java`](17-projeto-final/SistemaAcademico/AlunoNaoEncontradoException.java), [`NotaInvalidaException.java`](17-projeto-final/SistemaAcademico/NotaInvalidaException.java), [`Pessoa.java`](17-projeto-final/SistemaAcademico/Pessoa.java), [`Relatorio.java`](17-projeto-final/SistemaAcademico/Relatorio.java), [`Turma.java`](17-projeto-final/SistemaAcademico/Turma.java) |
+
+### [18. Boas Práticas e Convenções](18-boas-praticas-e-convencoes/)
+
+Trechos ilustrativos (`.txt`): [`boas-praticas.txt`](18-boas-praticas-e-convencoes/18.2-boas-praticas-gerais/trechos/boas-praticas.txt)
+
+### [19. Erros Comuns e Como Resolver](19-erros-comuns/)
+
+Trechos ilustrativos (`.txt`): [`erros-de-logica.txt`](19-erros-comuns/trechos/erros-de-logica.txt)

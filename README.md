@@ -125,19 +125,29 @@ com teoria, diagramas, exemplos comentados, erros comuns e exercícios práticos
 - [15.5 Persistindo objetos em CSV](capitulos/15-leitura-e-escrita-de-arquivos/README.md#155-persistindo-objetos-em-csv)
 - [15.6 Codificação de caracteres (UTF-8)](capitulos/15-leitura-e-escrita-de-arquivos/README.md#156-codificação-de-caracteres-utf-8)
 
-### [16. Projeto Final — Aplicação Completa](capitulos/16-projeto-final/README.md)
+### [16. Java como API REST](capitulos/16-java-como-api-rest/README.md)
+
+- [16.1 Como a web conversa: HTTP, rotas e JSON](capitulos/16-java-como-api-rest/README.md#161-como-a-web-conversa-http-rotas-e-json)
+- [16.2 Seu primeiro servidor](capitulos/16-java-como-api-rest/README.md#162-seu-primeiro-servidor)
+- [16.3 Devolvendo JSON](capitulos/16-java-como-api-rest/README.md#163-devolvendo-json)
+- [16.4 A API completa: listar, buscar, cadastrar e remover](capitulos/16-java-como-api-rest/README.md#164-a-api-completa-listar-buscar-cadastrar-e-remover)
+- [16.5 O frontend: uma página que consome a API](capitulos/16-java-como-api-rest/README.md#165-o-frontend-uma-página-que-consome-a-api)
+- [16.6 Testando a API](capitulos/16-java-como-api-rest/README.md#166-testando-a-api)
+- [16.7 Limites desta abordagem e próximos passos](capitulos/16-java-como-api-rest/README.md#167-limites-desta-abordagem-e-próximos-passos)
+
+### [17. Projeto Final — Aplicação Completa](capitulos/17-projeto-final/README.md)
 
 
-### [17. Boas Práticas e Convenções](capitulos/17-boas-praticas-e-convencoes/README.md)
+### [18. Boas Práticas e Convenções](capitulos/18-boas-praticas-e-convencoes/README.md)
 
-- [17.1 Nomenclatura Java](capitulos/17-boas-praticas-e-convencoes/README.md#171-nomenclatura-java)
-- [17.2 Boas práticas gerais](capitulos/17-boas-praticas-e-convencoes/README.md#172-boas-práticas-gerais)
-- [17.3 Estrutura de um projeto Java profissional](capitulos/17-boas-praticas-e-convencoes/README.md#173-estrutura-de-um-projeto-java-profissional)
+- [18.1 Nomenclatura Java](capitulos/18-boas-praticas-e-convencoes/README.md#181-nomenclatura-java)
+- [18.2 Boas práticas gerais](capitulos/18-boas-praticas-e-convencoes/README.md#182-boas-práticas-gerais)
+- [18.3 Estrutura de um projeto Java profissional](capitulos/18-boas-praticas-e-convencoes/README.md#183-estrutura-de-um-projeto-java-profissional)
 
-### [18. Erros Comuns e Como Resolver](capitulos/18-erros-comuns/README.md)
+### [19. Erros Comuns e Como Resolver](capitulos/19-erros-comuns/README.md)
 
 
-### [19. Glossário](capitulos/19-glossario/README.md)
+### [20. Glossário](capitulos/20-glossario/README.md)
 
 
 ### [Referências e Recursos](capitulos/referencias/README.md)

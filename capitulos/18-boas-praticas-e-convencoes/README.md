@@ -1,8 +1,8 @@
-[Índice](../../README.md) | [← Anterior: 16. Projeto Final — Aplicação Completa](../16-projeto-final/README.md) | [Próximo: 18. Erros Comuns e Como Resolver →](../18-erros-comuns/README.md)
+[Índice](../../README.md) | [← Anterior: 17. Projeto Final — Aplicação Completa](../17-projeto-final/README.md) | [Próximo: 19. Erros Comuns e Como Resolver →](../19-erros-comuns/README.md)
 
-# 17. Boas Práticas e Convenções
+# 18. Boas Práticas e Convenções
 
-> **Códigos deste capítulo:** [codigos/17-boas-praticas-e-convencoes](../../codigos/17-boas-praticas-e-convencoes/)
+> **Códigos deste capítulo:** [codigos/18-boas-praticas-e-convencoes](../../codigos/18-boas-praticas-e-convencoes/)
 
 > **O que você vai aprender neste capítulo:**
 > As convenções de nomenclatura do Java, boas práticas de escrita de código limpo e a estrutura de um projeto Java profissional.
@@ -14,7 +14,7 @@ A comunidade Java construiu ao longo de decadas um conjunto de convenções que 
 Este capítulo não tem exercícios de código — e um capítulo para ler, refletir e aplicar nos exercícios e no projeto. Você vai perceber que as boas práticas não são regras arbitrarias: cada uma existe para resolver um problema real que aparece quando o código cresce.
 
 
-## 17.1 Nomenclatura Java
+## 18.1 Nomenclatura Java
 
 | Elemento | Convenção | Exemplo |
 |---|---|---|
@@ -26,7 +26,7 @@ Este capítulo não tem exercícios de código — e um capítulo para ler, refl
 | **Pacote** | tudo.minusculo.separado.por.ponto | `br.edu.ifpe.poo` |
 | **Arquivo** | Idêntico ao nome da classe pública | `ContaBancaria.java` |
 
-## 17.2 Boas práticas gerais
+## 18.2 Boas práticas gerais
 
 ```java
 // 1. NOMES SIGNIFICATIVOS — o código deve se autoexplicar
@@ -75,7 +75,7 @@ saldo += valor; // adiciona valor ao saldo (o código já diz isso!)
 saldo += saldo * taxaJurosMensal;
 ```
 
-## 17.3 Estrutura de um projeto Java profissional
+## 18.3 Estrutura de um projeto Java profissional
 
 ```
 meu-projeto/
@@ -99,4 +99,4 @@ meu-projeto/
 
 ---
 
-[Índice](../../README.md) | [← Anterior: 16. Projeto Final — Aplicação Completa](../16-projeto-final/README.md) | [Próximo: 18. Erros Comuns e Como Resolver →](../18-erros-comuns/README.md)
+[Índice](../../README.md) | [← Anterior: 17. Projeto Final — Aplicação Completa](../17-projeto-final/README.md) | [Próximo: 19. Erros Comuns e Como Resolver →](../19-erros-comuns/README.md)

@@ -1,0 +1,51 @@
+// Trechos de erros comuns do capítulo 16 (não são programas completos)
+
+// ERRO 1: porta já está em uso (outro servidor ou o mesmo programa rodando de novo)
+HttpServer.create(new InetSocketAddress(8080), 0);
+// Mensagem: java.net.BindException: Address already in use
+// CORRETO: encerre o programa anterior (botão Stop no VS Code) ou troque a porta
+
+// ERRO 2: acessar a API com o servidor desligado
+// curl: (7) Failed to connect to localhost port 8080
+// No navegador: ERR_CONNECTION_REFUSED
+// CORRETO: execute o programa e espere a mensagem "no ar" antes de testar
+
+// ERRO 3: esquecer de fechar a troca (exchange)
+servidor.createContext("/ola", troca -> {
+    troca.sendResponseHeaders(200, corpo.length);
+    troca.getResponseBody().write(corpo);
+    // faltou troca.close(): a conexão fica aberta e recursos do servidor ficam presos
+});
+// CORRETO: chame troca.close() ao final de todos os caminhos do método
+
+// ERRO 4: tamanho informado diferente do corpo enviado
+byte[] corpo = "Olá".getBytes(StandardCharsets.UTF_8);       // 4 bytes (o á ocupa 2)
+troca.sendResponseHeaders(200, "Olá".length());              // ERRADO: 3 caracteres, mas 4 bytes
+// Resultado: a resposta chega vazia ou cortada
+// CORRETO: use corpo.length, o tamanho em bytes
+
+// ERRO 5: acentos quebrados na resposta
+troca.getResponseHeaders().set("Content-Type", "text/plain");   // sem charset
+// O navegador pode mostrar "OlÃ¡". CORRETO: "text/plain; charset=UTF-8"
+
+// ERRO 6: não validar o corpo do POST
+int ano = Integer.parseInt(campos.get("ano"));
+// Se o campo faltar ou não for número: NumberFormatException e erro 500
+// CORRETO: validar, capturar a exceção e responder 400 com uma mensagem clara
+
+// ERRO 7: responder 200 para tudo
+// Use o status que descreve o resultado: 201 criado, 204 sem conteúdo,
+// 400 dados inválidos, 404 não encontrado, 405 método não permitido, 500 erro interno
+
+// ERRO 8: frontend em outra origem sem liberar CORS
+// (página em http://localhost:5500 chamando http://localhost:8080)
+// Console do navegador: Access to fetch at 'http://localhost:8080/livros' from origin
+// 'http://localhost:5500' has been blocked by CORS policy
+// CORRETO: servir a página pelo próprio servidor Java, ou enviar o cabeçalho
+// Access-Control-Allow-Origin na resposta (e responder ao método OPTIONS)
+
+// ERRO 9: abrir o index.html com duplo clique (file://)
+// Com fetch("/livros") a página não encontra a API. Abra http://localhost:8080 no navegador.
+
+// ERRO 10: guardar dados só na memória
+// Ao reiniciar o servidor a lista volta vazia. Persista em arquivo (capítulo 15) ou banco de dados.

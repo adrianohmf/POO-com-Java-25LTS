@@ -1,6 +1,6 @@
-[Índice](../../README.md) | [← Anterior: 18. Erros Comuns e Como Resolver](../18-erros-comuns/README.md) | [Próximo: Referências e Recursos →](../referencias/README.md)
+[Índice](../../README.md) | [← Anterior: 19. Erros Comuns e Como Resolver](../19-erros-comuns/README.md) | [Próximo: Referências e Recursos →](../referencias/README.md)
 
-# 19. Glossário
+# 20. Glossário
 
 > **Referência rápida de termos** — use durante as aulas, exercícios e provas.
 
@@ -14,23 +14,29 @@ Os termos estão em ordem alfabetica para facilitar a consulta rápida.
 | Termo | Definição |
 |---|---|
 | **Abstrato** | Classe ou método que não tem implementação completa. Obriga subclasses a completar. |
+| **API** | Interface pela qual um programa oferece serviços a outros programas. Ex: uma API REST de livros. |
 | **Array** | Estrutura de tamanho fixo que guarda vários valores do mesmo tipo. Ex: `int[] notas = new int[5]` |
 | **ArrayList** | Lista que cresce conforme necessário. Guarda objetos em ordem, acessados por índice. Ex: `new ArrayList<String>()` |
 | **Atributo** | Variável declarada dentro de uma classe. Representa uma característica do objeto. |
+| **Backend** | Parte do sistema que roda no servidor: regras de negócio, dados e API. |
 | **Bytecode** | Código intermediário gerado pelo compilador Java. Executado pela JVM. |
 | **Cast** | Conversao forcada de um tipo para outro. Ex: `(double) inteiro` |
 | **Classe** | Molde ou template que define atributos e métodos de um objeto. |
 | **Classpath** | Lista de pastas onde o Java procura as classes compiladas. Ex: `java -cp out pacote.Classe` |
 | **Coleção** | Objeto que guarda vários elementos e oferece métodos prontos para adicionar, buscar e remover. Ex: `List`, `Set`, `Map`. |
 | **Construtor** | Método especial com o mesmo nome da classe, executado automaticamente com `new`. |
+| **CORS** | Regra do navegador que só permite ler respostas de outra origem se o servidor autorizar com `Access-Control-Allow-Origin`. |
 | **CSV** | Formato de texto com valores separados por um delimitador (`;` ou `,`), uma linha por registro. Abre no Excel. |
 | **Encapsulamento** | Pilar de POO que protege os dados internos do objeto, expondo apenas o necessário. |
+| **Endpoint** | Rota de uma API que responde a um método HTTP. Ex: `GET /livros`. |
 | **Extends** | Palavra-chave usada para herança de classe. `class Aluno extends Pessoa` |
 | **Final** | Modificador que impede alteracao. `final` em variável = constante, em classe = não pode ser herdada. |
+| **Frontend** | Parte do sistema que o usuário vê e usa (página web ou aplicativo). Consome a API. |
 | **Getter** | Método de leitura de atributo privado. Convenção: `getNome()`, `isAtivo()`. |
 | **HashMap** | Mapa que associa chaves únicas a valores. A busca por chave é rápida e a ordem não é garantida. |
 | **HashSet** | Conjunto sem elementos repetidos. `add` devolve `false` quando o elemento já existe. |
 | **Herança** | Pilar de POO onde uma classe filha herda atributos e métodos da classe pai. |
+| **HTTP** | Protocolo da web: o cliente envia uma requisição e o servidor devolve uma resposta. |
 | **Implements** | Palavra-chave usada para implementar interface. `class Doc implements Imprimivel` |
 | **Import** | Instrução que informa ao compilador onde está uma classe de outro pacote. Ex: `import java.util.ArrayList;` |
 | **Imutável** | Objeto que não muda depois de criado. `String` e `LocalDate` são imutáveis: os métodos devolvem um novo objeto. |
@@ -39,6 +45,7 @@ Os termos estão em ordem alfabetica para facilitar a consulta rápida.
 | **Interface** | Contrato que define quais métodos uma classe deve implementar. Sem atributos de instância. |
 | **JDK** | Java Development Kit. Pacote completo para desenvolver em Java (inclui compilador e JVM). |
 | **JRE** | Java Runtime Environment. Só executa programas Java (sem compilador). |
+| **JSON** | Formato de texto para trocar dados, com pares de nome e valor. Ex: `{"id":1,"titulo":"Dom Casmurro"}` |
 | **JVM** | Java Virtual Machine. Executa o bytecode em qualquer sistema operacional. |
 | **Laço (loop)** | Estrutura que repete um bloco de código: `for`, `while`, `do-while` e `for-each`. |
 | **LocalDate** | Classe de `java.time` que representa uma data (ano, mês, dia) sem horário. Ex: `LocalDate.of(2026, 10, 13)` |
@@ -61,9 +68,11 @@ Os termos estão em ordem alfabetica para facilitar a consulta rápida.
 | **Public** | Modificador que permite acesso em qualquer lugar. |
 | **Record** | Tipo especial de classe (JDK 25) para dados imutaveis, com código gerado automaticamente. |
 | **Referência** | Variável que aponta para um objeto na memória. Não é o objeto em si. |
+| **REST** | Estilo de API em que cada recurso tem uma rota e o método HTTP indica a ação (`GET`, `POST`, `DELETE`). |
 | **Return** | Palavra-chave que devolve um valor de um método para quem o chamou. |
 | **Setter** | Método de escrita de atributo privado com validação. Convenção: `setNome(String nome)`. |
 | **Static** | Pertence a classe, não ao objeto. Compartilhado por todas as instâncias. |
+| **Status code** | Número que resume o resultado de uma resposta HTTP. Ex: `200` OK, `404` não encontrado. |
 | **Subclasse** | Classe filha que herda de outra classe (superclasse). |
 | **Super** | Referência a superclasse. `super()` chama o construtor do pai. `super.metodo()` chama método do pai. |
 | **Superclasse** | Classe pai de uma hierarquia de herança. |
@@ -78,4 +87,4 @@ Os termos estão em ordem alfabetica para facilitar a consulta rápida.
 
 ---
 
-[Índice](../../README.md) | [← Anterior: 18. Erros Comuns e Como Resolver](../18-erros-comuns/README.md) | [Próximo: Referências e Recursos →](../referencias/README.md)
+[Índice](../../README.md) | [← Anterior: 19. Erros Comuns e Como Resolver](../19-erros-comuns/README.md) | [Próximo: Referências e Recursos →](../referencias/README.md)

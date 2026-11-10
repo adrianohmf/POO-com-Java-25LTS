@@ -1,8 +1,8 @@
-[Índice](../../README.md) | [← Anterior: 17. Boas Práticas e Convenções](../17-boas-praticas-e-convencoes/README.md) | [Próximo: 19. Glossário →](../19-glossario/README.md)
+[Índice](../../README.md) | [← Anterior: 18. Boas Práticas e Convenções](../18-boas-praticas-e-convencoes/README.md) | [Próximo: 20. Glossário →](../20-glossario/README.md)
 
-# 18. Erros Comuns e Como Resolver
+# 19. Erros Comuns e Como Resolver
 
-> **Códigos deste capítulo:** [codigos/18-erros-comuns](../../codigos/18-erros-comuns/)
+> **Códigos deste capítulo:** [codigos/19-erros-comuns](../../codigos/19-erros-comuns/)
 
 > **O que você vai aprender neste capítulo:**
 > Reconhecer os erros mais frequentes em Java, entender sua causa raiz e saber como corrigi-los rapidamente.
@@ -37,6 +37,10 @@ Mantenha este capítulo marcado. Você vai consultá-lo com frequencia nas proxi
 | `... is not public in ...; cannot be accessed from outside package` | Classe ou método sem `public` usado em outro pacote | Torne `public` apenas o que outros pacotes precisam |
 | `class X is public, should be declared in a file named X.java` | Nome da classe diferente do nome do arquivo | Renomeie o arquivo ou a classe |
 | `Could not find or load main class` | Executou sem o nome completo do pacote | `java -cp out pacote.Classe` |
+| `java.net.BindException: Address already in use` | A porta 8080 já está em uso por outro servidor | Pare o programa anterior ou troque a porta |
+| `Connection refused` (`curl` ou navegador) | O servidor não está rodando | Execute o programa e espere a mensagem "no ar" |
+| `blocked by CORS policy` (console do navegador) | Frontend em outra origem sem os cabeçalhos CORS | Sirva a página pelo servidor Java ou envie `Access-Control-Allow-Origin` |
+| Resposta `400`, `404`, `405` ou `500` | Dados inválidos, rota inexistente, método não aceito ou erro no servidor | Confira a rota, o método e o corpo enviado; veja o console do servidor no caso do `500` |
 
 ## Erros de lógica mais comuns
 
@@ -82,4 +86,4 @@ data = data.plusDays(7);   // CORRETO: guarda a nova data
 
 ---
 
-[Índice](../../README.md) | [← Anterior: 17. Boas Práticas e Convenções](../17-boas-praticas-e-convencoes/README.md) | [Próximo: 19. Glossário →](../19-glossario/README.md)
+[Índice](../../README.md) | [← Anterior: 18. Boas Práticas e Convenções](../18-boas-praticas-e-convencoes/README.md) | [Próximo: 20. Glossário →](../20-glossario/README.md)
