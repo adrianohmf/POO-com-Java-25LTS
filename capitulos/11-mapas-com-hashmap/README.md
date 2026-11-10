@@ -1,17 +1,64 @@
-[Índice](../../README.md) | [← Anterior: 10. Coleções: ArrayList e HashSet](../10-colecoes-e-estruturas-de-dados/README.md) | [Próximo: 12. Tratamento de Exceções →](../12-tratamento-de-excecoes/README.md)
+[Índice](../../README.md) | [← Anterior: 10. Coleções: ArrayList](../10-colecoes-e-estruturas-de-dados/README.md) | [Próximo: 12. Tratamento de Exceções →](../12-tratamento-de-excecoes/README.md)
 
-# 11. Mapas com HashMap
+# 11. Conjuntos e Mapas: HashSet e HashMap
 
 > **Códigos deste capítulo:** [codigos/11-mapas-com-hashmap](../../codigos/11-mapas-com-hashmap/)
 
 > **O que você vai aprender neste capítulo:**
-> Usar `HashMap` para associar chaves a valores, aplicar métodos como `put()`, `get()`, `containsKey()` e `getOrDefault()`, percorrer um mapa com `entrySet()`, contar ocorrências, guardar listas dentro de um mapa e escolher entre `List`, `Set` e `Map`.
+> Usar `HashSet` para guardar elementos sem repetição, remover duplicados de uma lista, usar `HashMap` para associar chaves a valores, aplicar métodos como `put()`, `get()`, `containsKey()` e `getOrDefault()`, percorrer um mapa com `entrySet()`, contar ocorrências, guardar listas dentro de um mapa e escolher entre `List`, `Set` e `Map`.
 
-No capítulo anterior, as listas localizavam elementos pela **posição**, e os conjuntos garantiam elementos **sem repetição**. Mas, muitas vezes, queremos localizar pelo **significado**: "qual a nota da Maria?", "qual o produto de código 4021?".
+No capítulo anterior, as listas localizavam elementos pela **posição**. Este capítulo apresenta as outras duas ideias do Java Collections Framework: o `Set`, que garante elementos **sem repetição**, e o `Map`, que localiza elementos pelo **significado**: "qual a nota da Maria?", "qual o produto de código 4021?".
 
-O `Map` é a terceira ideia do Java Collections Framework: ele associa uma **chave** a um **valor**, como um dicionário ou uma agenda de contatos. A implementação mais usada é o `HashMap`, e é ela que você conhece neste capítulo. Ele aparece em praticamente todo sistema real: cadastros por CPF, produtos por código, configurações por nome.
+O `Set` funciona como um conjunto matemático, e a implementação mais usada é o `HashSet`. O `Map` associa uma **chave** a um **valor**, como um dicionário ou uma agenda de contatos, e a implementação mais usada é o `HashMap`. Ele aparece em praticamente todo sistema real: cadastros por CPF, produtos por código, configurações por nome.
 
-## 11.1 HashMap: chave e valor
+## 11.1 HashSet: conjuntos sem repetição
+
+Quando você precisa guardar elementos **sem permitir duplicatas**, use um `HashSet`. Ele funciona como um conjunto matemático:
+
+```java
+// Arquivo: UsandoHashSet.java
+
+import java.util.ArrayList;
+import java.util.HashSet;
+
+void main() {
+    var cidades = new HashSet<String>();
+
+    IO.println(cidades.add("Recife"));    // true: foi inserido
+    IO.println(cidades.add("Olinda"));    // true
+    IO.println(cidades.add("Recife"));    // false: já existia, ignorado
+
+    IO.println("Total: " + cidades.size());                     // 2
+    IO.println("Tem Olinda? " + cidades.contains("Olinda"));    // true
+
+    // Uso prático: remover duplicados de uma lista
+    var comRepetidos = new ArrayList<String>();
+    comRepetidos.add("Renda");
+    comRepetidos.add("Cerâmica");
+    comRepetidos.add("Renda");
+    comRepetidos.add("Renda");
+
+    var unicos = new HashSet<String>(comRepetidos);
+    IO.println("Antes: " + comRepetidos.size() + " itens");
+    IO.println("Depois: " + unicos.size() + " itens");
+}
+```
+
+O método `add` devolve `true` se o elemento foi inserido e `false` se ele já existia. A ordem dos elementos também não é garantida: o `HashSet` organiza os elementos pelo cálculo do hash, e não pela ordem de inserção. O segundo trecho mostra um uso prático: **remover duplicados** de uma lista, bastando criar o `HashSet` a partir dela. Como o conjunto não tem posições, não existe `get(0)`: para percorrer, use o for each.
+
+Saída esperada:
+
+```
+true
+true
+false
+Total: 2
+Tem Olinda? true
+Antes: 4 itens
+Depois: 2 itens
+```
+
+## 11.2 HashMap: chave e valor
 
 O `HashMap` guarda **pares de chave e valor**.
 
@@ -79,7 +126,7 @@ Boletim:
 Total: 3
 ```
 
-## 11.2 Outros métodos úteis do HashMap
+## 11.3 Outros métodos úteis do HashMap
 
 ```java
 void main() {
@@ -113,7 +160,7 @@ void main() {
 * `keySet()`: todas as chaves. `values()`: todos os valores. `entrySet()`: todos os pares.
 * `containsKey(chave)` e `containsValue(valor)`: testam a existência de uma chave ou de um valor. A busca por chave é rápida; a busca por valor percorre o mapa inteiro.
 
-## 11.3 Padrão clássico: contar ocorrências
+## 11.4 Padrão clássico: contar ocorrências
 
 Um uso muito comum do `HashMap` é contar quantas vezes algo aparece:
 
@@ -138,7 +185,7 @@ void main() {
 
 Para cada técnica, lemos a contagem atual (ou 0, se ainda não existir), somamos 1 e gravamos de volta. É um padrão que aparece em análise de textos, estatísticas e relatórios.
 
-## 11.4 Mapa com lista como valor
+## 11.5 Mapa com lista como valor
 
 O valor de um mapa pode ser qualquer tipo, inclusive outra coleção. Isso permite agrupar elementos sob uma mesma chave, como alunos por curso ou artesãos por estado (é o que pede o Exercício 11.1):
 
@@ -159,7 +206,7 @@ void main() {
 
 Atenção: antes de usar `porEstado.get("Pernambuco").add(...)`, a lista daquele estado precisa existir. Caso contrário, `get` devolve `null` e o programa lança `NullPointerException`.
 
-## 11.5 Variações do HashMap
+## 11.6 Variações do HashMap
 
 * **`HashMap`**: não garante ordem. É o mais rápido e o mais usado.
 * **`LinkedHashMap`**: mantém a **ordem de inserção**. Útil quando a ordem de exibição importa.
@@ -167,7 +214,7 @@ Atenção: antes de usar `porEstado.get("Pernambuco").add(...)`, a lista daquele
 
 Para trocar, basta mudar a classe no `new`, mantendo os mesmos métodos: `var notas = new TreeMap<String, Double>();`.
 
-## 11.6 Qual coleção escolher?
+## 11.7 Qual coleção escolher?
 
 Agora que você conhece as três famílias, use esta regra para decidir:
 
@@ -179,17 +226,22 @@ Agora que você conhece as três famílias, use esta regra para decidir:
 ## Erros comuns do Tema 11
 
 ```java
-// ERRO 1: comparar objetos Double com == em vez de equals
+// ERRO 1: tratar um HashSet como se fosse uma lista
+var cidades = new HashSet<String>();
+cidades.add("Recife");
+cidades.get(0);        // ERRO: o conjunto não tem posições, o método get não existe
+
+// ERRO 2: comparar objetos Double com == em vez de equals
 Double a = notas.get("Maria");
 Double b = notas.get("Ana");
 a == b;        // ERRADO: compara referências, não valores
 a.equals(b);   // CORRETO: compara os valores
 
-// ERRO 2: usar o retorno de get() sem verificar se a chave existe
+// ERRO 3: usar o retorno de get() sem verificar se a chave existe
 double nota = notas.get("Carlos"); // ERRO: NullPointerException (get devolveu null)
 double nota = notas.getOrDefault("Carlos", 0.0); // CORRETO
 
-// ERRO 3: esperar que o HashMap preserve a ordem de inserção
+// ERRO 4: esperar que o HashMap preserve a ordem de inserção
 var notas = new HashMap<String, Double>();
 notas.put("Maria", 8.5);
 notas.put("João", 7.0);
@@ -199,18 +251,23 @@ IO.println(notas);     // a ordem de exibição não é garantida
 
 **Entendendo cada erro:**
 
-1. **`==` entre objetos:** com objetos, `==` testa se são **o mesmo objeto na memória**, e não se têm o mesmo conteúdo. Para `Double`, `Integer` e `String`, compare sempre com `equals()`. Observação: comparar um objeto `Double` com um literal primitivo, como `notas.get("Maria") == 8.5`, funciona, porque o Java converte o objeto automaticamente para `double` antes de comparar. O problema aparece quando os **dois lados** são objetos.
-2. **Chave inexistente:** `get` devolve `null` quando a chave não existe, e converter `null` para `double` causa `NullPointerException`. Use `containsKey` antes ou, melhor, `getOrDefault`.
-3. **Ordem não garantida:** o `HashMap` organiza os pares pelo cálculo do hash, e não pela ordem em que foram inseridos. Se a ordem de exibição importa, troque por `LinkedHashMap` (ordem de inserção) ou `TreeMap` (chaves ordenadas), como vimos na seção 11.5.
+1. **Conjunto não tem índice:** o `HashSet` não guarda posições, então não existe `get(0)`. Percorra com for each ou use `contains` para testar se um elemento existe. Se você precisa de posições, use `ArrayList`.
+2. **`==` entre objetos:** com objetos, `==` testa se são **o mesmo objeto na memória**, e não se têm o mesmo conteúdo. Para `Double`, `Integer` e `String`, compare sempre com `equals()`. Observação: comparar um objeto `Double` com um literal primitivo, como `notas.get("Maria") == 8.5`, funciona, porque o Java converte o objeto automaticamente para `double` antes de comparar. O problema aparece quando os **dois lados** são objetos.
+3. **Chave inexistente:** `get` devolve `null` quando a chave não existe, e converter `null` para `double` causa `NullPointerException`. Use `containsKey` antes ou, melhor, `getOrDefault`.
+4. **Ordem não garantida:** o `HashMap` organiza os pares pelo cálculo do hash, e não pela ordem em que foram inseridos. Se a ordem de exibição importa, troque por `LinkedHashMap` (ordem de inserção) ou `TreeMap` (chaves ordenadas), como vimos na seção 11.6.
 
 ## Exercícios do Tema 11
 
-> **Exercício 11.1** `HashMap<String, ArrayList<String>>` com catálogo de artesãos nordestinos por estado.
+> **Exercício 11.1** Dada uma lista de nomes com repetições, use um `HashSet` para mostrar apenas os nomes únicos e quantos eles são. Depois, teste `add` com um nome repetido e mostre o valor devolvido.
+>
+> *Dicas:* crie o `HashSet` a partir da lista (`new HashSet<String>(lista)`) e use `size()` para contar. O retorno de `add` é `true` ou `false`.
+>
+> **Exercício 11.2** `HashMap<String, ArrayList<String>>` com catálogo de artesãos nordestinos por estado.
 >
 > *Dicas:* a chave é o estado e o valor é a lista de nomes de artesãos daquele estado. Ao cadastrar um artesão, verifique com `containsKey` se o estado já existe; se não existir, crie a lista antes (`put(estado, new ArrayList<String>())`) e depois adicione o nome. Para exibir, percorra o mapa com `entrySet()` e imprima o estado seguido da lista de artesãos.
 >
-> **Exercício 11.2 (desafio)** Usando o padrão de contagem com `HashMap<String, Integer>`, conte quantos artesãos existem por técnica e imprima o resultado. Depois, descubra qual técnica tem mais artesãos.
+> **Exercício 11.3 (desafio)** Usando o padrão de contagem com `HashMap<String, Integer>`, conte quantos artesãos existem por técnica e imprima o resultado. Depois, descubra qual técnica tem mais artesãos.
 
 ---
 
-[Índice](../../README.md) | [← Anterior: 10. Coleções: ArrayList e HashSet](../10-colecoes-e-estruturas-de-dados/README.md) | [Próximo: 12. Tratamento de Exceções →](../12-tratamento-de-excecoes/README.md)
+[Índice](../../README.md) | [← Anterior: 10. Coleções: ArrayList](../10-colecoes-e-estruturas-de-dados/README.md) | [Próximo: 12. Tratamento de Exceções →](../12-tratamento-de-excecoes/README.md)

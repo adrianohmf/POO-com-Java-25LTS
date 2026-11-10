@@ -16,9 +16,3 @@ lista.removeIf(nome -> nome.startsWith("J")); // CORRETO
 var lista = new ArrayList<String>();
 lista.add("Maria");
 lista.get(1); // ERRO: IndexOutOfBoundsException! Só existe o índice 0
-
-// ERRO 4: tratar um HashSet como se fosse uma lista
-var cidades = new HashSet<String>();
-cidades.add("Recife");
-cidades.get(0);        // ERRO: o conjunto não tem posições, o método get não existe
-// Para percorrer, use for each; para obter por posição, use uma lista.

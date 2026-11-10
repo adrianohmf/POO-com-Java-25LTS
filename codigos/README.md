@@ -135,20 +135,20 @@ Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](08-polimorfismo/erros-comuns
 
 Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](09-classes-abstratas-e-interfaces/erros-comuns/erros-comuns.txt)
 
-### [10. Coleções: ArrayList e HashSet](10-colecoes-e-estruturas-de-dados/)
+### [10. Coleções: ArrayList](10-colecoes-e-estruturas-de-dados/)
 
 | Seção | Exemplo | Programa principal | Classes |
 |---|---|---|---|
 | 10.1 Array vs ArrayList | [`UsandoArrayList`](10-colecoes-e-estruturas-de-dados/10.1-array-vs-arraylist/UsandoArrayList/) | [`UsandoArrayList.java`](10-colecoes-e-estruturas-de-dados/10.1-array-vs-arraylist/UsandoArrayList/UsandoArrayList.java) | [`Aluno.java`](10-colecoes-e-estruturas-de-dados/10.1-array-vs-arraylist/UsandoArrayList/Aluno.java) |
-| 10.2 HashSet: conjuntos sem repetição | [`UsandoHashSet`](10-colecoes-e-estruturas-de-dados/10.2-hashset/UsandoHashSet/) | [`UsandoHashSet.java`](10-colecoes-e-estruturas-de-dados/10.2-hashset/UsandoHashSet/UsandoHashSet.java) | (nenhuma) |
 
 Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](10-colecoes-e-estruturas-de-dados/erros-comuns/erros-comuns.txt)
 
-### [11. Mapas com HashMap](11-mapas-com-hashmap/)
+### [11. Conjuntos e Mapas: HashSet e HashMap](11-mapas-com-hashmap/)
 
 | Seção | Exemplo | Programa principal | Classes |
 |---|---|---|---|
-| 11.1 HashMap: chave e valor | [`UsandoHashMap`](11-mapas-com-hashmap/11.1-hashmap/UsandoHashMap/) | [`UsandoHashMap.java`](11-mapas-com-hashmap/11.1-hashmap/UsandoHashMap/UsandoHashMap.java) | (nenhuma) |
+| 11.1 HashSet: conjuntos sem repetição | [`UsandoHashSet`](11-mapas-com-hashmap/11.1-hashset/UsandoHashSet/) | [`UsandoHashSet.java`](11-mapas-com-hashmap/11.1-hashset/UsandoHashSet/UsandoHashSet.java) | (nenhuma) |
+| 11.2 HashMap: chave e valor | [`UsandoHashMap`](11-mapas-com-hashmap/11.2-hashmap/UsandoHashMap/) | [`UsandoHashMap.java`](11-mapas-com-hashmap/11.2-hashmap/UsandoHashMap/UsandoHashMap.java) | (nenhuma) |
 
 Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](11-mapas-com-hashmap/erros-comuns/erros-comuns.txt)
 

@@ -80,19 +80,19 @@ com teoria, diagramas, exemplos comentados, erros comuns e exercícios práticos
 - [9.2 Interfaces](capitulos/09-classes-abstratas-e-interfaces/README.md#92-interfaces)
 - [9.3 Classe Abstrata vs Interface](capitulos/09-classes-abstratas-e-interfaces/README.md#93-classe-abstrata-vs-interface)
 
-### [10. Coleções: ArrayList e HashSet](capitulos/10-colecoes-e-estruturas-de-dados/README.md)
+### [10. Coleções: ArrayList](capitulos/10-colecoes-e-estruturas-de-dados/README.md)
 
 - [10.1 Array vs ArrayList](capitulos/10-colecoes-e-estruturas-de-dados/README.md#101-array-vs-arraylist)
-- [10.2 HashSet: conjuntos sem repetição](capitulos/10-colecoes-e-estruturas-de-dados/README.md#102-hashset-conjuntos-sem-repetição)
 
-### [11. Mapas com HashMap](capitulos/11-mapas-com-hashmap/README.md)
+### [11. Conjuntos e Mapas: HashSet e HashMap](capitulos/11-mapas-com-hashmap/README.md)
 
-- [11.1 HashMap: chave e valor](capitulos/11-mapas-com-hashmap/README.md#111-hashmap-chave-e-valor)
-- [11.2 Outros métodos úteis do HashMap](capitulos/11-mapas-com-hashmap/README.md#112-outros-métodos-úteis-do-hashmap)
-- [11.3 Padrão clássico: contar ocorrências](capitulos/11-mapas-com-hashmap/README.md#113-padrão-clássico-contar-ocorrências)
-- [11.4 Mapa com lista como valor](capitulos/11-mapas-com-hashmap/README.md#114-mapa-com-lista-como-valor)
-- [11.5 Variações do HashMap](capitulos/11-mapas-com-hashmap/README.md#115-variações-do-hashmap)
-- [11.6 Qual coleção escolher?](capitulos/11-mapas-com-hashmap/README.md#116-qual-coleção-escolher)
+- [11.1 HashSet: conjuntos sem repetição](capitulos/11-mapas-com-hashmap/README.md#111-hashset-conjuntos-sem-repetição)
+- [11.2 HashMap: chave e valor](capitulos/11-mapas-com-hashmap/README.md#112-hashmap-chave-e-valor)
+- [11.3 Outros métodos úteis do HashMap](capitulos/11-mapas-com-hashmap/README.md#113-outros-métodos-úteis-do-hashmap)
+- [11.4 Padrão clássico: contar ocorrências](capitulos/11-mapas-com-hashmap/README.md#114-padrão-clássico-contar-ocorrências)
+- [11.5 Mapa com lista como valor](capitulos/11-mapas-com-hashmap/README.md#115-mapa-com-lista-como-valor)
+- [11.6 Variações do HashMap](capitulos/11-mapas-com-hashmap/README.md#116-variações-do-hashmap)
+- [11.7 Qual coleção escolher?](capitulos/11-mapas-com-hashmap/README.md#117-qual-coleção-escolher)
 
 ### [12. Tratamento de Exceções](capitulos/12-tratamento-de-excecoes/README.md)
 

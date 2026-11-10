@@ -1,17 +1,17 @@
-[Índice](../../README.md) | [← Anterior: 9. Classes Abstratas e Interfaces](../09-classes-abstratas-e-interfaces/README.md) | [Próximo: 11. Mapas com HashMap →](../11-mapas-com-hashmap/README.md)
+[Índice](../../README.md) | [← Anterior: 9. Classes Abstratas e Interfaces](../09-classes-abstratas-e-interfaces/README.md) | [Próximo: 11. Conjuntos e Mapas: HashSet e HashMap →](../11-mapas-com-hashmap/README.md)
 
-# 10. Coleções: ArrayList e HashSet
+# 10. Coleções: ArrayList
 
 > **Códigos deste capítulo:** [codigos/10-colecoes-e-estruturas-de-dados](../../codigos/10-colecoes-e-estruturas-de-dados/)
 
 > **O que você vai aprender neste capítulo:**
-> Usar `ArrayList` para listas dinâmicas de objetos, usar `HashSet` para conjuntos sem repetição, percorrer coleções com o laço for each, remover elementos com segurança e aplicar métodos úteis como `sort()`, `contains()` e `remove()`.
+> Usar `ArrayList` para listas dinâmicas de objetos, percorrer coleções com o laço for each, remover elementos com segurança e aplicar métodos úteis como `sort()`, `contains()` e `remove()`.
 
 Até agora trabalhamos com um ou poucos objetos por vez. Mas sistemas reais lidam com centenas ou milhares de objetos: uma escola tem centenas de alunos, uma loja tem milhares de produtos, um banco tem milhões de contas.
 
 Arrays resolvem parte do problema, mas têm uma limitação crítica: o tamanho é fixo. Se você criar um array de 100 alunos e precisar do 101º, o array não cresce. Para "crescer", seria preciso criar um array maior e copiar tudo manualmente, o que dá trabalho e abre espaço para erros.
 
-As **coleções** do Java resolvem isso. O `ArrayList` é uma lista que cresce conforme necessário, com métodos prontos para adicionar, remover, buscar e ordenar. O `HashSet` guarda elementos sem repetição. E, quando você precisar buscar por nome, CPF ou código, o `HashMap` do próximo capítulo associa uma chave a um valor, como um dicionário.
+As **coleções** do Java resolvem isso. O `ArrayList` é uma lista que cresce conforme necessário, com métodos prontos para adicionar, remover, buscar e ordenar. No próximo capítulo você conhece o `HashSet`, que guarda elementos sem repetição, e o `HashMap`, que associa uma chave a um valor, como um dicionário, útil quando você precisa buscar por nome, CPF ou código.
 
 Dominar coleções é essencial para qualquer projeto Java real. O projeto final deste guia usa `ArrayList` para armazenar alunos e notas, exatamente como um sistema acadêmico real faria.
 
@@ -23,7 +23,7 @@ Todas as coleções do Java ficam no pacote `java.util` e fazem parte do chamado
 * **`Set`**: conjunto de elementos sem repetição. Implementação mais usada: `HashSet`.
 * **`Map`**: pares de chave e valor, com chaves únicas. Implementação mais usada: `HashMap`.
 
-Neste capítulo você conhece `List` e `Set`, com `ArrayList` e `HashSet`. O `Map` tem um capítulo só dele, o próximo. Como vimos no capítulo 9, programar pensando na interface traz flexibilidade, e por isso é comum declarar `List<String> nomes = new ArrayList<>();`. Nos exemplos abaixo usamos `var` para manter o código curto, mas lembre que o tipo real da variável continua sendo `ArrayList`.
+Neste capítulo você conhece `List`, com `ArrayList`. O `Set` e o `Map` ficam para o próximo capítulo. Como vimos no capítulo 9, programar pensando na interface traz flexibilidade, e por isso é comum declarar `List<String> nomes = new ArrayList<>();`. Nos exemplos abaixo usamos `var` para manter o código curto, mas lembre que o tipo real da variável continua sendo `ArrayList`.
 
 ## 10.1 Array vs ArrayList
 
@@ -250,53 +250,6 @@ Aluno buscarPorNome(ArrayList<Aluno> alunos, String nome) {
 }
 ```
 
-## 10.2 HashSet: conjuntos sem repetição
-
-Quando você precisa guardar elementos **sem permitir duplicatas**, use um `HashSet`. Ele funciona como um conjunto matemático:
-
-```java
-// Arquivo: UsandoHashSet.java
-
-import java.util.ArrayList;
-import java.util.HashSet;
-
-void main() {
-    var cidades = new HashSet<String>();
-
-    IO.println(cidades.add("Recife"));    // true: foi inserido
-    IO.println(cidades.add("Olinda"));    // true
-    IO.println(cidades.add("Recife"));    // false: já existia, ignorado
-
-    IO.println("Total: " + cidades.size());                     // 2
-    IO.println("Tem Olinda? " + cidades.contains("Olinda"));    // true
-
-    // Uso prático: remover duplicados de uma lista
-    var comRepetidos = new ArrayList<String>();
-    comRepetidos.add("Renda");
-    comRepetidos.add("Cerâmica");
-    comRepetidos.add("Renda");
-    comRepetidos.add("Renda");
-
-    var unicos = new HashSet<String>(comRepetidos);
-    IO.println("Antes: " + comRepetidos.size() + " itens");
-    IO.println("Depois: " + unicos.size() + " itens");
-}
-```
-
-O método `add` devolve `true` se o elemento foi inserido e `false` se ele já existia. Assim como no `HashMap`, a ordem dos elementos não é garantida. O segundo trecho mostra um uso prático: **remover duplicados** de uma lista, bastando criar o `HashSet` a partir dela. Como o conjunto não tem posições, não existe `get(0)`: para percorrer, use o for each.
-
-Saída esperada:
-
-```
-true
-true
-false
-Total: 2
-Tem Olinda? true
-Antes: 4 itens
-Depois: 2 itens
-```
-
 ## Erros comuns do Tema 10
 
 ```java
@@ -315,11 +268,6 @@ lista.removeIf(nome -> nome.startsWith("J")); // CORRETO
 var lista = new ArrayList<String>();
 lista.add("Maria");
 lista.get(1); // ERRO: IndexOutOfBoundsException! Só existe o índice 0
-
-// ERRO 4: tratar um HashSet como se fosse uma lista
-var cidades = new HashSet<String>();
-cidades.add("Recife");
-cidades.get(0);        // ERRO: o conjunto não tem posições, o método get não existe
 ```
 
 **Entendendo cada erro:**
@@ -327,7 +275,6 @@ cidades.get(0);        // ERRO: o conjunto não tem posições, o método get n�
 1. **Primitivo na lista:** os tipos genéricos exigem classes. Troque `int` por `Integer`, `double` por `Double`, `boolean` por `Boolean`, `char` por `Character`.
 2. **Modificar durante o percorrimento:** o Java detecta que a lista mudou no meio do for each e interrompe o programa com `ConcurrentModificationException`. A solução mais simples é `removeIf`, que recebe uma condição (lambda) e remove todos os elementos que a satisfazem. Outra alternativa é usar um `Iterator` e chamar `iterator.remove()`.
 3. **Índice inválido:** numa lista de tamanho `n`, os índices válidos vão de 0 até `n` menos 1. Chamar `get` com valor fora desse intervalo lança `IndexOutOfBoundsException`. Antes de acessar, confira com `size()`.
-4. **Conjunto não tem índice:** o `HashSet` não guarda posições, então não existe `get(0)`. Percorra com for each ou use `contains` para testar se um elemento existe. Se você precisa de posições, use `ArrayList`.
 
 ## Exercícios do Tema 10
 
@@ -338,11 +285,7 @@ cidades.get(0);        // ERRO: o conjunto não tem posições, o método get n�
 > **Exercício 10.2 (Projeto progressivo)** Substitua os arrays de `Artesao` por `ArrayList`. Adicione métodos para listar artesãos por técnica e calcular o faturamento total de todos os artesãos.
 >
 > *Dicas:* troque o array `Artesao[]` por `ArrayList<Artesao>` e os acessos `arr[i]` por `lista.get(i)`, ou melhor, use for each. Para listar por técnica, percorra a lista comparando `a.tecnica.equals(tecnica)`. Para o faturamento total, declare uma variável acumuladora `double total = 0;` antes do laço e some o faturamento de cada artesão a cada volta.
->
-> **Exercício 10.3** Dada uma lista de nomes com repetições, use um `HashSet` para mostrar apenas os nomes únicos e quantos eles são. Depois, teste `add` com um nome repetido e mostre o valor devolvido.
->
-> *Dicas:* crie o `HashSet` a partir da lista (`new HashSet<String>(lista)`) e use `size()` para contar. O retorno de `add` é `true` ou `false`.
 
 ---
 
-[Índice](../../README.md) | [← Anterior: 9. Classes Abstratas e Interfaces](../09-classes-abstratas-e-interfaces/README.md) | [Próximo: 11. Mapas com HashMap →](../11-mapas-com-hashmap/README.md)
+[Índice](../../README.md) | [← Anterior: 9. Classes Abstratas e Interfaces](../09-classes-abstratas-e-interfaces/README.md) | [Próximo: 11. Conjuntos e Mapas: HashSet e HashMap →](../11-mapas-com-hashmap/README.md)

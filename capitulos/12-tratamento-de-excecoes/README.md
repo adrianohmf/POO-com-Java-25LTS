@@ -1,4 +1,4 @@
-[Índice](../../README.md) | [← Anterior: 11. Mapas com HashMap](../11-mapas-com-hashmap/README.md) | [Próximo: 13. Pacotes e Imports →](../13-pacotes-e-imports/README.md)
+[Índice](../../README.md) | [← Anterior: 11. Conjuntos e Mapas: HashSet e HashMap](../11-mapas-com-hashmap/README.md) | [Próximo: 13. Pacotes e Imports →](../13-pacotes-e-imports/README.md)
 
 # 12. Tratamento de Exceções
 
@@ -171,4 +171,4 @@ try { } catch (Exception e) { } finally { sc.close(); }
 
 ---
 
-[Índice](../../README.md) | [← Anterior: 11. Mapas com HashMap](../11-mapas-com-hashmap/README.md) | [Próximo: 13. Pacotes e Imports →](../13-pacotes-e-imports/README.md)
+[Índice](../../README.md) | [← Anterior: 11. Conjuntos e Mapas: HashSet e HashMap](../11-mapas-com-hashmap/README.md) | [Próximo: 13. Pacotes e Imports →](../13-pacotes-e-imports/README.md)
