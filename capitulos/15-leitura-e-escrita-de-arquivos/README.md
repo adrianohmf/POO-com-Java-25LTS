@@ -1,8 +1,8 @@
-[Índice](../../README.md) | [← Anterior: 13. Datas com java.time](../13-datas-com-java-time/README.md) | [Próximo: 15. Projeto Final — Aplicação Completa →](../15-projeto-final/README.md)
+[Índice](../../README.md) | [← Anterior: 14. Datas com java.time](../14-datas-com-java-time/README.md) | [Próximo: 16. Projeto Final — Aplicação Completa →](../16-projeto-final/README.md)
 
-# 14. Leitura e Escrita de Arquivos
+# 15. Leitura e Escrita de Arquivos
 
-> **Códigos deste capítulo:** [codigos/14-leitura-e-escrita-de-arquivos](../../codigos/14-leitura-e-escrita-de-arquivos/)
+> **Códigos deste capítulo:** [codigos/15-leitura-e-escrita-de-arquivos](../../codigos/15-leitura-e-escrita-de-arquivos/)
 
 > **O que você vai aprender neste capítulo:**
 > Gravar e ler arquivos de texto com a API `java.nio.file` (`Path` e `Files`), usar `try-with-resources` para fechar arquivos com segurança, tratar `IOException` e guardar os objetos do programa em um arquivo CSV para que os dados sobrevivam depois que o programa terminar.
@@ -11,7 +11,7 @@ Todos os programas que você escreveu até aqui têm uma limitação: quando o p
 
 Esse é o primeiro passo de um conceito chamado **persistência**. Mais adiante, você vai conhecer bancos de dados, que são a forma profissional de persistir informação. Mas arquivos de texto são simples, funcionam em qualquer sistema, podem ser abertos no Bloco de Notas ou no Excel e ensinam a ideia central: **converter objetos em texto para gravar, e texto em objetos para ler**.
 
-## 14.1 Path e Files
+## 15.1 Path e Files
 
 A API moderna de arquivos fica no pacote `java.nio.file` e tem duas peças principais:
 
@@ -39,7 +39,7 @@ Alguns métodos úteis de `Files`:
 
 Use `Path.of("pasta", "arquivo.txt")` em vez de escrever a barra à mão. Assim o Java usa o separador correto para cada sistema operacional.
 
-## 14.2 Escrevendo arquivos
+## 15.2 Escrevendo arquivos
 
 O programa abaixo cria a pasta `saida`, grava o primeiro texto, acrescenta mais linhas e confere o resultado:
 
@@ -98,7 +98,7 @@ Três pontos importantes:
 
 ### Por que `throws IOException`?
 
-Mexer com arquivos pode falhar por motivos fora do controle do programa: disco cheio, permissão negada, arquivo apagado. Por isso os métodos de `Files` declaram que podem lançar `IOException`, uma **exceção verificada** (capítulo 11). O compilador exige que você faça uma de duas coisas:
+Mexer com arquivos pode falhar por motivos fora do controle do programa: disco cheio, permissão negada, arquivo apagado. Por isso os métodos de `Files` declaram que podem lançar `IOException`, uma **exceção verificada** (capítulo 12). O compilador exige que você faça uma de duas coisas:
 
 ```java
 void main() throws IOException { ... }      // 1. repassar o erro para quem chamou
@@ -106,7 +106,7 @@ void main() throws IOException { ... }      // 1. repassar o erro para quem cham
 try { ... } catch (IOException e) { ... }   // 2. tratar o erro ali mesmo
 ```
 
-## 14.3 Lendo arquivos
+## 15.3 Lendo arquivos
 
 Para ler, você escolhe entre ler tudo de uma vez (`readString`) ou obter as linhas separadas (`readAllLines`). Cada linha pode ser dividida com `split`, e o texto de um número é convertido com `Double.parseDouble` ou `Integer.parseInt`.
 
@@ -165,7 +165,7 @@ Arquivo nao encontrado: saida/nao-existe.txt
 
 O formato `nome;nota` usado no exemplo é chamado de **CSV** (*comma-separated values*, valores separados por vírgula). Aqui usamos ponto e vírgula, que é o padrão do Excel em português do Brasil e evita confusão com a vírgula decimal. Arquivos assim podem ser abertos direto em planilhas.
 
-## 14.4 Leitura segura com try-with-resources
+## 15.4 Leitura segura com try-with-resources
 
 `readAllLines` carrega o arquivo inteiro na memória, o que é ótimo para arquivos pequenos. Para arquivos grandes, ou quando você quer controlar a leitura linha a linha, use `BufferedReader` e `BufferedWriter`.
 
@@ -219,7 +219,7 @@ Repare no laço de leitura: `readLine()` devolve `null` quando o arquivo termina
 
 > **Dica:** sempre que abrir um arquivo com `newBufferedReader` ou `newBufferedWriter`, use `try-with-resources`. Você não precisa escrever `close()` nem `finally`.
 
-## 14.5 Persistindo objetos em CSV
+## 15.5 Persistindo objetos em CSV
 
 Agora juntamos tudo. Vamos fazer o catálogo da biblioteca **lembrar** os livros entre uma execução e outra. A ideia é dividir as responsabilidades em três classes:
 
@@ -229,7 +229,7 @@ Agora juntamos tudo. Vamos fazer o catálogo da biblioteca **lembrar** os livros
 | `RepositorioLivros` | Sabe **onde** e **como** salvar e carregar a lista de livros |
 | `AgendaDeLivros` | Programa principal: carrega, acrescenta um livro e salva |
 
-Essa separação é a mesma que você viu nos pacotes (capítulo 12): o `main` não precisa saber nada sobre arquivos.
+Essa separação é a mesma que você viu nos pacotes (capítulo 13): o `main` não precisa saber nada sobre arquivos.
 
 ```java
 // Arquivo: Livro.java
@@ -351,13 +351,13 @@ Detalhes de projeto que valem a pena notar:
 * Linhas em branco são ignoradas ao carregar.
 * O título do livro não pode conter `;`, senão a linha seria dividida no lugar errado. Em sistemas reais isso é tratado com bibliotecas de CSV ou JSON, e é um bom motivo para a próxima etapa de estudo: bancos de dados e formatos como JSON.
 
-## 14.6 Codificação de caracteres (UTF-8)
+## 15.6 Codificação de caracteres (UTF-8)
 
 Os métodos `Files.readString`, `writeString`, `readAllLines`, `newBufferedReader` e `newBufferedWriter` usam **UTF-8** por padrão. Esse é o formato que suporta acentos e caracteres especiais (`ç`, `ã`, `é`) em qualquer sistema. Por isso você pode gravar `"Graciliano Ramos, Vidas Secas, São Bernardo"` sem se preocupar.
 
 Se um arquivo vier de outro programa com acentos "quebrados" (`SÃ£o` em vez de `São`), é sinal de que ele foi salvo em outra codificação. Abra o arquivo no editor e salve novamente como UTF-8.
 
-## Erros comuns: Tema 14
+## Erros comuns: Tema 15
 
 ```java
 // ERRO 1: ler um arquivo que não existe
@@ -404,20 +404,20 @@ Integer.parseInt(partes[1]);
 // não à pasta do arquivo .java. Use Path.of("x").toAbsolutePath() para conferir.
 ```
 
-## Exercícios: Tema 14
+## Exercícios: Tema 15
 
-**Exercício 14.1:** Escreva um programa que grave em `saida/nomes.txt` os nomes de cinco colegas, um por linha, e depois leia o arquivo e mostre cada nome em letras maiúsculas.
+**Exercício 15.1:** Escreva um programa que grave em `saida/nomes.txt` os nomes de cinco colegas, um por linha, e depois leia o arquivo e mostre cada nome em letras maiúsculas.
 
-**Exercício 14.2:** Crie um programa que leia `saida/notas.txt` (formato `nome;nota`) e mostre o aluno com a maior nota e a média da turma.
+**Exercício 15.2:** Crie um programa que leia `saida/notas.txt` (formato `nome;nota`) e mostre o aluno com a maior nota e a média da turma.
 
-**Exercício 14.3:** Faça um registro de log: cada vez que o programa executa, acrescente ao arquivo `log.txt` uma linha com a data e a hora (`LocalDateTime.now()` formatado) e a mensagem `"Programa executado"`.
+**Exercício 15.3:** Faça um registro de log: cada vez que o programa executa, acrescente ao arquivo `log.txt` uma linha com a data e a hora (`LocalDateTime.now()` formatado) e a mensagem `"Programa executado"`.
 
-**Exercício 14.4:** Altere `RepositorioLivros` para que linhas com formato inválido (menos de 3 campos ou ano não numérico) sejam **ignoradas** e contadas. Mostre no final quantas linhas foram descartadas.
+**Exercício 15.4:** Altere `RepositorioLivros` para que linhas com formato inválido (menos de 3 campos ou ano não numérico) sejam **ignoradas** e contadas. Mostre no final quantas linhas foram descartadas.
 
-**Exercício 14.5:** Adicione ao `AgendaDeLivros` um menu com as opções `1. Listar`, `2. Cadastrar` e `3. Sair`. Os cadastros devem ser salvos no arquivo ao escolher `Sair`.
+**Exercício 15.5:** Adicione ao `AgendaDeLivros` um menu com as opções `1. Listar`, `2. Cadastrar` e `3. Sair`. Os cadastros devem ser salvos no arquivo ao escolher `Sair`.
 
-**Exercício 14.6 (Projeto progressivo):** Faça o sistema de `Artesao` salvar e carregar os artesãos e as vendas em arquivos CSV, usando o campo de data do capítulo 13.
+**Exercício 15.6 (Projeto progressivo):** Faça o sistema de `Artesao` salvar e carregar os artesãos e as vendas em arquivos CSV, usando o campo de data do capítulo 14.
 
 ---
 
-[Índice](../../README.md) | [← Anterior: 13. Datas com java.time](../13-datas-com-java-time/README.md) | [Próximo: 15. Projeto Final — Aplicação Completa →](../15-projeto-final/README.md)
+[Índice](../../README.md) | [← Anterior: 14. Datas com java.time](../14-datas-com-java-time/README.md) | [Próximo: 16. Projeto Final — Aplicação Completa →](../16-projeto-final/README.md)

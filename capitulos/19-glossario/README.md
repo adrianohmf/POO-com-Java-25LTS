@@ -1,6 +1,6 @@
-[Índice](../../README.md) | [← Anterior: 17. Erros Comuns e Como Resolver](../17-erros-comuns/README.md) | [Próximo: Referências e Recursos →](../referencias/README.md)
+[Índice](../../README.md) | [← Anterior: 18. Erros Comuns e Como Resolver](../18-erros-comuns/README.md) | [Próximo: Referências e Recursos →](../referencias/README.md)
 
-# 18. Glossário
+# 19. Glossário
 
 > **Referência rápida de termos** — use durante as aulas, exercícios e provas.
 
@@ -15,17 +15,21 @@ Os termos estão em ordem alfabetica para facilitar a consulta rápida.
 |---|---|
 | **Abstrato** | Classe ou método que não tem implementação completa. Obriga subclasses a completar. |
 | **Array** | Estrutura de tamanho fixo que guarda vários valores do mesmo tipo. Ex: `int[] notas = new int[5]` |
+| **ArrayList** | Lista que cresce conforme necessário. Guarda objetos em ordem, acessados por índice. Ex: `new ArrayList<String>()` |
 | **Atributo** | Variável declarada dentro de uma classe. Representa uma característica do objeto. |
 | **Bytecode** | Código intermediário gerado pelo compilador Java. Executado pela JVM. |
 | **Cast** | Conversao forcada de um tipo para outro. Ex: `(double) inteiro` |
 | **Classe** | Molde ou template que define atributos e métodos de um objeto. |
 | **Classpath** | Lista de pastas onde o Java procura as classes compiladas. Ex: `java -cp out pacote.Classe` |
+| **Coleção** | Objeto que guarda vários elementos e oferece métodos prontos para adicionar, buscar e remover. Ex: `List`, `Set`, `Map`. |
 | **Construtor** | Método especial com o mesmo nome da classe, executado automaticamente com `new`. |
 | **CSV** | Formato de texto com valores separados por um delimitador (`;` ou `,`), uma linha por registro. Abre no Excel. |
 | **Encapsulamento** | Pilar de POO que protege os dados internos do objeto, expondo apenas o necessário. |
 | **Extends** | Palavra-chave usada para herança de classe. `class Aluno extends Pessoa` |
 | **Final** | Modificador que impede alteracao. `final` em variável = constante, em classe = não pode ser herdada. |
 | **Getter** | Método de leitura de atributo privado. Convenção: `getNome()`, `isAtivo()`. |
+| **HashMap** | Mapa que associa chaves únicas a valores. A busca por chave é rápida e a ordem não é garantida. |
+| **HashSet** | Conjunto sem elementos repetidos. `add` devolve `false` quando o elemento já existe. |
 | **Herança** | Pilar de POO onde uma classe filha herda atributos e métodos da classe pai. |
 | **Implements** | Palavra-chave usada para implementar interface. `class Doc implements Imprimivel` |
 | **Import** | Instrução que informa ao compilador onde está uma classe de outro pacote. Ex: `import java.util.ArrayList;` |
@@ -38,6 +42,7 @@ Os termos estão em ordem alfabetica para facilitar a consulta rápida.
 | **JVM** | Java Virtual Machine. Executa o bytecode em qualquer sistema operacional. |
 | **Laço (loop)** | Estrutura que repete um bloco de código: `for`, `while`, `do-while` e `for-each`. |
 | **LocalDate** | Classe de `java.time` que representa uma data (ano, mês, dia) sem horário. Ex: `LocalDate.of(2026, 10, 13)` |
+| **Map (mapa)** | Estrutura de pares chave e valor, como um dicionário. Ex: `HashMap<String, Double>` com nome e nota. |
 | **Método** | Função declarada dentro de uma classe. Define o comportamento do objeto. |
 | **Modificador de acesso** | Palavra que controla visibilidade: `private`, `protected`, `public` ou padrao. |
 | **new** | Operador que cria um objeto na memória e chama o construtor. |
@@ -73,4 +78,4 @@ Os termos estão em ordem alfabetica para facilitar a consulta rápida.
 
 ---
 
-[Índice](../../README.md) | [← Anterior: 17. Erros Comuns e Como Resolver](../17-erros-comuns/README.md) | [Próximo: Referências e Recursos →](../referencias/README.md)
+[Índice](../../README.md) | [← Anterior: 18. Erros Comuns e Como Resolver](../18-erros-comuns/README.md) | [Próximo: Referências e Recursos →](../referencias/README.md)

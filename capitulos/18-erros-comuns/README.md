@@ -1,8 +1,8 @@
-[Índice](../../README.md) | [← Anterior: 16. Boas Práticas e Convenções](../16-boas-praticas-e-convencoes/README.md) | [Próximo: 18. Glossário →](../18-glossario/README.md)
+[Índice](../../README.md) | [← Anterior: 17. Boas Práticas e Convenções](../17-boas-praticas-e-convencoes/README.md) | [Próximo: 19. Glossário →](../19-glossario/README.md)
 
-# 17. Erros Comuns e Como Resolver
+# 18. Erros Comuns e Como Resolver
 
-> **Códigos deste capítulo:** [codigos/17-erros-comuns](../../codigos/17-erros-comuns/)
+> **Códigos deste capítulo:** [codigos/18-erros-comuns](../../codigos/18-erros-comuns/)
 
 > **O que você vai aprender neste capítulo:**
 > Reconhecer os erros mais frequentes em Java, entender sua causa raiz e saber como corrigi-los rapidamente.
@@ -82,4 +82,4 @@ data = data.plusDays(7);   // CORRETO: guarda a nova data
 
 ---
 
-[Índice](../../README.md) | [← Anterior: 16. Boas Práticas e Convenções](../16-boas-praticas-e-convencoes/README.md) | [Próximo: 18. Glossário →](../18-glossario/README.md)
+[Índice](../../README.md) | [← Anterior: 17. Boas Práticas e Convenções](../17-boas-praticas-e-convencoes/README.md) | [Próximo: 19. Glossário →](../19-glossario/README.md)

@@ -1,8 +1,8 @@
-[Índice](../../README.md) | [← Anterior: 11. Tratamento de Exceções](../11-tratamento-de-excecoes/README.md) | [Próximo: 13. Datas com java.time →](../13-datas-com-java-time/README.md)
+[Índice](../../README.md) | [← Anterior: 12. Tratamento de Exceções](../12-tratamento-de-excecoes/README.md) | [Próximo: 14. Datas com java.time →](../14-datas-com-java-time/README.md)
 
-# 12. Pacotes e Imports
+# 13. Pacotes e Imports
 
-> **Códigos deste capítulo:** [codigos/12-pacotes-e-imports](../../codigos/12-pacotes-e-imports/)
+> **Códigos deste capítulo:** [codigos/13-pacotes-e-imports](../../codigos/13-pacotes-e-imports/)
 
 > **O que você vai aprender neste capítulo:**
 > Organizar classes em pacotes, usar `package` e `import` corretamente, entender o modificador de acesso padrão (sem palavra-chave), compilar um projeto com várias pastas pelo terminal e evitar os erros mais comuns de organização.
@@ -13,7 +13,7 @@ Os **pacotes** resolvem os dois problemas. Um pacote é um agrupamento de classe
 
 Você já usa pacotes desde o capítulo 1: `ArrayList` está em `java.util`, `LocalDate` está em `java.time` e `String` está em `java.lang`. Neste capítulo você aprende a criar os seus.
 
-## 12.1 O que é um pacote
+## 13.1 O que é um pacote
 
 Um pacote tem três funções:
 
@@ -31,7 +31,7 @@ br.edu.ifpe.biblioteca.modelo   ->   br/edu/ifpe/biblioteca/modelo/
 
 > **Regra de ouro:** o nome do pacote declarado no arquivo precisa ser **igual ao caminho das pastas** onde ele está.
 
-## 12.2 Declarando e organizando pacotes
+## 13.2 Declarando e organizando pacotes
 
 A declaração `package` é sempre a **primeira linha de código** do arquivo (comentários podem vir antes). Vamos montar um projeto `Biblioteca` com três pacotes:
 
@@ -136,7 +136,7 @@ Dom Casmurro (Machado de Assis, 1899)
 Quincas Borba (Machado de Assis, 1891)
 ```
 
-## 12.3 Importando classes
+## 13.3 Importando classes
 
 O `import` diz ao compilador onde encontrar uma classe que está em outro pacote. Ele vem logo depois da linha `package`, antes da declaração da classe.
 
@@ -186,7 +186,7 @@ Saída esperada:
 9
 ```
 
-## 12.4 Modificadores de acesso e pacotes
+## 13.4 Modificadores de acesso e pacotes
 
 No capítulo 6 você viu `private` e `public`. Agora o **pacote** entra na conversa. Existe um quarto nível de acesso, que aparece quando você **não escreve nenhum modificador**: o acesso **padrão** (também chamado de *package-private*).
 
@@ -205,7 +205,7 @@ error: limpar() is not public in Catalogo; cannot be accessed from outside packa
 
 Use essa regra como guia: comece com o acesso mais restrito possível e abra apenas o que outros pacotes realmente precisam usar.
 
-## 12.5 Compilando e executando um projeto com pacotes
+## 13.5 Compilando e executando um projeto com pacotes
 
 Em projetos com pacotes, o `javac` e o `java` precisam saber onde estão as pastas. Dentro da pasta `Biblioteca`:
 
@@ -231,7 +231,7 @@ No **VS Code**, abra a pasta `Biblioteca` com **File > Open Folder**. A extensã
 
 > **Dica:** a pasta `out` é gerada automaticamente. Não envie essa pasta para o GitHub; ela entra no `.gitignore`.
 
-## Erros comuns: Tema 12
+## Erros comuns: Tema 13
 
 ```java
 // ERRO 1: pacote declarado não bate com a pasta onde o arquivo está
@@ -276,18 +276,18 @@ import java.sql.Date;                            // ERRO: o nome Date já foi im
 // Mensagem: Error: Could not find or load main class ... (os .class não existem mais)
 ```
 
-## Exercícios: Tema 12
+## Exercícios: Tema 13
 
-**Exercício 12.1:** Crie um projeto `Escola` com os pacotes `br.edu.ifpe.escola.modelo` (record `Aluno` com nome e nota), `br.edu.ifpe.escola.servico` (classe `Turma` com um `ArrayList<Aluno>` e um método `media()`) e `br.edu.ifpe.escola.app` (classe com o `main`). Compile pelo terminal com `javac -d out` e execute com `java -cp out`.
+**Exercício 13.1:** Crie um projeto `Escola` com os pacotes `br.edu.ifpe.escola.modelo` (record `Aluno` com nome e nota), `br.edu.ifpe.escola.servico` (classe `Turma` com um `ArrayList<Aluno>` e um método `media()`) e `br.edu.ifpe.escola.app` (classe com o `main`). Compile pelo terminal com `javac -d out` e execute com `java -cp out`.
 
-**Exercício 12.2:** No projeto do exercício anterior, remova o `public` da classe `Aluno` e compile de novo. Leia a mensagem de erro e explique com suas palavras por que ela aparece.
+**Exercício 13.2:** No projeto do exercício anterior, remova o `public` da classe `Aluno` e compile de novo. Leia a mensagem de erro e explique com suas palavras por que ela aparece.
 
-**Exercício 12.3:** Em `Turma`, crie um método `void zerar()` sem modificador e tente chamá-lo a partir da classe `App`. Corrija o código de duas formas diferentes e discuta qual delas é a melhor.
+**Exercício 13.3:** Em `Turma`, crie um método `void zerar()` sem modificador e tente chamá-lo a partir da classe `App`. Corrija o código de duas formas diferentes e discuta qual delas é a melhor.
 
-**Exercício 12.4:** Escreva um programa que use `java.util.Date` e `java.sql.Date` ao mesmo tempo. Resolva o conflito de nomes usando o nome completo de uma das classes.
+**Exercício 13.4:** Escreva um programa que use `java.util.Date` e `java.sql.Date` ao mesmo tempo. Resolva o conflito de nomes usando o nome completo de uma das classes.
 
-**Exercício 12.5 (Projeto progressivo):** Reorganize o projeto `Artesao` em pacotes `modelo`, `servico` e `app`, usando o domínio `br.edu.ifpe.artesanato`.
+**Exercício 13.5 (Projeto progressivo):** Reorganize o projeto `Artesao` em pacotes `modelo`, `servico` e `app`, usando o domínio `br.edu.ifpe.artesanato`.
 
 ---
 
-[Índice](../../README.md) | [← Anterior: 11. Tratamento de Exceções](../11-tratamento-de-excecoes/README.md) | [Próximo: 13. Datas com java.time →](../13-datas-com-java-time/README.md)
+[Índice](../../README.md) | [← Anterior: 12. Tratamento de Exceções](../12-tratamento-de-excecoes/README.md) | [Próximo: 14. Datas com java.time →](../14-datas-com-java-time/README.md)

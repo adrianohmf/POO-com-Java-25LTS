@@ -1,8 +1,8 @@
-[Índice](../../README.md) | [← Anterior: 12. Pacotes e Imports](../12-pacotes-e-imports/README.md) | [Próximo: 14. Leitura e Escrita de Arquivos →](../14-leitura-e-escrita-de-arquivos/README.md)
+[Índice](../../README.md) | [← Anterior: 13. Pacotes e Imports](../13-pacotes-e-imports/README.md) | [Próximo: 15. Leitura e Escrita de Arquivos →](../15-leitura-e-escrita-de-arquivos/README.md)
 
-# 13. Datas com java.time
+# 14. Datas com java.time
 
-> **Códigos deste capítulo:** [codigos/13-datas-com-java-time](../../codigos/13-datas-com-java-time/)
+> **Códigos deste capítulo:** [codigos/14-datas-com-java-time](../../codigos/14-datas-com-java-time/)
 
 > **O que você vai aprender neste capítulo:**
 > Representar datas e horas com `LocalDate`, `LocalTime` e `LocalDateTime`, calcular diferenças com `Period`, `Duration` e `ChronoUnit`, formatar e ler datas no padrão brasileiro e usar datas dentro de objetos, como o prazo de devolução de um empréstimo.
@@ -11,9 +11,9 @@ Quase todo sistema lida com datas: o prazo de entrega de um trabalho, a data de 
 
 O pacote `java.time` (disponível desde o Java 8) resolve tudo isso com classes prontas, claras e **imutáveis**. Ele substitui as antigas `java.util.Date` e `Calendar`, que são confusas e propensas a erros. Em código novo, use sempre `java.time`.
 
-Todas as classes deste capítulo ficam no pacote `java.time` (ou em subpacotes), então precisam de `import`, como você viu no capítulo 12.
+Todas as classes deste capítulo ficam no pacote `java.time` (ou em subpacotes), então precisam de `import`, como você viu no capítulo 13.
 
-## 13.1 As principais classes
+## 14.1 As principais classes
 
 | Classe | O que guarda | Exemplo |
 |---|---|---|
@@ -27,7 +27,7 @@ Todas as classes deste capítulo ficam no pacote `java.time` (ou em subpacotes),
 
 O prefixo `Local` indica que a data não carrega fuso horário. Isso é suficiente para a maioria dos sistemas acadêmicos e administrativos.
 
-## 13.2 LocalDate: trabalhando com datas
+## 14.2 LocalDate: trabalhando com datas
 
 Não existe `new LocalDate(...)`. Os objetos são criados por métodos estáticos: `of`, `parse` e `now`.
 
@@ -95,7 +95,7 @@ data = data.plusDays(7);   // CORRETO: guarda a nova data
 
 Isso é o mesmo comportamento de `String`, e é por isso que `LocalDate` é seguro de compartilhar entre classes e dentro de `record`.
 
-## 13.3 LocalTime e LocalDateTime
+## 14.3 LocalTime e LocalDateTime
 
 `LocalTime` guarda apenas a hora, e `LocalDateTime` guarda data e hora. Os métodos seguem o mesmo padrão de `LocalDate`: `of`, `now`, `plus...`, `minus...`, `with...`, `isBefore` e `isAfter`.
 
@@ -135,9 +135,9 @@ So a data: 2026-10-13
 So a hora: 23:59
 ```
 
-O `T` na saída (`2026-10-13T23:59`) é só o separador do formato padrão ISO. Na seção 13.5 você vai ver como mostrar de forma amigável.
+O `T` na saída (`2026-10-13T23:59`) é só o separador do formato padrão ISO. Na seção 14.5 você vai ver como mostrar de forma amigável.
 
-## 13.4 Períodos e durações
+## 14.4 Períodos e durações
 
 Para medir a distância entre duas datas existem três ferramentas, e cada uma responde a uma pergunta diferente:
 
@@ -196,7 +196,7 @@ Em horas e minutos: 1h40min
 
 Atenção à ordem dos argumentos: `between(inicio, fim)`. Se a primeira data for **posterior** à segunda, o resultado vem **negativo**. Essa propriedade é útil, por exemplo, para saber se um prazo já passou.
 
-## 13.5 Formatando e lendo datas
+## 14.5 Formatando e lendo datas
 
 O formato padrão (`2026-10-13`) segue a norma ISO e não é o que o usuário brasileiro espera ver. Para isso existe o `DateTimeFormatter`, que usa um **padrão** escrito com letras:
 
@@ -276,10 +276,10 @@ Com rigor: data invalida
 Pontos de atenção do exemplo:
 
 * **Data para texto:** `data.format(formatador)`.
-* **Texto para data:** `LocalDate.parse(texto, formatador)`. O texto precisa seguir exatamente o padrão, senão ocorre `DateTimeParseException`, uma exceção que você já sabe tratar (capítulo 11).
+* **Texto para data:** `LocalDate.parse(texto, formatador)`. O texto precisa seguir exatamente o padrão, senão ocorre `DateTimeParseException`, uma exceção que você já sabe tratar (capítulo 12).
 * **Modo padrão é permissivo:** `31/02/2026` vira `28/02/2026` sem avisar. Para rejeitar datas que não existem, use `ResolverStyle.STRICT` e escreva `uuuu` no lugar de `yyyy` no padrão.
 
-## 13.6 Datas dentro de objetos
+## 14.6 Datas dentro de objetos
 
 Na prática, datas quase sempre aparecem como **atributos**. Vamos retomar o domínio da biblioteca: cada empréstimo tem o livro, a data de retirada e um prazo em dias. A classe calcula sozinha a data de devolução, os dias de atraso e a multa de R$ 0,50 por dia.
 
@@ -350,7 +350,7 @@ Observe `Math.max(atraso, 0)`: se a data de devolução ainda não chegou, a dif
 
 > **Dica:** passar `hoje` como parâmetro, em vez de chamar `LocalDate.now()` dentro do método, deixa o código **testável**. Você escolhe a data do teste e o resultado é previsível.
 
-## Erros comuns: Tema 13
+## Erros comuns: Tema 14
 
 ```java
 // ERRO 1: esperar que plusDays altere a data (as datas são imutáveis)
@@ -388,20 +388,20 @@ LocalDate.of(2026, 10, 13).getHour();      // não compila: LocalDate não tem g
 // Prefira sempre java.time: é imutável, clara e sem os problemas de Date e Calendar
 ```
 
-## Exercícios: Tema 13
+## Exercícios: Tema 14
 
-**Exercício 13.1:** Peça ao usuário a data de nascimento no formato `dd/MM/yyyy` (com `IO.readln`) e mostre a idade em anos, meses e dias, além do dia da semana em que ele nasceu.
+**Exercício 14.1:** Peça ao usuário a data de nascimento no formato `dd/MM/yyyy` (com `IO.readln`) e mostre a idade em anos, meses e dias, além do dia da semana em que ele nasceu.
 
-**Exercício 13.2:** Escreva um programa que informe quantos dias faltam para o Natal, e que mostre `"Ja passou"` se a data já tiver passado neste ano.
+**Exercício 14.2:** Escreva um programa que informe quantos dias faltam para o Natal, e que mostre `"Ja passou"` se a data já tiver passado neste ano.
 
-**Exercício 13.3:** Crie um método que receba uma `LocalDate` e devolva `true` se ela cair em um fim de semana (`DayOfWeek.SATURDAY` ou `DayOfWeek.SUNDAY`).
+**Exercício 14.3:** Crie um método que receba uma `LocalDate` e devolva `true` se ela cair em um fim de semana (`DayOfWeek.SATURDAY` ou `DayOfWeek.SUNDAY`).
 
-**Exercício 13.4:** Dado um `LocalDate` de início e uma quantidade de aulas semanais, liste as datas das 8 primeiras aulas, uma por semana.
+**Exercício 14.4:** Dado um `LocalDate` de início e uma quantidade de aulas semanais, liste as datas das 8 primeiras aulas, uma por semana.
 
-**Exercício 13.5:** Faça um programa que leia uma data digitada pelo usuário e trate `DateTimeParseException` com uma mensagem amigável, pedindo para digitar de novo.
+**Exercício 14.5:** Faça um programa que leia uma data digitada pelo usuário e trate `DateTimeParseException` com uma mensagem amigável, pedindo para digitar de novo.
 
-**Exercício 13.6 (Projeto progressivo):** No projeto `Artesao`, registre a data de cada venda e crie um método que calcule o faturamento de um mês específico.
+**Exercício 14.6 (Projeto progressivo):** No projeto `Artesao`, registre a data de cada venda e crie um método que calcule o faturamento de um mês específico.
 
 ---
 
-[Índice](../../README.md) | [← Anterior: 12. Pacotes e Imports](../12-pacotes-e-imports/README.md) | [Próximo: 14. Leitura e Escrita de Arquivos →](../14-leitura-e-escrita-de-arquivos/README.md)
+[Índice](../../README.md) | [← Anterior: 13. Pacotes e Imports](../13-pacotes-e-imports/README.md) | [Próximo: 15. Leitura e Escrita de Arquivos →](../15-leitura-e-escrita-de-arquivos/README.md)

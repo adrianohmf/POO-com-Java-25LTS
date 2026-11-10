@@ -1,4 +1,4 @@
-// Trechos de erros comuns do capítulo 14 (não são programas completos)
+// Trechos de erros comuns do capítulo 15 (não são programas completos)
 
 // ERRO 1: ler um arquivo que não existe
 Files.readAllLines(Path.of("saida", "nao-existe.txt"));

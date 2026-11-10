@@ -5,19 +5,20 @@
 ArrayList<int> lista = new ArrayList<>();     // ERRADO
 ArrayList<Integer> lista = new ArrayList<>(); // CORRETO
 
-// ERRO 2: ConcurrentModificationException — modificar lista enquanto percorre
+// ERRO 2: ConcurrentModificationException, modificar a lista enquanto percorre
 for (String nome : lista) {
     lista.remove(nome); // ERRO em tempo de execução!
 }
-// Use iterator ou colete para remover depois:
+// Use removeIf, que faz a remoção com segurança:
 lista.removeIf(nome -> nome.startsWith("J")); // CORRETO
 
 // ERRO 3: get() fora do índice
 var lista = new ArrayList<String>();
 lista.add("Maria");
-lista.get(1); // ERRO: IndexOutOfBoundsException! Só existe índice 0
+lista.get(1); // ERRO: IndexOutOfBoundsException! Só existe o índice 0
 
-// ERRO 4: usar == para comparar String em HashMap
-notas.containsKey("Maria");  // CORRETO: usa equals internamente
-notas.get("Maria") == 8.5;   // ERRADO para Double: use .equals()
-notas.get("Maria").equals(8.5); // CORRETO
+// ERRO 4: tratar um HashSet como se fosse uma lista
+var cidades = new HashSet<String>();
+cidades.add("Recife");
+cidades.get(0);        // ERRO: o conjunto não tem posições, o método get não existe
+// Para percorrer, use for each; para obter por posição, use uma lista.

@@ -1,4 +1,4 @@
-[Índice](../../README.md) | [← Anterior: 18. Glossário](../18-glossario/README.md)
+[Índice](../../README.md) | [← Anterior: 19. Glossário](../19-glossario/README.md)
 
 # Referências e Recursos
 
@@ -18,4 +18,4 @@
 
 ---
 
-[Índice](../../README.md) | [← Anterior: 18. Glossário](../18-glossario/README.md)
+[Índice](../../README.md) | [← Anterior: 19. Glossário](../19-glossario/README.md)

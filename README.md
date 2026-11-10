@@ -80,57 +80,64 @@ com teoria, diagramas, exemplos comentados, erros comuns e exercícios práticos
 - [9.2 Interfaces](capitulos/09-classes-abstratas-e-interfaces/README.md#92-interfaces)
 - [9.3 Classe Abstrata vs Interface](capitulos/09-classes-abstratas-e-interfaces/README.md#93-classe-abstrata-vs-interface)
 
-### [10. Coleções e Estruturas de Dados](capitulos/10-colecoes-e-estruturas-de-dados/README.md)
+### [10. Coleções: ArrayList e HashSet](capitulos/10-colecoes-e-estruturas-de-dados/README.md)
 
 - [10.1 Array vs ArrayList](capitulos/10-colecoes-e-estruturas-de-dados/README.md#101-array-vs-arraylist)
-- [10.2 HashMap](capitulos/10-colecoes-e-estruturas-de-dados/README.md#102-hashmap)
-- [10.3 HashSet: conjuntos sem repetição](capitulos/10-colecoes-e-estruturas-de-dados/README.md#103-hashset-conjuntos-sem-repetição)
-- [10.4 Qual coleção escolher?](capitulos/10-colecoes-e-estruturas-de-dados/README.md#104-qual-coleção-escolher)
+- [10.2 HashSet: conjuntos sem repetição](capitulos/10-colecoes-e-estruturas-de-dados/README.md#102-hashset-conjuntos-sem-repetição)
 
-### [11. Tratamento de Exceções](capitulos/11-tratamento-de-excecoes/README.md)
+### [11. Mapas com HashMap](capitulos/11-mapas-com-hashmap/README.md)
 
-- [11.1 Hierarquia de exceções](capitulos/11-tratamento-de-excecoes/README.md#111-hierarquia-de-exceções)
-- [11.2 Exceções personalizadas](capitulos/11-tratamento-de-excecoes/README.md#112-exceções-personalizadas)
+- [11.1 HashMap: chave e valor](capitulos/11-mapas-com-hashmap/README.md#111-hashmap-chave-e-valor)
+- [11.2 Outros métodos úteis do HashMap](capitulos/11-mapas-com-hashmap/README.md#112-outros-métodos-úteis-do-hashmap)
+- [11.3 Padrão clássico: contar ocorrências](capitulos/11-mapas-com-hashmap/README.md#113-padrão-clássico-contar-ocorrências)
+- [11.4 Mapa com lista como valor](capitulos/11-mapas-com-hashmap/README.md#114-mapa-com-lista-como-valor)
+- [11.5 Variações do HashMap](capitulos/11-mapas-com-hashmap/README.md#115-variações-do-hashmap)
+- [11.6 Qual coleção escolher?](capitulos/11-mapas-com-hashmap/README.md#116-qual-coleção-escolher)
 
-### [12. Pacotes e Imports](capitulos/12-pacotes-e-imports/README.md)
+### [12. Tratamento de Exceções](capitulos/12-tratamento-de-excecoes/README.md)
 
-- [12.1 O que é um pacote](capitulos/12-pacotes-e-imports/README.md#121-o-que-é-um-pacote)
-- [12.2 Declarando e organizando pacotes](capitulos/12-pacotes-e-imports/README.md#122-declarando-e-organizando-pacotes)
-- [12.3 Importando classes](capitulos/12-pacotes-e-imports/README.md#123-importando-classes)
-- [12.4 Modificadores de acesso e pacotes](capitulos/12-pacotes-e-imports/README.md#124-modificadores-de-acesso-e-pacotes)
-- [12.5 Compilando e executando um projeto com pacotes](capitulos/12-pacotes-e-imports/README.md#125-compilando-e-executando-um-projeto-com-pacotes)
+- [12.1 Hierarquia de exceções](capitulos/12-tratamento-de-excecoes/README.md#121-hierarquia-de-exceções)
+- [12.2 Exceções personalizadas](capitulos/12-tratamento-de-excecoes/README.md#122-exceções-personalizadas)
 
-### [13. Datas com java.time](capitulos/13-datas-com-java-time/README.md)
+### [13. Pacotes e Imports](capitulos/13-pacotes-e-imports/README.md)
 
-- [13.1 As principais classes](capitulos/13-datas-com-java-time/README.md#131-as-principais-classes)
-- [13.2 LocalDate: trabalhando com datas](capitulos/13-datas-com-java-time/README.md#132-localdate-trabalhando-com-datas)
-- [13.3 LocalTime e LocalDateTime](capitulos/13-datas-com-java-time/README.md#133-localtime-e-localdatetime)
-- [13.4 Períodos e durações](capitulos/13-datas-com-java-time/README.md#134-períodos-e-durações)
-- [13.5 Formatando e lendo datas](capitulos/13-datas-com-java-time/README.md#135-formatando-e-lendo-datas)
-- [13.6 Datas dentro de objetos](capitulos/13-datas-com-java-time/README.md#136-datas-dentro-de-objetos)
+- [13.1 O que é um pacote](capitulos/13-pacotes-e-imports/README.md#131-o-que-é-um-pacote)
+- [13.2 Declarando e organizando pacotes](capitulos/13-pacotes-e-imports/README.md#132-declarando-e-organizando-pacotes)
+- [13.3 Importando classes](capitulos/13-pacotes-e-imports/README.md#133-importando-classes)
+- [13.4 Modificadores de acesso e pacotes](capitulos/13-pacotes-e-imports/README.md#134-modificadores-de-acesso-e-pacotes)
+- [13.5 Compilando e executando um projeto com pacotes](capitulos/13-pacotes-e-imports/README.md#135-compilando-e-executando-um-projeto-com-pacotes)
 
-### [14. Leitura e Escrita de Arquivos](capitulos/14-leitura-e-escrita-de-arquivos/README.md)
+### [14. Datas com java.time](capitulos/14-datas-com-java-time/README.md)
 
-- [14.1 Path e Files](capitulos/14-leitura-e-escrita-de-arquivos/README.md#141-path-e-files)
-- [14.2 Escrevendo arquivos](capitulos/14-leitura-e-escrita-de-arquivos/README.md#142-escrevendo-arquivos)
-- [14.3 Lendo arquivos](capitulos/14-leitura-e-escrita-de-arquivos/README.md#143-lendo-arquivos)
-- [14.4 Leitura segura com try-with-resources](capitulos/14-leitura-e-escrita-de-arquivos/README.md#144-leitura-segura-com-try-with-resources)
-- [14.5 Persistindo objetos em CSV](capitulos/14-leitura-e-escrita-de-arquivos/README.md#145-persistindo-objetos-em-csv)
-- [14.6 Codificação de caracteres (UTF-8)](capitulos/14-leitura-e-escrita-de-arquivos/README.md#146-codificação-de-caracteres-utf-8)
+- [14.1 As principais classes](capitulos/14-datas-com-java-time/README.md#141-as-principais-classes)
+- [14.2 LocalDate: trabalhando com datas](capitulos/14-datas-com-java-time/README.md#142-localdate-trabalhando-com-datas)
+- [14.3 LocalTime e LocalDateTime](capitulos/14-datas-com-java-time/README.md#143-localtime-e-localdatetime)
+- [14.4 Períodos e durações](capitulos/14-datas-com-java-time/README.md#144-períodos-e-durações)
+- [14.5 Formatando e lendo datas](capitulos/14-datas-com-java-time/README.md#145-formatando-e-lendo-datas)
+- [14.6 Datas dentro de objetos](capitulos/14-datas-com-java-time/README.md#146-datas-dentro-de-objetos)
 
-### [15. Projeto Final — Aplicação Completa](capitulos/15-projeto-final/README.md)
+### [15. Leitura e Escrita de Arquivos](capitulos/15-leitura-e-escrita-de-arquivos/README.md)
 
+- [15.1 Path e Files](capitulos/15-leitura-e-escrita-de-arquivos/README.md#151-path-e-files)
+- [15.2 Escrevendo arquivos](capitulos/15-leitura-e-escrita-de-arquivos/README.md#152-escrevendo-arquivos)
+- [15.3 Lendo arquivos](capitulos/15-leitura-e-escrita-de-arquivos/README.md#153-lendo-arquivos)
+- [15.4 Leitura segura com try-with-resources](capitulos/15-leitura-e-escrita-de-arquivos/README.md#154-leitura-segura-com-try-with-resources)
+- [15.5 Persistindo objetos em CSV](capitulos/15-leitura-e-escrita-de-arquivos/README.md#155-persistindo-objetos-em-csv)
+- [15.6 Codificação de caracteres (UTF-8)](capitulos/15-leitura-e-escrita-de-arquivos/README.md#156-codificação-de-caracteres-utf-8)
 
-### [16. Boas Práticas e Convenções](capitulos/16-boas-praticas-e-convencoes/README.md)
-
-- [16.1 Nomenclatura Java](capitulos/16-boas-praticas-e-convencoes/README.md#161-nomenclatura-java)
-- [16.2 Boas práticas gerais](capitulos/16-boas-praticas-e-convencoes/README.md#162-boas-práticas-gerais)
-- [16.3 Estrutura de um projeto Java profissional](capitulos/16-boas-praticas-e-convencoes/README.md#163-estrutura-de-um-projeto-java-profissional)
-
-### [17. Erros Comuns e Como Resolver](capitulos/17-erros-comuns/README.md)
+### [16. Projeto Final — Aplicação Completa](capitulos/16-projeto-final/README.md)
 
 
-### [18. Glossário](capitulos/18-glossario/README.md)
+### [17. Boas Práticas e Convenções](capitulos/17-boas-praticas-e-convencoes/README.md)
+
+- [17.1 Nomenclatura Java](capitulos/17-boas-praticas-e-convencoes/README.md#171-nomenclatura-java)
+- [17.2 Boas práticas gerais](capitulos/17-boas-praticas-e-convencoes/README.md#172-boas-práticas-gerais)
+- [17.3 Estrutura de um projeto Java profissional](capitulos/17-boas-praticas-e-convencoes/README.md#173-estrutura-de-um-projeto-java-profissional)
+
+### [18. Erros Comuns e Como Resolver](capitulos/18-erros-comuns/README.md)
+
+
+### [19. Glossário](capitulos/19-glossario/README.md)
 
 
 ### [Referências e Recursos](capitulos/referencias/README.md)

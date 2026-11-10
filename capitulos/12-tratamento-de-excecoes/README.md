@@ -1,8 +1,8 @@
-[Índice](../../README.md) | [← Anterior: 10. Coleções e Estruturas de Dados](../10-colecoes-e-estruturas-de-dados/README.md) | [Próximo: 12. Pacotes e Imports →](../12-pacotes-e-imports/README.md)
+[Índice](../../README.md) | [← Anterior: 11. Mapas com HashMap](../11-mapas-com-hashmap/README.md) | [Próximo: 13. Pacotes e Imports →](../13-pacotes-e-imports/README.md)
 
-# 11. Tratamento de Exceções
+# 12. Tratamento de Exceções
 
-> **Códigos deste capítulo:** [codigos/11-tratamento-de-excecoes](../../codigos/11-tratamento-de-excecoes/)
+> **Códigos deste capítulo:** [codigos/12-tratamento-de-excecoes](../../codigos/12-tratamento-de-excecoes/)
 
 > **O que você vai aprender neste capítulo:**
 > Entender o que são exceções e por que elas existem, usar `try-catch-finally` para tratar erros, criar exceções personalizadas e construir programas que não travam diante de entradas inesperadas.
@@ -14,7 +14,7 @@ Sem tratamento de exceções, a resposta é simples e ruim: o programa trava, ex
 Exceções são eventos anormais que interrompem o fluxo normal do programa. O Java tem um sistema elegante para lidar com elas: você tenta executar um bloco de código (`try`), captura possíveis erros (`catch`) e garante que recursos sejam liberados independente do resultado (`finally`). Você também pode criar suas próprias exceções para representar erros específicos do seu dominio, como `SaldoInsuficienteException` ou `NotaInvalidaException`.
 
 
-## 11.1 Hierarquia de exceções
+## 12.1 Hierarquia de exceções
 
 ```
 Throwable
@@ -67,7 +67,7 @@ void main() {
 }
 ```
 
-## 11.2 Exceções personalizadas
+## 12.2 Exceções personalizadas
 
 ```java
 // Arquivo: ExcecoesPersonalizadas.java
@@ -127,7 +127,7 @@ void main() {
 }
 ```
 
-## Erros comuns — Tema 11
+## Erros comuns — Tema 12
 
 ```java
 // ERRO 1: capturar Exception antes das específicas
@@ -161,14 +161,14 @@ try {
 try { } catch (Exception e) { } finally { sc.close(); }
 ```
 
-## Exercícios — Tema 11
+## Exercícios — Tema 12
 
-> **Exercício 11.1** — `NotaInvalidaException` quando nota < 0 ou > 10. Lance no método `adicionarNota()` e trate no `main`.
+> **Exercício 12.1** — `NotaInvalidaException` quando nota < 0 ou > 10. Lance no método `adicionarNota()` e trate no `main`.
 >
-> **Exercício 11.2** — `EstoqueInsuficienteException` com mensagem detalhada (estoque atual vs quantidade pedida).
+> **Exercício 12.2** — `EstoqueInsuficienteException` com mensagem detalhada (estoque atual vs quantidade pedida).
 >
-> **Exercício 11.3 (Projeto progressivo)** — Adicione tratamento de exceções ao sistema de `Artesao`. Crie `VendaInvalidaException` para quantidade negativa e `EstoqueInsuficienteException` para estoque zerado. Implemente um menu interativo que não trava com erros.
+> **Exercício 12.3 (Projeto progressivo)** — Adicione tratamento de exceções ao sistema de `Artesao`. Crie `VendaInvalidaException` para quantidade negativa e `EstoqueInsuficienteException` para estoque zerado. Implemente um menu interativo que não trava com erros.
 
 ---
 
-[Índice](../../README.md) | [← Anterior: 10. Coleções e Estruturas de Dados](../10-colecoes-e-estruturas-de-dados/README.md) | [Próximo: 12. Pacotes e Imports →](../12-pacotes-e-imports/README.md)
+[Índice](../../README.md) | [← Anterior: 11. Mapas com HashMap](../11-mapas-com-hashmap/README.md) | [Próximo: 13. Pacotes e Imports →](../13-pacotes-e-imports/README.md)

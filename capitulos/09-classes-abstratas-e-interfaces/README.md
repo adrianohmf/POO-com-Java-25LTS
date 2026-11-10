@@ -1,4 +1,4 @@
-[Índice](../../README.md) | [← Anterior: 8. Polimorfismo](../08-polimorfismo/README.md) | [Próximo: 10. Coleções e Estruturas de Dados →](../10-colecoes-e-estruturas-de-dados/README.md)
+[Índice](../../README.md) | [← Anterior: 8. Polimorfismo](../08-polimorfismo/README.md) | [Próximo: 10. Coleções: ArrayList e HashSet →](../10-colecoes-e-estruturas-de-dados/README.md)
 
 # 9. Classes Abstratas e Interfaces
 
@@ -266,4 +266,4 @@ class Aluno extends Imprimivel { }  // ERRADO: Imprimivel e interface, use imple
 
 ---
 
-[Índice](../../README.md) | [← Anterior: 8. Polimorfismo](../08-polimorfismo/README.md) | [Próximo: 10. Coleções e Estruturas de Dados →](../10-colecoes-e-estruturas-de-dados/README.md)
+[Índice](../../README.md) | [← Anterior: 8. Polimorfismo](../08-polimorfismo/README.md) | [Próximo: 10. Coleções: ArrayList e HashSet →](../10-colecoes-e-estruturas-de-dados/README.md)

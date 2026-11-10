@@ -1,0 +1,19 @@
+// ATENCAO: estes trechos são apenas ilustrativos e podem conter erros de propósito.
+// Eles não são um programa completo e não devem ser compilados como estão.
+
+// ERRO 1: comparar objetos Double com == em vez de equals
+Double a = notas.get("Maria");
+Double b = notas.get("Ana");
+a == b;        // ERRADO: compara referências, não valores
+a.equals(b);   // CORRETO: compara os valores
+
+// ERRO 2: usar o retorno de get() sem verificar se a chave existe
+double nota = notas.get("Carlos"); // ERRO: NullPointerException (get devolveu null)
+double nota = notas.getOrDefault("Carlos", 0.0); // CORRETO
+
+// ERRO 3: esperar que o HashMap preserve a ordem de inserção
+var notas = new HashMap<String, Double>();
+notas.put("Maria", 8.5);
+notas.put("Joao", 7.0);
+IO.println(notas);     // a ordem de exibição não é garantida
+// Para manter a ordem de inserção, use LinkedHashMap; para ordem alfabética, TreeMap.

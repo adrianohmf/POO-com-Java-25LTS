@@ -1,4 +1,4 @@
-// Trechos de erros comuns do capítulo 13 (não são programas completos)
+// Trechos de erros comuns do capítulo 14 (não são programas completos)
 
 // ERRO 1: esperar que plusDays altere a data (as datas são imutáveis)
 LocalDate data = LocalDate.of(2026, 10, 13);

@@ -135,70 +135,78 @@ Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](08-polimorfismo/erros-comuns
 
 Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](09-classes-abstratas-e-interfaces/erros-comuns/erros-comuns.txt)
 
-### [10. Coleções e Estruturas de Dados](10-colecoes-e-estruturas-de-dados/)
+### [10. Coleções: ArrayList e HashSet](10-colecoes-e-estruturas-de-dados/)
 
 | Seção | Exemplo | Programa principal | Classes |
 |---|---|---|---|
 | 10.1 Array vs ArrayList | [`UsandoArrayList`](10-colecoes-e-estruturas-de-dados/10.1-array-vs-arraylist/UsandoArrayList/) | [`UsandoArrayList.java`](10-colecoes-e-estruturas-de-dados/10.1-array-vs-arraylist/UsandoArrayList/UsandoArrayList.java) | [`Aluno.java`](10-colecoes-e-estruturas-de-dados/10.1-array-vs-arraylist/UsandoArrayList/Aluno.java) |
-| 10.2 HashMap | [`UsandoHashMap`](10-colecoes-e-estruturas-de-dados/10.2-hashmap/UsandoHashMap/) | [`UsandoHashMap.java`](10-colecoes-e-estruturas-de-dados/10.2-hashmap/UsandoHashMap/UsandoHashMap.java) | (nenhuma) |
+| 10.2 HashSet: conjuntos sem repetição | [`UsandoHashSet`](10-colecoes-e-estruturas-de-dados/10.2-hashset/UsandoHashSet/) | [`UsandoHashSet.java`](10-colecoes-e-estruturas-de-dados/10.2-hashset/UsandoHashSet/UsandoHashSet.java) | (nenhuma) |
 
 Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](10-colecoes-e-estruturas-de-dados/erros-comuns/erros-comuns.txt)
 
-### [11. Tratamento de Exceções](11-tratamento-de-excecoes/)
+### [11. Mapas com HashMap](11-mapas-com-hashmap/)
 
 | Seção | Exemplo | Programa principal | Classes |
 |---|---|---|---|
-| 11.1 Hierarquia de exceções | [`TratamentoExcecoes`](11-tratamento-de-excecoes/11.1-hierarquia-de-excecoes/TratamentoExcecoes/) | [`TratamentoExcecoes.java`](11-tratamento-de-excecoes/11.1-hierarquia-de-excecoes/TratamentoExcecoes/TratamentoExcecoes.java) | (nenhuma) |
-| 11.2 Exceções personalizadas | [`ExcecoesPersonalizadas`](11-tratamento-de-excecoes/11.2-excecoes-personalizadas/ExcecoesPersonalizadas/) | [`ExcecoesPersonalizadas.java`](11-tratamento-de-excecoes/11.2-excecoes-personalizadas/ExcecoesPersonalizadas/ExcecoesPersonalizadas.java) | [`Conta.java`](11-tratamento-de-excecoes/11.2-excecoes-personalizadas/ExcecoesPersonalizadas/Conta.java), [`SaldoInsuficienteException.java`](11-tratamento-de-excecoes/11.2-excecoes-personalizadas/ExcecoesPersonalizadas/SaldoInsuficienteException.java) |
+| 11.1 HashMap: chave e valor | [`UsandoHashMap`](11-mapas-com-hashmap/11.1-hashmap/UsandoHashMap/) | [`UsandoHashMap.java`](11-mapas-com-hashmap/11.1-hashmap/UsandoHashMap/UsandoHashMap.java) | (nenhuma) |
 
-Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](11-tratamento-de-excecoes/erros-comuns/erros-comuns.txt)
+Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](11-mapas-com-hashmap/erros-comuns/erros-comuns.txt)
 
-### [12. Pacotes e Imports](12-pacotes-e-imports/)
-
-| Seção | Exemplo | Programa principal | Classes |
-|---|---|---|---|
-| 12.2 Declarando e organizando pacotes | [`Biblioteca`](12-pacotes-e-imports/12.2-declarando-pacotes/Biblioteca/) (projeto com 3 pacotes) | [`App.java`](12-pacotes-e-imports/12.2-declarando-pacotes/Biblioteca/src/br/edu/ifpe/biblioteca/app/App.java) | [`Livro.java`](12-pacotes-e-imports/12.2-declarando-pacotes/Biblioteca/src/br/edu/ifpe/biblioteca/modelo/Livro.java), [`Catalogo.java`](12-pacotes-e-imports/12.2-declarando-pacotes/Biblioteca/src/br/edu/ifpe/biblioteca/servico/Catalogo.java) |
-| 12.3 Importando classes | [`UsandoImports`](12-pacotes-e-imports/12.3-importando-classes/UsandoImports/) | [`UsandoImports.java`](12-pacotes-e-imports/12.3-importando-classes/UsandoImports/UsandoImports.java) | (nenhuma) |
-
-O projeto `Biblioteca` é compilado pelo terminal (veja o [`README.md`](12-pacotes-e-imports/12.2-declarando-pacotes/Biblioteca/README.md) dele).
-
-Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](12-pacotes-e-imports/erros-comuns/erros-comuns.txt)
-
-### [13. Datas com java.time](13-datas-com-java-time/)
+### [12. Tratamento de Exceções](12-tratamento-de-excecoes/)
 
 | Seção | Exemplo | Programa principal | Classes |
 |---|---|---|---|
-| 13.2 LocalDate | [`ConhecendoLocalDate`](13-datas-com-java-time/13.2-localdate/ConhecendoLocalDate/) | [`ConhecendoLocalDate.java`](13-datas-com-java-time/13.2-localdate/ConhecendoLocalDate/ConhecendoLocalDate.java) | (nenhuma) |
-| 13.3 LocalTime e LocalDateTime | [`HorasEDatas`](13-datas-com-java-time/13.3-localtime-e-localdatetime/HorasEDatas/) | [`HorasEDatas.java`](13-datas-com-java-time/13.3-localtime-e-localdatetime/HorasEDatas/HorasEDatas.java) | (nenhuma) |
-| 13.4 Períodos e durações | [`CalculosComDatas`](13-datas-com-java-time/13.4-periodos-e-duracoes/CalculosComDatas/) | [`CalculosComDatas.java`](13-datas-com-java-time/13.4-periodos-e-duracoes/CalculosComDatas/CalculosComDatas.java) | (nenhuma) |
-| 13.5 Formatando e lendo datas | [`FormatandoDatas`](13-datas-com-java-time/13.5-formatando-e-lendo-datas/FormatandoDatas/) | [`FormatandoDatas.java`](13-datas-com-java-time/13.5-formatando-e-lendo-datas/FormatandoDatas/FormatandoDatas.java) | (nenhuma) |
-| 13.6 Datas dentro de objetos | [`ControleEmprestimos`](13-datas-com-java-time/13.6-datas-em-objetos/ControleEmprestimos/) | [`ControleEmprestimos.java`](13-datas-com-java-time/13.6-datas-em-objetos/ControleEmprestimos/ControleEmprestimos.java) | [`Emprestimo.java`](13-datas-com-java-time/13.6-datas-em-objetos/ControleEmprestimos/Emprestimo.java) |
+| 12.1 Hierarquia de exceções | [`TratamentoExcecoes`](12-tratamento-de-excecoes/12.1-hierarquia-de-excecoes/TratamentoExcecoes/) | [`TratamentoExcecoes.java`](12-tratamento-de-excecoes/12.1-hierarquia-de-excecoes/TratamentoExcecoes/TratamentoExcecoes.java) | (nenhuma) |
+| 12.2 Exceções personalizadas | [`ExcecoesPersonalizadas`](12-tratamento-de-excecoes/12.2-excecoes-personalizadas/ExcecoesPersonalizadas/) | [`ExcecoesPersonalizadas.java`](12-tratamento-de-excecoes/12.2-excecoes-personalizadas/ExcecoesPersonalizadas/ExcecoesPersonalizadas.java) | [`Conta.java`](12-tratamento-de-excecoes/12.2-excecoes-personalizadas/ExcecoesPersonalizadas/Conta.java), [`SaldoInsuficienteException.java`](12-tratamento-de-excecoes/12.2-excecoes-personalizadas/ExcecoesPersonalizadas/SaldoInsuficienteException.java) |
 
-Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](13-datas-com-java-time/erros-comuns/erros-comuns.txt)
+Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](12-tratamento-de-excecoes/erros-comuns/erros-comuns.txt)
 
-### [14. Leitura e Escrita de Arquivos](14-leitura-e-escrita-de-arquivos/)
+### [13. Pacotes e Imports](13-pacotes-e-imports/)
 
 | Seção | Exemplo | Programa principal | Classes |
 |---|---|---|---|
-| 14.2 Escrevendo arquivos | [`EscreverArquivo`](14-leitura-e-escrita-de-arquivos/14.2-escrevendo-arquivos/EscreverArquivo/) | [`EscreverArquivo.java`](14-leitura-e-escrita-de-arquivos/14.2-escrevendo-arquivos/EscreverArquivo/EscreverArquivo.java) | (nenhuma) |
-| 14.3 Lendo arquivos | [`LerArquivo`](14-leitura-e-escrita-de-arquivos/14.3-lendo-arquivos/LerArquivo/) | [`LerArquivo.java`](14-leitura-e-escrita-de-arquivos/14.3-lendo-arquivos/LerArquivo/LerArquivo.java) | (nenhuma) |
-| 14.4 Leitura segura com try-with-resources | [`LeituraSegura`](14-leitura-e-escrita-de-arquivos/14.4-leitura-segura-com-try-with-resources/LeituraSegura/) | [`LeituraSegura.java`](14-leitura-e-escrita-de-arquivos/14.4-leitura-segura-com-try-with-resources/LeituraSegura/LeituraSegura.java) | (nenhuma) |
-| 14.5 Persistindo objetos em CSV | [`AgendaDeLivros`](14-leitura-e-escrita-de-arquivos/14.5-persistindo-objetos/AgendaDeLivros/) | [`AgendaDeLivros.java`](14-leitura-e-escrita-de-arquivos/14.5-persistindo-objetos/AgendaDeLivros/AgendaDeLivros.java) | [`Livro.java`](14-leitura-e-escrita-de-arquivos/14.5-persistindo-objetos/AgendaDeLivros/Livro.java), [`RepositorioLivros.java`](14-leitura-e-escrita-de-arquivos/14.5-persistindo-objetos/AgendaDeLivros/RepositorioLivros.java) |
+| 13.2 Declarando e organizando pacotes | [`Biblioteca`](13-pacotes-e-imports/13.2-declarando-pacotes/Biblioteca/) (projeto com 3 pacotes) | [`App.java`](13-pacotes-e-imports/13.2-declarando-pacotes/Biblioteca/src/br/edu/ifpe/biblioteca/app/App.java) | [`Livro.java`](13-pacotes-e-imports/13.2-declarando-pacotes/Biblioteca/src/br/edu/ifpe/biblioteca/modelo/Livro.java), [`Catalogo.java`](13-pacotes-e-imports/13.2-declarando-pacotes/Biblioteca/src/br/edu/ifpe/biblioteca/servico/Catalogo.java) |
+| 13.3 Importando classes | [`UsandoImports`](13-pacotes-e-imports/13.3-importando-classes/UsandoImports/) | [`UsandoImports.java`](13-pacotes-e-imports/13.3-importando-classes/UsandoImports/UsandoImports.java) | (nenhuma) |
+
+O projeto `Biblioteca` é compilado pelo terminal (veja o [`README.md`](13-pacotes-e-imports/13.2-declarando-pacotes/Biblioteca/README.md) dele).
+
+Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](13-pacotes-e-imports/erros-comuns/erros-comuns.txt)
+
+### [14. Datas com java.time](14-datas-com-java-time/)
+
+| Seção | Exemplo | Programa principal | Classes |
+|---|---|---|---|
+| 14.2 LocalDate | [`ConhecendoLocalDate`](14-datas-com-java-time/14.2-localdate/ConhecendoLocalDate/) | [`ConhecendoLocalDate.java`](14-datas-com-java-time/14.2-localdate/ConhecendoLocalDate/ConhecendoLocalDate.java) | (nenhuma) |
+| 14.3 LocalTime e LocalDateTime | [`HorasEDatas`](14-datas-com-java-time/14.3-localtime-e-localdatetime/HorasEDatas/) | [`HorasEDatas.java`](14-datas-com-java-time/14.3-localtime-e-localdatetime/HorasEDatas/HorasEDatas.java) | (nenhuma) |
+| 14.4 Períodos e durações | [`CalculosComDatas`](14-datas-com-java-time/14.4-periodos-e-duracoes/CalculosComDatas/) | [`CalculosComDatas.java`](14-datas-com-java-time/14.4-periodos-e-duracoes/CalculosComDatas/CalculosComDatas.java) | (nenhuma) |
+| 14.5 Formatando e lendo datas | [`FormatandoDatas`](14-datas-com-java-time/14.5-formatando-e-lendo-datas/FormatandoDatas/) | [`FormatandoDatas.java`](14-datas-com-java-time/14.5-formatando-e-lendo-datas/FormatandoDatas/FormatandoDatas.java) | (nenhuma) |
+| 14.6 Datas dentro de objetos | [`ControleEmprestimos`](14-datas-com-java-time/14.6-datas-em-objetos/ControleEmprestimos/) | [`ControleEmprestimos.java`](14-datas-com-java-time/14.6-datas-em-objetos/ControleEmprestimos/ControleEmprestimos.java) | [`Emprestimo.java`](14-datas-com-java-time/14.6-datas-em-objetos/ControleEmprestimos/Emprestimo.java) |
+
+Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](14-datas-com-java-time/erros-comuns/erros-comuns.txt)
+
+### [15. Leitura e Escrita de Arquivos](15-leitura-e-escrita-de-arquivos/)
+
+| Seção | Exemplo | Programa principal | Classes |
+|---|---|---|---|
+| 15.2 Escrevendo arquivos | [`EscreverArquivo`](15-leitura-e-escrita-de-arquivos/15.2-escrevendo-arquivos/EscreverArquivo/) | [`EscreverArquivo.java`](15-leitura-e-escrita-de-arquivos/15.2-escrevendo-arquivos/EscreverArquivo/EscreverArquivo.java) | (nenhuma) |
+| 15.3 Lendo arquivos | [`LerArquivo`](15-leitura-e-escrita-de-arquivos/15.3-lendo-arquivos/LerArquivo/) | [`LerArquivo.java`](15-leitura-e-escrita-de-arquivos/15.3-lendo-arquivos/LerArquivo/LerArquivo.java) | (nenhuma) |
+| 15.4 Leitura segura com try-with-resources | [`LeituraSegura`](15-leitura-e-escrita-de-arquivos/15.4-leitura-segura-com-try-with-resources/LeituraSegura/) | [`LeituraSegura.java`](15-leitura-e-escrita-de-arquivos/15.4-leitura-segura-com-try-with-resources/LeituraSegura/LeituraSegura.java) | (nenhuma) |
+| 15.5 Persistindo objetos em CSV | [`AgendaDeLivros`](15-leitura-e-escrita-de-arquivos/15.5-persistindo-objetos/AgendaDeLivros/) | [`AgendaDeLivros.java`](15-leitura-e-escrita-de-arquivos/15.5-persistindo-objetos/AgendaDeLivros/AgendaDeLivros.java) | [`Livro.java`](15-leitura-e-escrita-de-arquivos/15.5-persistindo-objetos/AgendaDeLivros/Livro.java), [`RepositorioLivros.java`](15-leitura-e-escrita-de-arquivos/15.5-persistindo-objetos/AgendaDeLivros/RepositorioLivros.java) |
 
 Os exemplos de arquivos criam as pastas `saida` e `dados` (e o `log.txt`) na pasta onde são executados. Esses arquivos gerados ficam no `.gitignore`.
 
-Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](14-leitura-e-escrita-de-arquivos/erros-comuns/erros-comuns.txt)
+Trechos ilustrativos (`.txt`): [`erros-comuns.txt`](15-leitura-e-escrita-de-arquivos/erros-comuns/erros-comuns.txt)
 
-### [15. Projeto Final — Aplicação Completa](15-projeto-final/)
+### [16. Projeto Final — Aplicação Completa](16-projeto-final/)
 
 | Seção | Exemplo | Programa principal | Classes |
 |---|---|---|---|
-| (sem seção numerada) | [`SistemaAcademico`](15-projeto-final/SistemaAcademico/) | [`SistemaAcademico.java`](15-projeto-final/SistemaAcademico/SistemaAcademico.java) | [`Aluno.java`](15-projeto-final/SistemaAcademico/Aluno.java), [`AlunoNaoEncontradoException.java`](15-projeto-final/SistemaAcademico/AlunoNaoEncontradoException.java), [`NotaInvalidaException.java`](15-projeto-final/SistemaAcademico/NotaInvalidaException.java), [`Pessoa.java`](15-projeto-final/SistemaAcademico/Pessoa.java), [`Relatorio.java`](15-projeto-final/SistemaAcademico/Relatorio.java), [`Turma.java`](15-projeto-final/SistemaAcademico/Turma.java) |
+| (sem seção numerada) | [`SistemaAcademico`](16-projeto-final/SistemaAcademico/) | [`SistemaAcademico.java`](16-projeto-final/SistemaAcademico/SistemaAcademico.java) | [`Aluno.java`](16-projeto-final/SistemaAcademico/Aluno.java), [`AlunoNaoEncontradoException.java`](16-projeto-final/SistemaAcademico/AlunoNaoEncontradoException.java), [`NotaInvalidaException.java`](16-projeto-final/SistemaAcademico/NotaInvalidaException.java), [`Pessoa.java`](16-projeto-final/SistemaAcademico/Pessoa.java), [`Relatorio.java`](16-projeto-final/SistemaAcademico/Relatorio.java), [`Turma.java`](16-projeto-final/SistemaAcademico/Turma.java) |
 
-### [16. Boas Práticas e Convenções](16-boas-praticas-e-convencoes/)
+### [17. Boas Práticas e Convenções](17-boas-praticas-e-convencoes/)
 
-Trechos ilustrativos (`.txt`): [`boas-praticas.txt`](16-boas-praticas-e-convencoes/16.2-boas-praticas-gerais/trechos/boas-praticas.txt)
+Trechos ilustrativos (`.txt`): [`boas-praticas.txt`](17-boas-praticas-e-convencoes/17.2-boas-praticas-gerais/trechos/boas-praticas.txt)
 
-### [17. Erros Comuns e Como Resolver](17-erros-comuns/)
+### [18. Erros Comuns e Como Resolver](18-erros-comuns/)
 
-Trechos ilustrativos (`.txt`): [`erros-de-logica.txt`](17-erros-comuns/trechos/erros-de-logica.txt)
+Trechos ilustrativos (`.txt`): [`erros-de-logica.txt`](18-erros-comuns/trechos/erros-de-logica.txt)

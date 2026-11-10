@@ -1,4 +1,4 @@
-// Trechos de erros comuns do capítulo 12 (não são programas completos)
+// Trechos de erros comuns do capítulo 13 (não são programas completos)
 
 // ERRO 1: pacote declarado não bate com a pasta onde o arquivo está
 // Arquivo: src/br/edu/ifpe/biblioteca/modelo/Livro.java
