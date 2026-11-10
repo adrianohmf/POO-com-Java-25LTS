@@ -23,8 +23,8 @@ Files.writeString(arquivo, "novo texto", StandardOpenOption.APPEND);         // 
 
 // ERRO 5: esquecer o \n (ou newLine) e juntar tudo em uma linha só
 Files.writeString(arquivo, "Maria;8.5");
-Files.writeString(arquivo, "Joao;7.0", StandardOpenOption.APPEND);
-// O arquivo fica com: Maria;8.5Joao;7.0
+Files.writeString(arquivo, "João;7.0", StandardOpenOption.APPEND);
+// O arquivo fica com: Maria;8.5João;7.0
 // CORRETO: "Maria;8.5\n"  ou  usar Files.write(arquivo, List.of(...))
 
 // ERRO 6: não fechar o arquivo

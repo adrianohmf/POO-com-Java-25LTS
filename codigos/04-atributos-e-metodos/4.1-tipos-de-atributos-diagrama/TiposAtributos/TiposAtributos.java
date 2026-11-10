@@ -11,5 +11,5 @@ void main() {
     IO.println("Taxa de imposto: " + Produto.TAXA_IMPOSTO);
 
     double precoFinal = p1.preco * (1 + Produto.TAXA_IMPOSTO);
-    System.out.format("Preco com imposto: R$ %.2f%n", precoFinal);
+    System.out.format("Preço com imposto: R$ %.2f%n", precoFinal);
 }

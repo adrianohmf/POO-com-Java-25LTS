@@ -2,6 +2,6 @@
 
 class NotaInvalidaException extends IllegalArgumentException {
     NotaInvalidaException(double nota) {
-        super("Nota invalida: " + nota + " (deve ser entre 0 e 10)");
+        super("Nota inválida: " + nota + " (deve ser entre 0 e 10)");
     }
 }

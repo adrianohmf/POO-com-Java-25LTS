@@ -13,7 +13,7 @@ public class App {
         catalogo.adicionar(new Livro("Quincas Borba", "Machado de Assis", 1891));
         catalogo.adicionar(new Livro("Vidas Secas", "Graciliano Ramos", 1938));
 
-        System.out.println("Total no catalogo: " + catalogo.total());
+        System.out.println("Total no catálogo: " + catalogo.total());
 
         for (Livro livro : catalogo.buscarPorAutor("machado de assis")) {
             System.out.println(livro.descricao());

@@ -62,7 +62,7 @@ void main() throws IOException {
     Files.writeString(arquivo, "Maria;8.5\n");
 
     // write com lista: uma linha por elemento
-    Files.write(arquivo, List.of("Joao;7.0", "Ana;9.5"), StandardOpenOption.APPEND);
+    Files.write(arquivo, List.of("João;7.0", "Ana;9.5"), StandardOpenOption.APPEND);
 
     // APPEND acrescenta ao final, sem apagar o que já existe
     Files.writeString(arquivo, "Pedro;6.0\n", StandardOpenOption.APPEND);
@@ -78,14 +78,14 @@ Saída esperada:
 ```
 Arquivo criado em: notas.txt
 Existe? true
-Tamanho: 37 bytes
+Tamanho: 38 bytes
 ```
 
 O arquivo `saida/notas.txt` fica com este conteúdo:
 
 ```
 Maria;8.5
-Joao;7.0
+João;7.0
 Ana;9.5
 Pedro;6.0
 ```
@@ -124,7 +124,7 @@ void main() throws IOException {
 
     // Prepara um arquivo de exemplo para o programa funcionar sozinho
     Files.createDirectories(arquivo.getParent());
-    Files.write(arquivo, List.of("Maria;8.5", "Joao;7.0", "Ana;9.5", "Pedro;6.0"));
+    Files.write(arquivo, List.of("Maria;8.5", "João;7.0", "Ana;9.5", "Pedro;6.0"));
 
     // readString: o arquivo inteiro em um único texto
     String tudo = Files.readString(arquivo);
@@ -140,13 +140,13 @@ void main() throws IOException {
         IO.println(nome + " tirou " + nota);
         soma += nota;
     }
-    IO.println("Media: " + soma / linhas.size());
+    IO.println("Média: " + soma / linhas.size());
 
     // Arquivo que não existe lança NoSuchFileException
     try {
         Files.readAllLines(Path.of("saida", "nao-existe.txt"));
     } catch (NoSuchFileException e) {
-        IO.println("Arquivo nao encontrado: " + e.getMessage());
+        IO.println("Arquivo não encontrado: " + e.getMessage());
     }
 }
 ```
@@ -156,12 +156,14 @@ Saída esperada:
 ```
 Caracteres lidos: 37
 Maria tirou 8.5
-Joao tirou 7.0
+João tirou 7.0
 Ana tirou 9.5
 Pedro tirou 6.0
-Media: 7.75
-Arquivo nao encontrado: saida/nao-existe.txt
+Média: 7.75
+Arquivo não encontrado: saida/nao-existe.txt
 ```
+
+Compare os dois números: o arquivo ocupa **38 bytes**, mas a leitura devolve **37 caracteres**. A diferença é o `ã` de `João`: em UTF-8 ele é um único caractere que ocupa 2 bytes.
 
 O formato `nome;nota` usado no exemplo é chamado de **CSV** (*comma-separated values*, valores separados por vírgula). Aqui usamos ponto e vírgula, que é o padrão do Excel em português do Brasil e evita confusão com a vírgula decimal. Arquivos assim podem ser abertos direto em planilhas.
 
@@ -187,7 +189,7 @@ void main() {
     try (BufferedWriter escritor = Files.newBufferedWriter(log)) {
         escritor.write("Sistema iniciado");
         escritor.newLine();
-        escritor.write("Usuario conectado");
+        escritor.write("Usuário conectado");
         escritor.newLine();
     } catch (IOException e) {
         IO.println("Erro ao gravar: " + e.getMessage());
@@ -212,7 +214,7 @@ Saída esperada:
 
 ```
 1: Sistema iniciado
-2: Usuario conectado
+2: Usuário conectado
 ```
 
 Repare no laço de leitura: `readLine()` devolve `null` quando o arquivo termina, e é isso que encerra o `while`.
@@ -304,7 +306,7 @@ void main() throws IOException {
     IO.println("Livros carregados do arquivo: " + livros.size());
 
     // A cada execução acrescenta um livro novo, e o arquivo guarda o histórico
-    livros.add(new Livro("Livro numero " + (livros.size() + 1), "Autor", 2000 + livros.size()));
+    livros.add(new Livro("Livro número " + (livros.size() + 1), "Autor", 2000 + livros.size()));
     repositorio.salvar(livros);
 
     for (Livro livro : livros) {
@@ -318,31 +320,31 @@ Execute o programa **três vezes seguidas**. A cada execução ele encontra os l
 
 ```
 Livros carregados do arquivo: 0
-  - Livro numero 1 (2000)
+  - Livro número 1 (2000)
 Total salvo: 1
 ```
 
 ```
 Livros carregados do arquivo: 1
-  - Livro numero 1 (2000)
-  - Livro numero 2 (2001)
+  - Livro número 1 (2000)
+  - Livro número 2 (2001)
 Total salvo: 2
 ```
 
 ```
 Livros carregados do arquivo: 2
-  - Livro numero 1 (2000)
-  - Livro numero 2 (2001)
-  - Livro numero 3 (2002)
+  - Livro número 1 (2000)
+  - Livro número 2 (2001)
+  - Livro número 3 (2002)
 Total salvo: 3
 ```
 
 O arquivo `dados/livros.csv` fica assim, e pode ser aberto no Excel:
 
 ```
-Livro numero 1;Autor;2000
-Livro numero 2;Autor;2001
-Livro numero 3;Autor;2002
+Livro número 1;Autor;2000
+Livro número 2;Autor;2001
+Livro número 3;Autor;2002
 ```
 
 Detalhes de projeto que valem a pena notar:
@@ -383,8 +385,8 @@ Files.writeString(arquivo, "novo texto", StandardOpenOption.APPEND);         // 
 
 // ERRO 5: esquecer o \n (ou newLine) e juntar tudo em uma linha só
 Files.writeString(arquivo, "Maria;8.5");
-Files.writeString(arquivo, "Joao;7.0", StandardOpenOption.APPEND);
-// O arquivo fica com: Maria;8.5Joao;7.0
+Files.writeString(arquivo, "João;7.0", StandardOpenOption.APPEND);
+// O arquivo fica com: Maria;8.5João;7.0
 // CORRETO: "Maria;8.5\n"  ou  usar Files.write(arquivo, List.of(...))
 
 // ERRO 6: não fechar o arquivo

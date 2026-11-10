@@ -17,7 +17,7 @@ void main() throws IOException {
     servidor.createContext("/", troca -> {
         Path pagina = Path.of("web", "index.html");
         if (!troca.getRequestURI().getPath().equals("/") || !Files.exists(pagina)) {
-            LivroHandler.responder(troca, 404, Json.erro("Recurso nao encontrado"));
+            LivroHandler.responder(troca, 404, Json.erro("Recurso não encontrado"));
             return;
         }
         byte[] html = Files.readAllBytes(pagina);

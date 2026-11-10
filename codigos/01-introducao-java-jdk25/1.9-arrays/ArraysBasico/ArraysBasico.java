@@ -11,7 +11,7 @@ void main() {
     double[] notas = {7.5, 8.0, 6.5, 9.0};
     IO.println("Quantidade de notas: " + notas.length);   // length é atributo: sem parênteses
     IO.println("Primeira nota: " + notas[0]);
-    IO.println("Ultima nota: " + notas[notas.length - 1]);
+    IO.println("Última nota: " + notas[notas.length - 1]);
 
     // Alterando uma posição
     notas[2] = 7.0;
@@ -22,7 +22,7 @@ void main() {
         System.out.format("Nota %d: %.1f%n", i + 1, notas[i]);
         soma += notas[i];
     }
-    IO.println("Media: " + soma / notas.length);
+    IO.println("Média: " + soma / notas.length);
 
     // for-each: use quando só precisar dos valores
     double maior = notas[0];
@@ -34,7 +34,7 @@ void main() {
     IO.println("Maior nota: " + maior);
 
     // Utilitários da classe Arrays
-    String[] nomes = {"Maria", "Joao", "Ana", "Pedro"};
+    String[] nomes = {"Maria", "João", "Ana", "Pedro"};
     Arrays.sort(nomes);
-    IO.println(Arrays.toString(nomes));            // [Ana, Joao, Maria, Pedro]
+    IO.println(Arrays.toString(nomes));            // [Ana, João, Maria, Pedro]
 }

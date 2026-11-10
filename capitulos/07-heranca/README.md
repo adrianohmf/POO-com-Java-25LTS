@@ -7,11 +7,11 @@
 > **O que você vai aprender neste capítulo:**
 > Criar hierarquias de classes com `extends`, reutilizar código da superclasse, usar `super()` e `super.metodo()`, sobrescrever métodos com `@Override` e entender a relação "E UM".
 
-Na natureza, um Labrador e um cachorro. Um cachorro e um mamifero. Um mamifero e um animal. Cada nível herda as características do nível acima e adiciona as suas próprias. O Labrador não precisa "reinventar" a respiracao — ele herda isso de Animal.
+Na natureza, um Labrador é um cachorro. Um cachorro é um mamífero. Um mamífero é um animal. Cada nível herda as características do nível acima e adiciona as suas próprias. O Labrador não precisa "reinventar" a respiração — ele herda isso de Animal.
 
 Na programação, herança funciona da mesma forma. Se você já tem uma classe `Pessoa` com nome, idade e CPF, não faz sentido reescrever esses atributos em `Aluno` e em `Professor`. Com herança, tanto `Aluno` quanto `Professor` herdam tudo de `Pessoa` e acrescentam apenas o que é específico de cada um.
 
-Herança e o mecanismo que permite **reaproveitamento de código** de forma organizada e hierarquica. Ela também é a base para o polimorfismo, que veremos no próximo capítulo. Entender herança bem é fundamental para construir sistemas POO robustos e sem repeticao de código.
+Herança é o mecanismo que permite **reaproveitamento de código** de forma organizada e hierárquica. Ela também é a base para o polimorfismo, que veremos no próximo capítulo. Entender herança bem é fundamental para construir sistemas POO robustos e sem repetição de código.
 
 
 ## 7.1 Visualizando a herança
@@ -87,8 +87,8 @@ Sem a anotação, um erro de digitação no nome do método passaria despercebid
 ```java
 class Cachorro extends Animal {
     @Override
-    void fazersom() { }   // ERRO de compilação: nao existe fazersom() em Animal
-    // O compilador acusa na hora, porque o nome nao bate com nenhum metodo herdado
+    void fazersom() { }   // ERRO de compilação: não existe fazersom() em Animal
+    // O compilador acusa na hora, porque o nome não bate com nenhum método herdado
 }
 ```
 
@@ -136,9 +136,9 @@ class Aluno extends Pessoa {
     @Override  // garante que estamos realmente sobrescrevendo
     void apresentar() {
         super.apresentar(); // reutiliza o apresentar() de Pessoa
-        IO.println("Matricula: " + matricula);
+        IO.println("Matrícula: " + matricula);
         IO.println("Curso:     " + curso);
-        IO.println("Media:     " + mediaGeral);
+        IO.println("Média:     " + mediaGeral);
     }
 }
 
@@ -161,16 +161,16 @@ class Professor extends Pessoa {
     }
 
     void ministrarAula() {
-        IO.println(nome + " esta ministrando " + disciplina + ".");
+        IO.println(nome + " está ministrando " + disciplina + ".");
     }
 }
 
 void main() {
     var aluno = new Aluno("Maria Silva", 20, "111.222.333-44",
-                           "2025-0001", "Informatica para Internet");
+                           "2025-0001", "Informática para Internet");
     aluno.definirMedia(8.5);
 
-    var prof = new Professor("Adriano Franca", 35, "555.666.777-88",
+    var prof = new Professor("Adriano França", 35, "555.666.777-88",
                               "POO", "SIAPE-12345");
 
     IO.println("========================================");
@@ -215,8 +215,8 @@ classDiagram
 class Animal {
     protected String nome;
     Animal(String nome) { this.nome = nome; }
-    void respirar() { IO.println(nome + " esta respirando."); }
-    void dormir()   { IO.println(nome + " esta dormindo."); }
+    void respirar() { IO.println(nome + " está respirando."); }
+    void dormir()   { IO.println(nome + " está dormindo."); }
 }
 
 class Mamifero extends Animal {
@@ -277,7 +277,7 @@ class Pessoa {
 }
 class Aluno extends Pessoa {
     void exibir() {
-        IO.println(nome); // ERRO: nome e private em Pessoa
+        IO.println(nome); // ERRO: nome é private em Pessoa
     }
 }
 // Use protected para atributos que subclasses precisam acessar
@@ -294,9 +294,9 @@ class Cachorro extends Animal {
 
 > **Exercício 7.1** — Hierarquia: `Veiculo` -> `VeiculoTerrestre` e `VeiculoAquatico` -> `Carro`, `Moto`, `Barco`.
 >
-> **Exercício 7.2** — Hierarquia IFPE: `Servidor` -> `Professor` (disciplina, titulacao) e `TecnicoAdministrativo` (setor, cargo).
+> **Exercício 7.2** — Hierarquia IFPE: `Servidor` -> `Professor` (disciplina, titulação) e `TecnicoAdministrativo` (setor, cargo).
 >
-> **Exercício 7.3 (Projeto progressivo)** — Crie uma superclasse `PessoaNordeste` com `nome`, `municipio`, `estado`. Faca `Artesao` herdar dela. Adicione outros tipos: `Comerciante`, `Agricultor`. Exiba todos num array do tipo `PessoaNordeste`.
+> **Exercício 7.3 (Projeto progressivo)** — Crie uma superclasse `PessoaNordeste` com `nome`, `municipio`, `estado`. Faça `Artesao` herdar dela. Adicione outros tipos: `Comerciante`, `Agricultor`. Exiba todos num array do tipo `PessoaNordeste`.
 
 ---
 

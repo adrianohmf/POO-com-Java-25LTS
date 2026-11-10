@@ -16,7 +16,7 @@ void main() throws IOException {
     Files.writeString(arquivo, "Maria;8.5\n");
 
     // write com lista: uma linha por elemento
-    Files.write(arquivo, List.of("Joao;7.0", "Ana;9.5"), StandardOpenOption.APPEND);
+    Files.write(arquivo, List.of("João;7.0", "Ana;9.5"), StandardOpenOption.APPEND);
 
     // APPEND acrescenta ao final, sem apagar o que já existe
     Files.writeString(arquivo, "Pedro;6.0\n", StandardOpenOption.APPEND);

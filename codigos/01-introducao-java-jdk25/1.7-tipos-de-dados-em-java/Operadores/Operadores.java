@@ -2,11 +2,11 @@
 
 void main() {
 
-    // ARITMETICOS
+    // ARITMÉTICOS
     int a = 10, b = 3;
     IO.println(a + b);   // 13  — soma
-    IO.println(a - b);   // 7   — subtracao
-    IO.println(a * b);   // 30  — multiplicacao
+    IO.println(a - b);   // 7   — subtração
+    IO.println(a * b);   // 30  — multiplicação
     IO.println(a / b);   // 3   — divisão inteira (cuidado!)
     IO.println(a % b);   // 1   — resto da divisão
     IO.println(a++);     // 10  — usa o valor, depois incrementa
@@ -26,7 +26,7 @@ void main() {
     IO.println(x || y);   // true  — OU (pelo menos um verdadeiro)
     IO.println(!x);       // false — NÃO (inverte)
 
-    // OPERADOR TERNARIO: condição ? se_verdadeiro : se_falso
+    // OPERADOR TERNÁRIO: condição ? se_verdadeiro : se_falso
     double nota = 7.5;
     String situacao = (nota >= 7.0) ? "Aprovado" : "Reprovado";
     IO.println(situacao);  // Aprovado

@@ -11,7 +11,7 @@ void main() throws IOException {
 
     // Prepara um arquivo de exemplo para o programa funcionar sozinho
     Files.createDirectories(arquivo.getParent());
-    Files.write(arquivo, List.of("Maria;8.5", "Joao;7.0", "Ana;9.5", "Pedro;6.0"));
+    Files.write(arquivo, List.of("Maria;8.5", "João;7.0", "Ana;9.5", "Pedro;6.0"));
 
     // readString: o arquivo inteiro em um único texto
     String tudo = Files.readString(arquivo);
@@ -27,12 +27,12 @@ void main() throws IOException {
         IO.println(nome + " tirou " + nota);
         soma += nota;
     }
-    IO.println("Media: " + soma / linhas.size());
+    IO.println("Média: " + soma / linhas.size());
 
     // Arquivo que não existe lança NoSuchFileException
     try {
         Files.readAllLines(Path.of("saida", "nao-existe.txt"));
     } catch (NoSuchFileException e) {
-        IO.println("Arquivo nao encontrado: " + e.getMessage());
+        IO.println("Arquivo não encontrado: " + e.getMessage());
     }
 }

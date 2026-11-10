@@ -2,10 +2,10 @@
 
 void main() {
     // IO.println: forma moderna (JDK 25)
-    IO.println("Ola, mundo!");
+    IO.println("Olá, mundo!");
 
     // System.out.println: forma clássica
-    System.out.println("Ola pelo modo classico!");
+    System.out.println("Olá pelo modo clássico!");
 
     // var: Java infere o tipo automaticamente
     var nome   = "Adriano";   // String

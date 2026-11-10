@@ -5,9 +5,9 @@
 > **O que você vai aprender neste capítulo:**
 > Entender o que é Programação Orientada a Objetos, por que ela existe, quais são os 4 pilares é como pensar em termos de objetos antes mesmo de escrever código.
 
-Imagine que você precisa construir um sistema para uma escola. Na abordagem procedural, você escreveria funções como `calcularMedia(notas)`, `salvarAluno(dados)`, `imprimirBoletim(aluno)` — funções soltas, sem conexão clara entre si. Na Programação Orientada a Objetos, você cria um `Aluno` que já sabe calcular sua própria media, guardar seus próprios dados e imprimir seu próprio boletim. O código fica mais organizado, mais fácil de entender é mais fácil de manter.
+Imagine que você precisa construir um sistema para uma escola. Na abordagem procedural, você escreveria funções como `calcularMedia(notas)`, `salvarAluno(dados)`, `imprimirBoletim(aluno)` — funções soltas, sem conexão clara entre si. Na Programação Orientada a Objetos, você cria um `Aluno` que já sabe calcular sua própria média, guardar seus próprios dados e imprimir seu próprio boletim. O código fica mais organizado, mais fácil de entender é mais fácil de manter.
 
-POO não é só uma técnica de programação — e uma forma de pensar o mundo. Cada entidade do problema vira um objeto com características próprias e comportamentos próprios. Antes de ver qualquer linha de código Java, entender esses conceitos vai fazer toda a diferença no seu aprendizado.
+POO não é só uma técnica de programação — é uma forma de pensar o mundo. Cada entidade do problema vira um objeto com características próprias e comportamentos próprios. Antes de ver qualquer linha de código Java, entender esses conceitos vai fazer toda a diferença no seu aprendizado.
 
 
 ## 2.1 O que é Programação Orientada a Objetos?
@@ -21,8 +21,8 @@ calcularMedia(notas)          aluno.calcularMedia()
 exibirDados(nome, idade)      aluno.exibirDados()
 salvarAluno(dados)            aluno.salvar()
 
-Funcoes soltas                Tudo dentro do objeto
-Dados e acoes separados       Dados e acoes juntos
+Funções soltas                Tudo dentro do objeto
+Dados e ações separados       Dados e ações juntos
 ```
 
 ## 2.2 Os 4 Pilares
@@ -30,14 +30,14 @@ Dados e acoes separados       Dados e acoes juntos
 ```mermaid
 mindmap
   root((POO))
-    Abstracao
+    Abstração
       Modelar o essencial
       Ignorar o irrelevante
     Encapsulamento
       Proteger os dados
       Acesso controlado
     Heranca
-      Reaproveitar codigo
+      Reaproveitar código
       Especializar comportamentos
     Polimorfismo
       Mesmo comando
@@ -56,10 +56,10 @@ mindmap
 ```
 CLASSE (forma de bolo)            OBJETO (o bolo pronto)
 ----------------------            ----------------------
-Define como sera o bolo           É o bolo em si
-Existe uma so vez                 Podem existir varios
-Nao ocupa espaco no forno         Ocupa espaco no prato
-É o molde                         E a instancia
+Define como será o bolo           É o bolo em si
+Existe uma só vez                 Podem existir vários
+Não ocupa espaço no forno         Ocupa espaço no prato
+É o molde                         E a instância
 
 class Aluno { }                   new Aluno()
 class Aluno { }                   new Aluno()  <- outro, independente

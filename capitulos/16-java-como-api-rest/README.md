@@ -95,7 +95,7 @@ void main() throws IOException {
 
     // Registra uma rota: o que fazer quando alguém acessar /ola
     servidor.createContext("/ola", troca -> {
-        byte[] corpo = "Ola, API do IFPE!".getBytes(StandardCharsets.UTF_8);
+        byte[] corpo = "Olá, API do IFPE!".getBytes(StandardCharsets.UTF_8);
 
         troca.getResponseHeaders().set("Content-Type", "text/plain; charset=UTF-8");
         troca.sendResponseHeaders(200, corpo.length);   // status 200 e tamanho da resposta
@@ -120,7 +120,7 @@ void main() throws IOException {
 Execute o programa e abra `http://localhost:8080/ola` no navegador. Você verá:
 
 ```
-Ola, API do IFPE!
+Olá, API do IFPE!
 ```
 
 Para ver a resposta completa, com status e cabeçalhos, use o `curl` no terminal:
@@ -132,9 +132,9 @@ curl -i http://localhost:8080/ola
 ```
 HTTP/1.1 200 OK
 Content-type: text/plain; charset=UTF-8
-Content-length: 17
+Content-length: 18
 
-Ola, API do IFPE!
+Olá, API do IFPE!
 ```
 
 > **Atenção:** só um programa pode usar a porta 8080 por vez. Se você executar de novo sem parar o anterior, aparece `java.net.BindException: Address already in use`. Pare o servidor antigo antes de iniciar outro.
@@ -349,7 +349,7 @@ class LivroHandler implements HttpHandler {
                 case "POST"    -> cadastrar(troca);
                 case "DELETE"  -> remover(troca, id);
                 case "OPTIONS" -> responder(troca, 204, "");         // resposta ao navegador (CORS)
-                default        -> responder(troca, 405, Json.erro("Metodo nao permitido"));
+                default        -> responder(troca, 405, Json.erro("Método não permitido"));
             }
         } catch (Exception e) {
             responder(troca, 500, Json.erro("Erro interno do servidor"));
@@ -364,7 +364,7 @@ class LivroHandler implements HttpHandler {
         }
         Livro livro = buscarPorId(id);
         if (livro == null) {
-            responder(troca, 404, Json.erro("Livro nao encontrado"));
+            responder(troca, 404, Json.erro("Livro não encontrado"));
         } else {
             responder(troca, 200, livro.paraJson());
         }
@@ -381,11 +381,11 @@ class LivroHandler implements HttpHandler {
         try {
             ano = Integer.parseInt(campos.getOrDefault("ano", ""));
         } catch (NumberFormatException e) {
-            responder(troca, 400, Json.erro("Informe um ano valido"));
+            responder(troca, 400, Json.erro("Informe um ano válido"));
             return;
         }
         if (titulo.isEmpty() || autor.isEmpty()) {
-            responder(troca, 400, Json.erro("Titulo e autor sao obrigatorios"));
+            responder(troca, 400, Json.erro("Título e autor são obrigatórios"));
             return;
         }
 
@@ -400,7 +400,7 @@ class LivroHandler implements HttpHandler {
     private void remover(HttpExchange troca, String id) throws IOException {
         Livro livro = id == null ? null : buscarPorId(id);
         if (livro == null) {
-            responder(troca, 404, Json.erro("Livro nao encontrado"));
+            responder(troca, 404, Json.erro("Livro não encontrado"));
             return;
         }
         livros.remove(livro);
@@ -470,7 +470,7 @@ void main() throws IOException {
     servidor.createContext("/", troca -> {
         Path pagina = Path.of("web", "index.html");
         if (!troca.getRequestURI().getPath().equals("/") || !Files.exists(pagina)) {
-            LivroHandler.responder(troca, 404, Json.erro("Recurso nao encontrado"));
+            LivroHandler.responder(troca, 404, Json.erro("Recurso não encontrado"));
             return;
         }
         byte[] html = Files.readAllBytes(pagina);
@@ -572,12 +572,12 @@ Respostas esperadas no primeiro uso:
 |---|---|---|
 | `GET /livros` (lista vazia) | `200` | `[]` |
 | `POST /livros` com dados válidos | `201` | `{"id":1,"titulo":"Dom Casmurro","autor":"Machado de Assis","ano":1899}` |
-| `POST /livros` com `"ano":"abc"` | `400` | `{"erro":"Informe um ano valido"}` |
-| `POST /livros` sem `titulo` | `400` | `{"erro":"Titulo e autor sao obrigatorios"}` |
+| `POST /livros` com `"ano":"abc"` | `400` | `{"erro":"Informe um ano válido"}` |
+| `POST /livros` sem `titulo` | `400` | `{"erro":"Título e autor são obrigatórios"}` |
 | `GET /livros/1` | `200` | o livro de id 1 |
-| `GET /livros/99` | `404` | `{"erro":"Livro nao encontrado"}` |
+| `GET /livros/99` | `404` | `{"erro":"Livro não encontrado"}` |
 | `DELETE /livros/1` | `204` | (vazio) |
-| `PUT /livros` | `405` | `{"erro":"Metodo nao permitido"}` |
+| `PUT /livros` | `405` | `{"erro":"Método não permitido"}` |
 
 Depois de cadastrar alguns livros, abra o arquivo `dados/livros.csv`. Ele é o "banco de dados" dessa API:
 

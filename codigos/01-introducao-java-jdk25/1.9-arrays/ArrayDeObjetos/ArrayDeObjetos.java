@@ -27,9 +27,9 @@ void main() {
         }
     }
 
-    System.out.format("Media da turma: %.2f%n", soma / turma.length);
+    System.out.format("Média da turma: %.2f%n", soma / turma.length);
     IO.println("Aprovados: " + aprovados + " de " + turma.length);
-    IO.println("Melhor media: " + melhor.nome());
+    IO.println("Melhor média: " + melhor.nome());
 
     // Posições ainda não preenchidas de um array de objetos valem null
     AlunoNota[] vagas = new AlunoNota[2];

@@ -6,8 +6,8 @@ void main() {
     var a = new Aluno();
     a.nome  = "Maria";
     a.idade = 20;
-    a.curso = "Informatica";
+    a.curso = "Informática";
 
     a.apresentar();
-    IO.println("Situacao: " + a.getSituacao());
+    IO.println("Situação: " + a.getSituacao());
 }

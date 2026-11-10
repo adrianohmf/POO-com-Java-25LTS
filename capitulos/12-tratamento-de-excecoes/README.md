@@ -7,11 +7,11 @@
 > **O que você vai aprender neste capítulo:**
 > Entender o que são exceções e por que elas existem, usar `try-catch-finally` para tratar erros, criar exceções personalizadas e construir programas que não travam diante de entradas inesperadas.
 
-Todo programa, por mais bem escrito que seja, pode encontrar situacoes inesperadas: o usuario digita uma letra onde se esperava um número, o arquivo não existe, o saldo e insuficiente, a conexão cai. Como o programa deve se comportar nesses casos?
+Todo programa, por mais bem escrito que seja, pode encontrar situações inesperadas: o usuário digita uma letra onde se esperava um número, o arquivo não existe, o saldo e insuficiente, a conexão cai. Como o programa deve se comportar nesses casos?
 
-Sem tratamento de exceções, a resposta é simples e ruim: o programa trava, exibe uma mensagem de erro técnica incompreensivel e encerra. Com tratamento de exceções, o programa pode capturar o problema, reagir de forma inteligente, informar o usuario de forma clara e continuar funcionando.
+Sem tratamento de exceções, a resposta é simples e ruim: o programa trava, exibe uma mensagem de erro técnica incompreensível e encerra. Com tratamento de exceções, o programa pode capturar o problema, reagir de forma inteligente, informar o usuário de forma clara e continuar funcionando.
 
-Exceções são eventos anormais que interrompem o fluxo normal do programa. O Java tem um sistema elegante para lidar com elas: você tenta executar um bloco de código (`try`), captura possíveis erros (`catch`) e garante que recursos sejam liberados independente do resultado (`finally`). Você também pode criar suas próprias exceções para representar erros específicos do seu dominio, como `SaldoInsuficienteException` ou `NotaInvalidaException`.
+Exceções são eventos anormais que interrompem o fluxo normal do programa. O Java tem um sistema elegante para lidar com elas: você tenta executar um bloco de código (`try`), captura possíveis erros (`catch`) e garante que recursos sejam liberados independente do resultado (`finally`). Você também pode criar suas próprias exceções para representar erros específicos do seu domínio, como `SaldoInsuficienteException` ou `NotaInvalidaException`.
 
 
 ## 12.1 Hierarquia de exceções
@@ -19,7 +19,7 @@ Exceções são eventos anormais que interrompem o fluxo normal do programa. O J
 ```
 Throwable
   |
-  +-- Error (problemas da JVM — nao trate)
+  +-- Error (problemas da JVM — não trate)
   |     OutOfMemoryError, StackOverflowError
   |
   +-- Exception (problemas do programa — trate)
@@ -30,7 +30,7 @@ Throwable
         |     ArrayIndexOutOfBoundsException
         |     IllegalArgumentException
         |
-        +-- IOException (checked — obrigatorio tratar)
+        +-- IOException (checked — obrigatório tratar)
         |     FileNotFoundException
         |
         +-- SuaExcecaoPersonalizada extends Exception
@@ -45,14 +45,14 @@ void main() {
     var sc = new Scanner(System.in);
 
     try {
-        IO.println("Digite um numero inteiro:");
+        IO.println("Digite um número inteiro:");
         int num      = sc.nextInt();
         int resultado = 100 / num;
         IO.println("100 / " + num + " = " + resultado);
 
     } catch (ArithmeticException e) {
         // Captura divisão por zero
-        IO.println("Erro: divisao por zero!");
+        IO.println("Erro: divisão por zero!");
         IO.println("Detalhe: " + e.getMessage());
 
     } catch (Exception e) {
@@ -61,7 +61,7 @@ void main() {
 
     } finally {
         // Executa SEMPRE, com ou sem erro
-        IO.println("Operacao finalizada.");
+        IO.println("Operação finalizada.");
         sc.close();
     }
 }
@@ -99,7 +99,7 @@ class Conta {
     }
 
     void sacar(double valor) throws SaldoInsuficienteException {
-        if (valor <= 0)    throw new IllegalArgumentException("Valor invalido: " + valor);
+        if (valor <= 0)    throw new IllegalArgumentException("Valor inválido: " + valor);
         if (valor > saldo) throw new SaldoInsuficienteException(saldo, valor);
         saldo -= valor;
         IO.println("Saque de R$ " + valor + " realizado.");
@@ -134,9 +134,9 @@ void main() {
 try {
     // ...
 } catch (Exception e) {          // captura tudo — as de baixo nunca executam!
-    IO.println("Erro generico");
+    IO.println("Erro genérico");
 } catch (ArithmeticException e) { // NUNCA CHEGA AQUI
-    IO.println("Divisao por zero");
+    IO.println("Divisão por zero");
 }
 // Coloque sempre as mais específicas PRIMEIRO
 

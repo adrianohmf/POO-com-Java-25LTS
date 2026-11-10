@@ -9,7 +9,7 @@ class Impressora {
 
     // Versão 2: recebe número
     void imprimir(int numero) {
-        IO.println("[NUMERO] " + numero);
+        IO.println("[NÚMERO] " + numero);
     }
 
     // Versão 3: recebe texto e quantidade de vezes

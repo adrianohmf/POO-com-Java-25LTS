@@ -19,6 +19,6 @@ class Professor extends Pessoa {
     }
 
     void ministrarAula() {
-        IO.println(nome + " esta ministrando " + disciplina + ".");
+        IO.println(nome + " está ministrando " + disciplina + ".");
     }
 }

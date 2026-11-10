@@ -35,14 +35,14 @@ void main() {
     var notas = new HashMap<String, Double>();
 
     notas.put("Maria", 8.5);
-    notas.put("Joao",  7.0);
+    notas.put("João",  7.0);
     notas.put("Ana",   9.5);
     notas.put("Pedro", 6.0);
 
     IO.println("Nota da Maria: " + notas.get("Maria"));
     IO.println("Tem Carlos? "   + notas.containsKey("Carlos"));
 
-    notas.put("Joao", 7.5); // atualiza o valor
+    notas.put("João", 7.5); // atualiza o valor
 
     IO.println("Boletim:");
     for (var entry : notas.entrySet()) {
@@ -61,7 +61,7 @@ void main() {
 * `notas.put("Maria", 8.5)` insere o par. Se a chave `Maria` já existisse, o valor seria trocado.
 * `notas.get("Maria")` devolve o valor associado, no caso `8.5`. Se a chave não existir, devolve `null`.
 * `notas.containsKey("Carlos")` testa se a chave existe. Como Carlos não foi inserido, o resultado é `false`.
-* `notas.put("Joao", 7.5)` mostra que `put` com chave existente **atualiza** o valor. Joao passa de 7.0 para 7.5 e continua havendo um único Joao no mapa.
+* `notas.put("Joao", 7.5)` mostra que `put` com chave existente **atualiza** o valor. João passa de 7.0 para 7.5 e continua havendo um único João no mapa.
 * `notas.entrySet()` devolve o conjunto de **entradas** (cada par chave e valor). No for each, a variável `entry` representa um par, e usamos `entry.getKey()` para a chave e `entry.getValue()` para o valor.
 * A expressão `entry.getValue() >= 7.0 ? "Aprovado" : "Reprovado"` é o operador ternário: se a condição for verdadeira, resulta no primeiro texto, senão no segundo.
 * `notas.remove("Pedro")` remove o par inteiro cuja chave é `Pedro`. Depois disso, `size()` devolve 3.
@@ -73,7 +73,7 @@ Nota da Maria: 8.5
 Tem Carlos? false
 Boletim:
   Maria: 8.5 — Aprovado
-  Joao: 7.5 — Aprovado
+  João: 7.5 — Aprovado
   Ana: 9.5 — Aprovado
   Pedro: 6.0 — Reprovado
 Total: 3
@@ -148,12 +148,12 @@ void main() {
 
     porEstado.put("Pernambuco", new ArrayList<String>());
     porEstado.get("Pernambuco").add("Maria");
-    porEstado.get("Pernambuco").add("Joao");
+    porEstado.get("Pernambuco").add("João");
 
-    porEstado.put("Ceara", new ArrayList<String>());
-    porEstado.get("Ceara").add("Ana");
+    porEstado.put("Ceará", new ArrayList<String>());
+    porEstado.get("Ceará").add("Ana");
 
-    IO.println(porEstado.get("Pernambuco"));  // [Maria, Joao]
+    IO.println(porEstado.get("Pernambuco"));  // [Maria, João]
 }
 ```
 
@@ -192,7 +192,7 @@ double nota = notas.getOrDefault("Carlos", 0.0); // CORRETO
 // ERRO 3: esperar que o HashMap preserve a ordem de inserção
 var notas = new HashMap<String, Double>();
 notas.put("Maria", 8.5);
-notas.put("Joao", 7.0);
+notas.put("João", 7.0);
 IO.println(notas);     // a ordem de exibição não é garantida
 // Para manter a ordem de inserção, use LinkedHashMap; para ordem alfabética, TreeMap.
 ```

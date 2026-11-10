@@ -23,11 +23,11 @@ void main() {
     String textoIdade = "22";
     int    idadeNum   = Integer.parseInt(textoIdade);
     double notaNum    = Double.parseDouble("8.5");
-    IO.println("Idade como numero: " + (idadeNum + 1)); // 23
+    IO.println("Idade como número: " + (idadeNum + 1)); // 23
 
     // CONVERTER número para String
     int    numero = 100;
     String texto  = String.valueOf(numero);  // "100"
     String texto2 = "" + numero;             // forma rápida: "100"
-    IO.println("Numero como texto: " + texto);
+    IO.println("Número como texto: " + texto);
 }

@@ -14,7 +14,7 @@ void main() {
     };
 
     for (Emprestimo e : emprestimos) {
-        System.out.format("%-14s devolver ate %s", e.livro(), e.dataDevolucao().format(br));
+        System.out.format("%-14s devolver até %s", e.livro(), e.dataDevolucao().format(br));
         if (e.diasDeAtraso(hoje) > 0) {
             System.out.format(" | ATRASO: %d dias | multa R$ %.2f%n",
                     e.diasDeAtraso(hoje), e.multa(hoje));

@@ -11,7 +11,7 @@ void main() {
 
     Produto[] catalogo = { p1, p2, p3 };
 
-    IO.println("=== CATALOGO DA LOJA ===");
+    IO.println("=== CATÁLOGO DA LOJA ===");
     for (int i = 0; i < catalogo.length; i++) {
         catalogo[i].exibir();
     }

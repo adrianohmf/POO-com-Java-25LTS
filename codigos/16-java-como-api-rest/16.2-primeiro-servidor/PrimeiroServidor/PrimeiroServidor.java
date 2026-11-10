@@ -11,7 +11,7 @@ void main() throws IOException {
 
     // Registra uma rota: o que fazer quando alguém acessar /ola
     servidor.createContext("/ola", troca -> {
-        byte[] corpo = "Ola, API do IFPE!".getBytes(StandardCharsets.UTF_8);
+        byte[] corpo = "Olá, API do IFPE!".getBytes(StandardCharsets.UTF_8);
 
         troca.getResponseHeaders().set("Content-Type", "text/plain; charset=UTF-8");
         troca.sendResponseHeaders(200, corpo.length);   // status 200 e tamanho da resposta

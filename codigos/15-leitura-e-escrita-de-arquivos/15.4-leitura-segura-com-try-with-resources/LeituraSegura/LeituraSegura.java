@@ -13,7 +13,7 @@ void main() {
     try (BufferedWriter escritor = Files.newBufferedWriter(log)) {
         escritor.write("Sistema iniciado");
         escritor.newLine();
-        escritor.write("Usuario conectado");
+        escritor.write("Usuário conectado");
         escritor.newLine();
     } catch (IOException e) {
         IO.println("Erro ao gravar: " + e.getMessage());

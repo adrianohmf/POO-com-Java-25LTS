@@ -44,16 +44,16 @@ void main() {
 
     IO.println("Prova: " + prova);
     IO.println("Dia: " + prova.getDayOfMonth());
-    IO.println("Mes: " + prova.getMonthValue() + " (" + prova.getMonth() + ")");
+    IO.println("Mês: " + prova.getMonthValue() + " (" + prova.getMonth() + ")");
     IO.println("Ano: " + prova.getYear());
     IO.println("Dia da semana: " + prova.getDayOfWeek());
-    IO.println("Dias no mes: " + prova.lengthOfMonth());
+    IO.println("Dias no mês: " + prova.lengthOfMonth());
     IO.println("Ano bissexto? " + prova.isLeapYear());
 
     // Datas são IMUTÁVEIS: plusDays devolve uma NOVA data e não altera a original
     LocalDate daquiA7Dias = prova.plusDays(7);
     IO.println("Original: " + prova + " | Mais 7 dias: " + daquiA7Dias);
-    IO.println("Menos 1 mes: " + prova.minusMonths(1));
+    IO.println("Menos 1 mês: " + prova.minusMonths(1));
     prova.plusDays(30);                                  // resultado descartado: prova continua igual
     IO.println("Depois de plusDays(30) sem guardar: " + prova);
 
@@ -63,7 +63,7 @@ void main() {
     IO.println(prova.equals(LocalDate.of(2026, 10, 13))); // true: equals compara o conteúdo
 
     // Valores inválidos lançam exceção: LocalDate.of(2026, 2, 30) -> DateTimeException
-    IO.println("Hoje tem " + hoje.getYear() + " no calendario");   // o valor depende do dia
+    IO.println("Hoje tem " + hoje.getYear() + " no calendário");   // o valor depende do dia
 }
 ```
 
@@ -72,18 +72,18 @@ Saída esperada (a última linha usa o ano do computador):
 ```
 Prova: 2026-10-13
 Dia: 13
-Mes: 10 (OCTOBER)
+Mês: 10 (OCTOBER)
 Ano: 2026
 Dia da semana: TUESDAY
-Dias no mes: 31
+Dias no mês: 31
 Ano bissexto? false
 Original: 2026-10-13 | Mais 7 dias: 2026-10-20
-Menos 1 mes: 2026-09-13
+Menos 1 mês: 2026-09-13
 Depois de plusDays(30) sem guardar: 2026-10-13
 true
 false
 true
-Hoje tem 2026 no calendario
+Hoje tem 2026 no calendário
 ```
 
 O ponto mais importante do exemplo: **as datas são imutáveis**. Métodos como `plusDays`, `minusMonths` e `withYear` **não alteram** o objeto original; eles devolvem uma data nova. Se você não guardar o resultado, ele se perde.
@@ -109,8 +109,8 @@ void main() {
     // LocalTime: só a hora (sem data)
     LocalTime inicioAula = LocalTime.of(19, 30);
     LocalTime fimAula = inicioAula.plusMinutes(100);
-    IO.println("Aula: " + inicioAula + " ate " + fimAula);
-    IO.println("Comeca antes das 20h? " + inicioAula.isBefore(LocalTime.of(20, 0)));
+    IO.println("Aula: " + inicioAula + " até " + fimAula);
+    IO.println("Começa antes das 20h? " + inicioAula.isBefore(LocalTime.of(20, 0)));
 
     // LocalDateTime: data e hora juntas
     LocalDateTime entrega = LocalDateTime.of(2026, 10, 13, 23, 59);
@@ -119,20 +119,20 @@ void main() {
     IO.println("Prorrogada: " + prorrogada);
 
     // Convertendo entre os tipos
-    IO.println("So a data: " + entrega.toLocalDate());
-    IO.println("So a hora: " + entrega.toLocalTime());
+    IO.println("Só a data: " + entrega.toLocalDate());
+    IO.println("Só a hora: " + entrega.toLocalTime());
 }
 ```
 
 Saída esperada:
 
 ```
-Aula: 19:30 ate 21:10
-Comeca antes das 20h? true
+Aula: 19:30 até 21:10
+Começa antes das 20h? true
 Entrega: 2026-10-13T23:59
 Prorrogada: 2026-10-14T12:00
-So a data: 2026-10-13
-So a hora: 23:59
+Só a data: 2026-10-13
+Só a hora: 23:59
 ```
 
 O `T` na saída (`2026-10-13T23:59`) é só o separador do formato padrão ISO. Na seção 14.5 você vai ver como mostrar de forma amigável.
@@ -169,16 +169,16 @@ void main() {
     LocalDate fimDoSemestre = LocalDate.of(2026, 12, 18);
     long diasRestantes = ChronoUnit.DAYS.between(referencia, fimDoSemestre);
     long semanasRestantes = ChronoUnit.WEEKS.between(referencia, fimDoSemestre);
-    IO.println("Dias ate o fim do semestre: " + diasRestantes);
+    IO.println("Dias até o fim do semestre: " + diasRestantes);
     IO.println("Semanas inteiras: " + semanasRestantes);
 
     // Se a primeira data for posterior à segunda, o resultado é negativo
-    IO.println("Dias desde o fim do semestre ate a prova: "
+    IO.println("Dias desde o fim do semestre até a prova: "
             + ChronoUnit.DAYS.between(fimDoSemestre, referencia));
 
     // Duration: diferença entre HORAS (tempo exato)
     Duration aula = Duration.between(LocalTime.of(19, 30), LocalTime.of(21, 10));
-    IO.println("Duracao da aula: " + aula.toMinutes() + " minutos");
+    IO.println("Duração da aula: " + aula.toMinutes() + " minutos");
     IO.println("Em horas e minutos: " + aula.toHours() + "h" + aula.toMinutesPart() + "min");
 }
 ```
@@ -187,10 +187,10 @@ Saída esperada:
 
 ```
 Idade: 26 anos, 4 meses e 23 dias
-Dias ate o fim do semestre: 66
+Dias até o fim do semestre: 66
 Semanas inteiras: 9
-Dias desde o fim do semestre ate a prova: -66
-Duracao da aula: 100 minutos
+Dias desde o fim do semestre até a prova: -66
+Duração da aula: 100 minutos
 Em horas e minutos: 1h40min
 ```
 
@@ -256,7 +256,7 @@ void main() {
     try {
         LocalDate.parse("31/02/2026", estrito);
     } catch (DateTimeParseException e) {
-        IO.println("Com rigor: data invalida");
+        IO.println("Com rigor: data inválida");
     }
 }
 ```
@@ -270,7 +270,7 @@ quarta-feira
 Lida: 2026-12-25
 Erro: formato esperado dd/MM/yyyy
 Sem rigor: 2026-02-28
-Com rigor: data invalida
+Com rigor: data inválida
 ```
 
 Pontos de atenção do exemplo:
@@ -327,7 +327,7 @@ void main() {
     };
 
     for (Emprestimo e : emprestimos) {
-        System.out.format("%-14s devolver ate %s", e.livro(), e.dataDevolucao().format(br));
+        System.out.format("%-14s devolver até %s", e.livro(), e.dataDevolucao().format(br));
         if (e.diasDeAtraso(hoje) > 0) {
             System.out.format(" | ATRASO: %d dias | multa R$ %.2f%n",
                     e.diasDeAtraso(hoje), e.multa(hoje));
@@ -341,9 +341,9 @@ void main() {
 Saída esperada:
 
 ```
-Dom Casmurro   devolver ate 03/11/2026 | ATRASO: 6 dias | multa R$ 3.00
-Vidas Secas    devolver ate 15/10/2026 | ATRASO: 25 dias | multa R$ 12.50
-Quincas Borba  devolver ate 16/11/2026 | em dia
+Dom Casmurro   devolver até 03/11/2026 | ATRASO: 6 dias | multa R$ 3.00
+Vidas Secas    devolver até 15/10/2026 | ATRASO: 25 dias | multa R$ 12.50
+Quincas Borba  devolver até 16/11/2026 | em dia
 ```
 
 Observe `Math.max(atraso, 0)`: se a data de devolução ainda não chegou, a diferença é negativa e o atraso deve ser zero, não um número negativo.

@@ -2,7 +2,7 @@
 
 void main() {
 
-    // PARSING: String -> tipo numerico
+    // PARSING: String -> tipo numérico
     int     idade     = Integer.parseInt("22");
     double  nota      = Double.parseDouble("8.75");
     float   taxa      = Float.parseFloat("0.12");
@@ -12,7 +12,7 @@ void main() {
     IO.println("Idade: "     + idade);
     IO.println("Nota: "      + nota);
     IO.println("Taxa: "      + taxa);
-    IO.println("Populacao: " + populacao);
+    IO.println("População: " + populacao);
     IO.println("Ativo: "     + ativo);
 
     // WRAPPER: tipo -> String

@@ -4,11 +4,11 @@
 
 > **Referência rápida de termos** — use durante as aulas, exercícios e provas.
 
-Programação Orientada a Objetos tem uma terminologia própria que pode parecer intimidadora no inicio. Termos como "instância", "polimorfismo", "encapsulamento" e "sobrescrita" aparecem o tempo todo — e entende-los com precisão faz diferença tanto nas provas quanto na comunicação com outros desenvolvedores.
+Programação Orientada a Objetos tem uma terminologia própria que pode parecer intimidadora no início. Termos como "instância", "polimorfismo", "encapsulamento" e "sobrescrita" aparecem o tempo todo — e entende-los com precisão faz diferença tanto nas provas quanto na comunicação com outros desenvolvedores.
 
-Este glossário reune todos os termos técnicos usados no guia com definições claras e diretas. Não tente memorizar tudo de uma vez. Use como referência: sempre que encontrar um termo desconhecido nas aulas ou nos exercícios, consulte aqui antes de buscar na internet.
+Este glossário reúne todos os termos técnicos usados no guia com definições claras e diretas. Não tente memorizar tudo de uma vez. Use como referência: sempre que encontrar um termo desconhecido nas aulas ou nos exercícios, consulte aqui antes de buscar na internet.
 
-Os termos estão em ordem alfabetica para facilitar a consulta rápida.
+Os termos estão em ordem alfabética para facilitar a consulta rápida.
 
 
 | Termo | Definição |
@@ -20,7 +20,7 @@ Os termos estão em ordem alfabetica para facilitar a consulta rápida.
 | **Atributo** | Variável declarada dentro de uma classe. Representa uma característica do objeto. |
 | **Backend** | Parte do sistema que roda no servidor: regras de negócio, dados e API. |
 | **Bytecode** | Código intermediário gerado pelo compilador Java. Executado pela JVM. |
-| **Cast** | Conversao forcada de um tipo para outro. Ex: `(double) inteiro` |
+| **Cast** | Conversão forçada de um tipo para outro. Ex: `(double) inteiro` |
 | **Classe** | Molde ou template que define atributos e métodos de um objeto. |
 | **Classpath** | Lista de pastas onde o Java procura as classes compiladas. Ex: `java -cp out pacote.Classe` |
 | **Coleção** | Objeto que guarda vários elementos e oferece métodos prontos para adicionar, buscar e remover. Ex: `List`, `Set`, `Map`. |
@@ -30,7 +30,7 @@ Os termos estão em ordem alfabetica para facilitar a consulta rápida.
 | **Encapsulamento** | Pilar de POO que protege os dados internos do objeto, expondo apenas o necessário. |
 | **Endpoint** | Rota de uma API que responde a um método HTTP. Ex: `GET /livros`. |
 | **Extends** | Palavra-chave usada para herança de classe. `class Aluno extends Pessoa` |
-| **Final** | Modificador que impede alteracao. `final` em variável = constante, em classe = não pode ser herdada. |
+| **Final** | Modificador que impede alteração. `final` em variável = constante, em classe = não pode ser herdada. |
 | **Frontend** | Parte do sistema que o usuário vê e usa (página web ou aplicativo). Consome a API. |
 | **Getter** | Método de leitura de atributo privado. Convenção: `getNome()`, `isAtivo()`. |
 | **HashMap** | Mapa que associa chaves únicas a valores. A busca por chave é rápida e a ordem não é garantida. |
@@ -51,10 +51,10 @@ Os termos estão em ordem alfabetica para facilitar a consulta rápida.
 | **LocalDate** | Classe de `java.time` que representa uma data (ano, mês, dia) sem horário. Ex: `LocalDate.of(2026, 10, 13)` |
 | **Map (mapa)** | Estrutura de pares chave e valor, como um dicionário. Ex: `HashMap<String, Double>` com nome e nota. |
 | **Método** | Função declarada dentro de uma classe. Define o comportamento do objeto. |
-| **Modificador de acesso** | Palavra que controla visibilidade: `private`, `protected`, `public` ou padrao. |
+| **Modificador de acesso** | Palavra que controla visibilidade: `private`, `protected`, `public` ou padrão. |
 | **new** | Operador que cria um objeto na memória e chama o construtor. |
-| **Objeto** | Instância concreta de uma classe. Ocupa espaco na memória e tem estado próprio. |
-| **Override** | Sobrescrita de método herdado. Anotacao `@Override` garante que a sobrescrita e válida. |
+| **Objeto** | Instância concreta de uma classe. Ocupa espaço na memória e tem estado próprio. |
+| **Override** | Sobrescrita de método herdado. Anotação `@Override` garante que a sobrescrita e válida. |
 | **Overloading** | Sobrecarga: mesmo nome de método com parâmetros diferentes na mesma classe. |
 | **Package-private** | Acesso padrão, sem modificador: visível apenas para classes do mesmo pacote. |
 | **Pacote (package)** | Agrupamento lógico de classes relacionadas. Equivale a uma pasta. |
@@ -66,12 +66,12 @@ Os termos estão em ordem alfabetica para facilitar a consulta rápida.
 | **Protected** | Modificador que permite acesso na mesma classe, mesmo pacote e subclasses. |
 | **Private** | Modificador que permite acesso somente dentro da própria classe. |
 | **Public** | Modificador que permite acesso em qualquer lugar. |
-| **Record** | Tipo especial de classe (JDK 25) para dados imutaveis, com código gerado automaticamente. |
+| **Record** | Tipo especial de classe (JDK 25) para dados imutáveis, com código gerado automaticamente. |
 | **Referência** | Variável que aponta para um objeto na memória. Não é o objeto em si. |
 | **REST** | Estilo de API em que cada recurso tem uma rota e o método HTTP indica a ação (`GET`, `POST`, `DELETE`). |
 | **Return** | Palavra-chave que devolve um valor de um método para quem o chamou. |
 | **Setter** | Método de escrita de atributo privado com validação. Convenção: `setNome(String nome)`. |
-| **Static** | Pertence a classe, não ao objeto. Compartilhado por todas as instâncias. |
+| **Static** | Pertence à classe, não ao objeto. Compartilhado por todas as instâncias. |
 | **Status code** | Número que resume o resultado de uma resposta HTTP. Ex: `200` OK, `404` não encontrado. |
 | **Subclasse** | Classe filha que herda de outra classe (superclasse). |
 | **Super** | Referência a superclasse. `super()` chama o construtor do pai. `super.metodo()` chama método do pai. |

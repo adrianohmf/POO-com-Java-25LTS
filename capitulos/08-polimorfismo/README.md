@@ -9,20 +9,20 @@
 
 Polimorfismo é talvez o conceito mais elegante da POO. A palavra vem do grego e significa "muitas formas". Na prática, significa que o mesmo comando pode produzir resultados completamente diferentes dependendo de quem o recebe.
 
-Pense no verbo "comunicar". Um ser humano se comunica falando. Um cachorro se comunica latindo. Um golfinho se comunica com sons ultrassonicos. O verbo é o mesmo — a ação e completamente diferente. Se você der a ordem "comunique-se!" para cada um, cada um vai responder a sua maneira.
+Pense no verbo "comunicar". Um ser humano se comunica falando. Um cachorro se comunica latindo. Um golfinho se comunica com sons ultrassônicos. O verbo é o mesmo — a ação e completamente diferente. Se você der a ordem "comunique-se!" para cada um, cada um vai responder a sua maneira.
 
-Em Java, polimorfismo permite que você trate objetos de tipos diferentes de forma uniforme, sem precisar saber exatamente qual e o tipo de cada um. Isso simplifica enormemente o código: em vez de um `if` para cada tipo possível, um único comando funciona para todos. E o resultado de combinar herança com sobrescrita de métodos de forma inteligente.
+Em Java, polimorfismo permite que você trate objetos de tipos diferentes de forma uniforme, sem precisar saber exatamente qual é o tipo de cada um. Isso simplifica enormemente o código: em vez de um `if` para cada tipo possível, um único comando funciona para todos. E o resultado de combinar herança com sobrescrita de métodos de forma inteligente.
 
 
 ## 8.1 Visualizando o polimorfismo
 
 ```
-Antes do polimorfismo: voce precisaria de um IF para cada tipo
+Antes do polimorfismo: você precisaria de um IF para cada tipo
     if (animal instanceof Cachorro) cachorro.latir();
     if (animal instanceof Gato)     gato.miar();
     if (animal instanceof Vaca)     vaca.mugir();
 
-Com polimorfismo: um unico comando, Java decide qual usar
+Com polimorfismo: um único comando, Java decide qual usar
     animal.fazerSom(); // automático!
 ```
 
@@ -53,7 +53,7 @@ class Animal {
     protected String nome;
     Animal(String nome) { this.nome = nome; }
     void fazerSom() { IO.println(nome + " faz algum som..."); }
-    void dormir()   { IO.println(nome + " esta dormindo."); }
+    void dormir()   { IO.println(nome + " está dormindo."); }
 }
 
 class Cachorro extends Animal {
@@ -101,7 +101,7 @@ void main() {
 ## Erros comuns — Tema 8
 
 ```java
-// ERRO 1: esquecer o @Override (não e erro, mas e ma prática)
+// ERRO 1: esquecer o @Override (não é erro, mas é má prática)
 class Cachorro extends Animal {
     void fazersom() { } // erro de digitação: "fazersom" != "fazerSom"
     // sem @Override, Java não avisa que você não está sobrescrevendo!
@@ -129,11 +129,11 @@ class Cachorro extends Animal {
 
 ## Exercícios — Tema 8
 
-> **Exercício 8.1** — `Funcionario` -> `Gerente` (fixo + bonus), `Vendedor` (comissão), `Tecnico` (fixo + hora extra). Calcule a folha com polimorfismo.
+> **Exercício 8.1** — `Funcionario` -> `Gerente` (fixo + bônus), `Vendedor` (comissão), `Tecnico` (fixo + hora extra). Calcule a folha com polimorfismo.
 >
 > **Exercício 8.2** — `Pagamento` -> `CartaoCredito`, `Boleto`, `Pix`. Método `processar(double valor)` diferente para cada tipo.
 >
-> **Exercício 8.3 (Projeto progressivo)** — Faca `PessoaNordeste` ter um método abstrato `descricaoProfissional()`. Implemente em `Artesao`, `Comerciante` e `Agricultor` com polimorfismo. Use um array do tipo `PessoaNordeste` para exibir todos.
+> **Exercício 8.3 (Projeto progressivo)** — Faça `PessoaNordeste` ter um método abstrato `descricaoProfissional()`. Implemente em `Artesao`, `Comerciante` e `Agricultor` com polimorfismo. Use um array do tipo `PessoaNordeste` para exibir todos.
 
 ---
 

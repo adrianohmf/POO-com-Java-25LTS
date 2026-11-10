@@ -13,7 +13,7 @@ void main() {
         for (int coluna = 0; coluna < notas[linha].length; coluna++) {
             soma += notas[linha][coluna];
         }
-        System.out.format("Aluno %d: media %.2f%n", linha + 1, soma / notas[linha].length);
+        System.out.format("Aluno %d: média %.2f%n", linha + 1, soma / notas[linha].length);
     }
 
     IO.println("Linhas: " + notas.length);

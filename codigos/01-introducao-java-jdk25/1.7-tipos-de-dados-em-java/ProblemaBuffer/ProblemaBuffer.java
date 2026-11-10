@@ -12,7 +12,7 @@ void main() {
     var nome = sc.nextLine(); // lê o Enter que ficou do nextInt!
     // nome fica vazio ""
 
-    // SOLUCAO: chamar sc.nextLine() logo após nextInt/nextDouble
+    // SOLUÇÃO: chamar sc.nextLine() logo após nextInt/nextDouble
     // para descartar o Enter que ficou no buffer
     IO.println("Digite sua cidade:");
     sc.nextLine();            // descarta o Enter residual

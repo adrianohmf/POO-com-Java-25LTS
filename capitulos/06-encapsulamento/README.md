@@ -5,7 +5,7 @@
 > **Códigos deste capítulo:** [codigos/06-encapsulamento](../../codigos/06-encapsulamento/)
 
 > **O que você vai aprender neste capítulo:**
-> Entender por que expor atributos diretamente e perigoso, usar `private` para proteger os dados, criar getters e setters com validação, e aplicar os modificadores de acesso corretamente.
+> Entender por que expor atributos diretamente é perigoso, usar `private` para proteger os dados, criar getters e setters com validação, e aplicar os modificadores de acesso corretamente.
 
 Pense no painel de controle de um avião. O piloto acessa os sistemas por botões e alavancas específicas — ele não mexe diretamente nos motores, nos cabos hidráulicos ou nos circuitos. Essa separação existe por segurança: garante que só ações válidas e controladas possam afetar o sistema.
 
@@ -77,7 +77,7 @@ class PessoaComEncapsulamento {
         if (idade >= 0) {
             this.idade = idade;               // idade válida: guarda
         } else {
-            IO.println("Idade invalida.");    // idade negativa: recusa
+            IO.println("Idade inválida.");    // idade negativa: recusa
         }
     }
 }
@@ -101,7 +101,7 @@ Saída ao digitar uma idade negativa:
 ```
 Digite o nome: Ana
 Digite a idade: -5
-Idade invalida.
+Idade inválida.
 Nome: Ana
 Idade: 0
 ```
@@ -123,10 +123,10 @@ As próximas seções explicam o que são getters e setters com mais detalhe e m
 SEM encapsulamento:
    Main --> conta.saldo = -999999   <- qualquer um pode fazer isso!
    Main --> conta.saldo = 0.001
-   Main --> conta.saldo = "abc"     <- Java nao deixa, mas a logica fica exposta
+   Main --> conta.saldo = "abc"     <- Java não deixa, mas a lógica fica exposta
 
 COM encapsulamento:
-   Main --> conta.sacar(100)        <- passa pela validacao
+   Main --> conta.sacar(100)        <- passa pela validação
                 |
                 v
             if (valor > saldo) -> BLOQUEIA
@@ -189,13 +189,13 @@ class ContaBancaria {
         if (valor > 0) {
             saldo += valor;
         } else {
-            IO.println("Valor invalido.");
+            IO.println("Valor inválido.");
         }
     }
 
     public void sacar(double valor) {
         if (valor <= 0) {
-            IO.println("Valor invalido.");
+            IO.println("Valor inválido.");
         } else if (valor > saldo) {
             IO.println("Saldo insuficiente.");
         } else {
@@ -266,7 +266,7 @@ class Aluno extends Pessoa {
 | Modificador | Mesma Classe | Mesmo Pacote | Subclasse | Qualquer Lugar |
 |---|:---:|:---:|:---:|:---:|
 | `private`   | Sim | Não | Não | Não |
-| *(padrao)*  | Sim | Sim | Não | Não |
+| *(padrão)*  | Sim | Sim | Não | Não |
 | `protected` | Sim | Sim | Sim | Não |
 | `public`    | Sim | Sim | Sim | Sim |
 
@@ -284,7 +284,7 @@ public String getNome() { return nome; }   // CORRETO
 public void setSaldo(double saldo) {
     this.saldo = saldo; // permite qualquer valor negativo!
 }
-// Não faca setter de saldo — use depositar() e sacar()
+// Não faça setter de saldo — use depositar() e sacar()
 
 // ERRO 3: "this" desnecessário quando não há ambiguidade
 class Aluno {
@@ -305,7 +305,7 @@ public int[] getNotas() { return notas.clone(); } // CORRETO: retorna cópia
 
 > **Exercício 6.1** — Refatore `Artesao` para encapsulamento completo. Setter de `precoPecaMedia` rejeita valores negativos ou zero.
 >
-> **Exercício 6.2** — Crie `Estoque` com `quantidade` privada. Métodos `adicionar(int)` e `retirar(int)` com validacoes.
+> **Exercício 6.2** — Crie `Estoque` com `quantidade` privada. Métodos `adicionar(int)` e `retirar(int)` com validações.
 >
 > **Exercício 6.3 (Projeto progressivo)** — Encapsule todos os atributos de `Artesao`. Adicione um histórico privado de vendas (`int[]`) com método para registrar nova venda e calcular o total vendido.
 

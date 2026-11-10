@@ -3,10 +3,10 @@
 
 void main() {
     IO.println("Qual o seu nome?");
-    var nome = IO.readln();        // le uma linha do teclado
+    var nome = IO.readln();        // lê uma linha do teclado
 
     IO.println("Qual a sua cidade?");
     var cidade = IO.readln();
 
-    IO.println("Ola, " + nome + " de " + cidade + "!");
+    IO.println("Olá, " + nome + " de " + cidade + "!");
 }

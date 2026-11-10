@@ -7,9 +7,9 @@
 > **O que você vai aprender neste capítulo:**
 > Entender o que é um construtor, por que ele existe, como criar construtores com diferentes parâmetros, usar `this()` e `super()`, e conhecer os Records do JDK 25.
 
-Imagine que você contrata um funcionario e ele chega no primeiro dia sem saber seu nome, sem ter acesso ao sistema, sem conhecer o cargo. Alguem precisaria preencher tudo isso manualmente depois. Seria caotitico.
+Imagine que você contrata um funcionário e ele chega no primeiro dia sem saber seu nome, sem ter acesso ao sistema, sem conhecer o cargo. Alguém precisaria preencher tudo isso manualmente depois. Seria caótico.
 
-Com objetos é a mesma coisa. Sem um construtor, o objeto nasce "vazio" — `nome = null`, `saldo = 0`, `ativo = false` por padrao. Você precisaria lembrar de configurar cada atributo manualmente toda vez. É fácil esquecer algum campo e criar bugs difíceis de rastrear.
+Com objetos é a mesma coisa. Sem um construtor, o objeto nasce "vazio" — `nome = null`, `saldo = 0`, `ativo = false` por padrão. Você precisaria lembrar de configurar cada atributo manualmente toda vez. É fácil esquecer algum campo e criar bugs difíceis de rastrear.
 
 O **construtor** resolve isso. Ele é executado automaticamente quando o objeto é criado com `new`, garantindo que o objeto nasça já em um estado válido e coerente. É como uma lista de verificação de admissão: antes do funcionário começar a trabalhar, todos os dados já estão preenchidos e conferidos.
 
@@ -28,7 +28,7 @@ var a = new Aluno();
 
 ```java
 // Com construtor, o objeto nasce já preenchido
-var a = new Aluno("Maria", 20, "Informatica");
+var a = new Aluno("Maria", 20, "Informática");
 // Impossível criar um Aluno sem nome e curso!
 ```
 
@@ -37,13 +37,13 @@ sequenceDiagram
     participant Main
     participant JVM
     participant Aluno
-    Main->>JVM: new Aluno("Maria", 20, "Informatica")
-    JVM->>Aluno: aloca memoria
+    Main->>JVM: new Aluno("Maria", 20, "Informática")
+    JVM->>Aluno: aloca memória
     JVM->>Aluno: chama construtor
     Aluno->>Aluno: this.nome = "Maria"
     Aluno->>Aluno: this.idade = 20
-    Aluno->>Aluno: this.curso = "Informatica"
-    JVM-->>Main: retorna referencia ao objeto
+    Aluno->>Aluno: this.curso = "Informática"
+    JVM-->>Main: retorna referência ao objeto
 ```
 
 ```java
@@ -57,7 +57,7 @@ class Aluno {
 
     // CONSTRUTOR PADRÃO: executado quando new Aluno()
     Aluno() {
-        this.curso     = "Nao informado";
+        this.curso     = "Não informado";
         this.matricula = "0000";
     }
 
@@ -85,13 +85,13 @@ class Aluno {
         IO.println("Nome:      " + nome);
         IO.println("Idade:     " + idade);
         IO.println("Curso:     " + curso);
-        IO.println("Matricula: " + matricula);
+        IO.println("Matrícula: " + matricula);
     }
 }
 
 void main() {
-    var a1 = new Aluno("Maria Silva", 20, "Informatica para Internet");
-    var a2 = new Aluno("Joao Santos", 22, "Sistemas", "2025-0042");
+    var a1 = new Aluno("Maria Silva", 20, "Informática para Internet");
+    var a2 = new Aluno("João Santos", 22, "Sistemas", "2025-0042");
 
     a1.apresentar();
     a2.apresentar();
@@ -248,7 +248,7 @@ class Aluno extends Pessoa {
     }
 }
 
-// ERRO 4: chamar this() depois de outras instrucoes
+// ERRO 4: chamar this() depois de outras instruções
 Aluno(String nome, int idade, String curso) {
     IO.println("Criando aluno..."); // ERRADO: this() deve ser a 1a instrução
     this(nome, idade);
@@ -259,7 +259,7 @@ Aluno(String nome, int idade, String curso) {
 
 > **Exercício 5.1** — Adicione dois construtores a `ContaBancaria`: um só com titular (saldo = 0) e outro com titular e saldo inicial.
 >
-> **Exercício 5.2** — Crie o record `Municipio(String nome, String estado, long populacao, double area)`. Instancie 5 municipios nordestinos, calcule a densidade demografica de cada um e exiba do mais denso ao menos denso.
+> **Exercício 5.2** — Crie o record `Municipio(String nome, String estado, long populacao, double area)`. Instancie 5 municípios nordestinos, calcule a densidade demográfica de cada um e exiba do mais denso ao menos denso.
 >
 > **Exercício 5.3 (Projeto progressivo)** — Adicione um construtor completo a `Artesao`. Prove que dois objetos criados com os mesmos dados são objetos diferentes na memória (use `==` e `.equals()`).
 

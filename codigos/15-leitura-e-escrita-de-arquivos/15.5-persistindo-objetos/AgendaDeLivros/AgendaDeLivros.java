@@ -11,7 +11,7 @@ void main() throws IOException {
     IO.println("Livros carregados do arquivo: " + livros.size());
 
     // A cada execução acrescenta um livro novo, e o arquivo guarda o histórico
-    livros.add(new Livro("Livro numero " + (livros.size() + 1), "Autor", 2000 + livros.size()));
+    livros.add(new Livro("Livro número " + (livros.size() + 1), "Autor", 2000 + livros.size()));
     repositorio.salvar(livros);
 
     for (Livro livro : livros) {

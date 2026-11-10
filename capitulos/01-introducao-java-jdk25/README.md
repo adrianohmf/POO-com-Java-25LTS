@@ -17,21 +17,21 @@ Java é uma linguagem de programação **orientada a objetos**, **multiplataform
 ## 1.2 Como o Java funciona?
 
 ```
-Voce escreve           Compilador             JVM executa
-  o codigo    --->    traduz para   --->   em qualquer sistema
+Você escreve           Compilador             JVM executa
+  o código    --->    traduz para   --->   em qualquer sistema
  (.java)              bytecode               operacional
                       (.class)
 ```
 
 ```mermaid
 flowchart LR
-    A[Codigo-fonte\n.java] -->|javac| B[Bytecode\n.class]
+    A[Código-fonte\n.java] -->|javac| B[Bytecode\n.class]
     B -->|JVM Windows| C[Resultado]
     B -->|JVM Linux| C
     B -->|JVM macOS| C
 ```
 
-A **JVM** é instalada no sistema operacional e é ela quem executa o bytecode. Por isso o mesmo `.class` roda no Windows, Linux ou macOS sem modificacao.
+A **JVM** é instalada no sistema operacional e é ela quem executa o bytecode. Por isso o mesmo `.class` roda no Windows, Linux ou macOS sem modificação.
 
 ## 1.3 Novidades do JDK 25 LTS
 
@@ -50,7 +50,7 @@ No Java clássico (antes do JDK 21), para rodar qualquer programa era necessári
 ```java
 public class OlaMundo {
     public static void main(String[] args) {
-        System.out.println("Ola!");
+        System.out.println("Olá!");
     }
 }
 ```
@@ -59,7 +59,7 @@ A partir do JDK 25, você pode simplificar para:
 
 ```java
 void main() {
-    IO.println("Ola!");
+    IO.println("Olá!");
 }
 ```
 
@@ -69,7 +69,7 @@ void main() {
 |---|---|---|
 | `public` | Qualquer um pode acessar | Opcional |
 | `class NomeArquivo` | Define o molde do programa | Opcional em arquivos simples |
-| `static` | Pertence a classe, não ao objeto | Opcional |
+| `static` | Pertence à classe, não ao objeto | Opcional |
 | `void` | O método não retorna nenhum valor | **Sim — sempre necessária** |
 | `main` | Nome do ponto de entrada do programa | **Sim — sempre necessário** |
 | `String[] args` | Argumentos da linha de comando | Opcional |
@@ -81,7 +81,7 @@ void main() {
 ```java
 // Forma moderna — JDK 25 (use nas primeiras aulas)
 void main() {
-    IO.println("Ola, mundo!");
+    IO.println("Olá, mundo!");
 }
 ```
 
@@ -90,7 +90,7 @@ void main() {
 // Será necessária assim que o projeto tiver múltiplas classes
 public class OlaMundo {
     public static void main(String[] args) {
-        System.out.println("Ola, mundo!");
+        System.out.println("Olá, mundo!");
     }
 }
 ```
@@ -122,12 +122,12 @@ Abrir `settings.json` (Ctrl+Shift+P -> "Open User Settings JSON"):
     "files.encoding": "utf8",
     "files.autoGuessEncoding": true,
     "terminal.integrated.env.windows": {
-        "JAVA_TOOL_OPTIONS": "-Dfile.encoding=UTF-8"
+        "JAVA_TOOL_OPTIONS": "-Dfile.encoding=UTF-8 -Dstdout.encoding=UTF-8"
     }
 }
 ```
 
-> **Nota sobre acentuação:** o terminal do Windows pode apresentar problemas com caracteres acentuados mesmo apóspós a configuração acima. Por isso, nos exemplos de código deste guia, evitamos acentos nas strings para garantir compatibilidade em todos os ambientes.
+> **Nota sobre acentuação:** os exemplos deste guia usam acentos nos textos e comentários, e o Java 25 lê o código-fonte em UTF-8 por padrão. A opção `-Dstdout.encoding=UTF-8` faz a **saída** do programa também sair em UTF-8. Se mesmo assim aparecerem símbolos estranhos (`?` ou `Ã£`) no terminal do Windows, digite `chcp 65001` antes de executar o programa, ou rode pelo terminal integrado do VS Code configurado acima. Salve sempre os arquivos `.java` em UTF-8.
 
 **Passo 4 — Rodar o primeiro programa:**
 
@@ -147,10 +147,10 @@ java NomeDoArquivo
 
 void main() {
     // IO.println: forma moderna (JDK 25)
-    IO.println("Ola, mundo!");
+    IO.println("Olá, mundo!");
 
     // System.out.println: forma clássica
-    System.out.println("Ola pelo modo classico!");
+    System.out.println("Olá pelo modo clássico!");
 
     // var: Java infere o tipo automaticamente
     var nome   = "Adriano";   // String
@@ -162,9 +162,9 @@ void main() {
 ```
 
 ```
-# Saida esperada:
-Ola, mundo!
-Ola pelo modo classico!
+# Saída esperada:
+Olá, mundo!
+Olá pelo modo clássico!
 Nome: Adriano | Idade: 35
 ```
 
@@ -180,14 +180,14 @@ São os blocos básicos de dados. Existem 8 tipos primitivos em Java, mas você 
 |---|---|---|---|
 | `byte` | 8 bits | -128 a 127 | `byte b = 100;` |
 | `short` | 16 bits | -32.768 a 32.767 | `short s = 1000;` |
-| `int` | 32 bits | -2 bilhoes a 2 bilhoes | `int idade = 22;` |
+| `int` | 32 bits | -2 bilhões a 2 bilhões | `int idade = 22;` |
 | `long` | 64 bits | números muito grandes | `long populacao = 215000000L;` |
 | `float` | 32 bits | decimais (menos preciso) | `float pi = 3.14f;` |
 | `double` | 64 bits | decimais (mais preciso) | `double altura = 1.75;` |
 | `boolean` | 1 bit | `true` ou `false` | `boolean ativo = true;` |
 | `char` | 16 bits | um único caractere | `char letra = 'A';` |
 
-> **Regra prática:** use `int` para inteiros, `double` para decimais, `boolean` para verdadeiro/falso e `char` para um único caractere. Os outros tipos aparecem em situacoes específicas.
+> **Regra prática:** use `int` para inteiros, `double` para decimais, `boolean` para verdadeiro/falso e `char` para um único caractere. Os outros tipos aparecem em situações específicas.
 
 ### String — tipo especial para texto
 
@@ -215,26 +215,26 @@ void main() {
     boolean matriculado = false;
 
     // var: Java infere o tipo automaticamente (JDK 10+)
-    var curso   = "Informatica para Internet"; // String
+    var curso   = "Informática para Internet"; // String
     var semestre = 1;                           // int
     var media    = 8.5;                         // double
 
     // Exibindo os tipos
     IO.println("Nome: "       + nome);
     IO.println("Idade: "      + idade);
-    IO.println("Preco: R$ "   + preco);
+    IO.println("Preço: R$ "   + preco);
     IO.println("Aprovado: "   + aprovado);
     IO.println("Curso: "      + curso);
 }
 ```
 
 ```
-# Saida esperada:
+# Saída esperada:
 Nome: Maria Silva
 Idade: 22
-Preco: R$ 19.99
+Preço: R$ 19.99
 Aprovado: true
-Curso: Informatica para Internet
+Curso: Informática para Internet
 ```
 
 ### Conversão entre tipos (casting)
@@ -279,24 +279,24 @@ void main() {
     String textoIdade = "22";
     int    idadeNum   = Integer.parseInt(textoIdade);
     double notaNum    = Double.parseDouble("8.5");
-    IO.println("Idade como numero: " + (idadeNum + 1)); // 23
+    IO.println("Idade como número: " + (idadeNum + 1)); // 23
 
     // CONVERTER número para String
     int    numero = 100;
     String texto  = String.valueOf(numero);  // "100"
     String texto2 = "" + numero;             // forma rápida: "100"
-    IO.println("Numero como texto: " + texto);
+    IO.println("Número como texto: " + texto);
 }
 ```
 
 ```
-# Saida esperada:
+# Saída esperada:
 Double: 10.0
 Int: 1
 Errado:  3.0
 Correto: 3.5
-Idade como numero: 23
-Numero como texto: 100
+Idade como número: 23
+Número como texto: 100
 ```
 
 ### Classes wrapper e métodos de conversão
@@ -330,7 +330,7 @@ O Java faz a conversão entre primitivo e wrapper automaticamente — isso se ch
 
 void main() {
 
-    // PARSING: String -> tipo numerico
+    // PARSING: String -> tipo numérico
     int     idade     = Integer.parseInt("22");
     double  nota      = Double.parseDouble("8.75");
     float   taxa      = Float.parseFloat("0.12");
@@ -340,7 +340,7 @@ void main() {
     IO.println("Idade: "     + idade);
     IO.println("Nota: "      + nota);
     IO.println("Taxa: "      + taxa);
-    IO.println("Populacao: " + populacao);
+    IO.println("População: " + populacao);
     IO.println("Ativo: "     + ativo);
 
     // WRAPPER: tipo -> String
@@ -377,11 +377,11 @@ void main() {
 ```
 
 ```
-# Saida esperada:
+# Saída esperada:
 Idade: 22
 Nota: 8.75
 Taxa: 0.12
-Populacao: 215000000
+População: 215000000
 Ativo: true
 Como texto: 22 | 8.75 | true
 Maior int:    2147483647
@@ -398,18 +398,18 @@ false
 
 > **Atenção com `Boolean.parseBoolean()`:** apenas a string `"true"` (independente de maiúsculas ou minúsculas) retorna `true`. Qualquer outro valor — `"sim"`, `"1"`, `"verdadeiro"` — retorna `false` sem lançar exceção.
 
-### Operadores aritmeticos e de comparação
+### Operadores aritméticos e de comparação
 
 ```java
 // Arquivo: Operadores.java
 
 void main() {
 
-    // ARITMETICOS
+    // ARITMÉTICOS
     int a = 10, b = 3;
     IO.println(a + b);   // 13  — soma
-    IO.println(a - b);   // 7   — subtracao
-    IO.println(a * b);   // 30  — multiplicacao
+    IO.println(a - b);   // 7   — subtração
+    IO.println(a * b);   // 30  — multiplicação
     IO.println(a / b);   // 3   — divisão inteira (cuidado!)
     IO.println(a % b);   // 1   — resto da divisão
     IO.println(a++);     // 10  — usa o valor, depois incrementa
@@ -429,7 +429,7 @@ void main() {
     IO.println(x || y);   // true  — OU (pelo menos um verdadeiro)
     IO.println(!x);       // false — NÃO (inverte)
 
-    // OPERADOR TERNARIO: condição ? se_verdadeiro : se_falso
+    // OPERADOR TERNÁRIO: condição ? se_verdadeiro : se_falso
     double nota = 7.5;
     String situacao = (nota >= 7.0) ? "Aprovado" : "Reprovado";
     IO.println(situacao);  // Aprovado
@@ -460,17 +460,17 @@ Algumas características importantes:
 void main() {
     String nome = "Maria Silva";
 
-    // INFORMACOES sobre a String
+    // INFORMAÇÕES sobre a String
     IO.println(nome.length());           // 11  — número de caracteres
     IO.println(nome.charAt(0));          // M   — caractere na posição 0
     IO.println(nome.indexOf("Silva"));   // 6   — posição onde "Silva" começa
     IO.println(nome.isEmpty());          // false — vazia?
-    IO.println(nome.isBlank());          // false — vazia ou só espacos?
+    IO.println(nome.isBlank());          // false — vazia ou só espaços?
 
-    // TRANSFORMACOES (retornam nova String, não mudam a original)
+    // TRANSFORMAÇÕES (retornam nova String, não mudam a original)
     IO.println(nome.toUpperCase());      // MARIA SILVA
     IO.println(nome.toLowerCase());      // maria silva
-    IO.println(nome.trim());             // remove espacos das bordas
+    IO.println(nome.trim());             // remove espaços das bordas
     IO.println(nome.strip());            // igual ao trim, mais moderno
 
     // PARTES da String
@@ -478,14 +478,14 @@ void main() {
     IO.println(nome.substring(6));       // Silva   — do índice 6 até o fim
     IO.println(nome.replace("Silva", "Santos")); // Maria Santos
 
-    // VERIFICACOES
+    // VERIFICAÇÕES
     IO.println(nome.contains("Silva"));  // true  — contém o texto?
     IO.println(nome.startsWith("Mar"));  // true  — começa com?
     IO.println(nome.endsWith("lva"));    // true  — termina com?
 
     // DIVISÃO
     String frase = "Java,Python,C++";
-    String[] partes = frase.split(",");  // divide pela virgula
+    String[] partes = frase.split(",");  // divide pela vírgula
     IO.println(partes[0]);               // Java
     IO.println(partes[1]);               // Python
     IO.println(partes[2]);               // C++
@@ -494,13 +494,13 @@ void main() {
     String s1 = "Java";
     String s2 = "Java";
     IO.println(s1 == s2);               // pode dar true ou false — NÃO confie!
-    IO.println(s1.equals(s2));          // true — sempre confiavel
+    IO.println(s1.equals(s2));          // true — sempre confiável
     IO.println(s1.equalsIgnoreCase("java")); // true — ignora maiúsculas
 
     // CONCATENAÇÃO
-    String primeiro = "Joao";
+    String primeiro = "João";
     String ultimo   = "Silva";
-    String completo = primeiro + " " + ultimo;         // "Joao Silva"
+    String completo = primeiro + " " + ultimo;         // "João Silva"
     String completo2 = primeiro.concat(" ").concat(ultimo); // mesmo resultado
 
     // CONVERSÃO de número para String
@@ -512,19 +512,19 @@ void main() {
     String entrada = "123";
     try {
         int valor = Integer.parseInt(entrada);
-        IO.println("Numero valido: " + valor);
+        IO.println("Número válido: " + valor);
     } catch (NumberFormatException e) {
-        IO.println("Nao e um numero!");
+        IO.println("Não é um número!");
     }
 
     // Forma moderna com formatted (JDK 15+)
     String msg = "Aluno: %s | Nota: %.1f".formatted(primeiro, 8.5);
-    IO.println(msg);  // Aluno: Joao | Nota: 8.5
+    IO.println(msg);  // Aluno: João | Nota: 8.5
 }
 ```
 
 ```
-# Saida esperada (parcial):
+# Saída esperada (parcial):
 11
 M
 6
@@ -544,10 +544,10 @@ C++
 false
 true
 true
-Joao Silva
+João Silva
 42
-Numero valido: 123
-Aluno: Joao | Nota: 8.5
+Número válido: 123
+Aluno: João | Nota: 8.5
 ```
 
 #### Por que `==` não funciona para String?
@@ -604,16 +604,16 @@ void main() {
     // TABELA ALINHADA — útil para relatórios no terminal
     System.out.format("%-15s %5s %8s%n", "Nome", "Idade", "Nota");
     System.out.format("%-15s %5d %8.2f%n", "Maria Silva",  20, 8.75);
-    System.out.format("%-15s %5d %8.2f%n", "Joao Santos",  22, 7.30);
+    System.out.format("%-15s %5d %8.2f%n", "João Santos",  22, 7.30);
     System.out.format("%-15s %5d %8.2f%n", "Ana Lima",     19, 9.50);
 
     // NÚMERO COM ZEROS A ESQUERDA — código de matrícula
     int numero = 42;
-    System.out.format("Matricula: 2025-%04d%n", numero); // 2025-0042
+    System.out.format("Matrícula: 2025-%04d%n", numero); // 2025-0042
 
     // VALOR MONETÁRIO
     double preco = 1234.5;
-    System.out.format("Preco: R$ %,.2f%n", preco); // R$ 1.234,50 (locale BR)
+    System.out.format("Preço: R$ %,.2f%n", preco); // R$ 1.234,50 (locale BR)
 
     // String.format — cria string formatada sem imprimir
     String linha = String.format("%-15s | %5.1f", nome, nota);
@@ -625,17 +625,17 @@ void main() {
 ```
 
 ```
-# Saida esperada:
+# Saída esperada:
 Aluno: Maria
 Idade: 20 anos
 Nota:  8.76
 Aluno: Maria | Idade: 20 | Nota: 8.8
 Nome            Idade     Nota
 Maria Silva        20     8.75
-Joao Santos        22     7.30
+João Santos        22     7.30
 Ana Lima           19     9.50
-Matricula: 2025-0042
-Preco: R$ 1.234,50
+Matrícula: 2025-0042
+Preço: R$ 1.234,50
 Maria            |   8.8
 Usando printf: Maria tem 8.8
 ```
@@ -664,12 +664,12 @@ A forma mais simples. A classe `IO` do JDK 25 tem o método `readln()` que lê u
 
 void main() {
     IO.println("Qual o seu nome?");
-    var nome = IO.readln();        // le uma linha do teclado
+    var nome = IO.readln();        // lê uma linha do teclado
 
     IO.println("Qual a sua cidade?");
     var cidade = IO.readln();
 
-    IO.println("Ola, " + nome + " de " + cidade + "!");
+    IO.println("Olá, " + nome + " de " + cidade + "!");
 }
 ```
 
@@ -679,10 +679,10 @@ void main() {
 // Lendo número com IO.readln() + conversão
 void main() {
     IO.println("Qual a sua idade?");
-    var idade = Integer.parseInt(IO.readln());  // le texto e converte
+    var idade = Integer.parseInt(IO.readln());  // lê texto e converte
 
     IO.println("Qual a sua nota?");
-    var nota = Double.parseDouble(IO.readln()); // le texto e converte
+    var nota = Double.parseDouble(IO.readln()); // lê texto e converte
 
     IO.println("Idade: " + idade + " | Nota: " + nota);
 }
@@ -700,19 +700,19 @@ O Java é organizado em **pacotes** — grupos de classes relacionadas. A classe
 java.util.Scanner         <- pacote.Scanner
    |        |
    |        +-- classe que vamos usar
-   +---------- pacote onde ela mora (modulo java.base)
+   +---------- pacote onde ela mora (módulo java.base)
 ```
 
 A boa notícia: no JDK 25, em **compact source files** (arquivos sem `public class`), todo o módulo `java.base` é importado automaticamente — incluindo `Scanner`. Então o `import` se torna opcional nesses arquivos.
 
 ```java
-// JDK 25 compact source file — import e OPCIONAL
+// JDK 25 compact source file — import é OPCIONAL
 // Scanner disponível automaticamente via módulo java.base
 void main() {
     var sc = new Scanner(System.in);  // funciona sem import!
     IO.println("Nome:");
     var nome = sc.nextLine();
-    IO.println("Ola, " + nome);
+    IO.println("Olá, " + nome);
     sc.close();
 }
 ```
@@ -778,15 +778,15 @@ void main() {
 
     // Lendo texto
     IO.println("Qual o seu nome?");
-    var nome = sc.nextLine();    // le a linha inteira
+    var nome = sc.nextLine();    // lê a linha inteira
 
     // Lendo inteiro
     IO.println("Qual a sua idade?");
-    var idade = sc.nextInt();    // le apenas o número
+    var idade = sc.nextInt();    // lê apenas o número
 
     // Lendo decimal
     IO.println("Qual a sua nota final?");
-    var nota = sc.nextDouble();  // le número com casas decimais
+    var nota = sc.nextDouble();  // lê número com casas decimais
 
     // sc.nextLine() após nextInt/nextDouble: limpa o buffer
     // (explicado abaixo)
@@ -799,7 +799,7 @@ void main() {
     System.out.format("Nota:  %.2f%n", nota);
 
     var situacao = nota >= 7.0 ? "Aprovado" : "Reprovado";
-    System.out.format("Situacao: %s%n", situacao);
+    System.out.format("Situação: %s%n", situacao);
 
     // Boa prática: fechar o Scanner ao terminar
     sc.close();
@@ -819,7 +819,7 @@ Qual a sua nota final?
 Nome:  Maria Silva
 Idade: 20 anos
 Nota:  8.75
-Situacao: Aprovado
+Situação: Aprovado
 ```
 
 #### O problema do buffer — nextInt() + nextLine()
@@ -841,7 +841,7 @@ void main() {
     var nome = sc.nextLine(); // lê o Enter que ficou do nextInt!
     // nome fica vazio ""
 
-    // SOLUCAO: chamar sc.nextLine() logo após nextInt/nextDouble
+    // SOLUÇÃO: chamar sc.nextLine() logo após nextInt/nextDouble
     // para descartar o Enter que ficou no buffer
     IO.println("Digite sua cidade:");
     sc.nextLine();            // descarta o Enter residual
@@ -897,21 +897,21 @@ void main() {
     if (media >= 7.0) {
         IO.println("Aprovado por nota");
     } else if (media >= 5.0) {
-        IO.println("Em recuperacao");
+        IO.println("Em recuperação");
     } else {
         IO.println("Reprovado por nota");
     }
 
     // Operadores lógicos combinam condições: && (E), || (OU), ! (NÃO)
     double frequencia = 100.0 * (totalAulas - faltas) / totalAulas;
-    System.out.format("Frequencia: %.1f%%%n", frequencia);
+    System.out.format("Frequência: %.1f%%%n", frequencia);
 
     if (media >= 7.0 && frequencia >= 75.0) {
-        IO.println("Situacao final: Aprovado");
+        IO.println("Situação final: Aprovado");
     } else if (frequencia < 75.0) {
-        IO.println("Situacao final: Reprovado por falta");
+        IO.println("Situação final: Reprovado por falta");
     } else {
-        IO.println("Situacao final: Precisa de recuperacao");
+        IO.println("Situação final: Precisa de recuperação");
     }
 
     // if sem chaves só vale para UMA instrução (evite: gera erros)
@@ -924,10 +924,10 @@ void main() {
 ```
 
 ```
-# Saida esperada:
-Em recuperacao
-Frequencia: 90.0%
-Situacao final: Precisa de recuperacao
+# Saída esperada:
+Em recuperação
+Frequência: 90.0%
+Situação final: Precisa de recuperação
 Segue na disciplina
 ```
 
@@ -947,20 +947,20 @@ void main() {
     String nome = switch (dia) {
         case 1 -> "Domingo";
         case 2 -> "Segunda";
-        case 3 -> "Terca";
+        case 3 -> "Terça";
         case 4 -> "Quarta";
         case 5 -> "Quinta";
         case 6 -> "Sexta";
-        case 7 -> "Sabado";
-        default -> "Dia invalido";
+        case 7 -> "Sábado";
+        default -> "Dia inválido";
     };
     IO.println("Dia " + dia + ": " + nome);
 
     // Vários valores no mesmo case, separados por vírgula
     String tipo = switch (dia) {
         case 1, 7 -> "Fim de semana";
-        case 2, 3, 4, 5, 6 -> "Dia util";
-        default -> "Dia invalido";
+        case 2, 3, 4, 5, 6 -> "Dia útil";
+        default -> "Dia inválido";
     };
     IO.println("Tipo: " + tipo);
 
@@ -975,16 +975,16 @@ void main() {
         }
         default -> -1;
     };
-    IO.println("Codigo: " + codigo);
+    IO.println("Código: " + codigo);
 }
 ```
 
 ```
-# Saida esperada:
-Dia 3: Terca
-Tipo: Dia util
+# Saída esperada:
+Dia 3: Terça
+Tipo: Dia útil
 Encerrando...
-Codigo: 0
+Código: 0
 ```
 
 | Elemento | Para que serve |
@@ -1039,7 +1039,7 @@ void main() {
         if (n > 7) {
             break;          // para o laço
         }
-        IO.println("Impar: " + n);
+        IO.println("Ímpar: " + n);
     }
 
     // Acumulador: padrão muito comum para somar valores
@@ -1052,7 +1052,7 @@ void main() {
 ```
 
 ```
-# Saida esperada:
+# Saída esperada:
 Tabuada do 7:
 7 x 1 = 7
 7 x 2 = 14
@@ -1065,10 +1065,10 @@ Faltam 1
 Fogo!
 Tentativa 1
 Tentativa 2
-Impar: 1
-Impar: 3
-Impar: 5
-Impar: 7
+Ímpar: 1
+Ímpar: 3
+Ímpar: 5
+Ímpar: 7
 Soma de 1 a 100: 5050
 ```
 
@@ -1111,7 +1111,7 @@ Imagine guardar as notas de uma turma de 40 alunos: criar 40 variáveis (`nota1`
 
 ```
 notas    [ 7.5 | 8.0 | 7.0 | 9.0 ]
-indice      0     1     2     3        notas.length vale 4
+índice      0     1     2     3        notas.length vale 4
 ```
 
 ### Criando, acessando e percorrendo
@@ -1132,7 +1132,7 @@ void main() {
     double[] notas = {7.5, 8.0, 6.5, 9.0};
     IO.println("Quantidade de notas: " + notas.length);   // length é atributo: sem parênteses
     IO.println("Primeira nota: " + notas[0]);
-    IO.println("Ultima nota: " + notas[notas.length - 1]);
+    IO.println("Última nota: " + notas[notas.length - 1]);
 
     // Alterando uma posição
     notas[2] = 7.0;
@@ -1143,7 +1143,7 @@ void main() {
         System.out.format("Nota %d: %.1f%n", i + 1, notas[i]);
         soma += notas[i];
     }
-    IO.println("Media: " + soma / notas.length);
+    IO.println("Média: " + soma / notas.length);
 
     // for-each: use quando só precisar dos valores
     double maior = notas[0];
@@ -1155,25 +1155,25 @@ void main() {
     IO.println("Maior nota: " + maior);
 
     // Utilitários da classe Arrays
-    String[] nomes = {"Maria", "Joao", "Ana", "Pedro"};
+    String[] nomes = {"Maria", "João", "Ana", "Pedro"};
     Arrays.sort(nomes);
-    IO.println(Arrays.toString(nomes));            // [Ana, Joao, Maria, Pedro]
+    IO.println(Arrays.toString(nomes));            // [Ana, João, Maria, Pedro]
 }
 ```
 
 ```
-# Saida esperada:
+# Saída esperada:
 [0, 0, 0]
 Quantidade de notas: 4
 Primeira nota: 7.5
-Ultima nota: 9.0
+Última nota: 9.0
 Nota 1: 7.5
 Nota 2: 8.0
 Nota 3: 7.0
 Nota 4: 9.0
-Media: 7.875
+Média: 7.875
 Maior nota: 9.0
-[Ana, Joao, Maria, Pedro]
+[Ana, João, Maria, Pedro]
 ```
 
 Existem dois jeitos de percorrer um array:
@@ -1240,9 +1240,9 @@ void main() {
         }
     }
 
-    System.out.format("Media da turma: %.2f%n", soma / turma.length);
+    System.out.format("Média da turma: %.2f%n", soma / turma.length);
     IO.println("Aprovados: " + aprovados + " de " + turma.length);
-    IO.println("Melhor media: " + melhor.nome());
+    IO.println("Melhor média: " + melhor.nome());
 
     // Posições ainda não preenchidas de um array de objetos valem null
     AlunoNota[] vagas = new AlunoNota[2];
@@ -1251,14 +1251,14 @@ void main() {
 ```
 
 ```
-# Saida esperada:
+# Saída esperada:
 Ana    8.5 Aprovado
 Bruno  5.5 Reprovado
 Carla  9.2 Aprovado
 Diego  6.8 Reprovado
-Media da turma: 7.50
+Média da turma: 7.50
 Aprovados: 2 de 4
-Melhor media: Carla
+Melhor média: Carla
 null
 ```
 
@@ -1282,7 +1282,7 @@ void main() {
         for (int coluna = 0; coluna < notas[linha].length; coluna++) {
             soma += notas[linha][coluna];
         }
-        System.out.format("Aluno %d: media %.2f%n", linha + 1, soma / notas[linha].length);
+        System.out.format("Aluno %d: média %.2f%n", linha + 1, soma / notas[linha].length);
     }
 
     IO.println("Linhas: " + notas.length);
@@ -1291,10 +1291,10 @@ void main() {
 ```
 
 ```
-# Saida esperada:
-Aluno 1: media 7.50
-Aluno 2: media 5.75
-Aluno 3: media 9.50
+# Saída esperada:
+Aluno 1: média 7.50
+Aluno 2: média 5.75
+Aluno 3: média 9.50
 Linhas: 3
 Colunas: 2
 ```
@@ -1344,7 +1344,7 @@ int[] pequeno = new int[2];
 >
 > **Exercício 1.2** — Declare variáveis dos 6 tipos principais (`int`, `long`, `double`, `boolean`, `char`, `String`) com valores que representem dados de um aluno. Exiba todas usando `System.out.format()`, com a nota com 2 casas decimais e a matrícula com zeros à esquerda.
 >
-> **Exercício 1.3** — Crie `Casting.java` e reproduza o exemplo de casting do guia. Depois experimente: o que acontece ao converter `3.9` para `int`? E `'A'` para `int`? Anote os resultados nos comentarios.
+> **Exercício 1.3** — Crie `Casting.java` e reproduza o exemplo de casting do guia. Depois experimente: o que acontece ao converter `3.9` para `int`? E `'A'` para `int`? Anote os resultados nos comentários.
 >
 > **Exercício 1.4** — Crie `Strings.java` e use pelo menos 5 métodos de String diferentes com o seu próprio nome completo. Exiba o resultado de cada operação.
 >

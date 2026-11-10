@@ -19,14 +19,14 @@ void main() {
     boolean matriculado = false;
 
     // var: Java infere o tipo automaticamente (JDK 10+)
-    var curso   = "Informatica para Internet"; // String
+    var curso   = "Informática para Internet"; // String
     var semestre = 1;                           // int
     var media    = 8.5;                         // double
 
     // Exibindo os tipos
     IO.println("Nome: "       + nome);
     IO.println("Idade: "      + idade);
-    IO.println("Preco: R$ "   + preco);
+    IO.println("Preço: R$ "   + preco);
     IO.println("Aprovado: "   + aprovado);
     IO.println("Curso: "      + curso);
 }

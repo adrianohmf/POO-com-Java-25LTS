@@ -3,6 +3,6 @@
 // EXCEÇÕES
 class AlunoNaoEncontradoException extends Exception {
     AlunoNaoEncontradoException(String mat) {
-        super("Aluno nao encontrado: matricula " + mat);
+        super("Aluno não encontrado: matrícula " + mat);
     }
 }

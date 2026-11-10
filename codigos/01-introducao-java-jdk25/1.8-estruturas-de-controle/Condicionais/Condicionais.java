@@ -9,21 +9,21 @@ void main() {
     if (media >= 7.0) {
         IO.println("Aprovado por nota");
     } else if (media >= 5.0) {
-        IO.println("Em recuperacao");
+        IO.println("Em recuperação");
     } else {
         IO.println("Reprovado por nota");
     }
 
     // Operadores lógicos combinam condições: && (E), || (OU), ! (NÃO)
     double frequencia = 100.0 * (totalAulas - faltas) / totalAulas;
-    System.out.format("Frequencia: %.1f%%%n", frequencia);
+    System.out.format("Frequência: %.1f%%%n", frequencia);
 
     if (media >= 7.0 && frequencia >= 75.0) {
-        IO.println("Situacao final: Aprovado");
+        IO.println("Situação final: Aprovado");
     } else if (frequencia < 75.0) {
-        IO.println("Situacao final: Reprovado por falta");
+        IO.println("Situação final: Reprovado por falta");
     } else {
-        IO.println("Situacao final: Precisa de recuperacao");
+        IO.println("Situação final: Precisa de recuperação");
     }
 
     // if sem chaves só vale para UMA instrução (evite: gera erros)

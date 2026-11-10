@@ -9,7 +9,7 @@ void main() {
 
     // Adicionando
     nomes.add("Maria");
-    nomes.add("Joao");
+    nomes.add("João");
     nomes.add("Ana");
     nomes.add("Pedro");
 
@@ -19,7 +19,7 @@ void main() {
     IO.println("Tem Ana? "  + nomes.contains("Ana"));
 
     // Removendo
-    nomes.remove("Joao");   // por valor
+    nomes.remove("João");   // por valor
     nomes.remove(0);        // por índice (remove Maria)
 
     // Percorrendo
@@ -33,8 +33,8 @@ void main() {
 
     // ArrayList de objetos
     var alunos = new ArrayList<Aluno>();
-    alunos.add(new Aluno("Maria", 20, "Informatica"));
-    alunos.add(new Aluno("Joao", 22, "Sistemas"));
+    alunos.add(new Aluno("Maria", 20, "Informática"));
+    alunos.add(new Aluno("João", 22, "Sistemas"));
 
     IO.println("Total: " + alunos.size());
     for (Aluno a : alunos) {

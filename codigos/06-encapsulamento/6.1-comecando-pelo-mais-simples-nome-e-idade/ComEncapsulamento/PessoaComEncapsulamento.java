@@ -17,7 +17,7 @@ class PessoaComEncapsulamento {
         if (idade >= 0) {
             this.idade = idade;               // idade válida: guarda
         } else {
-            IO.println("Idade invalida.");    // idade negativa: recusa
+            IO.println("Idade inválida.");    // idade negativa: recusa
         }
     }
 }

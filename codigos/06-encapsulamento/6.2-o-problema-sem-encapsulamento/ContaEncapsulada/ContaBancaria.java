@@ -20,13 +20,13 @@ class ContaBancaria {
         if (valor > 0) {
             saldo += valor;
         } else {
-            IO.println("Valor invalido.");
+            IO.println("Valor inválido.");
         }
     }
 
     public void sacar(double valor) {
         if (valor <= 0) {
-            IO.println("Valor invalido.");
+            IO.println("Valor inválido.");
         } else if (valor > saldo) {
             IO.println("Saldo insuficiente.");
         } else {

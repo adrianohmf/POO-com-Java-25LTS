@@ -31,7 +31,7 @@ Abra a pasta `Biblioteca` (**File > Open Folder**). A extensão Java reconhece a
 ## Saída esperada
 
 ```
-Total no catalogo: 3
+Total no catálogo: 3
 Dom Casmurro (Machado de Assis, 1899)
 Quincas Borba (Machado de Assis, 1891)
 ```

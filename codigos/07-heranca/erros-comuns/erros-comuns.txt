@@ -1,4 +1,4 @@
-// ATENCAO: estes trechos são apenas ilustrativos e podem conter erros de propósito.
+// ATENÇÃO: estes trechos são apenas ilustrativos e podem conter erros de propósito.
 // Eles não são um programa completo e não devem ser compilados como estão.
 
 // ERRO 1: esquecer o super() no construtor da subclasse
@@ -19,7 +19,7 @@ class Pessoa {
 }
 class Aluno extends Pessoa {
     void exibir() {
-        IO.println(nome); // ERRO: nome e private em Pessoa
+        IO.println(nome); // ERRO: nome é private em Pessoa
     }
 }
 // Use protected para atributos que subclasses precisam acessar

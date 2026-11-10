@@ -20,7 +20,7 @@ class Calculadora {
 
     String classificar(double media) {
         if (media >= 7.0)      return "Aprovado";
-        else if (media >= 5.0) return "Recuperacao";
+        else if (media >= 5.0) return "Recuperação";
         else                   return "Reprovado";
     }
 

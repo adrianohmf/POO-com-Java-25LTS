@@ -16,9 +16,9 @@ abstract class Funcionario {
     // Método concreto: compartilhado por todos
     void exibirContracheque() {
         IO.println("---");
-        IO.println("FUNCIONARIO: " + nome);
+        IO.println("FUNCIONÁRIO: " + nome);
         IO.println("CARGO:       " + getCargo());
-        IO.println("SALARIO:     R$ " + String.format("%.2f", calcularSalario()));
+        IO.println("SALÁRIO:     R$ " + String.format("%.2f", calcularSalario()));
         IO.println("---");
     }
 }

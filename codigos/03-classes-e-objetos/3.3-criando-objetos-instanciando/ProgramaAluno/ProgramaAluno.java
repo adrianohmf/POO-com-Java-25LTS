@@ -10,16 +10,16 @@ void main() {
     // Atribuindo valores: objeto.atributo = valor;
     a1.nome  = "Maria Silva";
     a1.idade = 20;
-    a1.curso = "Informatica para Internet";
+    a1.curso = "Informática para Internet";
 
-    a2.nome  = "Joao Santos";
+    a2.nome  = "João Santos";
     a2.idade = 22;
     a2.curso = "Sistemas para Internet";
 
     // Chamando métodos: objeto.método();
     IO.println("=== Aluno 1 ===");
     a1.apresentar();
-    IO.println("Situacao: " + a1.getSituacao());
+    IO.println("Situação: " + a1.getSituacao());
 
     IO.println("=== Aluno 2 ===");
     a2.apresentar();

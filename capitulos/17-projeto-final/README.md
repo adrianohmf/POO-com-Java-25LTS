@@ -9,11 +9,11 @@
 
 Chegamos ao ponto de chegada do guia. Tudo o que você aprendeu nos capítulos anteriores — classes, objetos, encapsulamento, herança, polimorfismo, interfaces, coleções e exceções — agora se junta em um sistema real e funcional.
 
-O projeto e um **Sistema Acadêmico** simplificado, inspirado em sistemas que instituicoes como o IFPE usam no dia a dia. Ele permite matricular alunos, lançar notas, calcular medias, determinar situacoes e gerar relatorios — tudo via menu interativo no terminal.
+O projeto é um **Sistema Acadêmico** simplificado, inspirado em sistemas que instituições como o IFPE usam no dia a dia. Ele permite matricular alunos, lançar notas, calcular médias, determinar situações e gerar relatórios — tudo via menu interativo no terminal.
 
-O objetivo não é só que o sistema funcione, mas que ele demonstre cada conceito de POO de forma clara e intencional. Ao ler o código, deve ser possível identificar onde está o encapsulamento, onde está o polimorfismo, onde estão as interfaces. Esse e o sinal de um código orientado a objetos bem escrito.
+O objetivo não é só que o sistema funcione, mas que ele demonstre cada conceito de POO de forma clara e intencional. Ao ler o código, deve ser possível identificar onde está o encapsulamento, onde está o polimorfismo, onde estão as interfaces. Esse é o sinal de um código orientado a objetos bem escrito.
 
-Implemente em partes, testando cada etapa antes de avacar. Comece pelas exceções, depois as interfaces, depois as classes, e por fim o programa principal.
+Implemente em partes, testando cada etapa antes de avançar. Comece pelas exceções, depois as interfaces, depois as classes, e por fim o programa principal.
 
 
 > Integra **todos os conceitos** vistos no guia. Implemente em partes, nesta ordem.
@@ -27,13 +27,13 @@ import java.util.Scanner;
 // EXCEÇÕES
 class AlunoNaoEncontradoException extends Exception {
     AlunoNaoEncontradoException(String mat) {
-        super("Aluno nao encontrado: matricula " + mat);
+        super("Aluno não encontrado: matrícula " + mat);
     }
 }
 
 class NotaInvalidaException extends IllegalArgumentException {
     NotaInvalidaException(double nota) {
-        super("Nota invalida: " + nota + " (deve ser entre 0 e 10)");
+        super("Nota inválida: " + nota + " (deve ser entre 0 e 10)");
     }
 }
 
@@ -83,7 +83,7 @@ class Aluno extends Pessoa implements Relatorio {
 
     String getSituacao() {
         double m = getMedia();
-        return m >= 7.0 ? "Aprovado" : m >= 5.0 ? "Recuperacao" : "Reprovado";
+        return m >= 7.0 ? "Aprovado" : m >= 5.0 ? "Recuperação" : "Reprovado";
     }
 
     String getMatricula() { return matricula; }
@@ -99,11 +99,11 @@ class Aluno extends Pessoa implements Relatorio {
         IO.println("| BOLETIM                              |");
         IO.println("+--------------------------------------+");
         IO.println("| Nome:      " + nome);
-        IO.println("| Matricula: " + matricula);
+        IO.println("| Matrícula: " + matricula);
         IO.println("| Curso:     " + curso);
         IO.println("| Notas:     " + notas);
-        IO.println("| Media:     " + String.format("%.1f", getMedia()));
-        IO.println("| Situacao:  " + getSituacao());
+        IO.println("| Média:     " + String.format("%.1f", getMedia()));
+        IO.println("| Situação:  " + getSituacao());
         IO.println("+--------------------------------------+");
     }
 }
@@ -144,11 +144,11 @@ class Turma implements Relatorio {
 // PROGRAMA PRINCIPAL
 void main() {
     var sc    = new Scanner(System.in);
-    var turma = new Turma("2025.1", "Programacao Orientada a Objetos");
+    var turma = new Turma("2025.1", "Programação Orientada a Objetos");
 
-    var a1 = new Aluno("Maria Silva",  "111.111.111-11", "2025-001", "Informatica");
-    var a2 = new Aluno("Joao Santos",  "222.222.222-22", "2025-002", "Sistemas");
-    var a3 = new Aluno("Ana Lima",     "333.333.333-33", "2025-003", "Informatica");
+    var a1 = new Aluno("Maria Silva",  "111.111.111-11", "2025-001", "Informática");
+    var a2 = new Aluno("João Santos",  "222.222.222-22", "2025-002", "Sistemas");
+    var a3 = new Aluno("Ana Lima",     "333.333.333-33", "2025-003", "Informática");
 
     turma.matricular(a1);
     turma.matricular(a2);
@@ -158,13 +158,13 @@ void main() {
 
     while (rodando) {
         IO.println("\n==========================================");
-        IO.println("    SISTEMA ACADEMICO — IFPE");
+        IO.println("    SISTEMA ACADÊMICO — IFPE");
         IO.println("==========================================");
-        IO.println("  1. Lancar nota");
+        IO.println("  1. Lançar nota");
         IO.println("  2. Ver boletim de aluno");
-        IO.println("  3. Relatorio da turma");
+        IO.println("  3. Relatório da turma");
         IO.println("  0. Sair");
-        IO.print("Opcao: ");
+        IO.print("Opção: ");
 
         try {
             int opcao = sc.nextInt();
@@ -172,7 +172,7 @@ void main() {
 
             switch (opcao) {
                 case 1 -> {
-                    IO.print("Matricula: ");
+                    IO.print("Matrícula: ");
                     String mat = sc.nextLine();
                     IO.print("Nota (0-10): ");
                     double nota = sc.nextDouble();
@@ -180,12 +180,12 @@ void main() {
                     turma.buscar(mat).adicionarNota(nota);
                 }
                 case 2 -> {
-                    IO.print("Matricula: ");
+                    IO.print("Matrícula: ");
                     turma.buscar(sc.nextLine()).gerarRelatorio();
                 }
                 case 3  -> turma.gerarRelatorio();
-                case 0  -> { IO.println("Ate logo!"); rodando = false; }
-                default -> IO.println("Opcao invalida.");
+                case 0  -> { IO.println("Até logo!"); rodando = false; }
+                default -> IO.println("Opção inválida.");
             }
 
         } catch (AlunoNaoEncontradoException e) {

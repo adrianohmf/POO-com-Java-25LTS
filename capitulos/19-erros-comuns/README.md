@@ -11,7 +11,7 @@ Errar faz parte de aprender a programar. Todo desenvolvedor experiente já enfre
 
 Este capítulo funciona como um guia de referência rápida. Quando seu programa travar com uma mensagem de erro que você não reconhece, venha aqui primeiro. Cada erro tem uma causa mais comum e uma solução clara.
 
-Mantenha este capítulo marcado. Você vai consultá-lo com frequencia nas proximas semanas — e isso é perfeitamente normal. Com o tempo, você vai internalizar esses padroes e começar a evitar os erros antes mesmo de comete-los.
+Mantenha este capítulo marcado. Você vai consultá-lo com frequência nas próximas semanas — e isso é perfeitamente normal. Com o tempo, você vai internalizar esses padrões e começar a evitar os erros antes mesmo de cometê-los.
 
 
 ## Guia rápido de erros frequentes
@@ -21,13 +21,13 @@ Mantenha este capítulo marcado. Você vai consultá-lo com frequencia nas proxi
 | `NullPointerException` | Usar objeto sem inicializar | Verifique se fez `new` antes de usar |
 | `ArrayIndexOutOfBoundsException` | Índice fora do tamanho | Verifique o tamanho com `.length` |
 | `ClassCastException` | Cast para tipo errado | Use `instanceof` antes do cast |
-| `StackOverflowError` | Recursao infinita | Verifique a condicao de parada |
+| `StackOverflowError` | Recursão infinita | Verifique a condição de parada |
 | `ConcurrentModificationException` | Modificar lista enquanto percorre | Use `removeIf()` ou iterator |
-| `NumberFormatException` | Converter texto não numerico | Use try-catch ao converter |
+| `NumberFormatException` | Converter texto não numérico | Use try-catch ao converter |
 | `Cannot instantiate abstract class` | `new` em classe abstrata | Use uma subclasse concreta |
 | `does not override abstract method` | Faltou implementar método | Implemente todos os métodos abstratos |
-| `method not found` | Erro de digitacao ou tipo errado | Verifique o nome e os parâmetros |
-| `incompatible types` | Atribuir tipo errado | Verifique os tipos ou faca cast |
+| `method not found` | Erro de digitação ou tipo errado | Verifique o nome e os parâmetros |
+| `incompatible types` | Atribuir tipo errado | Verifique os tipos ou faça cast |
 | `NoSuchFileException` | Arquivo ou pasta não existe no caminho informado | Confira o caminho, use `Files.exists()` ou `Files.createDirectories()` |
 | `unreported exception IOException` | Operação de arquivo sem tratamento | Declare `throws IOException` ou use try-catch |
 | `DateTimeParseException` | Texto da data fora do padrão do formatador | Confira o padrão (`dd/MM/yyyy`) e trate com try-catch |
@@ -56,7 +56,7 @@ if (s.equals("Maria")) { } // CORRETO: compara conteúdo
 
 // 3. Lógica invertida no if/else
 if (nota < 7.0) {
-    return "Aprovado";  // ERRADO: abaixo de 7 não e aprovado!
+    return "Aprovado";  // ERRADO: abaixo de 7 não é aprovado!
 }
 
 // 4. Off-by-one (erro de um a mais ou a menos)

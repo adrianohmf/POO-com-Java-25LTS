@@ -2,5 +2,5 @@
 
 // Forma moderna — JDK 25 (use nas primeiras aulas)
 void main() {
-    IO.println("Ola, mundo!");
+    IO.println("Olá, mundo!");
 }

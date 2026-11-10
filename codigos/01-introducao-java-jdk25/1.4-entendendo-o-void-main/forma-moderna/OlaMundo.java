@@ -1,5 +1,5 @@
 // Arquivo: OlaMundo.java
 
 void main() {
-    IO.println("Ola!");
+    IO.println("Olá!");
 }

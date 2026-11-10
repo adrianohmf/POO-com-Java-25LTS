@@ -43,6 +43,6 @@ void main() {
     try {
         LocalDate.parse("31/02/2026", estrito);
     } catch (DateTimeParseException e) {
-        IO.println("Com rigor: data invalida");
+        IO.println("Com rigor: data inválida");
     }
 }

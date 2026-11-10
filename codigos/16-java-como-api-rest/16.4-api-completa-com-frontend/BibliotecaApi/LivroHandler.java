@@ -32,7 +32,7 @@ class LivroHandler implements HttpHandler {
                 case "POST"    -> cadastrar(troca);
                 case "DELETE"  -> remover(troca, id);
                 case "OPTIONS" -> responder(troca, 204, "");         // resposta ao navegador (CORS)
-                default        -> responder(troca, 405, Json.erro("Metodo nao permitido"));
+                default        -> responder(troca, 405, Json.erro("Método não permitido"));
             }
         } catch (Exception e) {
             responder(troca, 500, Json.erro("Erro interno do servidor"));
@@ -47,7 +47,7 @@ class LivroHandler implements HttpHandler {
         }
         Livro livro = buscarPorId(id);
         if (livro == null) {
-            responder(troca, 404, Json.erro("Livro nao encontrado"));
+            responder(troca, 404, Json.erro("Livro não encontrado"));
         } else {
             responder(troca, 200, livro.paraJson());
         }
@@ -64,11 +64,11 @@ class LivroHandler implements HttpHandler {
         try {
             ano = Integer.parseInt(campos.getOrDefault("ano", ""));
         } catch (NumberFormatException e) {
-            responder(troca, 400, Json.erro("Informe um ano valido"));
+            responder(troca, 400, Json.erro("Informe um ano válido"));
             return;
         }
         if (titulo.isEmpty() || autor.isEmpty()) {
-            responder(troca, 400, Json.erro("Titulo e autor sao obrigatorios"));
+            responder(troca, 400, Json.erro("Título e autor são obrigatórios"));
             return;
         }
 
@@ -83,7 +83,7 @@ class LivroHandler implements HttpHandler {
     private void remover(HttpExchange troca, String id) throws IOException {
         Livro livro = id == null ? null : buscarPorId(id);
         if (livro == null) {
-            responder(troca, 404, Json.erro("Livro nao encontrado"));
+            responder(troca, 404, Json.erro("Livro não encontrado"));
             return;
         }
         livros.remove(livro);

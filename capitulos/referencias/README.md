@@ -2,7 +2,7 @@
 
 # Referências e Recursos
 
-| Recurso | Descricao | Link |
+| Recurso | Descrição | Link |
 |---|---|---|
 | **Oracle Java Docs** | Documentação oficial JDK 25 | https://docs.oracle.com/en/java/javase/25/ |
 | **Learn Java 25** | Curso gratuito focado no JDK 25 | https://learn-java-25.pages.dev |

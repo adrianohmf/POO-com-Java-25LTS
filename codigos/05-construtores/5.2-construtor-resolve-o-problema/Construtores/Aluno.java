@@ -8,7 +8,7 @@ class Aluno {
 
     // CONSTRUTOR PADRÃO: executado quando new Aluno()
     Aluno() {
-        this.curso     = "Nao informado";
+        this.curso     = "Não informado";
         this.matricula = "0000";
     }
 
@@ -36,6 +36,6 @@ class Aluno {
         IO.println("Nome:      " + nome);
         IO.println("Idade:     " + idade);
         IO.println("Curso:     " + curso);
-        IO.println("Matricula: " + matricula);
+        IO.println("Matrícula: " + matricula);
     }
 }

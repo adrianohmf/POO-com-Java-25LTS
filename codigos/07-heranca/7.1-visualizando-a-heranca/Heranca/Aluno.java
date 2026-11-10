@@ -18,8 +18,8 @@ class Aluno extends Pessoa {
     @Override  // garante que estamos realmente sobrescrevendo
     void apresentar() {
         super.apresentar(); // reutiliza o apresentar() de Pessoa
-        IO.println("Matricula: " + matricula);
+        IO.println("Matrícula: " + matricula);
         IO.println("Curso:     " + curso);
-        IO.println("Media:     " + mediaGeral);
+        IO.println("Média:     " + mediaGeral);
     }
 }

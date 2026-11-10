@@ -1,7 +1,7 @@
-// ATENCAO: estes trechos são apenas ilustrativos e podem conter erros de propósito.
+// ATENÇÃO: estes trechos são apenas ilustrativos e podem conter erros de propósito.
 // Eles não são um programa completo e não devem ser compilados como estão.
 
-// ERRO 1: esquecer o @Override (não e erro, mas e ma prática)
+// ERRO 1: esquecer o @Override (não é erro, mas é má prática)
 class Cachorro extends Animal {
     void fazersom() { } // erro de digitação: "fazersom" != "fazerSom"
     // sem @Override, Java não avisa que você não está sobrescrevendo!

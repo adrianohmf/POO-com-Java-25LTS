@@ -13,7 +13,7 @@ class Relatorio implements Imprimivel, Notificavel {
     @Override
     public void imprimir() {
         IO.println("==================================================");
-        IO.println("RELATORIO: " + titulo);
+        IO.println("RELATÓRIO: " + titulo);
         IO.println("--------------------------------------------------");
         IO.println(conteudo);
         IO.println("==================================================");

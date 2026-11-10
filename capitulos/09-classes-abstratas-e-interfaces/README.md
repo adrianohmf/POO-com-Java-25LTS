@@ -7,27 +7,27 @@
 > **O que você vai aprender neste capítulo:**
 > Criar classes que servem só de modelo (abstratas), definir contratos que as classes devem cumprir (interfaces), entender a diferença entre os dois e saber quando usar cada um.
 
-Até agora todas as classes que criamos podiam ser instanciadas diretamente com `new`. Mas há situacoes em que uma classe existe apenas para ser herdada — ela define uma estrutura comum, mas não faz sentido criar objetos dela diretamente.
+Até agora todas as classes que criamos podiam ser instanciadas diretamente com `new`. Mas há situações em que uma classe existe apenas para ser herdada — ela define uma estrutura comum, mas não faz sentido criar objetos dela diretamente.
 
 Um `Animal` genérico, por exemplo. O que significa criar `new Animal()`? Que animal seria esse? Um animal genérico não existe na natureza — existem cachorros, gatos, vacas. O `Animal` é só um conceito, um modelo. Isso é uma **classe abstrata**: ela define o que todo animal deve ter e fazer, mas não pode ser usada diretamente.
 
-Já as **interfaces** vão além: elas definem um contrato de comportamento que pode ser assinado por qualquer classe, independente da sua hierarquia. Um `Relatorio` pode ser imprimivel e enviavel. Um `Produto` pode ser exportavel e pesquisavel. Interfaces permitem que classes completamente diferentes compartilhem comportamentos comuns sem precisar de uma hierarquia de herança.
+Já as **interfaces** vão além: elas definem um contrato de comportamento que pode ser assinado por qualquer classe, independente da sua hierarquia. Um `Relatorio` pode ser imprimível e enviável. Um `Produto` pode ser exportável e pesquisável. Interfaces permitem que classes completamente diferentes compartilhem comportamentos comuns sem precisar de uma hierarquia de herança.
 
-Juntas, classes abstratas e interfaces dão ao seu código uma estrutura profissional, extensivel é fácil de manter.
+Juntas, classes abstratas e interfaces dão ao seu código uma estrutura profissional, extensível e fácil de manter.
 
 
 ## 9.1 Classes Abstratas — quando usar
 
 ```
 Use classe abstrata quando:
-  - As subclasses COMPARTILHAM codigo em comum
-  - Existe uma relacao clara "E UM" (Aluno E UM Funcionario)
-  - Voce quer forcas as subclasses a implementar certos metodos
+  - As subclasses COMPARTILHAM código em comum
+  - Existe uma relação clara "E UM" (Aluno E UM Funcionário)
+  - Você quer forçar as subclasses a implementar certos métodos
 
 Use interface quando:
-  - Classes nao relacionadas precisam do mesmo COMPORTAMENTO
-  - Voce quer heranca multipla de comportamento
-  - Voce quer definir um CONTRATO
+  - Classes não relacionadas precisam do mesmo COMPORTAMENTO
+  - Você quer herança múltipla de comportamento
+  - Você quer definir um CONTRATO
 ```
 
 ```mermaid
@@ -73,9 +73,9 @@ abstract class Funcionario {
     // Método concreto: compartilhado por todos
     void exibirContracheque() {
         IO.println("---");
-        IO.println("FUNCIONARIO: " + nome);
+        IO.println("FUNCIONÁRIO: " + nome);
         IO.println("CARGO:       " + getCargo());
-        IO.println("SALARIO:     R$ " + String.format("%.2f", calcularSalario()));
+        IO.println("SALÁRIO:     R$ " + String.format("%.2f", calcularSalario()));
         IO.println("---");
     }
 }
@@ -117,7 +117,7 @@ void main() {
     // Funcionario f = new Funcionario(...); // ERRO: não pode instanciar!
 
     Funcionario[] equipe = {
-        new Professor("Adriano Franca", 4000.00, 20),
+        new Professor("Adriano França", 4000.00, 20),
         new Diretor("Ana Souza", 6000.00, 2000.00),
         new Professor("Carlos Lima", 3800.00, 18)
     };
@@ -187,7 +187,7 @@ class Relatorio implements Imprimivel, Notificavel {
     @Override
     public void imprimir() {
         IO.println("==================================================");
-        IO.println("RELATORIO: " + titulo);
+        IO.println("RELATÓRIO: " + titulo);
         IO.println("--------------------------------------------------");
         IO.println(conteudo);
         IO.println("==================================================");
@@ -210,7 +210,7 @@ class Relatorio implements Imprimivel, Notificavel {
 }
 
 void main() {
-    var rel = new Relatorio("Desempenho Academico", "Media geral: 7.8");
+    var rel = new Relatorio("Desempenho Acadêmico", "Média geral: 7.8");
     rel.imprimir();
     rel.notificarTodos("prof@ifpe.edu.br", "(81) 99999-0000");
 }
@@ -221,7 +221,7 @@ void main() {
 | | Classe Abstrata | Interface |
 |---|---|---|
 | Instanciar | Não | Não |
-| Herança | `extends` (uma só) | `implements` (varias) |
+| Herança | `extends` (uma só) | `implements` (várias) |
 | Atributos | Pode ter | Só constantes |
 | Construtor | Tem | Não tem |
 | Métodos concretos | Pode ter | Só `default` |
@@ -247,13 +247,13 @@ class Doc implements Imprimivel {
 
 // ERRO 3: colocar atributo de instância em interface
 interface Imprimivel {
-    String titulo = "Sem titulo"; // ERRADO: implicitamente static final
+    String titulo = "Sem título"; // ERRADO: implicitamente static final
     // Não existe atributo de instância em interface!
 }
 
 // ERRO 4: confundir "extends" e "implements"
 class Aluno implements Pessoa { }   // ERRADO: Pessoa e classe, use extends
-class Aluno extends Imprimivel { }  // ERRADO: Imprimivel e interface, use implements
+class Aluno extends Imprimivel { }  // ERRADO: Imprimível é interface, use implements
 ```
 
 ## Exercícios — Tema 9
@@ -262,7 +262,7 @@ class Aluno extends Imprimivel { }  // ERRADO: Imprimivel e interface, use imple
 >
 > **Exercício 9.2** — Interface `Exportavel` com `exportarCSV()`, `exportarJSON()`. Implemente em `RelatorioAlunos` e `RelatorioVendas`.
 >
-> **Exercício 9.3 (Projeto progressivo)** — Crie interfaces `Vendavel` e `Exportavel`. Faca `Artesao` implementar ambas. `Vendavel` exige `vender(int quantidade)` e `calcularReceita()`. `Exportavel` exige `exportarDados()`.
+> **Exercício 9.3 (Projeto progressivo)** — Crie interfaces `Vendavel` e `Exportavel`. Faça `Artesao` implementar ambas. `Vendavel` exige `vender(int quantidade)` e `calcularReceita()`. `Exportavel` exige `exportarDados()`.
 
 ---
 

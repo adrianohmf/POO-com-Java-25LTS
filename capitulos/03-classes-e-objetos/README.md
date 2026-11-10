@@ -7,9 +7,9 @@
 > **O que você vai aprender neste capítulo:**
 > Criar suas primeiras classes em Java, entender a diferença entre classe e objeto, instanciar objetos com `new` e trabalhar com múltiplos objetos independentes.
 
-Chegamos ao coracao da POO. Classe e objeto são os conceitos mais fundamentais de toda a programação orientada a objetos — tudo o mais que veremos neste guia (herança, polimorfismo, interfaces) e construido sobre essa base.
+Chegamos ao coração da POO. Classe e objeto são os conceitos mais fundamentais de toda a programação orientada a objetos — tudo o mais que veremos neste guia (herança, polimorfismo, interfaces) e construído sobre essa base.
 
-Pense assim: uma classe é como uma planta arquitetonica — ela descreve como um predio vai ser, mas não é o predio em si. O objeto e o predio construido a partir daquela planta. Você pode construir varios predios identicos a partir da mesma planta, e cada um vai ter sua própria existencia, seus próprios moradores, seu próprio endereco.
+Pense assim: uma classe é como uma planta arquitetônica — ela descreve como um prédio vai ser, mas não é o prédio em si. O objeto é o prédio construído a partir daquela planta. Você pode construir vários prédios idênticos a partir da mesma planta, e cada um vai ter sua própria existência, seus próprios moradores, seu próprio endereço.
 
 Em Java, você define a planta uma vez (a classe) e pode criar quantos objetos quiser a partir dela. Cada objeto existe de forma independente na memória do computador, com seus próprios dados.
 
@@ -26,7 +26,7 @@ Antes de escrever código, veja como uma classe e representada visualmente:
 | - idade   : int           |
 | - curso   : String        |
 +---------------------------+
-| + apresentar() : void     |  <- Metodos (comportamentos)
+| + apresentar() : void     |  <- Métodos (comportamentos)
 | + getSituacao() : String  |
 +---------------------------+
 ```
@@ -88,16 +88,16 @@ void main() {
     // Atribuindo valores: objeto.atributo = valor;
     a1.nome  = "Maria Silva";
     a1.idade = 20;
-    a1.curso = "Informatica para Internet";
+    a1.curso = "Informática para Internet";
 
-    a2.nome  = "Joao Santos";
+    a2.nome  = "João Santos";
     a2.idade = 22;
     a2.curso = "Sistemas para Internet";
 
     // Chamando métodos: objeto.método();
     IO.println("=== Aluno 1 ===");
     a1.apresentar();
-    IO.println("Situacao: " + a1.getSituacao());
+    IO.println("Situação: " + a1.getSituacao());
 
     IO.println("=== Aluno 2 ===");
     a2.apresentar();
@@ -105,15 +105,15 @@ void main() {
 ```
 
 ```
-# Saida:
+# Saída:
 === Aluno 1 ===
 Nome:  Maria Silva
 Idade: 20
-Curso: Informatica para Internet
-Situacao: Maior de idade
+Curso: Informática para Internet
+Situação: Maior de idade
 ```
 
-> **Ponto chave:** cada objeto e **independente**. Mudar `a1.nome` não afeta `a2.nome`. Eles compartilham o molde (classe), mas cada um tem sua **própria copia** dos atributos na memória.
+> **Ponto chave:** cada objeto e **independente**. Mudar `a1.nome` não afeta `a2.nome`. Eles compartilham o molde (classe), mas cada um tem sua **própria cópia** dos atributos na memória.
 
 ## 3.4 Múltiplos objetos — exemplo prático
 
@@ -141,7 +141,7 @@ void main() {
 
     Produto[] catalogo = { p1, p2, p3 };
 
-    IO.println("=== CATALOGO DA LOJA ===");
+    IO.println("=== CATÁLOGO DA LOJA ===");
     for (int i = 0; i < catalogo.length; i++) {
         catalogo[i].exibir();
     }
@@ -198,7 +198,7 @@ if (s1.equals(s2))         // CORRETO: compara o conteúdo
 >
 > **Exercício 3.2** — Crie `Carro` com: `marca`, `modelo`, `ano`, `velocidadeAtual`. Métodos `acelerar(int km)` e `frear(int km)`. Mostre a velocidade após cada ação (não permita negativo).
 >
-> **Exercício 3.3 (Projeto progressivo)** — Crie `Artesao` com: `nome`, `cidade`, `tecnica`, `precoPecaMedia`. Instancie 4 artesaos nordestinos. **Guarde este exercício — você vai evoluir este sistema nos próximos temas.**
+> **Exercício 3.3 (Projeto progressivo)** — Crie `Artesao` com: `nome`, `cidade`, `tecnica`, `precoPecaMedia`. Instancie 4 artesãos nordestinos. **Guarde este exercício — você vai evoluir este sistema nos próximos temas.**
 
 ---
 

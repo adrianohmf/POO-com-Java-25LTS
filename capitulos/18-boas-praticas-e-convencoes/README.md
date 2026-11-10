@@ -7,11 +7,11 @@
 > **O que você vai aprender neste capítulo:**
 > As convenções de nomenclatura do Java, boas práticas de escrita de código limpo e a estrutura de um projeto Java profissional.
 
-Saber fazer o código funcionar e o primeiro passo. Saber fazer o código ser **lido** e o segundo — e igualmente importante. Um código que funciona mas e impossivel de entender e um código que vai gerar problemas no futuro: dificuldade de manutenção, bugs difíceis de encontrar e resistencia da equipe para trabalhar com ele.
+Saber fazer o código funcionar é o primeiro passo. Saber fazer o código ser **lido** é o segundo — e igualmente importante. Um código que funciona mas é impossível de entender é um código que vai gerar problemas no futuro: dificuldade de manutenção, bugs difíceis de encontrar e resistência da equipe para trabalhar com ele.
 
-A comunidade Java construiu ao longo de decadas um conjunto de convenções que todos os desenvolvedores seguem. Quando você abre um projeto Java é ve `ContaBancaria`, sabe que é uma classe. Quando ve `calcularSaldo()`, sabe que é um método. Quando ve `TAXA_IMPOSTO`, sabe que é uma constante. Esse reconhecimento imediato é possível porque todos seguem as mesmas convenções.
+A comunidade Java construiu ao longo de décadas um conjunto de convenções que todos os desenvolvedores seguem. Quando você abre um projeto Java e vê `ContaBancaria`, sabe que é uma classe. Quando vê `calcularSaldo()`, sabe que é um método. Quando vê `TAXA_IMPOSTO`, sabe que é uma constante. Esse reconhecimento imediato é possível porque todos seguem as mesmas convenções.
 
-Este capítulo não tem exercícios de código — e um capítulo para ler, refletir e aplicar nos exercícios e no projeto. Você vai perceber que as boas práticas não são regras arbitrarias: cada uma existe para resolver um problema real que aparece quando o código cresce.
+Este capítulo não tem exercícios de código — é um capítulo para ler, refletir e aplicar nos exercícios e no projeto. Você vai perceber que as boas práticas não são regras arbitrárias: cada uma existe para resolver um problema real que aparece quando o código cresce.
 
 
 ## 18.1 Nomenclatura Java
@@ -60,7 +60,7 @@ if (nota >= NOTA_APROVACAO) return "Aprovado";
 // 4. FAIL FAST — valide cedo, falhe cedo
 void sacar(double valor) {
     // Valide no início, antes de qualquer lógica
-    if (valor <= 0) throw new IllegalArgumentException("Valor invalido");
+    if (valor <= 0) throw new IllegalArgumentException("Valor inválido");
     if (valor > saldo) throw new SaldoInsuficienteException(saldo, valor);
     // Só agora executa a lógica principal
     saldo -= valor;
@@ -86,10 +86,10 @@ meu-projeto/
 |           |     Aluno.java
 |           |     Produto.java
 |           |
-|           +-- service/        <- logica de negocio
+|           +-- service/        <- lógica de negócio
 |           |     AlunoService.java
 |           |
-|           +-- exception/      <- excecoes personalizadas
+|           +-- exception/      <- exceções personalizadas
 |           |     NotaInvalidaException.java
 |           |
 |           +-- Main.java       <- ponto de entrada

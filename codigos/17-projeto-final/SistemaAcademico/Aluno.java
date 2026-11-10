@@ -29,7 +29,7 @@ class Aluno extends Pessoa implements Relatorio {
 
     String getSituacao() {
         double m = getMedia();
-        return m >= 7.0 ? "Aprovado" : m >= 5.0 ? "Recuperacao" : "Reprovado";
+        return m >= 7.0 ? "Aprovado" : m >= 5.0 ? "Recuperação" : "Reprovado";
     }
 
     String getMatricula() { return matricula; }
@@ -45,11 +45,11 @@ class Aluno extends Pessoa implements Relatorio {
         IO.println("| BOLETIM                              |");
         IO.println("+--------------------------------------+");
         IO.println("| Nome:      " + nome);
-        IO.println("| Matricula: " + matricula);
+        IO.println("| Matrícula: " + matricula);
         IO.println("| Curso:     " + curso);
         IO.println("| Notas:     " + notas);
-        IO.println("| Media:     " + String.format("%.1f", getMedia()));
-        IO.println("| Situacao:  " + getSituacao());
+        IO.println("| Média:     " + String.format("%.1f", getMedia()));
+        IO.println("| Situação:  " + getSituacao());
         IO.println("+--------------------------------------+");
     }
 }

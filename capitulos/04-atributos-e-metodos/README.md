@@ -5,28 +5,28 @@
 > **Códigos deste capítulo:** [codigos/04-atributos-e-metodos](../../codigos/04-atributos-e-metodos/)
 
 > **O que você vai aprender neste capítulo:**
-> Entender os diferentes tipos de atributos (de instância, estaticos e constantes), criar métodos com e sem retorno, usar sobrecarga de métodos e entender o papel do `this`.
+> Entender os diferentes tipos de atributos (de instância, estáticos e constantes), criar métodos com e sem retorno, usar sobrecarga de métodos e entender o papel do `this`.
 
-Se a classe é o molde e o objeto e o produto final, então os **atributos** são o que o objeto guarda e os **métodos** são o que o objeto sabe fazer. Juntos, eles definem completamente o comportamento de um objeto.
+Se a classe é o molde e o objeto é o produto final, então os **atributos** são o que o objeto guarda e os **métodos** são o que o objeto sabe fazer. Juntos, eles definem completamente o comportamento de um objeto.
 
 Um `Aluno` guarda `nome`, `idade` e `notas` — esses são seus atributos. Ele sabe `apresentar()` seus dados, `calcularMedia()` e dizer sua `getSituacao()` — esses são seus métodos. Atributos e métodos trabalham juntos: os métodos usam os atributos para produzir resultados.
 
-Neste capítulo você vai descobrir que existem diferentes tipos de atributos (cada objeto com o seu, ou compartilhado por todos) e diferentes tipos de métodos (que fazem algo ou que devolvem um valor). Você também vai aprender um recurso poderoso do Java: ter varios métodos com o mesmo nome, cada um resolvendo um problema diferente.
+Neste capítulo você vai descobrir que existem diferentes tipos de atributos (cada objeto com o seu, ou compartilhado por todos) e diferentes tipos de métodos (que fazem algo ou que devolvem um valor). Você também vai aprender um recurso poderoso do Java: ter vários métodos com o mesmo nome, cada um resolvendo um problema diferente.
 
 
 ## 4.1 Tipos de atributos — diagrama
 
 ```
-Atributos de Instancia          Atributos Estaticos
+Atributos de Instância          Atributos Estáticos
 ----------------------          -------------------
 Cada objeto tem o seu           Todos os objetos compartilham
 
   Aluno a1                        Aluno
-  nome: "Maria"     ---|          totalAlunos: 3  <-- unico na memoria
+  nome: "Maria"     ---|          totalAlunos: 3  <-- único na memória
   idade: 20             |
                         |----> class Aluno
   Aluno a2             |       { static int totalAlunos }
-  nome: "Joao"      ---|
+  nome: "João"      ---|
   idade: 22
 ```
 
@@ -64,7 +64,7 @@ void main() {
     IO.println("Taxa de imposto: " + Produto.TAXA_IMPOSTO);
 
     double precoFinal = p1.preco * (1 + Produto.TAXA_IMPOSTO);
-    System.out.format("Preco com imposto: R$ %.2f%n", precoFinal);
+    System.out.format("Preço com imposto: R$ %.2f%n", precoFinal);
 }
 ```
 
@@ -80,12 +80,12 @@ Um atributo estático não pertence a nenhum objeto individual — ele pertence 
 class Produto {
     String nome;
 
-    // static: uma unica copia, compartilhada por TODOS os objetos
+    // static: uma única cópia, compartilhada por TODOS os objetos
     static int totalProdutos = 0;
 
     Produto(String nome) {
         this.nome = nome;
-        totalProdutos++;   // incrementa a copia UNICA a cada objeto criado
+        totalProdutos++;   // incrementa a cópia ÚNICA a cada objeto criado
     }
 }
 
@@ -96,10 +96,10 @@ void main() {
     var p2 = new Produto("Castanha de Caju");
     var p3 = new Produto("Rapadura");
 
-    // Acessado PELA CLASSE, nao por p1, p2 ou p3
+    // Acessado PELA CLASSE, não por p1, p2 ou p3
     IO.println("Total depois: " + Produto.totalProdutos); // 3
 
-    // Mesmo acessando por um objeto, o valor e o MESMO para todos
+    // Mesmo acessando por um objeto, o valor é o MESMO para todos
     IO.println("Via p1: " + p1.totalProdutos); // 3
     IO.println("Via p2: " + p2.totalProdutos); // 3
 }
@@ -176,7 +176,7 @@ class Calculadora {
 
     String classificar(double media) {
         if (media >= 7.0)      return "Aprovado";
-        else if (media >= 5.0) return "Recuperacao";
+        else if (media >= 5.0) return "Recuperação";
         else                   return "Reprovado";
     }
 
@@ -196,8 +196,8 @@ void main() {
 
     double[] notas = { 8.0, 7.5, 9.0, 6.5 };
     double media = calc.calcularMedia(notas);
-    IO.println("Media:    " + media);
-    IO.println("Situacao: " + calc.classificar(media));
+    IO.println("Média:    " + media);
+    IO.println("Situação: " + calc.classificar(media));
 
     // Método estático: sem criar objeto
     IO.println("Imposto: R$ " + Calculadora.calcularImposto(100.0, 0.12));
@@ -224,7 +224,7 @@ class Impressora {
 
     // Versão 2: recebe número
     void imprimir(int numero) {
-        IO.println("[NUMERO] " + numero);
+        IO.println("[NÚMERO] " + numero);
     }
 
     // Versão 3: recebe texto e quantidade de vezes
@@ -238,7 +238,7 @@ class Impressora {
 void main() {
     var imp = new Impressora();
 
-    imp.imprimir("Ola!");         // chama versão 1
+    imp.imprimir("Olá!");         // chama versão 1
     imp.imprimir(42);             // chama versão 2
     imp.imprimir("Java 25!", 3);  // chama versão 3
 }
@@ -254,12 +254,12 @@ int somar(int a, int b) {
 }
 
 // ERRO 2: usar o retorno de um método void
-void exibir() { IO.println("Ola"); }
+void exibir() { IO.println("Olá"); }
 String texto = exibir(); // ERRADO: void não retorna nada
 
 // ERRO 3: acessar atributo estático pelo objeto
 var p = new Produto();
-p.TAXA_IMPOSTO;          // funciona mas e ma prática
+p.TAXA_IMPOSTO;          // funciona mas é má prática
 Produto.TAXA_IMPOSTO;    // CORRETO
 
 // ERRO 4: dividir inteiros e esperar decimal
@@ -272,7 +272,7 @@ double resultado = (double) a / b; // CORRETO: resultado = 2.5
 
 > **Exercício 4.1** — Crie `ContaBancaria` com: `titular`, `saldo`. Métodos: `depositar(double)`, `sacar(double)` (sem saldo negativo), `exibirSaldo()`.
 >
-> **Exercício 4.2** — Adicione atributo estatico `totalContas` a `ContaBancaria`. Incremente a cada conta criada.
+> **Exercício 4.2** — Adicione atributo estático `totalContas` a `ContaBancaria`. Incremente a cada conta criada.
 >
 > **Exercício 4.3 (Projeto progressivo)** — Adicione métodos a `Artesao`: `calcularFaturamento(int pecasVendidas)` e `exibirPerfil()`. Crie uma versão sobrecarregada de `exibirPerfil(boolean detalhado)`.
 

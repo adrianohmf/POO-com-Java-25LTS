@@ -10,7 +10,7 @@ class Conta {
     }
 
     void sacar(double valor) throws SaldoInsuficienteException {
-        if (valor <= 0)    throw new IllegalArgumentException("Valor invalido: " + valor);
+        if (valor <= 0)    throw new IllegalArgumentException("Valor inválido: " + valor);
         if (valor > saldo) throw new SaldoInsuficienteException(saldo, valor);
         saldo -= valor;
         IO.println("Saque de R$ " + valor + " realizado.");

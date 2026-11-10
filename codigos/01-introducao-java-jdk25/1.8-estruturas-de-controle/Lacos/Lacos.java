@@ -30,7 +30,7 @@ void main() {
         if (n > 7) {
             break;          // para o laço
         }
-        IO.println("Impar: " + n);
+        IO.println("Ímpar: " + n);
     }
 
     // Acumulador: padrão muito comum para somar valores

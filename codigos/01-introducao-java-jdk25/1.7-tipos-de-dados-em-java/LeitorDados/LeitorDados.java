@@ -9,15 +9,15 @@ void main() {
 
     // Lendo texto
     IO.println("Qual o seu nome?");
-    var nome = sc.nextLine();    // le a linha inteira
+    var nome = sc.nextLine();    // lê a linha inteira
 
     // Lendo inteiro
     IO.println("Qual a sua idade?");
-    var idade = sc.nextInt();    // le apenas o número
+    var idade = sc.nextInt();    // lê apenas o número
 
     // Lendo decimal
     IO.println("Qual a sua nota final?");
-    var nota = sc.nextDouble();  // le número com casas decimais
+    var nota = sc.nextDouble();  // lê número com casas decimais
 
     // sc.nextLine() após nextInt/nextDouble: limpa o buffer
     // (explicado abaixo)
@@ -30,7 +30,7 @@ void main() {
     System.out.format("Nota:  %.2f%n", nota);
 
     var situacao = nota >= 7.0 ? "Aprovado" : "Reprovado";
-    System.out.format("Situacao: %s%n", situacao);
+    System.out.format("Situação: %s%n", situacao);
 
     // Boa prática: fechar o Scanner ao terminar
     sc.close();
