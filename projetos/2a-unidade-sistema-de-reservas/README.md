@@ -69,7 +69,7 @@ O programa deve recusar qualquer reserva que viole uma destas regras, explicando
 8. **RN8, persistência (desejada, capítulo 15):** ao sair, o programa grava os recursos e as reservas em CSV. Ao iniciar, carrega os arquivos. Na primeira execução os arquivos não existem, e isso não é erro. Linhas em branco são ignoradas. Sem esta regra, os dados ficam só na memória e se perdem ao fechar o programa; a demonstração pode usar alguns recursos pré-cadastrados no código.
 9. **RN9, consultas:** agenda de um dia, total de horas reservadas por recurso e quantidade de solicitantes diferentes.
 
-Limites do domínio de exemplo. Cada equipe define três pares de duração máxima e horário de funcionamento com valores diferentes entre si:
+Exemplo: a tabela abaixo mostra valores ilustrativos para o domínio Espaços do campus. Cada dupla define os seus três pares de duração máxima e horário de funcionamento com valores diferentes entre si:
 
 | Tipo | Duração máxima | Funcionamento |
 |---|---|---|
@@ -77,7 +77,7 @@ Limites do domínio de exemplo. Cada equipe define três pares de duração máx
 | `SalaDeAula` | 4 horas | 07:00 às 21:00 |
 | `Auditorio` | 8 horas | 08:00 às 18:00 |
 
-**Desejado (capítulo 14):** antecedência mínima por tipo, também por polimorfismo, com o método `antecedenciaMinimaDias()`: `Laboratorio` 1 dia, `SalaDeAula` 0 dia (pode ser reservada para hoje) e `Auditorio` 3 dias. Cada equipe define valores diferentes entre si.
+**Desejado (capítulo 14):** antecedência mínima por tipo, também por polimorfismo, com o método `antecedenciaMinimaDias()`: `Laboratorio` 1 dia, `SalaDeAula` 0 dia (pode ser reservada para hoje) e `Auditorio` 3 dias. Esses valores também são só exemplo: cada dupla define os seus, diferentes entre si.
 
 ## Requisitos técnicos obrigatórios
 
