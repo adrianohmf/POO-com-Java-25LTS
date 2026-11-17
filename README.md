@@ -154,6 +154,8 @@ com teoria, diagramas, exemplos comentados, erros comuns e exercícios práticos
 
 ### [Códigos de exemplo](codigos/README.md)
 
+### [Projeto da 2ª unidade: Sistema de Reservas do Campus](projetos/2a-unidade-sistema-de-reservas/README.md)
+
 ---
 
 <div align="center">
